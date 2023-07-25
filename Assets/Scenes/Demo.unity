@@ -156,6 +156,8 @@ MonoBehaviour:
     TypeName: 
   autoRun: 1
   autoInjectGameObjects: []
+  _opaNihuyaSebe:
+    _point: {fileID: 1853554759}
   _weaponsPoints:
   - {fileID: 1853554759}
 --- !u!4 &878016073

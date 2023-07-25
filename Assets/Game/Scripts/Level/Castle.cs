@@ -1,4 +1,5 @@
 ﻿using System.Collections.Generic;
+using Game.Extensions;
 using Interfaces;
 using UnityEngine;
 
@@ -12,7 +13,7 @@ namespace Game.Level
         
         public Castle(IList<Transform> _weaponPoints)
         {
-            Debug.Log($"<color=white>Lox i chmo</color>");            
+            Debug.Log($"<color=white>Lox i chmo</color>");
         }
 
         public Castle()
