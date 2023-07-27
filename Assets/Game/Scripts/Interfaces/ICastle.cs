@@ -2,6 +2,6 @@
 {
     public interface ICastle
     {
-        
+        void TestPrint();
     }
 }

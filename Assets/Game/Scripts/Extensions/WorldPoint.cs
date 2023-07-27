@@ -14,7 +14,6 @@ namespace Game.Extensions
         public static implicit operator Vector3(WorldPoint point) => point._point.position;
     }
 
-
     [CustomPropertyDrawer(typeof(WorldPoint))]
     public class WorldPointPropertyDrawer : PropertyDrawer
     {

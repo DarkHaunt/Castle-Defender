@@ -1,6 +1,4 @@
-﻿using System.Collections;
-using System.Collections.Generic;
-using Game.Extensions;
+﻿using System.Collections.Generic;
 using VContainer.Unity;
 using UnityEngine;
 using Interfaces;
@@ -13,14 +11,16 @@ namespace Game.Level
     {
         [SerializeField] private List<Transform> _weaponsPoints;
 
-        
         protected override void Configure(IContainerBuilder builder)
         {
             Debug.Log($"<color=white>Configure</color>");
 
             builder
                 .Register<Castle>(Lifetime.Singleton)
-                .WithParameter(_weaponsPoints);
+                .WithParameter(_weaponsPoints as IList<Transform>)
+                .As<ICastle>();
+
+            builder.RegisterEntryPoint<CastleService>();
         }
     }
 }

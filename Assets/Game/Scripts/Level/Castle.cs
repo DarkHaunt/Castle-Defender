@@ -8,22 +8,14 @@ namespace Game.Level
 {
     public class Castle : ICastle
     {
-        private readonly List<Transform> _weaponPoints;
-
-        
-        public Castle(IList<Transform> _weaponPoints)
+        public Castle(IList<Transform> lox)
         {
-            Debug.Log($"<color=white>Lox i chmo</color>");
+            Debug.Log($"<color=white>Lox i chmo - {lox.Count}</color>");
         }
 
-        public Castle()
+        public void TestPrint()
         {
-            Debug.Log($"<color=white>Pizda</color>");
-        }
-
-        public void Call()
-        {
-            Debug.Log($"<color=white>Call</color>");
+            Debug.Log($"<color=white>HER</color>");
         }
     }
 }
