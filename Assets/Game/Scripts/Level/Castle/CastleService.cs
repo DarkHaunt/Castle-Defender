@@ -4,7 +4,7 @@ using VContainer.Unity;
 
 namespace Game.Level
 {
-    public class CastleService : IStartable
+    public class CastleService
     {
         private readonly ICastle _castle;
         
@@ -12,12 +12,6 @@ namespace Game.Level
         public CastleService(ICastle castle)
         {
             _castle = castle;
-        }
-
-
-        void IStartable.Start()
-        {
-            _castle.TestPrint();
         }
     }
 }

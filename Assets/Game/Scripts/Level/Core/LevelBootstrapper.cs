@@ -1,4 +1,5 @@
 ﻿using System.Collections.Generic;
+using Game.Level.Weapon;
 using VContainer.Unity;
 using UnityEngine;
 using Interfaces;
@@ -9,7 +10,7 @@ namespace Game.Level
 {
     public class LevelBootstrapper : LifetimeScope
     {
-        [SerializeField] private List<Transform> _weaponsPoints;
+        [SerializeField] private List<WeaponPlacePoint> _weaponsPoints;
 
         protected override void Configure(IContainerBuilder builder)
         {
@@ -17,7 +18,7 @@ namespace Game.Level
 
             builder
                 .Register<Castle>(Lifetime.Singleton)
-                .WithParameter(_weaponsPoints as IList<Transform>)
+                .WithParameter(_weaponsPoints as IList<WeaponPlacePoint>)
                 .As<ICastle>();
 
             builder.RegisterEntryPoint<CastleService>();
