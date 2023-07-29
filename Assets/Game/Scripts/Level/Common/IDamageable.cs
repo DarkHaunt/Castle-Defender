@@ -1,7 +1,7 @@
 ﻿using System;
 
 
-namespace Interfaces
+namespace Game.Level.Common
 {
     public interface IDamageable
     {

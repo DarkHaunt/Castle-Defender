@@ -1,8 +1,4 @@
-﻿using Interfaces;
-using VContainer.Unity;
-
-
-namespace Game.Level
+﻿namespace Game.Level.Castle
 {
     public class CastleService
     {

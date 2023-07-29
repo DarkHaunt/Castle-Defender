@@ -1,27 +1,42 @@
-﻿using System.Collections.Generic;
-using Game.Level.Weapon;
+﻿using Game.Level.StateMachine.StatesFactory;
+using Game.Level.StateMachine.States;
+using Game.Level.StateMachine;
 using VContainer.Unity;
 using UnityEngine;
-using Interfaces;
 using VContainer;
 
 
-namespace Game.Level
+namespace Game.Level.Core
 {
     public class LevelBootstrapper : LifetimeScope
     {
-        [SerializeField] private List<WeaponPlacePoint> _weaponsPoints;
-
         protected override void Configure(IContainerBuilder builder)
         {
             Debug.Log($"<color=white>Configure</color>");
 
-            builder
-                .Register<Castle>(Lifetime.Singleton)
-                .WithParameter(_weaponsPoints as IList<WeaponPlacePoint>)
-                .As<ICastle>();
+            RegisterStates(builder);
+            RegisterStateMachine(builder);
+        }
 
-            builder.RegisterEntryPoint<CastleService>();
+        private static void RegisterStateMachine(IContainerBuilder builder)
+        {
+            builder.RegisterEntryPoint<LevelStateMachine>();
+        }
+
+        private static void RegisterStates(IContainerBuilder builder)
+        {
+            builder
+                .Register<StateFactory>(Lifetime.Singleton)
+                .WithParameter()
+                .AsImplementedInterfaces();
+
+            builder
+                .Register<LevelStart>(Lifetime.Singleton)
+                .AsImplementedInterfaces();
+
+            builder
+                .Register<LevelEnd>(Lifetime.Singleton)
+                .AsImplementedInterfaces();
         }
     }
 }
