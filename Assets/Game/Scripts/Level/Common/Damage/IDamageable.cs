@@ -5,7 +5,8 @@ namespace Game.Level.Common
 {
     public interface IDamageable
     {
-        event Action OnDamaged;
+        event Action OnDamage;
+        event Action OnDeath;
         
         void GetDamage(float damage);
     }
