@@ -1,28 +1,25 @@
 ﻿using Game.Level.StateMachine.StatesFactory;
 using Game.Level.StateMachine.States;
 using System.Collections.Generic;
-using UnityEngine;
 using VContainer.Unity;
 
 
 namespace Game.Level.StateMachine
 {
-    public class LevelStateMachine : IStateSwitcher, IStartable
+    public class LevelStateMachine : IStateSwitcher, IStartable, IInitializable
     {
-        private readonly Dictionary<State, IState> _states;
+        private readonly IStateFactory _stateFactory;
+        
+        private Dictionary<State, IState> _states;
         private IState _currentState;
 
 
         public LevelStateMachine(IStateFactory stateFactory)
         {
-            _states = new Dictionary<State, IState>
-            {
-                [State.LevelStart] = stateFactory.CreateState(State.LevelStart),
-                [State.LevelEnd] = stateFactory.CreateState(State.LevelEnd),
-            };
+            _stateFactory = stateFactory;
         }
-        
 
+        
         public void SwitchToState(State state)
         {
             _currentState?.Exit();
@@ -32,11 +29,16 @@ namespace Game.Level.StateMachine
             _currentState!.Enter();
         }
         
-        void IStartable.Start()
+        void IInitializable.Initialize()
         {
-            Debug.Log($"<color=white>STart System</color>");
-            
-            SwitchToState(State.LevelStart);
+            _states = new Dictionary<State, IState>
+            {
+                [State.LevelStart] = _stateFactory.CreateState(State.LevelStart),
+                [State.LevelEnd] = _stateFactory.CreateState(State.LevelEnd),
+            };
         }
+        
+        void IStartable.Start()
+            => SwitchToState(State.LevelStart);
     }
 }

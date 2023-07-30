@@ -1,4 +1,5 @@
 ﻿using Game.Level.StateMachine.States;
+using UnityEngine;
 using VContainer;
 using System;
 
@@ -13,6 +14,8 @@ namespace Game.Level.StateMachine.StatesFactory
         public StateFactory(IObjectResolver resolver)
         {
             _resolver = resolver;
+
+            Debug.Log($"<color=white>resolver added - {resolver}</color>");
         }
 
 
