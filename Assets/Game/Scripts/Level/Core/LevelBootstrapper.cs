@@ -13,7 +13,7 @@ namespace Game.Level.Core
         {
             RegisterStates(builder);
             RegisterStateMachine(builder);
-            RegisterStateFactory(builder);
+            RegisterStateFactories(builder);
         }
 
         private void RegisterStateMachine(IContainerBuilder builder)
@@ -23,20 +23,19 @@ namespace Game.Level.Core
         
         private void RegisterStates(IContainerBuilder builder)
         {
-            builder
-                .Register<LevelStart>(Lifetime.Singleton)
-                .AsSelf();
-
-            builder
-                .Register<LevelEnd>(Lifetime.Singleton)
-                .AsSelf();
+            builder.Register<LevelStart>(Lifetime.Singleton);
+            builder.Register<LevelEnd>(Lifetime.Singleton);
         }
 
-        private void RegisterStateFactory(IContainerBuilder builder)
+        private void RegisterStateFactories(IContainerBuilder builder)
         {
-            builder
-                .Register<StateFactory>(Lifetime.Singleton)
-                .AsImplementedInterfaces();
+            builder.Register<LevelStartStateFactory>(Lifetime.Singleton);
+            builder.RegisterFactory<IStateSwitcher, LevelStart>(container => 
+                container.Resolve<LevelStartStateFactory>().CreateState, Lifetime.Singleton);        
+
+            builder.Register<LevelEndStateFactory>(Lifetime.Singleton);
+            builder.RegisterFactory<LevelEnd>(container => 
+                container.Resolve<LevelEndStateFactory>().CreateState, Lifetime.Singleton);
         }
     }
 }

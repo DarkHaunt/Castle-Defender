@@ -6,20 +6,22 @@ using VContainer.Unity;
 
 namespace Game.Level.StateMachine
 {
-    public class LevelStateMachine : IStateSwitcher, IStartable, IInitializable
+    public class LevelStateMachine : IStateSwitcher, IStartable, ITickable
     {
-        private readonly IStateFactory _stateFactory;
-        
-        private Dictionary<State, IState> _states;
+        private readonly Dictionary<State, IState> _states;
         private IState _currentState;
 
 
-        public LevelStateMachine(IStateFactory stateFactory)
+        public LevelStateMachine(LevelStartStateFactory levelStartSateFactory, LevelEndStateFactory levelEndState)
         {
-            _stateFactory = stateFactory;
+            _states = new Dictionary<State, IState>
+            {
+                [State.LevelStart] = levelStartSateFactory.CreateState(this),
+                [State.LevelEnd] = levelEndState.CreateState(),
+            };
         }
 
-        
+
         public void SwitchToState(State state)
         {
             _currentState?.Exit();
@@ -28,17 +30,11 @@ namespace Game.Level.StateMachine
 
             _currentState!.Enter();
         }
-        
-        void IInitializable.Initialize()
-        {
-            _states = new Dictionary<State, IState>
-            {
-                [State.LevelStart] = _stateFactory.CreateState(State.LevelStart),
-                [State.LevelEnd] = _stateFactory.CreateState(State.LevelEnd),
-            };
-        }
-        
+
         void IStartable.Start()
             => SwitchToState(State.LevelStart);
+
+        void ITickable.Tick()
+            => _currentState?.Tick();
     }
 }

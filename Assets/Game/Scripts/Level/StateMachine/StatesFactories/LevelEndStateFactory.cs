@@ -3,8 +3,9 @@
 
 namespace Game.Level.StateMachine.StatesFactory
 {
-    public interface IStateFactory
+    public class LevelEndStateFactory
     {
-        IState CreateState(State state);
+        public LevelEnd CreateState()
+            => new ();
     }
 }

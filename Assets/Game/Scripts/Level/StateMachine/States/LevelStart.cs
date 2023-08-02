@@ -20,6 +20,10 @@ namespace Game.Level.StateMachine.States
             _stateSwitcher.SwitchToState(State.LevelEnd);
         }
 
+        public void Tick()
+        {
+        }
+
         public void Exit()
         {
             
