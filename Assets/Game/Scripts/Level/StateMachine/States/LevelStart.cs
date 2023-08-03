@@ -17,7 +17,7 @@ namespace Game.Level.StateMachine.States
         {
             Debug.Log($"<color=white>Start level</color>");
             
-            _stateSwitcher.SwitchToState(State.LevelEnd);
+            _stateSwitcher.SwitchToState<LevelEnd>();
         }
 
         public void Tick()

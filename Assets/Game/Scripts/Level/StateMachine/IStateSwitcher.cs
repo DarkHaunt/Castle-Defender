@@ -5,6 +5,6 @@ namespace Game.Level.StateMachine
 {
     public interface IStateSwitcher
     {
-        void SwitchToState(State state);
+        void SwitchToState<TState>() where TState : IState;
     }
 }
