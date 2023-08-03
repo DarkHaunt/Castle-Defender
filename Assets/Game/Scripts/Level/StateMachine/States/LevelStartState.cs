@@ -3,12 +3,12 @@
 
 namespace Game.Level.StateMachine.States
 {
-    public class LevelStart : IState
+    public class LevelStartState : IState
     {
         private readonly IStateSwitcher _stateSwitcher;
         
 
-        public LevelStart(IStateSwitcher stateSwitcher)
+        public LevelStartState(IStateSwitcher stateSwitcher)
         {
             _stateSwitcher = stateSwitcher;
         }
@@ -17,11 +17,7 @@ namespace Game.Level.StateMachine.States
         {
             Debug.Log($"<color=white>Start level</color>");
             
-            _stateSwitcher.SwitchToState<LevelEnd>();
-        }
-
-        public void Tick()
-        {
+            _stateSwitcher.SwitchToState<LevelEndState>();
         }
 
         public void Exit()

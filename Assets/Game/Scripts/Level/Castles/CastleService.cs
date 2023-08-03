@@ -1,4 +1,4 @@
-﻿namespace Game.Level.Castle
+﻿namespace Game.Level.Castles
 {
     public class CastleService
     {

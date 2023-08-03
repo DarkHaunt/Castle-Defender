@@ -1,8 +1,8 @@
-﻿using UnityEngine;
-using System;
+﻿using System;
+using UnityEngine;
 
 
-namespace Game.Extensions
+namespace Game.Extra
 {
     [Serializable]
     public sealed record WorldPoint

@@ -1,4 +1,4 @@
-﻿namespace Game.Level.Common
+﻿namespace Game.Level.Common.Damage
 {
     public interface IAttackHandler
     {

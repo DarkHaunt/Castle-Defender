@@ -1,13 +1,13 @@
-﻿using Game.Level.StateMachine.StatesFactory;
-using Game.Level.StateMachine.States;
+﻿using Game.Level.StateMachine.States;
 using System.Collections.Generic;
 using VContainer.Unity;
 using System;
+using Game.Level.StateMachine.States.Factories;
 
 
 namespace Game.Level.StateMachine
 {
-    public class LevelStateMachine : IStateSwitcher, IStartable, ITickable
+    public class LevelStateMachine : IStateSwitcher, IStartable
     {
         private readonly Dictionary<Type, IState> _states;
         private IState _currentState;
@@ -17,17 +17,14 @@ namespace Game.Level.StateMachine
         {
             _states = new Dictionary<Type, IState>
             {
-                [typeof(LevelStart)] = levelStartSateFactory.CreateState(this),
-                [typeof(LevelEnd)] = levelEndStateFactory.CreateState(),
+                [typeof(LevelStartState)] = levelStartSateFactory.CreateState(this),
+                [typeof(LevelEndState)] = levelEndStateFactory.CreateState(),
             };
         }
 
 
         void IStartable.Start()
-            => SwitchToState<LevelStart>();
-
-        void ITickable.Tick()
-            => _currentState?.Tick();
+            => SwitchToState<LevelStartState>();
 
         public void SwitchToState<TState>() where TState : IState
         {

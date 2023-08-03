@@ -1,12 +1,12 @@
-﻿using Game.Level.Common.Lifecycle;
-using Game.Level.Common.Triggers;
-using Game.Level.Common;
+﻿using System;
 using Game.Extensions;
+using Game.Level.Common.Damage;
+using Game.Level.Common.Lifecycle;
+using Game.Level.Common.Triggers;
 using UnityEngine;
-using System;
 
 
-namespace Game.Level.Castle
+namespace Game.Level.Castles
 {
     public class CastleModel : ICastle, IEnableable
     {

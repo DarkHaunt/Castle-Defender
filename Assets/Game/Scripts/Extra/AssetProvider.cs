@@ -3,7 +3,7 @@ using System.Linq;
 using UnityEngine;
 
 
-namespace Game.Extensions
+namespace Game.Extra
 {
     public class AssetProvider
     {  

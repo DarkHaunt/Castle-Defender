@@ -1,8 +1,8 @@
-﻿using Game.Extensions;
+﻿using Game.Extra;
 using UnityEngine;
 
 
-namespace Game.Level.Weapon
+namespace Game.Level.Weapons
 {
     public class WeaponPlacePoint : MonoBehaviour
     {

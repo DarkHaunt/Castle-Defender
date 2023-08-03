@@ -1,14 +1,17 @@
-using VContainer.Unity;
 using UnityEngine;
 using VContainer;
+using VContainer.Unity;
 
 
-public class InitBootstrapper : LifetimeScope
+namespace Game.Init
 {
-    protected override void Configure(IContainerBuilder builder)
+    public class InitBootstrapper : LifetimeScope
     {
-        Debug.Log($"<color=white>Project context</color>");
+        protected override void Configure(IContainerBuilder builder)
+        {
+            Debug.Log($"<color=white>Project context</color>");
         
-        base.Configure(builder);
+            base.Configure(builder);
+        }
     }
 }
