@@ -1,7 +1,11 @@
-﻿using Game.Level.StateMachine.States;
+﻿using Game.Level.StateMachine.States.Factories;
+using Game.Level.StateMachine.States;
+using System.Collections.Generic;
+using Game.Level.Weapons.Create;
 using Game.Level.StateMachine;
-using Game.Level.StateMachine.States.Factories;
+using Game.Level.Weapons;
 using VContainer.Unity;
+using UnityEngine;
 using VContainer;
 
 
@@ -9,16 +13,34 @@ namespace Game.Level.Core
 {
     public class LevelBootstrapper : LifetimeScope
     {
+        [Header("--- Weapon Views ---")]
+        [SerializeField] private WeaponCreationView _weaponCreationView;
+        [SerializeField] private List<WeaponPlacePoint> _weaponPlacePoints;
+        
+        
         protected override void Configure(IContainerBuilder builder)
         {
             RegisterStates(builder);
             RegisterStateMachine(builder);
             RegisterStateFactories(builder);
+
+            RegisterWeaponCreationSystem(builder);
         }
 
         private void RegisterStateMachine(IContainerBuilder builder)
         {
             builder.RegisterEntryPoint<LevelStateMachine>();
+        }
+
+        private void RegisterWeaponCreationSystem(IContainerBuilder builder)
+        {
+            builder
+                .Register<WeaponCreationService>(Lifetime.Singleton)
+                .WithParameter<IEnumerable<WeaponPlacePoint>>(_weaponPlacePoints);
+            
+            builder.Register<WeaponCreationBinder>(Lifetime.Singleton);
+            
+            builder.RegisterComponent(_weaponCreationView);
         }
         
         private void RegisterStates(IContainerBuilder builder)

@@ -1,4 +1,3 @@
-using UnityEngine;
 using VContainer;
 using VContainer.Unity;
 
@@ -9,8 +8,6 @@ namespace Game.Init
     {
         protected override void Configure(IContainerBuilder builder)
         {
-            Debug.Log($"<color=white>Project context</color>");
-        
             base.Configure(builder);
         }
     }

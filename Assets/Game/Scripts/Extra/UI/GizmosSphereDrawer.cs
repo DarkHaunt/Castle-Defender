@@ -1,7 +1,7 @@
 ﻿using UnityEngine;
 
 
-namespace Game.Extra
+namespace Game.Extra.UI
 {
     [DisallowMultipleComponent]
     public sealed class GizmosSphereDrawer : MonoBehaviour
