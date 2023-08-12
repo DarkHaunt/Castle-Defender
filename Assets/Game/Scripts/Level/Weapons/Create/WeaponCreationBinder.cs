@@ -1,6 +1,4 @@
-﻿using System;
-using Game.Extra;
-using UnityEngine;
+﻿using Game.Extra;
 
 
 namespace Game.Level.Weapons.Create
@@ -18,25 +16,15 @@ namespace Game.Level.Weapons.Create
         }
 
 
-        public void Enable() {}
-        // => _weaponCreationService.OnWeaponCreated += HandleWeaponCreation;
-
-        public void Disable() {}
-        //=> _weaponCreationService.OnWeaponCreated -= HandleWeaponCreation;
-
-        public void EnableCreation()
+        public void EnableCreation(Weapon weaponPrefab)
         {
-            Debug.Log($"<color=white>EnableCreation</color>");
-            
-            _weaponCreationService.Enable();
+            _weaponCreationService.Enable(weaponPrefab);
 
             CreationEnabled.Value = true;
         }
 
         public void DisableCreation()
         {
-            Debug.Log($"<color=white>DisableCreation</color>");
-            
             _weaponCreationService.Disable();
             
             CreationEnabled.Value = false;

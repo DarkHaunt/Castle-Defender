@@ -17,7 +17,6 @@ namespace Game.Level.Weapons.Create
         
         private void OnEnable()
         {
-            _weaponCreationBinder.Enable();
             _weaponCreationBinder.CreationEnabled.OnChanged += OnCreationEnabled;
 
             Enable();
@@ -25,7 +24,6 @@ namespace Game.Level.Weapons.Create
         
         private void OnDisable()
         {
-            _weaponCreationBinder.Disable();
             _weaponCreationBinder.CreationEnabled.OnChanged -= OnCreationEnabled;
             
             Disable();

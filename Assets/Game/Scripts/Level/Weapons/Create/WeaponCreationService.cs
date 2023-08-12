@@ -7,16 +7,23 @@ namespace Game.Level.Weapons.Create
     public class WeaponCreationService
     {
         private readonly ISet<WeaponPlacePoint> _weaponPlacePoints;
+        private readonly WeaponFactory _weaponFactory;
 
+        private Weapon _targetPrefab;
 
-        public WeaponCreationService(IEnumerable<WeaponPlacePoint> placePoints)
+        
+        public WeaponCreationService(WeaponFactory weaponFactory, IEnumerable<WeaponPlacePoint> placePoints)
         {
             _weaponPlacePoints = new HashSet<WeaponPlacePoint>(placePoints);
+            
+            _weaponFactory = weaponFactory;
         }
         
         
-        public void Enable() 
+        public void Enable(Weapon weaponPrefab)
         {
+            _targetPrefab = weaponPrefab;
+            
             foreach (var weaponPlacePoint in _weaponPlacePoints)
             {
                 weaponPlacePoint.RegisterCreateButtonClick(CreateWeapon);
@@ -26,8 +33,10 @@ namespace Game.Level.Weapons.Create
             }
         }
 				
-        public void Disable() 
+        public void Disable()
         {
+            _targetPrefab = null;
+            
             foreach (var weaponPlacePoint in _weaponPlacePoints)
             {
                 weaponPlacePoint.UnregisterCreateButtonClick(CreateWeapon);
@@ -38,6 +47,8 @@ namespace Game.Level.Weapons.Create
         private void CreateWeapon()
         {
             Debug.Log($"<color=red>Weapon Created</color>");
+
+            _weaponFactory.CreateWeapon(_targetPrefab, );
         }
     }
 }
