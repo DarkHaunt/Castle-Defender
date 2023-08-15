@@ -1,8 +1,8 @@
 ﻿namespace Game.Level.StateMachine.States.Factories
 {
-    public class LevelEndStateFactory
+    public class EndLevelStateFactory
     {
-        public LevelEndState CreateState()
+        public EndLevelState CreateState()
             => new ();
     }
 }

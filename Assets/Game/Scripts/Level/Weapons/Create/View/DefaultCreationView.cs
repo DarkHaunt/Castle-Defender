@@ -1,16 +1,15 @@
 ﻿using Game.Extra.UI;
 using UnityEngine;
-using UnityEngine.Serialization;
 
 
-namespace Game.Level.Weapons.Create
+namespace Game.Level.Weapons.Create.View
 {
     public class DefaultCreationView : WeaponCreationView
     {
-        [FormerlySerializedAs("_prefab")]
         [Header("--- TEST ---")]
         [SerializeField] private Weapon _weaponPrefab;
         
+        [Space(10f)]
         [SerializeField] private PressHandlingButton _createButton;
         [SerializeField] private PressHandlingButton _updateButton;
         [SerializeField] private PressHandlingButton _deleteButton;

@@ -1,8 +1,8 @@
-﻿using Game.Level.StateMachine.States;
+﻿using Game.Level.StateMachine.States.Factories;
+using Game.Level.StateMachine.States;
 using System.Collections.Generic;
 using VContainer.Unity;
 using System;
-using Game.Level.StateMachine.States.Factories;
 
 
 namespace Game.Level.StateMachine
@@ -13,18 +13,18 @@ namespace Game.Level.StateMachine
         private IState _currentState;
 
 
-        public LevelStateMachine(LevelStartStateFactory levelStartSateFactory, LevelEndStateFactory levelEndStateFactory)
+        public LevelStateMachine(StartLevelStateFactory startLevelSateFactory, EndLevelStateFactory endLevelStateFactory)
         {
             _states = new Dictionary<Type, IState>
             {
-                [typeof(LevelStartState)] = levelStartSateFactory.CreateState(this),
-                [typeof(LevelEndState)] = levelEndStateFactory.CreateState(),
+                [typeof(StartLevelState)] = startLevelSateFactory.CreateState(this),
+                [typeof(EndLevelState)] = endLevelStateFactory.CreateState(),
             };
         }
 
 
         void IStartable.Start()
-            => SwitchToState<LevelStartState>();
+            => SwitchToState<StartLevelState>();
 
         public void SwitchToState<TState>() where TState : IState
         {

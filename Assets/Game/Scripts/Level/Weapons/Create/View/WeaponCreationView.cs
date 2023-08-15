@@ -1,8 +1,9 @@
-﻿using UnityEngine;
+﻿using Game.Level.Weapons.Create.Binder;
+using UnityEngine;
 using VContainer;
 
 
-namespace Game.Level.Weapons.Create
+namespace Game.Level.Weapons.Create.View
 {
     public abstract class WeaponCreationView : MonoBehaviour
     {

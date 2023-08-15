@@ -1,9 +1,9 @@
 ﻿using UnityEngine;
 
 
-namespace Game.Level.Weapons.Create
+namespace Game.Level.Weapons.Create.Factory
 {
-    public class WeaponFactory
+    public class WeaponFactory : IWeaponFactory
     {
         private readonly Transform _createdWeaponsParentObject;
 

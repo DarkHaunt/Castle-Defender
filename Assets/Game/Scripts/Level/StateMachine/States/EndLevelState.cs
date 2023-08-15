@@ -3,7 +3,7 @@
 
 namespace Game.Level.StateMachine.States
 {
-    public class LevelEndState : IState
+    public class EndLevelState : IState
     {
         public void Enter()
         {

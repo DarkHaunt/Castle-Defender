@@ -676,7 +676,7 @@ Transform:
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 1976436645}
-  m_RootOrder: 1
+  m_RootOrder: 2
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!114 &813292959
 MonoBehaviour:
@@ -789,13 +789,6 @@ MonoBehaviour:
     TypeName: 
   autoRun: 1
   autoInjectGameObjects: []
-  _weaponParent: {fileID: 1591088724}
-  _weaponCreationView: {fileID: 813292959}
-  _weaponPlacePoints:
-  - {fileID: 1572084519}
-  - {fileID: 1438961192}
-  - {fileID: 1210976710}
-  - {fileID: 1890308542}
 --- !u!4 &878016073
 Transform:
   m_ObjectHideFlags: 0
@@ -2112,6 +2105,7 @@ Transform:
   m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 878016073}
+  - {fileID: 1982509363}
   - {fileID: 813292958}
   m_Father: {fileID: 0}
   m_RootOrder: 0
@@ -2131,6 +2125,61 @@ MonoBehaviour:
   Text_Color: {r: 1, g: 0.91838396, b: 0, a: 1}
   TextStyle: 1
   Background_Color: {r: 0.2196079, g: 0.2196079, b: 0.2196079, a: 1}
+--- !u!1 &1982509362
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1982509363}
+  - component: {fileID: 1982509364}
+  m_Layer: 0
+  m_Name: WeaponSystemBootstrapper
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &1982509363
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1982509362}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 1976436645}
+  m_RootOrder: 1
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &1982509364
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1982509362}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 432270978a324222ba8f964eb197bea8, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  parentReference:
+    TypeName: 
+  autoRun: 1
+  autoInjectGameObjects: []
+  _weaponParent: {fileID: 992785463}
+  _weaponCreationView: {fileID: 813292959}
+  _weaponPlacePoints:
+  - {fileID: 1572084519}
+  - {fileID: 1438961192}
+  - {fileID: 1210976710}
+  - {fileID: 1890308542}
 --- !u!1 &2078774445
 GameObject:
   m_ObjectHideFlags: 0

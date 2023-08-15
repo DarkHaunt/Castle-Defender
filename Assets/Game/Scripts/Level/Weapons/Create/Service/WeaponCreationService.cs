@@ -1,26 +1,30 @@
 ﻿using System.Collections.Generic;
+using Game.Level.Weapons.Create.Factory;
+using Game.Level.Weapons.Maintain;
 using UnityEngine;
 
 
-namespace Game.Level.Weapons.Create
+namespace Game.Level.Weapons.Create.Service
 {
     public class WeaponCreationService
     {
         private readonly ISet<WeaponCreatePoint> _weaponPlacePoints;
-        private readonly WeaponFactory _weaponFactory;
+        private readonly IWeaponsContainer _weaponsContainer;
+        private readonly IWeaponFactory _weaponFactory;
 
         private Weapon _targetPrefab;
 
         
-        public WeaponCreationService(WeaponFactory weaponFactory, IEnumerable<WeaponCreatePoint> placePoints)
+        public WeaponCreationService(IWeaponFactory weaponFactory, IWeaponsContainer weaponsContainer,
+            IEnumerable<WeaponCreatePoint> placePoints)
         {
             _weaponPlacePoints = new HashSet<WeaponCreatePoint>(placePoints);
-            
+            _weaponsContainer = weaponsContainer;
             _weaponFactory = weaponFactory;
         }
         
         
-        public void Enable(Weapon weaponPrefab)
+        public void StartHandleCreationOf(Weapon weaponPrefab)
         {
             _targetPrefab = weaponPrefab;
             
@@ -28,12 +32,10 @@ namespace Game.Level.Weapons.Create
             {
                 weaponPlacePoint.OnCreateButtonPressed += CreateWeapon;
                 weaponPlacePoint.EnableCreateUI();
-
-                Debug.Log($"<color=white>Enable Creation</color>");
             }
         }
 				
-        public void Disable()
+        public void EndHandleCurrentCreation()
         {
             _targetPrefab = null;
             
@@ -46,9 +48,9 @@ namespace Game.Level.Weapons.Create
 
         private void CreateWeapon(Vector3 position)
         {
-            Debug.Log($"<color=red>Weapon Created</color>");
-
-            _weaponFactory.CreateWeapon(_targetPrefab, position);
+            var newWeapon = _weaponFactory.CreateWeapon(_targetPrefab, position);
+            
+            _weaponsContainer.RegisterWeapon(newWeapon);
         }
     }
 }

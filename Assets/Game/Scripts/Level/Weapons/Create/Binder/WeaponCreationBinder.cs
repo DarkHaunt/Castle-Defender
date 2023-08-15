@@ -1,7 +1,8 @@
 ﻿using Game.Extra;
+using Game.Level.Weapons.Create.Service;
 
 
-namespace Game.Level.Weapons.Create
+namespace Game.Level.Weapons.Create.Binder
 {
     public class WeaponCreationBinder
     {
@@ -18,14 +19,14 @@ namespace Game.Level.Weapons.Create
 
         public void EnableCreation(Weapon weaponPrefab)
         {
-            _weaponCreationService.Enable(weaponPrefab);
+            _weaponCreationService.StartHandleCreationOf(weaponPrefab);
 
             CreationEnabled.Value = true;
         }
 
         public void DisableCreation()
         {
-            _weaponCreationService.Disable();
+            _weaponCreationService.EndHandleCurrentCreation();
             
             CreationEnabled.Value = false;
         }
