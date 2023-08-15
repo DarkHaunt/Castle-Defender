@@ -6,15 +6,15 @@ namespace Game.Level.Weapons.Create
 {
     public class WeaponCreationService
     {
-        private readonly ISet<WeaponPlacePoint> _weaponPlacePoints;
+        private readonly ISet<WeaponCreatePoint> _weaponPlacePoints;
         private readonly WeaponFactory _weaponFactory;
 
         private Weapon _targetPrefab;
 
         
-        public WeaponCreationService(WeaponFactory weaponFactory, IEnumerable<WeaponPlacePoint> placePoints)
+        public WeaponCreationService(WeaponFactory weaponFactory, IEnumerable<WeaponCreatePoint> placePoints)
         {
-            _weaponPlacePoints = new HashSet<WeaponPlacePoint>(placePoints);
+            _weaponPlacePoints = new HashSet<WeaponCreatePoint>(placePoints);
             
             _weaponFactory = weaponFactory;
         }
@@ -26,7 +26,7 @@ namespace Game.Level.Weapons.Create
             
             foreach (var weaponPlacePoint in _weaponPlacePoints)
             {
-                weaponPlacePoint.RegisterCreateButtonClick(CreateWeapon);
+                weaponPlacePoint.OnCreateButtonPressed += CreateWeapon;
                 weaponPlacePoint.EnableCreateUI();
 
                 Debug.Log($"<color=white>Enable Creation</color>");
@@ -39,16 +39,16 @@ namespace Game.Level.Weapons.Create
             
             foreach (var weaponPlacePoint in _weaponPlacePoints)
             {
-                weaponPlacePoint.UnregisterCreateButtonClick(CreateWeapon);
+                weaponPlacePoint.OnCreateButtonPressed -= CreateWeapon;
                 weaponPlacePoint.DisableCreateUI();
             }
         }
 
-        private void CreateWeapon()
+        private void CreateWeapon(Vector3 position)
         {
             Debug.Log($"<color=red>Weapon Created</color>");
 
-            _weaponFactory.CreateWeapon(_targetPrefab, );
+            _weaponFactory.CreateWeapon(_targetPrefab, position);
         }
     }
 }

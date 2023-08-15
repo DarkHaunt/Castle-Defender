@@ -690,6 +690,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 48a1d3e5e39541b9848935a73e9c6936, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  _weaponPrefab: {fileID: 1548469810435682046, guid: 38d8f8588170e344f8dd26420c53c93c, type: 3}
   _createButton: {fileID: 1360543265}
   _updateButton: {fileID: 1512459384}
   _deleteButton: {fileID: 537133890}
@@ -788,6 +789,7 @@ MonoBehaviour:
     TypeName: 
   autoRun: 1
   autoInjectGameObjects: []
+  _weaponParent: {fileID: 1591088724}
   _weaponCreationView: {fileID: 813292959}
   _weaponPlacePoints:
   - {fileID: 1572084519}

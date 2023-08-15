@@ -46,8 +46,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 91a39f75c180413f879018e5639b87df, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  WeaponPoint:
-    _point: {fileID: 8757304724318120408}
   _createWeaponButton: {fileID: 3100175357273436999}
   _createWeaponView: {fileID: 4337393833416541583}
 --- !u!114 &8640820365715956059
@@ -62,7 +60,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 4b1c59a25b614bdd9a0c10f6449db49e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _radius: 0.3
+  _radius: 0.2
   _color: {r: 0.35842705, g: 1, b: 0, a: 1}
 --- !u!1 &642186120273111988
 GameObject:

@@ -14,8 +14,9 @@ namespace Game.Level.Core
     public class LevelBootstrapper : LifetimeScope
     {
         [Header("--- Weapon Views ---")]
+        [SerializeField] private Transform _weaponParent;
         [SerializeField] private WeaponCreationView _weaponCreationView;
-        [SerializeField] private List<WeaponPlacePoint> _weaponPlacePoints;
+        [SerializeField] private List<WeaponCreatePoint> _weaponPlacePoints;
         
         
         protected override void Configure(IContainerBuilder builder)
@@ -36,10 +37,13 @@ namespace Game.Level.Core
         {
             builder
                 .Register<WeaponCreationService>(Lifetime.Singleton)
-                .WithParameter<IEnumerable<WeaponPlacePoint>>(_weaponPlacePoints);
+                .WithParameter<IEnumerable<WeaponCreatePoint>>(_weaponPlacePoints);
+            
+            builder
+                .Register<WeaponFactory>(Lifetime.Singleton)
+                .WithParameter(_weaponParent);
             
             builder.Register<WeaponCreationBinder>(Lifetime.Singleton);
-            
             builder.RegisterComponent(_weaponCreationView);
         }
         
