@@ -1,7 +1,7 @@
-﻿using System;
-using System.Collections.Generic;
+﻿using Game.Level.Weapons.StateMachine.States;
 using Game.Level.StateMachine.States;
-using Game.Level.Weapons.StateMachine.States;
+using System.Collections.Generic;
+using System;
 
 
 namespace Game.Level.Weapons.StateMachine

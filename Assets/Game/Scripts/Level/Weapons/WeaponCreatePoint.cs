@@ -7,7 +7,7 @@ namespace Game.Level.Weapons
 {
     public class WeaponCreatePoint : MonoBehaviour
     {
-        public event Action<Vector3> OnCreateButtonPressed;
+        public event Action<WeaponCreatePoint> OnCreateButtonPressed;
         
         [Header("--- Create View ---")]
         [SerializeField] private Button _createWeaponButton;
@@ -27,6 +27,6 @@ namespace Game.Level.Weapons
         }
 
         private void OnCreateButtonClick()
-            => OnCreateButtonPressed?.Invoke(transform.position);
+            => OnCreateButtonPressed?.Invoke(this);
     }
 }

@@ -6,36 +6,45 @@ namespace Game.Level.Weapons.Create.View
 {
     public class DefaultCreationView : WeaponCreationView
     {
-        [Header("--- TEST ---")]
-        [SerializeField] private Weapon _weaponPrefab;
-        
-        [Space(10f)]
+        [Header("--- Buttons ---")]
         [SerializeField] private PressHandlingButton _createButton;
         [SerializeField] private PressHandlingButton _updateButton;
         [SerializeField] private PressHandlingButton _deleteButton;
 
 
-        protected override void OnCreationEnabled(bool isEnabled)
+        protected override void OnCreateEnabled(bool isEnabled)
         {
             _updateButton.gameObject.SetActive(!isEnabled);
             _deleteButton.gameObject.SetActive(!isEnabled);
         }
 
+        protected override void OnDeleteEnabled(bool isEnabled)
+        {
+            _createButton.gameObject.SetActive(!isEnabled);
+            _updateButton.gameObject.SetActive(!isEnabled);
+        }
+
+        protected override void OnUpdateEnabled(bool isEnabled)
+        {
+            _createButton.gameObject.SetActive(!isEnabled);
+            _deleteButton.gameObject.SetActive(!isEnabled);
+        }
+
         protected override void Enable()
         {
-            _createButton.OnBeenPressed += EnableCreation;
-            _createButton.OnBeenUnpressed += _weaponCreationBinder.DisableCreation;
+            _createButton.OnBeenPressed +=  WeaponCreateBinder.EnableCreation;
+            _createButton.OnBeenUnpressed += WeaponCreateBinder.DisableCreation;
+            
+            _deleteButton.OnBeenPressed += WeaponCreateBinder.EnableDeletion;
+            _deleteButton.OnBeenUnpressed += WeaponCreateBinder.DisableDeletion;
         }
 
         protected override void Disable()
         {
-            _createButton.OnBeenPressed -= EnableCreation;
-            _createButton.OnBeenUnpressed -= _weaponCreationBinder.DisableCreation;
-        }
-
-        private void EnableCreation()
-        {
-            _weaponCreationBinder.EnableCreation(_weaponPrefab);
+            _createButton.OnBeenPressed -= WeaponCreateBinder.EnableCreation;
+            _deleteButton.OnBeenPressed -= WeaponCreateBinder.EnableDeletion;
+            
+            _createButton.OnBeenUnpressed -= WeaponCreateBinder.DisableCreation;
         }
     }
 }
