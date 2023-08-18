@@ -1,12 +1,9 @@
-﻿using Game.Level.Weapons.Create.Service; 
-using Game.Extra;
+﻿using Game.Extra;
+using Game.Level.Weapons.Maintain.Services;
 
 
-namespace Game.Level.Weapons.Create.Binder
+namespace Game.Level.Weapons.Maintain.Binders
 {
-    using Delete;
-
-
     public class WeaponCreateBinder
     {
         public readonly ReactiveProperty<bool> CreateEnabled = new();

@@ -1,10 +1,9 @@
-﻿using Game.Level.Weapons.Create.Factory;
-using Game.Level.Weapons.Create.Service;
-using Game.Level.Weapons.Create.Binder;
-using Game.Level.Weapons.Create.View;
+﻿using Game.Level.Weapons.Maintain.Services;
+using Game.Level.Weapons.Maintain.Binders;
+using Game.Level.Weapons.Maintain.Factory;
+using Game.Level.Weapons.Maintain.Views;
 using Game.Level.Weapons.Maintain;
 using System.Collections.Generic;
-using Game.Level.Weapons.Delete;
 using VContainer.Unity;
 using UnityEngine;
 using VContainer;
@@ -18,7 +17,7 @@ namespace Game.Level.Weapons.Core
         [SerializeField] private Weapon _creationPrefab;
         [SerializeField] private Transform _weaponParent;
         [SerializeField] private WeaponCreationView _weaponCreationView;
-        [SerializeField] private List<WeaponCreatePoint> _weaponPlacePoints;
+        [SerializeField] private List<WeaponHandlePoint> _weaponPlacePoints;
         
         
         protected override void Configure(IContainerBuilder builder)
@@ -40,15 +39,15 @@ namespace Game.Level.Weapons.Core
         private void RegisterWeaponsContainer(IContainerBuilder builder)
         {
             builder
-                .Register<WeaponsContainer>(Lifetime.Singleton)
-                .As<IWeaponsContainer>();
+                .Register<WeaponPointsContainer>(Lifetime.Singleton)
+                .WithParameter(_weaponPlacePoints)
+                .As<IWeaponPointsContainer>();
         }
         
         private void RegisterWeaponCreationService(IContainerBuilder builder)
         {
             builder
                 .Register<WeaponCreateService>(Lifetime.Singleton)
-                .WithParameter<IEnumerable<WeaponCreatePoint>>(_weaponPlacePoints)
                 .WithParameter(_creationPrefab);
 
             builder

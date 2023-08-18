@@ -2,7 +2,7 @@
 using UnityEngine;
 
 
-namespace Game.Level.Weapons.Create.View
+namespace Game.Level.Weapons.Maintain.Views
 {
     public class DefaultCreationView : WeaponCreationView
     {

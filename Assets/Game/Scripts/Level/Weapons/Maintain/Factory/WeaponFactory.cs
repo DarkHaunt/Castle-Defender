@@ -1,7 +1,7 @@
 ﻿using UnityEngine;
 
 
-namespace Game.Level.Weapons.Create.Factory
+namespace Game.Level.Weapons.Maintain.Factory
 {
     public class WeaponFactory : IWeaponFactory
     {
