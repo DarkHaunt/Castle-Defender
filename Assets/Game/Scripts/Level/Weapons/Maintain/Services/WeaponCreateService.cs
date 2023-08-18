@@ -18,13 +18,13 @@ namespace Game.Level.Weapons.Maintain.Services
         }
         
         
-        public void StartHandleCreationOf()
+        public void StartHandleCreate()
         {
             foreach (var weaponPlacePoint in _weaponPointsContainer.EmptyPoints)
                 EnableCreationFor(weaponPlacePoint);
         }
 
-        public void EndHandleCurrentCreation()
+        public void EndHandleCreate()
         {
             foreach (var weaponPlacePoint in _weaponPointsContainer.EmptyPoints)
                 DisableCreationFor(weaponPlacePoint);

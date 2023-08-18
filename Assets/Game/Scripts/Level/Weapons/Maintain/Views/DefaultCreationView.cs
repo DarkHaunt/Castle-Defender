@@ -32,19 +32,26 @@ namespace Game.Level.Weapons.Maintain.Views
 
         protected override void Enable()
         {
-            _createButton.OnBeenPressed +=  WeaponCreateBinder.EnableCreation;
-            _createButton.OnBeenUnpressed += WeaponCreateBinder.DisableCreation;
+            _createButton.OnBeenPressed +=  WeaponCreateBinder.CreateEnable;
+            _createButton.OnBeenUnpressed += WeaponCreateBinder.CreateDisable;
             
-            _deleteButton.OnBeenPressed += WeaponCreateBinder.EnableDeletion;
-            _deleteButton.OnBeenUnpressed += WeaponCreateBinder.DisableDeletion;
+            _deleteButton.OnBeenPressed += WeaponCreateBinder.DeleteEnable;
+            _deleteButton.OnBeenUnpressed += WeaponCreateBinder.DeleteDisable;            
+            
+            _updateButton.OnBeenPressed += WeaponCreateBinder.UpdateEnable;
+            _updateButton.OnBeenUnpressed += WeaponCreateBinder.UpdateDisable;
         }
 
         protected override void Disable()
         {
-            _createButton.OnBeenPressed -= WeaponCreateBinder.EnableCreation;
-            _deleteButton.OnBeenPressed -= WeaponCreateBinder.EnableDeletion;
+            _createButton.OnBeenPressed -= WeaponCreateBinder.CreateEnable;
+            _createButton.OnBeenUnpressed -= WeaponCreateBinder.CreateDisable;
             
-            _createButton.OnBeenUnpressed -= WeaponCreateBinder.DisableCreation;
+            _deleteButton.OnBeenPressed -= WeaponCreateBinder.DeleteEnable;
+            _deleteButton.OnBeenUnpressed -= WeaponCreateBinder.DeleteDisable;            
+            
+            _updateButton.OnBeenPressed += WeaponCreateBinder.UpdateEnable;
+            _updateButton.OnBeenUnpressed += WeaponCreateBinder.UpdateDisable;
         }
     }
 }

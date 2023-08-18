@@ -1,5 +1,5 @@
-﻿using Game.Extra;
-using Game.Level.Weapons.Maintain.Services;
+﻿using Game.Level.Weapons.Maintain.Services;
+using Game.Extra;
 
 
 namespace Game.Level.Weapons.Maintain.Binders
@@ -11,42 +11,59 @@ namespace Game.Level.Weapons.Maintain.Binders
         public readonly ReactiveProperty<bool> UpdateEnabled = new();
 
         private readonly WeaponDeletionService _weaponDeletionService;
+        private readonly WeaponUpdateService _weaponUpdateService;
         private readonly WeaponCreateService _weaponCreateService;
 
 
-        public WeaponCreateBinder(WeaponCreateService weaponCreateService, WeaponDeletionService weaponDeletionService)
+        public WeaponCreateBinder(WeaponCreateService weaponCreateService, WeaponDeletionService weaponDeletionService,
+            WeaponUpdateService weaponUpdateService)
         {
             _weaponDeletionService = weaponDeletionService;
             _weaponCreateService = weaponCreateService;
+            _weaponUpdateService = weaponUpdateService;
         }
 
 
-        public void EnableCreation()
+        public void CreateEnable()
         {
-            _weaponCreateService.StartHandleCreationOf();
+            _weaponCreateService.StartHandleCreate();
 
             CreateEnabled.Value = true;
         }
 
-        public void DisableCreation()
+        public void CreateDisable()
         {
-            _weaponCreateService.EndHandleCurrentCreation();
-            
+            _weaponCreateService.EndHandleCreate();
+
             CreateEnabled.Value = false;
         }
 
-        public void EnableDeletion()
+        public void DeleteEnable()
         {
-            _weaponDeletionService.StartHandleDeletion();
+            _weaponDeletionService.StartHandleDelete();
 
             DeleteEnabled.Value = true;
         }
 
-        public void DisableDeletion()
+        public void DeleteDisable()
         {
-            _weaponDeletionService.EndHandleDeletion();
-            
+            _weaponDeletionService.EndHandleDelete();
+
             DeleteEnabled.Value = false;
+        }
+
+        public void UpdateEnable()
+        {
+            _weaponUpdateService.StartHandleUpdate();
+
+            UpdateEnabled.Value = true;
+        }
+
+        public void UpdateDisable()
+        {
+            _weaponUpdateService.EndHandleUpdate();
+
+            UpdateEnabled.Value = false;
         }
     }
 }

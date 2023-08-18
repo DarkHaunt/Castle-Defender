@@ -25,15 +25,11 @@ namespace Game.Level.Weapons.Core
             RegisterWeaponsContainer(builder);
             
             RegisterWeaponDeleteService(builder);
+            RegisterWeaponUpdateService(builder);
             RegisterWeaponCreationService(builder);
             
             RegisterWeaponSystemView(builder);
             RegisterWeaponSystemBinder(builder);
-        }
-        
-        private static void RegisterWeaponDeleteService(IContainerBuilder builder)
-        {
-            builder.Register<WeaponDeletionService>(Lifetime.Singleton);
         }
 
         private void RegisterWeaponsContainer(IContainerBuilder builder)
@@ -43,7 +39,17 @@ namespace Game.Level.Weapons.Core
                 .WithParameter(_weaponPlacePoints)
                 .As<IWeaponPointsContainer>();
         }
-        
+
+        private static void RegisterWeaponDeleteService(IContainerBuilder builder)
+        {
+            builder.Register<WeaponDeletionService>(Lifetime.Singleton);
+        }
+
+        private static void RegisterWeaponUpdateService(IContainerBuilder builder)
+        {
+            builder.Register<WeaponUpdateService>(Lifetime.Singleton);
+        }
+
         private void RegisterWeaponCreationService(IContainerBuilder builder)
         {
             builder

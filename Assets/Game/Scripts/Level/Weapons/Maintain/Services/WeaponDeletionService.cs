@@ -13,13 +13,13 @@ namespace Game.Level.Weapons.Maintain.Services
         }
         
         
-        public void StartHandleDeletion()
+        public void StartHandleDelete()
         {
             foreach (var occupiedPoint in _weaponPointsContainer.OccupiedPoints)
                 EnableDeletionFor(occupiedPoint);
         }
 				
-        public void EndHandleDeletion() 
+        public void EndHandleDelete() 
         {
             foreach (var occupiedPoint in _weaponPointsContainer.OccupiedPoints)
                 DisableDeletionFor(occupiedPoint);
