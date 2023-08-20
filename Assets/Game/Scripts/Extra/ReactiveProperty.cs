@@ -18,5 +18,10 @@ namespace Game.Extra
                 OnChanged?.Invoke(_value);
             }
         }
+        
+        public static implicit operator T(ReactiveProperty<T> reactiveValue)
+        {
+            return reactiveValue._value;
+        }  
     }
 }
