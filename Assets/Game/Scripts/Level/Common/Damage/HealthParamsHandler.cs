@@ -1,10 +1,9 @@
-﻿using Game.Level.Common.Damage;
-using Game.Extensions;
-using UnityEngine;
+﻿using Game.Extensions;
 using System;
+using UnityEngine;
 
 
-namespace Game.Level.Castles
+namespace Game.Level.Common.Damage
 {
     public class HealthParamsHandler : IHealthParamsProvider
     {

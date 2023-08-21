@@ -1,5 +1,4 @@
-﻿using Game.Level.Castles;
-using System;
+﻿using System;
 
 
 namespace Game.Level.Common.Damage
