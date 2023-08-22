@@ -22,16 +22,30 @@ namespace Game.Level.Services.Castles
             _healthParamsHandler = new HealthParamsHandler(castleParams.Health);
         }
 
-        
+
+        public void Enable()
+        {
+            UpdateHealthInvoke();
+        }
+
+        public void Disable()
+        {
+        }
+
         public void GetDamage(float damage)
         {
             _healthParamsHandler.DecreaseHealthBy(damage);
-            
-            OnHealthUpdate?.Invoke(_healthParamsHandler);
             OnDamage?.Invoke(damage);
+            
+            UpdateHealthInvoke();
             
             if (_healthParamsHandler.IsCurrentHealthZero())
                 OnDeath?.Invoke();
+        }
+
+        private void UpdateHealthInvoke()
+        {
+            OnHealthUpdate?.Invoke(_healthParamsHandler);
         }
     }
 }

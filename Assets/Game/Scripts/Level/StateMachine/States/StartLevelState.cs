@@ -1,28 +1,43 @@
-﻿using UnityEngine;
+﻿using Game.Level.Services.Castles;
+using Game.Level.Services.Weapons;
 
 
 namespace Game.Level.StateMachine.States
 {
     public class StartLevelState : IState
     {
+        private readonly IWeaponHandleService _weaponHandleService;
         private readonly IStateSwitcher _stateSwitcher;
-        
+        private readonly ICastle _castle;
 
-        public StartLevelState(IStateSwitcher stateSwitcher)
+
+        public StartLevelState(IStateSwitcher stateSwitcher, ICastle castle, IWeaponHandleService weaponHandleService )
         {
+            _weaponHandleService = weaponHandleService;
             _stateSwitcher = stateSwitcher;
+            _castle = castle;
         }
+        
         
         public void Enter()
         {
-            Debug.Log($"<color=white>Start level</color>");
+            _castle.OnDeath += FinishLevel;
             
-            _stateSwitcher.SwitchToState<EndLevelState>();
+            _weaponHandleService.Enable();
+            _castle.Enable();
         }
 
         public void Exit()
         {
+            _castle.OnDeath -= FinishLevel;
             
+            _weaponHandleService.Disable();
+            _castle.Disable();
+        }
+
+        private void FinishLevel()
+        {
+            _stateSwitcher.SwitchToState<EndLevelState>();
         }
     }
 }

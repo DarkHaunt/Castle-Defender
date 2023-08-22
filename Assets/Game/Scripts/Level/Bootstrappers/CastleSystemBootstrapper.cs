@@ -22,6 +22,8 @@ namespace Game.Level.Bootstrappers
             RegisterCastleService(builder); 
 
             RegisterCastleParamsProvider(builder);
+
+            Debug.Log($"<color=white>Castle</color>");
         }
 
         private void RegisterCastleService(IContainerBuilder builder)
@@ -38,7 +40,7 @@ namespace Game.Level.Bootstrappers
 
         private void RegisterCastleBinder(IContainerBuilder builder)
         {
-            builder.Register<CastleBinder>(Lifetime.Transient);
+            builder.Register<CastleBinder>(Lifetime.Singleton);
         }
 
         private void RegisterCastleParamsProvider(IContainerBuilder builder)

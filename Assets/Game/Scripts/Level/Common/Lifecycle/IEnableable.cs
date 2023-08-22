@@ -1,6 +1,6 @@
 ﻿namespace Game.Level.Common.Lifecycle
 {
-    public interface IEnableable
+    public interface  IEnableable
     {
         void Enable();
 

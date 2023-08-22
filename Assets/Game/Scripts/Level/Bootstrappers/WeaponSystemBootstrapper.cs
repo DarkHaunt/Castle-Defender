@@ -17,7 +17,7 @@ namespace Game.Level.Bootstrappers
         [Header("--- Weapon Views ---")]
         [SerializeField] private Weapon _creationPrefab;
         [SerializeField] private Transform _weaponParent;
-        [SerializeField] private WeaponCreationView _weaponCreationView;
+        [SerializeField] private WeaponSystemView _weaponSystemView;
         [SerializeField] private List<WeaponHandlePoint> _weaponPlacePoints;
         
         
@@ -28,9 +28,10 @@ namespace Game.Level.Bootstrappers
             RegisterWeaponDeleteService(builder);
             RegisterWeaponUpdateService(builder);
             RegisterWeaponCreationService(builder);
-            
+
             RegisterWeaponSystemView(builder);
             RegisterWeaponSystemBinder(builder);
+            RegisterWeaponHandleService(builder);
         }
 
         private void RegisterWeaponsContainer(IContainerBuilder builder)
@@ -65,12 +66,19 @@ namespace Game.Level.Bootstrappers
 
         private void RegisterWeaponSystemView(IContainerBuilder builder)
         {
-            builder.RegisterComponent(_weaponCreationView);
+            builder.RegisterComponent(_weaponSystemView);
         }
 
         private void RegisterWeaponSystemBinder(IContainerBuilder builder)
         {
-            builder.Register<WeaponCreateBinder>(Lifetime.Singleton);
+            builder.Register<WeaponSystemBinder>(Lifetime.Singleton);
+        }
+
+        private void RegisterWeaponHandleService(IContainerBuilder builder)
+        {
+            builder
+                .Register<WeaponHandleService>(Lifetime.Singleton)
+                .As<IWeaponHandleService>();
         }
     }
 }

@@ -5,5 +5,7 @@ namespace Game.Level.Services.Castles
 {
     public interface ICastle : IDamageable
     {
+        void Enable(); 
+        void Disable();
     }
 }

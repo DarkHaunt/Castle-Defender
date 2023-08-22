@@ -1,8 +1,9 @@
-﻿using Game.Level.StateMachine;
+﻿using Game.Level.StateMachine.States.Factories;
 using Game.Level.StateMachine.States;
-using Game.Level.StateMachine.States.Factories;
-using VContainer;
+using Game.Level.StateMachine;
 using VContainer.Unity;
+using UnityEngine;
+using VContainer;
 
 
 namespace Game.Level.Bootstrappers
@@ -14,6 +15,8 @@ namespace Game.Level.Bootstrappers
             RegisterStates(builder);
             RegisterStateMachine(builder);
             RegisterStateFactories(builder);
+            
+            Debug.Log($"<color=white>Level</color>");
         }
 
         private void RegisterStateMachine(IContainerBuilder builder)

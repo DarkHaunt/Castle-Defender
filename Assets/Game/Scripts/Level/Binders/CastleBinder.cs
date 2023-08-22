@@ -1,6 +1,6 @@
-﻿using Game.Extra;
+﻿using Game.Level.Services.Castles;
 using Game.Level.Common.Damage;
-using Game.Level.Services.Castles;
+using Game.Extra;
 
 
 namespace Game.Level.Binders
