@@ -1,6 +1,9 @@
-﻿namespace Game.Level.Enemies
+﻿using Game.Level.Common.Damage;
+
+
+namespace Game.Level.Enemies
 {
-    public interface IEnemy
+    public interface IEnemy : IDamageable
     {
         
     }

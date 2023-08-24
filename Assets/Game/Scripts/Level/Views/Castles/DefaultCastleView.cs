@@ -15,12 +15,18 @@ namespace Game.Level.Views.Castles
 
         protected override void Enable()
         {
+            _healthBar.gameObject.SetActive(true);
+            _healthText.gameObject.SetActive(true);
+            
             _castleBinder.HealthView.OnChanged += UpdateHealthText;
             _castleBinder.HealthView.OnChanged += UpdateSlider;
         }
 
         protected override void Disable()
         {
+            _healthBar.gameObject.SetActive(false);
+            _healthText.gameObject.SetActive(false);
+            
             _castleBinder.HealthView.OnChanged -= UpdateHealthText;
             _castleBinder.HealthView.OnChanged -= UpdateSlider;
         }

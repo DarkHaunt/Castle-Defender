@@ -8,31 +8,31 @@ namespace Game.Level.StateMachine.States
     {
         private readonly IWeaponHandleService _weaponHandleService;
         private readonly IStateSwitcher _stateSwitcher;
-        private readonly ICastle _castle;
+        private readonly ICastleService _castleService;
 
 
-        public StartLevelState(IStateSwitcher stateSwitcher, ICastle castle, IWeaponHandleService weaponHandleService )
+        public StartLevelState(IStateSwitcher stateSwitcher, ICastleService castleService, IWeaponHandleService weaponHandleService )
         {
             _weaponHandleService = weaponHandleService;
             _stateSwitcher = stateSwitcher;
-            _castle = castle;
+            _castleService = castleService;
         }
         
         
         public void Enter()
         {
-            _castle.OnDeath += FinishLevel;
+            _castleService.OnCastleDestroyed += FinishLevel;
             
             _weaponHandleService.Enable();
-            _castle.Enable();
+            _castleService.Enable();
         }
 
         public void Exit()
         {
-            _castle.OnDeath -= FinishLevel;
+            _castleService.OnCastleDestroyed -= FinishLevel;
             
             _weaponHandleService.Disable();
-            _castle.Disable();
+            _castleService.Disable();
         }
 
         private void FinishLevel()
