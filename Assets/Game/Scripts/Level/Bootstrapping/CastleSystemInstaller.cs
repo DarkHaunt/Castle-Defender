@@ -18,7 +18,8 @@ namespace Game.Level.Installers
         {
             _castleParamsProvider = castleParamsProvider;
             _castleView = castleView;
-        } 
+        }
+        
 
         public void Install(IContainerBuilder builder)
         {

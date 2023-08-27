@@ -25,12 +25,22 @@ namespace Game.Level.Services.Castles
 
 
         public void Enable()
-            => _castlePhysicsBody.OnDeath += NotifyCastleDestroyed;
+        {
+            _castlePhysicsBody.OnDeath += NotifyCastleDestroyed;
+            _castlePhysicsBody.OnHealthUpdate += NotifyCastleHealthUpdated;
+        }
 
-        public void Disable() 
-            => _castlePhysicsBody.OnDeath -= NotifyCastleDestroyed;
+        public void Disable()
+        {
+            _castlePhysicsBody.OnDeath -= NotifyCastleDestroyed;
+            _castlePhysicsBody.OnHealthUpdate -= NotifyCastleHealthUpdated;
+        }
+        
         
         private void NotifyCastleDestroyed()
-            => OnCastleDestroyed?.Invoke(); 
+            => OnCastleDestroyed?.Invoke();      
+        
+        private void NotifyCastleHealthUpdated(HealthParamsHandler currentHealth)
+            => OnCastleHealthUpdated?.Invoke(currentHealth); 
     }
 }
