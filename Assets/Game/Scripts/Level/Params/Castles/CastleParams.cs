@@ -1,4 +1,4 @@
-﻿using Game.Level.Common.Triggers;
+﻿using Game.Level.Enemies;
 using System;
 
 
@@ -8,6 +8,6 @@ namespace Game.Level.Params.Castles
     public record CastleParams
     {
         public float Health;
-        public CollisionObserver CastleCollision;
+        public IAttackTarget PhysicBody;
     }
 }

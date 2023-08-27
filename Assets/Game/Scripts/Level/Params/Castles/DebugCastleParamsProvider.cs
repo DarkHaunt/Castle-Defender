@@ -1,4 +1,4 @@
-﻿using Game.Level.Common.Triggers;
+﻿using Game.Level.Common.Damage;
 using UnityEngine;
 
 
@@ -8,7 +8,7 @@ namespace Game.Level.Params.Castles
     {
         [Header("--- Debug Params ---")]
         [SerializeField] private float _health;
-        [SerializeField] private CollisionObserver _castleCollision;
+        [SerializeField] private CollideAttackTarget _castleCollision;
         
         
         public CastleParams GetCastleParams()
@@ -16,7 +16,7 @@ namespace Game.Level.Params.Castles
             var castleParams = new CastleParams
             {
                 Health = _health,
-                CastleCollision = _castleCollision,
+                PhysicBody = _castleCollision,
             };
 
             return castleParams;

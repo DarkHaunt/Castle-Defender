@@ -15,11 +15,11 @@ namespace Game.Level.Services.Castles
         private readonly IAttackTarget _castlePhysicsBody;
 
 
-        public CastleService(ICastleParamsProvider paramsProvider, IAttackTarget attackTarget)
+        public CastleService(ICastleParamsProvider paramsProvider)
         {
             var castleParams = paramsProvider.GetCastleParams();
 
-            _castlePhysicsBody = attackTarget;
+            _castlePhysicsBody = castleParams.PhysicBody;
             _castlePhysicsBody.Init(castleParams.Health);
         }
 
@@ -29,7 +29,6 @@ namespace Game.Level.Services.Castles
 
         public void Disable() 
             => _castlePhysicsBody.OnDeath -= NotifyCastleDestroyed;
-
         
         private void NotifyCastleDestroyed()
             => OnCastleDestroyed?.Invoke(); 

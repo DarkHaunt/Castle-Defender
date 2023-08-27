@@ -3,27 +3,30 @@ using Game.Level.Params.Castles;
 using Game.Level.Views.Castles;
 using Game.Level.Binders;
 using VContainer.Unity;
-using UnityEngine;
 using VContainer;
 
 
-namespace Game.Level.Bootstrappers
+namespace Game.Level.Installers
 {
-    public class CastleSystemBootstrapper : LifetimeScope
+    public class CastleSystemInstaller : IInstaller
     {
-        [SerializeField] private DebugCastleParamsProvider _castleParamsProvider;
-        [SerializeField] private CastleView _castleView;
-        
-        
-        protected override void Configure(IContainerBuilder builder)
+        private readonly DebugCastleParamsProvider _castleParamsProvider;
+        private readonly CastleView _castleView;
+
+
+        public CastleSystemInstaller(DebugCastleParamsProvider castleParamsProvider, CastleView castleView)
+        {
+            _castleParamsProvider = castleParamsProvider;
+            _castleView = castleView;
+        } 
+
+        public void Install(IContainerBuilder builder)
         {
             RegisterCastleView(builder);
             RegisterCastleBinder(builder);
             RegisterCastleService(builder); 
 
             RegisterCastleParamsProvider(builder);
-
-            Debug.Log($"<color=white>Castle</color>");
         }
 
         private void RegisterCastleService(IContainerBuilder builder)

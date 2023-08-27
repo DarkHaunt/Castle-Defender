@@ -3,25 +3,34 @@ using Game.Level.Factories.Weapons;
 using Game.Level.Services.Weapons;
 using System.Collections.Generic;
 using Game.Level.Views.Weapons;
-using Game.Level.Weapons;
 using Game.Level.Binders;
+using Game.Level.Weapons;
 using VContainer.Unity;
 using UnityEngine;
 using VContainer;
 
 
-namespace Game.Level.Bootstrappers
+namespace Game.Level.Installers
 {
-    public class WeaponSystemBootstrapper : LifetimeScope
+    public class WeaponSystemInstaller : IInstaller
     {
-        [Header("--- Weapon Views ---")]
-        [SerializeField] private Weapon _creationPrefab;
-        [SerializeField] private Transform _weaponParent;
-        [SerializeField] private WeaponSystemView _weaponSystemView;
-        [SerializeField] private List<WeaponHandlePoint> _weaponPlacePoints;
+        private readonly Weapon _creationPrefab;
+        private readonly Transform _weaponParent;
+        private readonly WeaponSystemView _weaponSystemView;
+        private readonly List<WeaponHandlePoint> _weaponPlacePoints;
+
+        
+        public WeaponSystemInstaller(Weapon prefab, Transform weaponParent, 
+            WeaponSystemView weaponSystemView, List<WeaponHandlePoint> weaponHandlePoints)
+        {
+            _creationPrefab = prefab;
+            _weaponParent = weaponParent;
+            _weaponSystemView = weaponSystemView;
+            _weaponPlacePoints = weaponHandlePoints;
+        }
         
         
-        protected override void Configure(IContainerBuilder builder)
+        public void Install(IContainerBuilder builder)
         {
             RegisterWeaponsContainer(builder);
             
