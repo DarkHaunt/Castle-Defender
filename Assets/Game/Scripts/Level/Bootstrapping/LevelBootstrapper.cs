@@ -5,6 +5,8 @@ using Game.Level.Bootstrapping;
 using Game.Level.Views.Castles;
 using Game.Level.Views.Weapons;
 using Game.Common.Interfaces;
+using Game.Common.Save;
+using Game.Level.Configs;
 using Game.Level.Installers;
 using Game.Level.Weapons;
 using VContainer.Unity;
@@ -16,6 +18,8 @@ namespace Game.Level.Bootstrappers
 {
     public class LevelBootstrapper : LifetimeScope, ICoroutineRunner
     {
+        private const string Path = "JSON_TEST_DELETE";
+        
         [Header("--- Weapon Params ---")]
         [SerializeField] private Weapon _creationPrefab;
         [SerializeField] private Transform _weaponParent;
@@ -38,7 +42,8 @@ namespace Game.Level.Bootstrappers
             new LevelSystemInstaller()
                 .Install(builder);
 
-            RegisterCoroutineRunner(builder);
+            // TODO: Breaks container
+            //RegisterCoroutineRunner(builder);
         }
 
         private void RegisterCoroutineRunner(IContainerBuilder builder)

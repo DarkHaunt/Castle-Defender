@@ -16,7 +16,7 @@ namespace Game.Level.Views.Castles
             _castleBinder = castleBinder;
         }
 
-        private void OnEnable()
+        /*private void OnEnable()
         {
             Enable();
             
@@ -28,7 +28,7 @@ namespace Game.Level.Views.Castles
             Disable();
             
             _castleBinder.Disable();
-        }
+        }*/
 
         protected abstract void Enable();
         protected abstract void Disable();
