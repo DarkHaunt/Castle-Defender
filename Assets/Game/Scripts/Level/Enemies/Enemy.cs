@@ -1,6 +1,6 @@
 ﻿using Game.Level.Common.Damage;
-using System;
 using UnityEngine;
+using System;
 
 
 namespace Game.Level.Enemies
@@ -12,16 +12,20 @@ namespace Game.Level.Enemies
         public event Action OnDeath;
 
         [SerializeField] private float _health;
+        [SerializeField] protected float _speed;
+        
 
         private HealthParamsHandler _healthParamsHandler;
 
 
-        public abstract void FollowTarget(IAttackTarget attackTarget);
+        public abstract void Move(IAttackTarget enemiesTarget);
         protected abstract void Attack(IAttackTarget attackTarget);
-        
-        
+
+
         public void Init()
-            => _healthParamsHandler = new HealthParamsHandler(_health);
+        {
+            _healthParamsHandler = new HealthParamsHandler(_health);
+        }
 
         public void GetDamage(float damage)
         {

@@ -7,6 +7,9 @@ namespace Game.Level.Configs
     public class LevelConfig : ScriptableObject
     {
         [field: SerializeField] public string LevelPrefab { get; private set; }
+        [field: SerializeField] public string[] EnemiesPrefabsPath { get; private set; }
+
+        [field: Header("--- TEST ---")]
         [field: SerializeField] public float CastleHealth { get; private set; }
     }
 }

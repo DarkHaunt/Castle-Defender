@@ -32,7 +32,7 @@ namespace Game.Level.Installers
         
         public void Install(IContainerBuilder builder)
         {
-            RegisterWeaponsContainer(builder);
+            RegisterWeaponPointsContainer(builder);
             
             RegisterWeaponDeleteService(builder);
             RegisterWeaponUpdateService(builder);
@@ -43,7 +43,7 @@ namespace Game.Level.Installers
             RegisterWeaponHandleService(builder);
         }
 
-        private void RegisterWeaponsContainer(IContainerBuilder builder)
+        private void RegisterWeaponPointsContainer(IContainerBuilder builder)
         {
             builder
                 .Register<WeaponPointsContainer>(Lifetime.Singleton)
