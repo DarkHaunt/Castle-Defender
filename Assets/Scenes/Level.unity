@@ -1047,6 +1047,7 @@ MonoBehaviour:
   autoRun: 1
   autoInjectGameObjects: []
   _bootstrapper: {fileID: 335707727}
+  _levelConfig: {fileID: 11400000, guid: a6e9b1b001456df488200fb6e02f77c8, type: 2}
   _creationPrefab: {fileID: 1548469810435682046, guid: 38d8f8588170e344f8dd26420c53c93c, type: 3}
   _weaponParent: {fileID: 992785463}
   _weaponSystemView: {fileID: 813292959}

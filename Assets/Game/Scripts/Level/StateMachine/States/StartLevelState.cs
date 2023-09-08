@@ -22,7 +22,7 @@ namespace Game.Level.StateMachine.States
         
         public void Enter()
         {
-            Debug.Log($"<color=white>Log</color>");
+            Debug.Log($"<color=yellow>Start level</color>");
             
             _castleService.OnCastleDestroyed += FinishLevel;
             

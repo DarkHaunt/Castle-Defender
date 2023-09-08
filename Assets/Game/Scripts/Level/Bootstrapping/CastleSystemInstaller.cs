@@ -1,12 +1,12 @@
-﻿using Game.Level.Services.Castles;
+﻿using Game.Level.Binders;
 using Game.Level.Params.Castles;
+using Game.Level.Services.Castles;
 using Game.Level.Views.Castles;
-using Game.Level.Binders;
-using VContainer.Unity;
 using VContainer;
+using VContainer.Unity;
 
 
-namespace Game.Level.Installers
+namespace Game.Level.Bootstrapping
 {
     public class CastleSystemInstaller : IInstaller
     {

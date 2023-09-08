@@ -20,10 +20,6 @@ namespace Game.Level.Bootstrapping
         }
         
         public void Initialize()
-        {
-            Debug.Log($"<color=white>Init</color>");
-            
-            _stateSwitcher.SwitchToState<StartLevelState>();
-        }
+            => _stateSwitcher.SwitchToState<DataLoadingState>();
     }
 }

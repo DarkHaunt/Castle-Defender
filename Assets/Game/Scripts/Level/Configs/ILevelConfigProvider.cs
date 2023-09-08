@@ -4,8 +4,12 @@ using System;
 
 namespace Game.Level.Configs
 {
-    public interface ILevelConfigProvider : IEnableable
+    public interface ILevelConfigProvider
     {
-        event Action<LevelConfig> OnLevelConfigsReady;
+        event Action OnLevelConfigsReady;
+
+
+        void RequestLevelConfig();
+        LevelConfig GetLevelConfig();
     }
 }

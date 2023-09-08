@@ -5,17 +5,21 @@ namespace Game.Level.Configs
 {
     public class LevelScriptableConfigProvider : ILevelConfigProvider
     {
-        public event Action<LevelConfig> OnLevelConfigsReady;
-        
+        private readonly LevelConfig _levelConfig;
 
-        public void Enable()
+        public event Action OnLevelConfigsReady;
+
+
+        public LevelScriptableConfigProvider(LevelConfig levelConfig)
         {
-            
+            _levelConfig = levelConfig;
         }
 
-        public void Disable()
-        {
-            
-        }
+
+        public void RequestLevelConfig()
+            => OnLevelConfigsReady?.Invoke();
+
+        public LevelConfig GetLevelConfig()
+            => _levelConfig;
     }
 }

@@ -7,11 +7,9 @@ namespace Game.Level.StateMachine.States
     {
         public void Enter()
         {
-            Debug.Log($"<color=white>End level</color>");
+            Debug.Log($"<color=yellow>End level</color>");
         }
 
-        public void Exit()
-        {
-        }
+        public void Exit() {}
     }
 }
