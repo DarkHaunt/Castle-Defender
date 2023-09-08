@@ -1,54 +1,29 @@
-﻿using Game.Level.Weapons.HandlePoints;
-using System.Collections.Generic;
-using Game.Level.Params.Castles;
-using Game.Level.Bootstrapping;
-using Game.Level.Views.Castles;
-using Game.Level.Views.Weapons;
+﻿using Game.Level.StateMachine.States;
+using Game.Level.StateMachine;
 using Game.Common.Interfaces;
-using Game.Common.Save;
-using Game.Level.Configs;
-using Game.Level.Installers;
-using Game.Level.Weapons;
 using VContainer.Unity;
 using UnityEngine;
 using VContainer;
 
 
-namespace Game.Level.Bootstrappers
+namespace Game.Level.Bootstrapping
 {
-    public class LevelBootstrapper : LifetimeScope, ICoroutineRunner
+    public class LevelBootstrapper : MonoBehaviour, ICoroutineRunner, IInitializable
     {
-        private const string Path = "JSON_TEST_DELETE";
-        
-        [Header("--- Weapon Params ---")]
-        [SerializeField] private Weapon _creationPrefab;
-        [SerializeField] private Transform _weaponParent;
-        [SerializeField] private WeaponSystemView _weaponSystemView;
-        [SerializeField] private List<WeaponHandlePoint> _weaponPlacePoints;
-
-        [Header("--- Castle Params ---")]
-        [SerializeField] private DebugCastleParamsProvider _castleParamsProvider;
-        [SerializeField] private CastleView _castleView;
+        private IStateSwitcher _stateSwitcher;
 
         
-        protected override void Configure(IContainerBuilder builder)
+        [Inject]
+        private void Construct(IStateSwitcher stateSwitcher)
         {
-            new WeaponSystemInstaller(_creationPrefab, _weaponParent, _weaponSystemView, _weaponPlacePoints)
-                .Install(builder);
-            
-            new CastleSystemInstaller(_castleParamsProvider, _castleView)
-                .Install(builder);
-            
-            new LevelSystemInstaller()
-                .Install(builder);
-
-            // TODO: Breaks container
-            //RegisterCoroutineRunner(builder);
+            _stateSwitcher = stateSwitcher;
         }
-
-        private void RegisterCoroutineRunner(IContainerBuilder builder)
+        
+        public void Initialize()
         {
-            builder.RegisterInstance<ICoroutineRunner>(this);
+            Debug.Log($"<color=white>Init</color>");
+            
+            _stateSwitcher.SwitchToState<StartLevelState>();
         }
     }
 }

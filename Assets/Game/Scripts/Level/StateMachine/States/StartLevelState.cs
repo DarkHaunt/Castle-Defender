@@ -1,5 +1,6 @@
 ﻿using Game.Level.Services.Castles;
 using Game.Level.Services.Weapons;
+using UnityEngine;
 
 
 namespace Game.Level.StateMachine.States
@@ -21,6 +22,8 @@ namespace Game.Level.StateMachine.States
         
         public void Enter()
         {
+            Debug.Log($"<color=white>Log</color>");
+            
             _castleService.OnCastleDestroyed += FinishLevel;
             
             _weaponHandleService.Enable();
