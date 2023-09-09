@@ -1,6 +1,6 @@
 ﻿using Game.Extensions;
-using System;
 using UnityEngine;
+using System;
 
 
 namespace Game.Level.Common.Damage

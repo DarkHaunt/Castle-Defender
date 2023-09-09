@@ -5,6 +5,7 @@ using System;
 
 namespace Game.Level.Common.Damage
 {
+    [DisallowMultipleComponent]
     [RequireComponent(typeof(Collider2D))]
     public class CollideAttackTarget : MonoBehaviour, IAttackTarget
     {

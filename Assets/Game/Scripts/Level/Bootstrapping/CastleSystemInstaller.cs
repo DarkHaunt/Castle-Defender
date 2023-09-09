@@ -1,22 +1,19 @@
-﻿using Game.Level.Binders;
-using Game.Level.Params.Castles;
-using Game.Level.Services.Castles;
+﻿using Game.Level.Services.Castles;
 using Game.Level.Views.Castles;
-using VContainer;
+using Game.Level.Binders;
 using VContainer.Unity;
+using VContainer;
 
 
 namespace Game.Level.Bootstrapping
 {
     public class CastleSystemInstaller : IInstaller
     {
-        private readonly DebugCastleParamsProvider _castleParamsProvider;
         private readonly CastleView _castleView;
 
 
-        public CastleSystemInstaller(DebugCastleParamsProvider castleParamsProvider, CastleView castleView)
+        public CastleSystemInstaller(CastleView castleView)
         {
-            _castleParamsProvider = castleParamsProvider;
             _castleView = castleView;
         }
         
@@ -26,8 +23,6 @@ namespace Game.Level.Bootstrapping
             RegisterCastleView(builder);
             RegisterCastleBinder(builder);
             RegisterCastleService(builder); 
-
-            RegisterCastleParamsProvider(builder);
         }
 
         private void RegisterCastleService(IContainerBuilder builder)
@@ -45,13 +40,6 @@ namespace Game.Level.Bootstrapping
         private void RegisterCastleBinder(IContainerBuilder builder)
         {
             builder.Register<CastleBinder>(Lifetime.Singleton);
-        }
-
-        private void RegisterCastleParamsProvider(IContainerBuilder builder)
-        {
-            builder
-                .RegisterComponent(_castleParamsProvider)
-                .As<ICastleParamsProvider>();
         }
     }
 }

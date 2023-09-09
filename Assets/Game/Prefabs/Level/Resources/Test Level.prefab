@@ -128,8 +128,9 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 6282379114582688333}
+  - component: {fileID: 5674849443195573343}
   m_Layer: 0
-  m_Name: Level
+  m_Name: Test Level
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -153,6 +154,19 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &5674849443195573343
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6282379114582688332}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f05d7b5640624ec28f5f14738e9349db, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  <Castle>k__BackingField: {fileID: 2974255935473950072}
 --- !u!1001 &4949132527660106291
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -214,21 +228,15 @@ PrefabInstance:
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: d3ea1a31e6295c4478a6d218d055ebfe, type: 3}
---- !u!1 &5996632176324180423 stripped
-GameObject:
-  m_CorrespondingSourceObject: {fileID: 1699696536834407412, guid: d3ea1a31e6295c4478a6d218d055ebfe, type: 3}
+--- !u!114 &2974255935473950072 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 7919711663467962187, guid: d3ea1a31e6295c4478a6d218d055ebfe, type: 3}
   m_PrefabInstance: {fileID: 4949132527660106291}
   m_PrefabAsset: {fileID: 0}
---- !u!114 &6282379114077267743
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 5996632176324180423}
+  m_GameObject: {fileID: 0}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 39b4ea41673b4f01a2d318d6643c8bbb, type: 3}
+  m_Script: {fileID: 11500000, guid: 5a6f648309f84cd9bbf99a9003eae38f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
 --- !u!4 &6282379114481944092 stripped

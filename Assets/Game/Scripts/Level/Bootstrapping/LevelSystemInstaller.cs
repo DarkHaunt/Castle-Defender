@@ -1,7 +1,9 @@
 ﻿using Game.Level.StateMachine.States.Factories;
 using Game.Level.StateMachine.States;
+using Game.Level.Factories.Level;
 using Game.Level.StateMachine;
 using Game.Common.Interfaces;
+using Game.Level.Common;
 using Game.Level.Configs;
 using VContainer.Unity;
 using VContainer;
@@ -25,7 +27,8 @@ namespace Game.Level.Bootstrapping
         public void Install(IContainerBuilder builder)
         {
             RegisterLevelConfigProvider(builder);
-            
+            RegisterLevelFactory(builder);
+
             RegisterStateFactories(builder);
             RegisterBootstrapper(builder);
             RegisterStateMachine(builder);
@@ -35,9 +38,19 @@ namespace Game.Level.Bootstrapping
         private void RegisterLevelConfigProvider(IContainerBuilder builder)
         {
             builder
-                .Register<LevelScriptableConfigProvider>(Lifetime.Singleton)
+                .Register<LevelConfigProvider>(Lifetime.Singleton)
                 .WithParameter(_debugConfig)
                 .As<ILevelConfigProvider>();
+        }
+
+        private void RegisterLevelFactory(IContainerBuilder builder)
+        {
+            builder
+                .Register<LevelFactory>(Lifetime.Singleton)
+                .As<ILevelFactory>();
+
+            builder.RegisterFactory<string, LevelComponentsContainer>(container =>
+                container.Resolve<LevelFactory>().CreateLevel, Lifetime.Singleton);
         }
 
         private void RegisterStateMachine(IContainerBuilder builder)
@@ -73,8 +86,9 @@ namespace Game.Level.Bootstrapping
         private void RegisterBootstrapper(IContainerBuilder builder)
         {
             builder
-                .RegisterEntryPoint<LevelBootstrapper>()
-                .As<ICoroutineRunner>();
+                .RegisterComponent(_levelBootstrapper)
+                .As<ICoroutineRunner>()
+                .AsSelf();
         }
     }
 }

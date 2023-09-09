@@ -1,15 +1,17 @@
 ﻿using Game.Level.StateMachine.States;
 using Game.Level.StateMachine;
 using Game.Common.Interfaces;
-using VContainer.Unity;
 using UnityEngine;
 using VContainer;
+using Game.Test;
 
 
 namespace Game.Level.Bootstrapping
 {
-    public class LevelBootstrapper : MonoBehaviour, ICoroutineRunner, IInitializable
+    public class LevelBootstrapper : MonoBehaviour, ICoroutineRunner
     {
+        [SerializeField] private ForcibleLevelConfigSetter _configSetter;
+        
         private IStateSwitcher _stateSwitcher;
 
         
@@ -18,8 +20,12 @@ namespace Game.Level.Bootstrapping
         {
             _stateSwitcher = stateSwitcher;
         }
-        
-        public void Initialize()
-            => _stateSwitcher.SwitchToState<DataLoadingState>();
+
+        private void Awake()
+        {
+            _configSetter.ForceSetCachedConfig();
+            
+            _stateSwitcher.SwitchToState<DataLoadingState>();
+        }
     }
 }

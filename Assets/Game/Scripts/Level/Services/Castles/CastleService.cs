@@ -1,6 +1,6 @@
-﻿using Game.Level.Params.Castles;
-using Game.Level.Common.Damage;
+﻿using Game.Level.Common.Damage;
 using Game.Level.Enemies;
+using Game.Level.Castles;
 using System;
 
 
@@ -12,17 +12,13 @@ namespace Game.Level.Services.Castles
         public event Action OnCastleDestroyed;
         
         
-        private readonly IAttackTarget _castlePhysicsBody;
+        private IAttackTarget _castlePhysicsBody;
 
 
-        public CastleService(ICastleParamsProvider paramsProvider)
+        public void Init(Castle castle)
         {
-            var castleParams = paramsProvider.GetCastleParams();
-
-            _castlePhysicsBody = castleParams.PhysicBody;
-            _castlePhysicsBody.Init(castleParams.Health);
+            _castlePhysicsBody = castle.PhysicBody;
         }
-
 
         public void Enable()
         {
