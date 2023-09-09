@@ -1,4 +1,5 @@
-﻿using Game.Level.Binders;
+﻿using Game.Level.Common.Damage;
+using Game.Level.Binders;
 using UnityEngine;
 using VContainer;
 
@@ -7,30 +8,37 @@ namespace Game.Level.Views.Castles
 {
     public abstract class CastleView : MonoBehaviour
     {
-        protected CastleBinder _castleBinder;
+        private CastleBinder _castleBinder;
 
 
         [Inject]
         private void Construct(CastleBinder castleBinder)
         {
             _castleBinder = castleBinder;
+
+            _castleBinder.OnSystemEnabled += Enable;
+            _castleBinder.OnSystemDisabled += Disable;
+        }
+        
+        private void Enable()
+        {
+            _castleBinder.HealthView.OnChanged += UpdateHealthText;
+            _castleBinder.HealthView.OnChanged += UpdateHealth;
+            
+            OnEnableCustom();
+        }
+				
+        private void Disable() 
+        {
+            _castleBinder.HealthView.OnChanged -= UpdateHealthText;
+            _castleBinder.HealthView.OnChanged -= UpdateHealth;
+            
+            OnDisableCustom();
         }
 
-        /*private void OnEnable()
-        {
-            Enable();
-            
-            _castleBinder.Enable();
-        }
-
-        private void OnDisable()
-        {
-            Disable();
-            
-            _castleBinder.Disable();
-        }*/
-
-        protected abstract void Enable();
-        protected abstract void Disable();
+        protected abstract void UpdateHealthText(IHealthParamsProvider healthParams);
+        protected abstract void UpdateHealth(IHealthParamsProvider healthParams);
+        protected abstract void OnDisableCustom();
+        protected abstract void OnEnableCustom();
     }
 }

@@ -1,22 +1,27 @@
-﻿using Game.Level.Services.Castles;
+﻿using Game.Level.Weapons.HandlePoints;
+using Game.Level.Services.Castles;
 using Game.Level.Factories.Level;
 using Game.Level.Configs;
-using UnityEngine;
+using Game.Shared;
 
 
 namespace Game.Level.StateMachine.States
 {
     public class DataLoadingState : IState
     {
+        private readonly IPlayerProgressDataProvider _playerProgressDataProvider;
+        private readonly IWeaponPointsContainer _weaponPointsContainer;
         private readonly ILevelConfigProvider _levelConfigProvider;
         private readonly IStateSwitcher _stateSwitcher;
         private readonly ICastleService _castleService;
         private readonly ILevelFactory _levelFactory;
 
 
-        public DataLoadingState(IStateSwitcher stateSwitcher, ILevelFactory levelFactory, 
-            ICastleService castleService, ILevelConfigProvider levelConfigProvider)
+        public DataLoadingState(IStateSwitcher stateSwitcher, ILevelFactory levelFactory, ICastleService castleService, 
+            ILevelConfigProvider levelConfigProvider, IWeaponPointsContainer weaponPointsContainer, IPlayerProgressDataProvider playerProgressDataProvider)
         {
+            _playerProgressDataProvider = playerProgressDataProvider;
+            _weaponPointsContainer = weaponPointsContainer;
             _levelConfigProvider = levelConfigProvider;
             _castleService = castleService;
             _stateSwitcher = stateSwitcher;
@@ -26,18 +31,14 @@ namespace Game.Level.StateMachine.States
 
         public void Enter()
         {
-            Debug.Log($"<color=yellow>Load Data</color>");
-
+            var playerData = _playerProgressDataProvider.GetPlayerProgressData();
             var levelConfigs = _levelConfigProvider.GetLevelConfig();
             
-            Debug.Log($"<color=yellow>Loaded configs {levelConfigs.LevelPrefabPath} " +
-                      $"| {levelConfigs.EnemiesPrefabsPatches}</color>");
-            
             var level = _levelFactory.CreateLevel(levelConfigs.LevelPrefabPath);
-
-            Debug.Log($"<color=white>Created level = {level.name}</color>");
+            var castle = level.Castle;
             
-            _castleService.Init(level.Castle);
+            _castleService.Init(castle, playerData.CastleHealth);
+            _weaponPointsContainer.Init(castle.WeaponHandlePoints);
             
             SwitchToStartLevelState();
         }

@@ -16,11 +16,11 @@ namespace Game.Level.Common.Damage
         private Transform _transform;
         private HealthParamsHandler _healthParams;
 
-        
+
         public Vector2 Position
             => _transform.position;
-        
-        
+
+
         private void OnValidate()
         {
             var self = GetComponent<Collider2D>();
@@ -35,8 +35,8 @@ namespace Game.Level.Common.Damage
             (
                 initHealth: maxHealth
             );
-            
-            OnHealthUpdate?.Invoke(_healthParams);
+
+            UpdateHealth();
         }
 
         public void GetDamage(float damage)
@@ -44,10 +44,13 @@ namespace Game.Level.Common.Damage
             _healthParams.DecreaseHealthBy(damage);
             
             OnDamage?.Invoke(damage);
-            OnHealthUpdate?.Invoke(_healthParams);
+            UpdateHealth();
             
             if (_healthParams.IsCurrentHealthZero())
                 OnDeath?.Invoke();
         }
+
+        public void UpdateHealth()
+            => OnHealthUpdate?.Invoke(_healthParams);
     }
 }

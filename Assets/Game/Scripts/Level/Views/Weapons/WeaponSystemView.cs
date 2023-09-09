@@ -7,32 +7,32 @@ namespace Game.Level.Views.Weapons
 {
     public abstract class WeaponSystemView : MonoBehaviour
     {
-        protected WeaponSystemBinder WeaponSystemBinder;
+        protected WeaponSystemBinder _weaponSystemBinder;
 
 
         [Inject]
         private void Construct(WeaponSystemBinder weaponSystemBinder)
         {
-            WeaponSystemBinder = weaponSystemBinder;
+            _weaponSystemBinder = weaponSystemBinder;
 
-            WeaponSystemBinder.OnSystemEnabled += Enable;
-            WeaponSystemBinder.OnSystemDisabled += Disable;
+            _weaponSystemBinder.OnSystemEnabled += Enable;
+            _weaponSystemBinder.OnSystemDisabled += Disable;
         }
         
         private void Enable()
         {
-            WeaponSystemBinder.CreateOptionSelected.OnChanged += OnCreateOptionSelected;
-            WeaponSystemBinder.UpdateOptionSelected.OnChanged += OnUpdateOptionSelected;
-            WeaponSystemBinder.DeleteOptionSelected.OnChanged += OnDeleteOptionSelected;
+            _weaponSystemBinder.CreateOptionSelected.OnChanged += OnCreateOptionSelected;
+            _weaponSystemBinder.UpdateOptionSelected.OnChanged += OnUpdateOptionSelected;
+            _weaponSystemBinder.DeleteOptionSelected.OnChanged += OnDeleteOptionSelected;
 
             OnEnableCustom();
         }     
         
         private void Disable()
         {
-            WeaponSystemBinder.CreateOptionSelected.OnChanged -= OnCreateOptionSelected;
-            WeaponSystemBinder.UpdateOptionSelected.OnChanged -= OnUpdateOptionSelected;
-            WeaponSystemBinder.DeleteOptionSelected.OnChanged -= OnDeleteOptionSelected;
+            _weaponSystemBinder.CreateOptionSelected.OnChanged -= OnCreateOptionSelected;
+            _weaponSystemBinder.UpdateOptionSelected.OnChanged -= OnUpdateOptionSelected;
+            _weaponSystemBinder.DeleteOptionSelected.OnChanged -= OnDeleteOptionSelected;
             
             OnDisableCustom();
         }

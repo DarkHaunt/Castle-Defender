@@ -1,13 +1,12 @@
-﻿using Game.Level.Binders;
+﻿using Game.Level.Weapons.HandlePoints;
 using Game.Level.Factories.Weapons;
 using Game.Level.Services.Weapons;
 using Game.Level.Views.Weapons;
 using Game.Level.Weapons;
-using Game.Level.Weapons.HandlePoints;
-using System.Collections.Generic;
+using Game.Level.Binders;
+using VContainer.Unity;
 using UnityEngine;
 using VContainer;
-using VContainer.Unity;
 
 
 namespace Game.Level.Bootstrapping
@@ -17,16 +16,14 @@ namespace Game.Level.Bootstrapping
         private readonly Weapon _creationPrefab;
         private readonly Transform _weaponParent;
         private readonly WeaponSystemView _weaponSystemView;
-        private readonly List<WeaponHandlePoint> _weaponPlacePoints;
 
         
         public WeaponSystemInstaller(Weapon prefab, Transform weaponParent, 
-            WeaponSystemView weaponSystemView, List<WeaponHandlePoint> weaponHandlePoints)
+            WeaponSystemView weaponSystemView)
         {
-            _creationPrefab = prefab;
-            _weaponParent = weaponParent;
             _weaponSystemView = weaponSystemView;
-            _weaponPlacePoints = weaponHandlePoints;
+            _weaponParent = weaponParent;
+            _creationPrefab = prefab;
         }
         
         
@@ -47,7 +44,6 @@ namespace Game.Level.Bootstrapping
         {
             builder
                 .Register<WeaponPointsContainer>(Lifetime.Singleton)
-                .WithParameter(_weaponPlacePoints)
                 .As<IWeaponPointsContainer>();
         }
 

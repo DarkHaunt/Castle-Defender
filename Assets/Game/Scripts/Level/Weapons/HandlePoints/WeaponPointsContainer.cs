@@ -5,19 +5,19 @@ namespace Game.Level.Weapons.HandlePoints
 {
     public class WeaponPointsContainer : IWeaponPointsContainer
     {
-        private readonly ISet<WeaponHandlePoint> _occupiedPoints;
-        private readonly ISet<WeaponHandlePoint> _emptyPoints;
+        private ISet<WeaponHandlePoint> _occupiedPoints;
+        private ISet<WeaponHandlePoint> _emptyPoints;
 
+        
         public IEnumerable<WeaponHandlePoint> OccupiedPoints => _occupiedPoints;
         public IEnumerable<WeaponHandlePoint> EmptyPoints => _emptyPoints;
 
         
-        public WeaponPointsContainer(List<WeaponHandlePoint> weaponHandlePoints)
+        public void Init(List<WeaponHandlePoint> weaponHandlePoints)
         {
             _occupiedPoints = new HashSet<WeaponHandlePoint>(weaponHandlePoints.Capacity);
             _emptyPoints = new HashSet<WeaponHandlePoint>(weaponHandlePoints);
         }
-
         
         public void RegisterPointAsOccupied(WeaponHandlePoint weaponHandlePoint)
         {

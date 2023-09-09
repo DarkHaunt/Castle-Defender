@@ -1,9 +1,8 @@
-﻿using System.Collections.Generic;
-
+﻿
 
 namespace Game.Level.Configs
 {
-    public interface IGlobalGameData
+    public interface IPlayerProgressData
     {
         float CastleHealth { get; }
         string[] AvailableWeapons { get; }

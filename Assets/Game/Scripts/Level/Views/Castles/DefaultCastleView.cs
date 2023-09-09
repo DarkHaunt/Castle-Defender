@@ -13,30 +13,24 @@ namespace Game.Level.Views.Castles
         [SerializeField] private TextMeshProUGUI _healthText;
 
 
-        protected override void Enable()
+        protected override void OnEnableCustom()
         {
             _healthBar.gameObject.SetActive(true);
             _healthText.gameObject.SetActive(true);
-            
-            _castleBinder.HealthView.OnChanged += UpdateHealthText;
-            _castleBinder.HealthView.OnChanged += UpdateSlider;
         }
 
-        protected override void Disable()
+        protected override void OnDisableCustom()
         {
             _healthBar.gameObject.SetActive(false);
             _healthText.gameObject.SetActive(false);
-            
-            _castleBinder.HealthView.OnChanged -= UpdateHealthText;
-            _castleBinder.HealthView.OnChanged -= UpdateSlider;
         }
 
-        private void UpdateHealthText(IHealthParamsProvider healthParams)
+        protected override void UpdateHealthText(IHealthParamsProvider healthParams)
         {
             _healthText.text = $"{healthParams.MaxHealth} / {healthParams.CurrentHealth}";
         }
 
-        private void UpdateSlider(IHealthParamsProvider healthParams)
+        protected override void UpdateHealth(IHealthParamsProvider healthParams)
         {
             var healthPercent = healthParams.CurrentHealth / healthParams.MaxHealth;
             

@@ -3,9 +3,11 @@ using Game.Level.StateMachine.States;
 using Game.Level.Factories.Level;
 using Game.Level.StateMachine;
 using Game.Common.Interfaces;
-using Game.Level.Common;
 using Game.Level.Configs;
+using Game.Level.Common;
 using VContainer.Unity;
+using Game.Shared;
+using UnityEngine;
 using VContainer;
 
 
@@ -14,18 +16,19 @@ namespace Game.Level.Bootstrapping
     public class LevelSystemInstaller : IInstaller
     {
         private readonly LevelBootstrapper _levelBootstrapper;
-        private readonly LevelConfig _debugConfig;
+        private readonly Transform _levelParentObject;
 
 
-        public LevelSystemInstaller(LevelBootstrapper levelBootstrapper, LevelConfig debugConfig)
+        public LevelSystemInstaller(LevelBootstrapper levelBootstrapper, Transform levelParentObject)
         {
             _levelBootstrapper = levelBootstrapper;
-            _debugConfig = debugConfig;
+            _levelParentObject = levelParentObject;
         }
         
         
         public void Install(IContainerBuilder builder)
         {
+            RegisterPlayerProgressDataProvider(builder);
             RegisterLevelConfigProvider(builder);
             RegisterLevelFactory(builder);
 
@@ -35,11 +38,17 @@ namespace Game.Level.Bootstrapping
             RegisterStates(builder);
         }
 
+        private void RegisterPlayerProgressDataProvider(IContainerBuilder builder)
+        {
+            builder
+                .Register<PlayerProgressDataProvider>(Lifetime.Singleton)
+                .As<IPlayerProgressDataProvider>();
+        }
+
         private void RegisterLevelConfigProvider(IContainerBuilder builder)
         {
             builder
                 .Register<LevelConfigProvider>(Lifetime.Singleton)
-                .WithParameter(_debugConfig)
                 .As<ILevelConfigProvider>();
         }
 
@@ -47,6 +56,7 @@ namespace Game.Level.Bootstrapping
         {
             builder
                 .Register<LevelFactory>(Lifetime.Singleton)
+                .WithParameter(_levelParentObject)
                 .As<ILevelFactory>();
 
             builder.RegisterFactory<string, LevelComponentsContainer>(container =>

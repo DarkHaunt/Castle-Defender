@@ -1,10 +1,10 @@
-using VContainer;
 using VContainer.Unity;
+using VContainer;
 
 
 namespace Game.Init
 {
-    public class InitBootstrapper : LifetimeScope
+    public class InitLifeScope : LifetimeScope
     {
         protected override void Configure(IContainerBuilder builder)
         {

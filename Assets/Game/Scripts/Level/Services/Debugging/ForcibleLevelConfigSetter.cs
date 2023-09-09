@@ -14,7 +14,7 @@ namespace Game.Test
         {
             var serializedLevelConfigs = new SerializedLevelConfig(_forceLevelConfig);
             
-            JsonSerializer.SaveToFile(StaticDataContainer.LevelConfigsPrefsKey, serializedLevelConfigs);
+            JsonSerializer.SaveToFile(StaticDataContainer.LevelConfigsPath, serializedLevelConfigs);
         }
     }
 }

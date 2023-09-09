@@ -16,28 +16,28 @@ namespace Game.Level.Views.Weapons
         {
             EnableAllButtons();
             
-            _createButton.OnBeenPressed +=  WeaponSystemBinder.CreateEnable;
-            _createButton.OnBeenUnpressed += WeaponSystemBinder.CreateDisable;
+            _createButton.OnBeenPressed +=  _weaponSystemBinder.CreateEnable;
+            _createButton.OnBeenUnpressed += _weaponSystemBinder.CreateDisable;
             
-            _deleteButton.OnBeenPressed += WeaponSystemBinder.DeleteEnable;
-            _deleteButton.OnBeenUnpressed += WeaponSystemBinder.DeleteDisable;            
+            _deleteButton.OnBeenPressed += _weaponSystemBinder.DeleteEnable;
+            _deleteButton.OnBeenUnpressed += _weaponSystemBinder.DeleteDisable;            
             
-            _updateButton.OnBeenPressed += WeaponSystemBinder.UpdateEnable;
-            _updateButton.OnBeenUnpressed += WeaponSystemBinder.UpdateDisable;
+            _updateButton.OnBeenPressed += _weaponSystemBinder.UpdateEnable;
+            _updateButton.OnBeenUnpressed += _weaponSystemBinder.UpdateDisable;
         }
 
         protected override void OnDisableCustom()
         {
             DisableAllButtons();
             
-            _createButton.OnBeenPressed -= WeaponSystemBinder.CreateEnable;
-            _createButton.OnBeenUnpressed -= WeaponSystemBinder.CreateDisable;
+            _createButton.OnBeenPressed -= _weaponSystemBinder.CreateEnable;
+            _createButton.OnBeenUnpressed -= _weaponSystemBinder.CreateDisable;
             
-            _deleteButton.OnBeenPressed -= WeaponSystemBinder.DeleteEnable;
-            _deleteButton.OnBeenUnpressed -= WeaponSystemBinder.DeleteDisable;            
+            _deleteButton.OnBeenPressed -= _weaponSystemBinder.DeleteEnable;
+            _deleteButton.OnBeenUnpressed -= _weaponSystemBinder.DeleteDisable;            
             
-            _updateButton.OnBeenPressed += WeaponSystemBinder.UpdateEnable;
-            _updateButton.OnBeenUnpressed += WeaponSystemBinder.UpdateDisable;
+            _updateButton.OnBeenPressed += _weaponSystemBinder.UpdateEnable;
+            _updateButton.OnBeenUnpressed += _weaponSystemBinder.UpdateDisable;
         }
 
         protected override void OnCreateOptionSelected(bool isEnabled)

@@ -21,20 +21,11 @@ namespace Game.Level.Binders
         {
             _weaponHandleService = weaponHandleService;
 
-            _weaponHandleService.OnEnabled += HandleSystemEnabled;
-            _weaponHandleService.OnDisabled += HandleSystemDisabled;
+            _weaponHandleService.OnEnabled += () => OnSystemEnabled?.Invoke();
+            _weaponHandleService.OnDisabled += () => OnSystemDisabled?.Invoke();;
         }
 
-        private void HandleSystemDisabled()
-        {
-            OnSystemDisabled?.Invoke();
-        }
-
-        private void HandleSystemEnabled()
-        {
-            OnSystemEnabled?.Invoke();
-        }
-
+        
         public void CreateEnable()
         {
             _weaponHandleService.StartHandleCreate();
@@ -49,6 +40,7 @@ namespace Game.Level.Binders
             CreateOptionSelected.Value = false;
         }
 
+        
         public void DeleteEnable()
         {
             _weaponHandleService.StartHandleDelete();
@@ -63,6 +55,7 @@ namespace Game.Level.Binders
             DeleteOptionSelected.Value = false;
         }
 
+        
         public void UpdateEnable()
         {
             _weaponHandleService.StartHandleUpdate();

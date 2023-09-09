@@ -7,7 +7,9 @@ namespace Game.Level.Weapons.HandlePoints
     {
         IEnumerable<WeaponHandlePoint> EmptyPoints { get; }
         IEnumerable<WeaponHandlePoint> OccupiedPoints { get; }
-        
+
+
+        void Init(List<WeaponHandlePoint> weaponHandlePoints);
         void RegisterPointAsOccupied(WeaponHandlePoint weaponHandlePoint);
         void UnregisterPointAsOccupied(WeaponHandlePoint weaponHandlePoint);
     }
