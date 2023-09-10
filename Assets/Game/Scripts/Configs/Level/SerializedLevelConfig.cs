@@ -4,16 +4,19 @@
 namespace Game.Level.Configs
 {
     [Serializable]
-    public class SerializedLevelConfig
+    public class SerializedLevelConfig : ILevelConfig
     {
-        public string LevelPrefabPath;
-        public string[] EnemiesPrefabsPatches;
+        public string SerializedLevelPrefabPath;
+        public string[] SerializedEnemiesPrefabsPatches;
 
+        public string LevelPrefabPath => SerializedLevelPrefabPath;
+        public string[] EnemiesPrefabsPatches => SerializedEnemiesPrefabsPatches;
 
-        public SerializedLevelConfig(LevelConfig levelConfig)
+        
+        public SerializedLevelConfig(ILevelConfig levelConfig)
         {
-            LevelPrefabPath = levelConfig.LevelPrefabPath;
-            EnemiesPrefabsPatches = levelConfig.EnemiesPrefabsPatches;
+            SerializedLevelPrefabPath = levelConfig.LevelPrefabPath;
+            SerializedEnemiesPrefabsPatches = levelConfig.EnemiesPrefabsPatches;
         }
     }
 }

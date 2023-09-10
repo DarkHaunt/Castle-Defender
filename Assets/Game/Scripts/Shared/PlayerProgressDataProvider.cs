@@ -6,7 +6,9 @@ namespace Game.Shared
 {
     public class PlayerProgressDataProvider : IPlayerProgressDataProvider
     {
+        private IPlayerProgressData _playerProgressData;
+        
         public IPlayerProgressData GetPlayerProgressData()
-            => JsonSerializer.LoadFile<SerializedPlayerProgressData>(StaticDataContainer.UserConsumedProgressDataPath);
+            => _playerProgressData ??= JsonSerializer.LoadFile<SerializedPlayerProgressData>(StaticDataContainer.UserConsumedProgressDataPath);
     }
 }

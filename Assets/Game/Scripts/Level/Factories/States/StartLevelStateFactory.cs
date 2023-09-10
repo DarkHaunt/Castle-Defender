@@ -7,17 +7,17 @@ namespace Game.Level.StateMachine.States.Factories
     public class StartLevelStateFactory
     {
         private readonly IWeaponHandleService _weaponHandleService;
-        private readonly ICastleService _castleService;
+        private readonly ICastleHandleService _castleHandleService;
 
         
-        public StartLevelStateFactory(ICastleService castleService, IWeaponHandleService weaponHandleService)
+        public StartLevelStateFactory(ICastleHandleService castleHandleService, IWeaponHandleService weaponHandleService)
         {
             _weaponHandleService = weaponHandleService;
-            _castleService = castleService;
+            _castleHandleService = castleHandleService;
         }
         
         
         public StartLevelState CreateState(IStateSwitcher stateSwitcher)
-            => new (stateSwitcher, _castleService, _weaponHandleService);
+            => new (stateSwitcher, _castleHandleService, _weaponHandleService);
     }
 }

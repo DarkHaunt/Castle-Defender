@@ -1,6 +1,6 @@
-﻿using Game.Level.Common.Damage;
-using Game.Level.Weapons.HandlePoints;
+﻿using Game.Level.Weapons.HandlePoints;
 using System.Collections.Generic;
+using Game.Level.Common.Damage;
 using UnityEngine;
 
 

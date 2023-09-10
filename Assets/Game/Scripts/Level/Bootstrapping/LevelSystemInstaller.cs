@@ -29,6 +29,7 @@ namespace Game.Level.Bootstrapping
         public void Install(IContainerBuilder builder)
         {
             RegisterPlayerProgressDataProvider(builder);
+            RegisterInitializeDataProvider(builder);
             RegisterLevelConfigProvider(builder);
             RegisterLevelFactory(builder);
 
@@ -43,6 +44,13 @@ namespace Game.Level.Bootstrapping
             builder
                 .Register<PlayerProgressDataProvider>(Lifetime.Singleton)
                 .As<IPlayerProgressDataProvider>();
+        }
+
+        private void RegisterInitializeDataProvider(IContainerBuilder builder)
+        {
+            builder
+                .Register<InitializeDataProvider>(Lifetime.Singleton)
+                .As<IInitializeDataProvider>();
         }
 
         private void RegisterLevelConfigProvider(IContainerBuilder builder)
@@ -73,16 +81,21 @@ namespace Game.Level.Bootstrapping
         
         private void RegisterStates(IContainerBuilder builder)
         {
-            builder.Register<DataLoadingState>(Lifetime.Singleton);
+            builder.Register<LoadingLevelDataState>(Lifetime.Singleton);
+            builder.Register<InitLevelState>(Lifetime.Singleton);
             builder.Register<StartLevelState>(Lifetime.Singleton);
             builder.Register<EndLevelState>(Lifetime.Singleton);
         }
 
         private void RegisterStateFactories(IContainerBuilder builder)
         {
-            builder.Register<DataLoadingStateFactory>(Lifetime.Singleton);
-            builder.RegisterFactory<IStateSwitcher, DataLoadingState>(container => 
-                container.Resolve<DataLoadingStateFactory>().CreateState, Lifetime.Singleton);
+            builder.Register<LoadingLevelDataStateFactory>(Lifetime.Singleton);
+            builder.RegisterFactory<IStateSwitcher, LoadingLevelDataState>(container => 
+                container.Resolve<LoadingLevelDataStateFactory>().CreateState, Lifetime.Singleton);  
+            
+            builder.Register<InitLevelStateFactory>(Lifetime.Singleton);
+            builder.RegisterFactory<IStateSwitcher, InitLevelState>(container => 
+                container.Resolve<InitLevelStateFactory>().CreateState, Lifetime.Singleton);
 
             builder.Register<StartLevelStateFactory>(Lifetime.Singleton);
             builder.RegisterFactory<IStateSwitcher, StartLevelState>(container => 

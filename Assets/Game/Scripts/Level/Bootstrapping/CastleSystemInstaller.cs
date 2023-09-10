@@ -28,8 +28,8 @@ namespace Game.Level.Bootstrapping
         private void RegisterCastleService(IContainerBuilder builder)
         {
             builder
-                .Register<CastleService>(Lifetime.Singleton)
-                .As<ICastleService>();
+                .Register<CastleHandleHandleService>(Lifetime.Singleton)
+                .As<ICastleHandleService>();
         }
 
         private void RegisterCastleView(IContainerBuilder builder)

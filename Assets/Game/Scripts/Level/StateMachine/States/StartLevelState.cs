@@ -9,14 +9,14 @@ namespace Game.Level.StateMachine.States
     {
         private readonly IWeaponHandleService _weaponHandleService;
         private readonly IStateSwitcher _stateSwitcher;
-        private readonly ICastleService _castleService;
+        private readonly ICastleHandleService _castleHandleService;
 
 
-        public StartLevelState(IStateSwitcher stateSwitcher, ICastleService castleService, IWeaponHandleService weaponHandleService )
+        public StartLevelState(IStateSwitcher stateSwitcher, ICastleHandleService castleHandleService, IWeaponHandleService weaponHandleService )
         {
             _weaponHandleService = weaponHandleService;
             _stateSwitcher = stateSwitcher;
-            _castleService = castleService;
+            _castleHandleService = castleHandleService;
         }
         
         
@@ -24,18 +24,18 @@ namespace Game.Level.StateMachine.States
         {
             Debug.Log($"<color=yellow>Start level</color>");
             
-            _castleService.OnCastleDestroyed += FinishLevel;
+            _castleHandleService.OnCastleDestroyed += FinishLevel;
             
             _weaponHandleService.Enable();
-            _castleService.Enable();
+            _castleHandleService.Enable();
         }
 
         public void Exit()
         {
-            _castleService.OnCastleDestroyed -= FinishLevel;
+            _castleHandleService.OnCastleDestroyed -= FinishLevel;
             
             _weaponHandleService.Disable();
-            _castleService.Disable();
+            _castleHandleService.Disable();
         }
 
         private void FinishLevel()
