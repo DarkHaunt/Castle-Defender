@@ -1,5 +1,6 @@
 ﻿using Game.Level.Weapons.HandlePoints;
 using Game.Level.Services.Castles;
+using Game.Level.Services.Enemies;
 using Game.Level.Configs;
 using UnityEngine;
 
@@ -11,16 +12,20 @@ namespace Game.Level.StateMachine.States
         private readonly IInitializeDataProvider _initializeDataProvider;
         private readonly IWeaponPointsContainer _weaponPointsContainer;
         private readonly ICastleHandleService _castleHandleService;
+        private readonly EnemySpawnService _enemySpawnService;
         private readonly IStateSwitcher _stateSwitcher;
+        private readonly EnemyHandleService _enemyHandleService;
 
-        
-        public InitLevelState(IStateSwitcher stateSwitcher, IInitializeDataProvider initializeDataProvider, 
-            ICastleHandleService castleHandleService, IWeaponPointsContainer weaponPointsContainer)
+
+        public InitLevelState(IStateSwitcher stateSwitcher, IInitializeDataProvider initializeDataProvider, ICastleHandleService castleHandleService, 
+            IWeaponPointsContainer weaponPointsContainer, EnemyHandleService enemyHandleService, EnemySpawnService enemySpawnService)
         {
             _initializeDataProvider = initializeDataProvider;
             _weaponPointsContainer = weaponPointsContainer;
             _castleHandleService = castleHandleService;
+            _enemySpawnService = enemySpawnService;
             _stateSwitcher = stateSwitcher;
+            _enemyHandleService = enemyHandleService;
         }
 
 
@@ -29,10 +34,14 @@ namespace Game.Level.StateMachine.States
             Debug.Log($"<color=yellow>Init Level</color>");
             
             var levelInitData = _initializeDataProvider.GetInitializeData();
-            var castle = levelInitData.Level.Castle;
             
+            var level = levelInitData.Level;
+            var castle = level.Castle;
+            
+            _enemySpawnService.Init(levelInitData.EnemiesWaveSpawnTime, level.EnemiesSpawnPoints, levelInitData.Enemies);
             _castleHandleService.Init(castle.PhysicBody, levelInitData.CastleHealth);
             _weaponPointsContainer.Init(castle.WeaponHandlePoints);
+            _enemyHandleService.Init(castle.PhysicBody);
 
             SwitchToLevelStart();
         }

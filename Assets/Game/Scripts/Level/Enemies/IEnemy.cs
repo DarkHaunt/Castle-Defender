@@ -5,6 +5,6 @@ namespace Game.Level.Enemies
 {
     public interface IEnemy : IDamageable
     {
-        void Move(IAttackTarget enemiesTarget);
+        void UpdateBehavior(IAttackTarget enemiesTarget);
     }
 }

@@ -33,6 +33,9 @@ namespace Game.Level.Bootstrapping
             new CastleSystemInstaller(_castleView)
                 .Install(builder);
 
+            new EnemySystemInstaller()
+                .Install(builder);
+
             new LevelSystemInstaller(_bootstrapper, _levelParent)
                 .Install(builder);
         }

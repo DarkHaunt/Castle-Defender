@@ -1,19 +1,18 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
+﻿using System.Collections.Generic;
 using UnityEngine;
+using System.Linq;
+using System;
+
 using Object = UnityEngine.Object;
 
 namespace Game.Extra
 {
     public class PoolMono<T> where T : MonoBehaviour
     {
-        #region PoolVariables
         private List<T> _pool;
         private readonly T _prefab;
         private readonly bool _autoExpand;
         private readonly Transform _container;
-        #endregion
     
         public PoolMono(T prefab, int count, bool autoExpand)
         {
@@ -69,7 +68,7 @@ namespace Game.Extra
             if (_autoExpand)
                 return CreateObject(true);
 
-            throw new Exception("There is no free element in pool");
+            throw new ArgumentException("There is no free element in pool");
         }
 
         public List<T> GetAllFreeElements()

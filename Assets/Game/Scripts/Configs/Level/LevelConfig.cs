@@ -9,5 +9,9 @@ namespace Game.Level.Configs
         [field: Header("--- Prefabs ---")]
         [field: SerializeField] public string LevelPrefabPath { get; private set; }
         [field: SerializeField] public string[] EnemiesPrefabsPatches { get; private set; }
+        
+        
+        [field: Header("--- Time Params ---")]
+        [field: SerializeField] public float EnemiesSpawnWaveTime { get; private set; }
     }
 }

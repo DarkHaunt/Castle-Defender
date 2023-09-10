@@ -9,11 +9,11 @@ using UnityEngine;
 
 namespace Game.Level.Services.Enemies
 {
-    public class EnemiesSpawnService
+    public class EnemySpawnService
     {
+        private readonly EnemyHandleService _enemyHandleService;
         private readonly ICoroutineRunner _coroutineRunner;
         private readonly IEnemyFactory _enemyFactory;
-        private readonly IEnemyService _enemyService;
 
         private IEnumerable<Transform> _spawnPoints;
         private IEnumerable<Enemy> _enemiesPrefabs;
@@ -22,19 +22,19 @@ namespace Game.Level.Services.Enemies
         private float _waveSpawnTime;
 
 
-        public EnemiesSpawnService(IEnemyFactory enemyFactory, IEnemyService enemyService, ICoroutineRunner coroutineRunner)
+        public EnemySpawnService(IEnemyFactory enemyFactory, EnemyHandleService enemyHandleService, ICoroutineRunner coroutineRunner)
         {
+            _enemyHandleService = enemyHandleService;
             _coroutineRunner = coroutineRunner;
             _enemyFactory = enemyFactory;
-            _enemyService = enemyService;
         }
 
 
         public void Init(float waveSpawnTime, IEnumerable<Transform> spawnPoints, IEnumerable<Enemy> enemiesPrefabs)
         {
-            _spawnPoints = spawnPoints;
             _enemiesPrefabs = enemiesPrefabs;
             _waveSpawnTime = waveSpawnTime;
+            _spawnPoints = spawnPoints;
         }
 
         public void Enable()
@@ -64,7 +64,7 @@ namespace Game.Level.Services.Enemies
                 var enemyPrefab = _enemiesPrefabs.PickRandom();
                 var enemy = _enemyFactory.CreateEnemy(enemyPrefab, spawnPoint.position);
                 
-                _enemyService.RegisterEnemy(enemy);
+                _enemyHandleService.RegisterEnemy(enemy);
             }
         }
     }

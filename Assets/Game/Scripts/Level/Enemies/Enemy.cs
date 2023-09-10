@@ -18,7 +18,7 @@ namespace Game.Level.Enemies
         private HealthParamsHandler _healthParamsHandler;
 
 
-        public abstract void Move(IAttackTarget enemiesTarget);
+        public abstract void UpdateBehavior(IAttackTarget enemiesTarget);
         protected abstract void Attack(IAttackTarget attackTarget);
 
 

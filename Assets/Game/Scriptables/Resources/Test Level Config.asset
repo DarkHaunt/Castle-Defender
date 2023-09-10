@@ -13,6 +13,6 @@ MonoBehaviour:
   m_Name: Test Level Config
   m_EditorClassIdentifier: 
   <LevelPrefabPath>k__BackingField: Test Level
-  <CastlePrefabPath>k__BackingField: Test Castle
   <EnemiesPrefabsPatches>k__BackingField:
   - Test Enemy
+  <EnemiesSpawnWaveTime>k__BackingField: 3

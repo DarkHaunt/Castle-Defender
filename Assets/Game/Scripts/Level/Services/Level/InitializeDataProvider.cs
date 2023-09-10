@@ -38,7 +38,9 @@ namespace Game.Level.Configs
                 Level = LoadLevel(levelConfig),
                 Enemies = LoadEnemies(levelConfig),
                 AvailableWeapons = LoadAvailableWeapons(playerProgressData),
+                
                 CastleHealth = playerProgressData.CastleHealth,
+                EnemiesWaveSpawnTime = levelConfig.EnemiesSpawnWaveTime,
             };
             
             OnInitializeDataReady?.Invoke();
