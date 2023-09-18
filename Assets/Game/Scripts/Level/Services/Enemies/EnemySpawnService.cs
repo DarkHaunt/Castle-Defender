@@ -4,6 +4,8 @@ using Game.Common.Interfaces;
 using System.Collections;
 using Game.Level.Enemies;
 using Game.Extensions;
+using Game.Level.Common;
+using Game.Level.Configs;
 using UnityEngine;
 
 
@@ -30,11 +32,13 @@ namespace Game.Level.Services.Enemies
         }
 
 
-        public void Init(float waveSpawnTime, IEnumerable<Transform> spawnPoints, IEnumerable<Enemy> enemiesPrefabs)
+        public void Init(LevelInitializeData levelInitializeData, LevelComponentsContainer level)
         {
-            _enemiesPrefabs = enemiesPrefabs;
-            _waveSpawnTime = waveSpawnTime;
-            _spawnPoints = spawnPoints;
+            _waveSpawnTime = levelInitializeData.EnemiesWaveSpawnTime;
+            _enemiesPrefabs = levelInitializeData.Enemies;
+            _spawnPoints = level.EnemiesSpawnPoints;
+            
+            _enemyFactory.Init(level.Castle.PhysicBody);
         }
 
         public void Enable()

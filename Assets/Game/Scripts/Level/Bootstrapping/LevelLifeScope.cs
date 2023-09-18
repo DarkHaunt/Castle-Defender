@@ -1,5 +1,6 @@
 ﻿using Game.Level.Views.Castles;
 using Game.Level.Views.Weapons;
+using Game.Common.Interfaces;
 using Game.Level.Weapons;
 using VContainer.Unity;
 using UnityEngine;
@@ -12,10 +13,12 @@ namespace Game.Level.Bootstrapping
     {
         [Header("--- Main ---")]
         [SerializeField] private LevelBootstrapper _bootstrapper;
+        [SerializeField] private CoroutineRunner _coroutineRunner;
 
         [Header("--- Parent Objects---")]
-        [SerializeField] private Transform _levelParent;
         [SerializeField] private Transform _weaponParent;
+        [SerializeField] private Transform _levelParent;
+        [SerializeField] private Transform _enemyParent;
         
         [Header("--- Views ---")]
         [SerializeField] private WeaponSystemView _weaponSystemView;
@@ -27,17 +30,26 @@ namespace Game.Level.Bootstrapping
 
         protected override void Configure(IContainerBuilder builder)
         {
+            RegisterCoroutineRunner(builder);
+            
             new WeaponSystemInstaller(_creationPrefab, _weaponParent, _weaponSystemView)
                 .Install(builder);
 
             new CastleSystemInstaller(_castleView)
                 .Install(builder);
 
-            new EnemySystemInstaller()
+            new EnemySystemInstaller(_enemyParent)
                 .Install(builder);
 
             new LevelSystemInstaller(_bootstrapper, _levelParent)
                 .Install(builder);
+        }
+
+        private void RegisterCoroutineRunner(IContainerBuilder builder)
+        {
+            builder
+                .RegisterComponent(_coroutineRunner)
+                .As<ICoroutineRunner>();
         }
     }
 }

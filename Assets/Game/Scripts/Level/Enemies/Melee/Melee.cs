@@ -1,4 +1,5 @@
-﻿using UnityEngine;
+﻿using Game.Level.Enemies.StateMachine.States;
+using UnityEngine;
 
 
 namespace Game.Level.Enemies.Melee
@@ -10,8 +11,8 @@ namespace Game.Level.Enemies.Melee
         
         private void OnCollisionEnter2D(Collision2D other)
         {
-            if (other.gameObject.TryGetComponent(out IAttackTarget target))
-                Attack(target);
+            if (other.gameObject.TryGetComponent(out IAttackTarget _))
+                _enemyStateMachine.SwitchToState<AttackState>();
         }
     }
 }

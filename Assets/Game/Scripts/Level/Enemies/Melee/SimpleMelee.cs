@@ -5,16 +5,20 @@ namespace Game.Level.Enemies.Melee
 {
     public class SimpleMelee : Melee
     {
-        public override void UpdateBehavior(IAttackTarget attackTarget)
+        public override void Move(IAttackTarget attackTarget, float timeDelta)
         {
             var targetDirection = attackTarget.Position - (Vector2)transform.position;
+            var position = _rigidbody.position + targetDirection * _speed * timeDelta;
             
-                        
+            _rigidbody.MovePosition(position);
         }
 
-        protected override void Attack(IAttackTarget attackTarget)
+        public override void Attack(IAttackTarget attackTarget)
+            => attackTarget.GetDamage(_meleeAttackDamage);
+
+        public override void Die(float timeDelta)
         {
-            attackTarget.GetDamage(_meleeAttackDamage);
+            throw new System.NotImplementedException();
         }
     }
 }

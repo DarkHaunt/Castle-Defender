@@ -1,5 +1,6 @@
 ﻿using System.Collections.Generic;
 using Game.Level.Enemies;
+using UnityEngine;
 using VContainer.Unity;
 
 
@@ -13,7 +14,7 @@ namespace Game.Level.Services.Enemies
 
         public void Init(IAttackTarget enemyTarget)
             => _enemyTarget = enemyTarget;
-        
+
         public void RegisterEnemy(IEnemy enemy)
             => _enemies.Add(enemy);
 
@@ -23,7 +24,7 @@ namespace Game.Level.Services.Enemies
         public void FixedTick()
         {
             foreach (var enemy in _enemies)
-                enemy.UpdateBehavior(_enemyTarget);
+                enemy.PerformBehavior(Time.fixedDeltaTime);
         }
     }
 }

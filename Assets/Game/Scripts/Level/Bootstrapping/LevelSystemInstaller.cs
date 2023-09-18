@@ -2,7 +2,6 @@
 using Game.Level.StateMachine.States;
 using Game.Level.Factories.Level;
 using Game.Level.StateMachine;
-using Game.Common.Interfaces;
 using Game.Level.Configs;
 using Game.Level.Common;
 using VContainer.Unity;
@@ -33,10 +32,15 @@ namespace Game.Level.Bootstrapping
             RegisterLevelConfigProvider(builder);
             RegisterLevelFactory(builder);
 
+            RegisterLevelBootstrapper(builder);
             RegisterStateFactories(builder);
-            RegisterBootstrapper(builder);
             RegisterStateMachine(builder);
             RegisterStates(builder);
+        }
+
+        private void RegisterLevelBootstrapper(IContainerBuilder builder)
+        {
+            builder.RegisterComponent(_levelBootstrapper);
         }
 
         private void RegisterPlayerProgressDataProvider(IContainerBuilder builder)
@@ -104,14 +108,6 @@ namespace Game.Level.Bootstrapping
             builder.Register<EndLevelStateFactory>(Lifetime.Singleton);
             builder.RegisterFactory<EndLevelState>(container => 
                 container.Resolve<EndLevelStateFactory>().CreateState, Lifetime.Singleton);
-        }
-        
-        private void RegisterBootstrapper(IContainerBuilder builder)
-        {
-            builder
-                .RegisterComponent(_levelBootstrapper)
-                .As<ICoroutineRunner>()
-                .AsSelf();
         }
     }
 }
