@@ -3,7 +3,7 @@
 
 namespace Game.Level.Enemies
 {
-    public interface IEnemy : IDamageable
+    public interface IEnemy
     {
         void PerformBehavior(float timeDelta);
 

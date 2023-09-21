@@ -2,13 +2,13 @@
 {
     public class MoveState : IEnemyState
     {
-        private readonly IAttackTarget _moveTarget;
+        private readonly IAttackTarget _target;
         private readonly IEnemy _enemy;
 
         
-        public MoveState(IEnemy enemy, IAttackTarget moveTarget)
+        public MoveState(IEnemy enemy, IAttackTarget target)
         {
-            _moveTarget = moveTarget;
+            _target = target;
             _enemy = enemy;
         }
 
@@ -18,6 +18,6 @@
         public void Exit() {}
 
         public void Tick(float timeDelta)
-            => _enemy.Move(_moveTarget, timeDelta);
+            => _enemy.Move(_target, timeDelta);
     }
 }

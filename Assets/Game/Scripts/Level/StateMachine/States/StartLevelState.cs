@@ -14,7 +14,8 @@ namespace Game.Level.StateMachine.States
         private readonly IStateSwitcher _stateSwitcher;
 
 
-        public StartLevelState(IStateSwitcher stateSwitcher, ICastleHandleService castleHandleService, IWeaponHandleService weaponHandleService, EnemySpawnService enemySpawnService)
+        public StartLevelState(IStateSwitcher stateSwitcher, ICastleHandleService castleHandleService, 
+            IWeaponHandleService weaponHandleService, EnemySpawnService enemySpawnService)
         {
             _weaponHandleService = weaponHandleService;
             _castleHandleService = castleHandleService;

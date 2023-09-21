@@ -35,7 +35,9 @@ namespace Game.Level.Bootstrapping
 
         private static void RegisterEnemyService(IContainerBuilder builder)
         {
-            builder.Register<EnemyHandleService>(Lifetime.Singleton);
+            builder
+                .RegisterEntryPoint<EnemyHandleService>()
+                .AsSelf();
         }
 
         private static void RegisterEnemySpawnService(IContainerBuilder builder)
