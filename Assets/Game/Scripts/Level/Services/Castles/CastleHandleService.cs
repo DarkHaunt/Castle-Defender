@@ -5,7 +5,7 @@ using System;
 
 namespace Game.Level.Services.Castles
 {
-    public class CastleHandleService : ICastleHandleService
+    public class CastleHandleService
     {
         public event Action<HealthParamsHandler> OnCastleHealthUpdated;
         public event Action OnCastleDestroyed;

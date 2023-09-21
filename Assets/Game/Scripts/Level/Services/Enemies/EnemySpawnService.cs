@@ -3,9 +3,9 @@ using System.Collections.Generic;
 using Game.Common.Interfaces;
 using System.Collections;
 using Game.Level.Enemies;
-using Game.Extensions;
-using Game.Level.Common;
 using Game.Level.Configs;
+using Game.Level.Common;
+using Game.Extensions;
 using UnityEngine;
 
 
@@ -13,8 +13,8 @@ namespace Game.Level.Services.Enemies
 {
     public class EnemySpawnService
     {
-        private readonly EnemyHandleService _enemyHandleService;
         private readonly ICoroutineRunner _coroutineRunner;
+        private readonly IEnemyRegister _enemyRegister;
         private readonly IEnemyFactory _enemyFactory;
 
         private IEnumerable<Transform> _spawnPoints;
@@ -24,14 +24,14 @@ namespace Game.Level.Services.Enemies
         private float _waveSpawnTime;
 
 
-        public EnemySpawnService(IEnemyFactory enemyFactory, EnemyHandleService enemyHandleService, ICoroutineRunner coroutineRunner)
+        public EnemySpawnService(ICoroutineRunner coroutineRunner, IEnemyFactory enemyFactory, IEnemyRegister enemyRegister)
         {
-            _enemyHandleService = enemyHandleService;
             _coroutineRunner = coroutineRunner;
+            _enemyRegister = enemyRegister;
             _enemyFactory = enemyFactory;
         }
 
-
+        
         public void Init(LevelInitializeData levelInitializeData, LevelComponentsContainer level)
         {
             _waveSpawnTime = levelInitializeData.EnemiesWaveSpawnTime;
@@ -42,14 +42,10 @@ namespace Game.Level.Services.Enemies
         }
 
         public void Enable()
-        {
-            _spawning = _coroutineRunner.StartCoroutine(InfinityWaveSpawn());
-        }
+            => _spawning = _coroutineRunner.StartCoroutine(InfinityWaveSpawn());
 
         public void Disable()
-        {
-            _coroutineRunner.StopCoroutine(_spawning);
-        }
+            => _coroutineRunner.StopCoroutine(_spawning);
 
         private IEnumerator InfinityWaveSpawn()
         {
@@ -68,7 +64,7 @@ namespace Game.Level.Services.Enemies
                 var enemyPrefab = _enemiesPrefabs.PickRandom();
                 var enemy = _enemyFactory.CreateEnemy(enemyPrefab, spawnPoint.position);
                 
-                _enemyHandleService.RegisterEnemy(enemy);
+                _enemyRegister.RegisterEnemy(enemy);
             }
         }
     }

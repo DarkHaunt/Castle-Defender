@@ -8,7 +8,7 @@ using UnityEngine;
 
 namespace Game.Level.Services.Enemies
 {
-    public class EnemyHandleService
+    public class EnemyHandleService : IEnemyRegister
     {
         private readonly ISet<IEnemy> _enemies = new HashSet<IEnemy>();
         private readonly ICoroutineRunner _coroutineRunner;
@@ -38,9 +38,6 @@ namespace Game.Level.Services.Enemies
 
         public void RegisterEnemy(IEnemy enemy)
             => _enemies.Add(enemy);
-
-        public void UnregisterEnemy(IEnemy enemy)
-            => _enemies.Remove(enemy);
 
         private IEnumerator UpdateBehaviorOfEnemies()
         {

@@ -1,7 +1,7 @@
-﻿using Game.Common.Physics;
-using Game.Level.Services.Castles;
+﻿using Game.Level.Services.Castles;
 using Game.Level.Services.Enemies;
 using Game.Level.Services.Weapons;
+using Game.Common.Physics;
 using UnityEngine;
 
 
@@ -10,14 +10,14 @@ namespace Game.Level.StateMachine.States
     public class StartLevelState : IState
     {
         private readonly IWeaponHandleService _weaponHandleService;
-        private readonly ICastleHandleService _castleHandleService;
         private readonly LevelCollisionsService _collisionsService;
+        private readonly CastleHandleService _castleHandleService;
         private readonly EnemyHandleService _enemyHandleService;
         private readonly EnemySpawnService _enemySpawnService;
         private readonly IStateSwitcher _stateSwitcher;
 
 
-        public StartLevelState(IStateSwitcher stateSwitcher, ICastleHandleService castleHandleService, LevelCollisionsService collisionsService,
+        public StartLevelState(IStateSwitcher stateSwitcher, CastleHandleService castleHandleService, LevelCollisionsService collisionsService,
             IWeaponHandleService weaponHandleService, EnemyHandleService enemyHandleService, EnemySpawnService enemySpawnService)
         {
             _weaponHandleService = weaponHandleService;

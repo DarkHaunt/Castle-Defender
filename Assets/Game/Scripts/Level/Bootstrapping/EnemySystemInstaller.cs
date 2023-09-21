@@ -20,7 +20,7 @@ namespace Game.Level.Bootstrapping
         
         public void Install(IContainerBuilder builder)
         {
-            RegisterEnemyService(builder);
+            RegisterEnemyHandleService(builder);
             RegisterEnemyFactory(builder);
             RegisterEnemySpawnService(builder);
         }
@@ -33,14 +33,15 @@ namespace Game.Level.Bootstrapping
                 .As<IEnemyFactory>();
         }
 
-        private static void RegisterEnemyService(IContainerBuilder builder)
+        private void RegisterEnemyHandleService(IContainerBuilder builder)
         {
             builder
-                .RegisterEntryPoint<EnemyHandleService>()
+                .Register<EnemyHandleService>(Lifetime.Singleton)
+                .As<IEnemyRegister>()
                 .AsSelf();
         }
 
-        private static void RegisterEnemySpawnService(IContainerBuilder builder)
+        private void RegisterEnemySpawnService(IContainerBuilder builder)
         {
             builder.Register<EnemySpawnService>(Lifetime.Singleton);
         }

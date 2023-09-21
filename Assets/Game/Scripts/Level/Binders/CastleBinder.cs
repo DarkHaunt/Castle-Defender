@@ -14,10 +14,10 @@ namespace Game.Level.Binders
         
         public readonly ReactiveProperty<IHealthParamsProvider> HealthView = new();
 
-        private readonly ICastleHandleService _castleHandleService;
+        private readonly CastleHandleService _castleHandleService;
         
 
-        public CastleBinder(ICastleHandleService castleHandleService)
+        public CastleBinder(CastleHandleService castleHandleService)
         {
             _castleHandleService = castleHandleService;
 

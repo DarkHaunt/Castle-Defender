@@ -3,9 +3,8 @@
 
 namespace Game.Level.Services.Enemies
 {
-    public interface IEnemyService
+    public interface IEnemyRegister
     {
         void RegisterEnemy(IEnemy enemy);
-        void UnregisterEnemy(IEnemy enemy);
     }
 }
