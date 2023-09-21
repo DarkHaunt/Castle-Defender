@@ -1,19 +1,40 @@
 ﻿using System.Collections.Generic;
+using Game.Common.Interfaces;
 using Game.Level.Enemies;
+using System.Collections;
+using Game.Extensions;
 using UnityEngine;
-using VContainer.Unity;
 
 
 namespace Game.Level.Services.Enemies
 {
-    public class EnemyHandleService : IFixedTickable
+    public class EnemyHandleService
     {
         private readonly ISet<IEnemy> _enemies = new HashSet<IEnemy>();
+        private readonly ICoroutineRunner _coroutineRunner;
         private IAttackTarget _enemyTarget;
+        private Coroutine _updateBehavior;
 
 
+        public EnemyHandleService(ICoroutineRunner coroutineRunner)
+        {
+            _coroutineRunner = coroutineRunner;
+        }
+        
+        
         public void Init(IAttackTarget enemyTarget)
             => _enemyTarget = enemyTarget;
+
+        public void Enable()
+            => _updateBehavior = _coroutineRunner.StartCoroutine(UpdateBehaviorOfEnemies());
+
+        public void Disable()
+        {
+            _coroutineRunner.StopCoroutine(_updateBehavior);
+
+            foreach (var enemy in _enemies)
+                enemy.EndBehavior();
+        }
 
         public void RegisterEnemy(IEnemy enemy)
             => _enemies.Add(enemy);
@@ -21,10 +42,15 @@ namespace Game.Level.Services.Enemies
         public void UnregisterEnemy(IEnemy enemy)
             => _enemies.Remove(enemy);
 
-        public void FixedTick()
+        private IEnumerator UpdateBehaviorOfEnemies()
         {
-            foreach (var enemy in _enemies)
-                enemy.PerformBehavior(Time.fixedDeltaTime);
+            while (true)
+            {
+                yield return MonoExtensions.GetWaitForFixedUpdate();
+
+                foreach (var enemy in _enemies)
+                    enemy.PerformBehavior(Time.fixedDeltaTime);
+            }
         }
     }
 }

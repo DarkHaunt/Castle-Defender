@@ -1,4 +1,5 @@
 ﻿using Game.Common.Interfaces;
+using UnityEngine;
 
 
 namespace Game.Level.Enemies.StateMachine.States
@@ -14,27 +15,32 @@ namespace Game.Level.Enemies.StateMachine.States
 
         public AttackState(IEnemy enemy, IAttackTarget attackTarget, float cooldown)
         {
-            _enemy = enemy;
             _attackTarget = attackTarget;
             _cooldown = cooldown;
+            _enemy = enemy;
         }
 
 
         public void Enter()
-            => RefreshPassedTime();
+        {
+            Debug.Log($"<color=red>Log Entered Attack</color>");
+            RefreshPassedTime();
+        }
 
         public void Exit() {}
 
         public void Tick(float timeDelta)
         {
+            _passedTime += timeDelta;
+            
             if (_passedTime > _cooldown)
             {
                 _enemy.Attack(_attackTarget);
-                RefreshPassedTime();
+                _passedTime = 0f;
             }
         }
 
         private void RefreshPassedTime()
-            => _passedTime = 0f;
+            => _passedTime = _cooldown;
     }
 }

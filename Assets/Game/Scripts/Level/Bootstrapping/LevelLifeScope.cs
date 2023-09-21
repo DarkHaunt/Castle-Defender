@@ -1,6 +1,7 @@
 ﻿using Game.Level.Views.Castles;
 using Game.Level.Views.Weapons;
 using Game.Common.Interfaces;
+using Game.Common.Physics;
 using Game.Level.Weapons;
 using VContainer.Unity;
 using UnityEngine;
@@ -30,6 +31,7 @@ namespace Game.Level.Bootstrapping
 
         protected override void Configure(IContainerBuilder builder)
         {
+            RegisterLevelCollisionService(builder);
             RegisterCoroutineRunner(builder);
             
             new WeaponSystemInstaller(_creationPrefab, _weaponParent, _weaponSystemView)
@@ -45,11 +47,17 @@ namespace Game.Level.Bootstrapping
                 .Install(builder);
         }
 
+        private void RegisterLevelCollisionService(IContainerBuilder builder)
+        {
+            builder.Register<LevelCollisionsService>(Lifetime.Singleton);
+        }
+
         private void RegisterCoroutineRunner(IContainerBuilder builder)
         {
             builder
                 .RegisterComponent(_coroutineRunner)
                 .As<ICoroutineRunner>();
         }
+        
     }
 }

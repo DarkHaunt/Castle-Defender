@@ -45,6 +45,8 @@ namespace Game.Level.Common.Damage
             
             OnDamage?.Invoke(damage);
             UpdateHealth();
+
+            Debug.Log($"<color=white>{name} - {_healthParams.CurrentHealth}/color>");
             
             if (_healthParams.IsCurrentHealthZero())
                 OnDeath?.Invoke();

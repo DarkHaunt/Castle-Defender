@@ -2,6 +2,7 @@
 using Game.Level.Enemies.StateMachine;
 using Game.Level.Common.Damage;
 using Game.Common.Interfaces;
+using Game.Extensions;
 using UnityEngine;
 using System;
 
@@ -23,9 +24,11 @@ namespace Game.Level.Enemies
         protected Rigidbody2D _rigidbody;
         protected EnemyStateMachine _enemyStateMachine;
 
-        
+
         public abstract void Move(IAttackTarget attackTarget, float timeDelta);
+
         public abstract void Attack(IAttackTarget attackTarget);
+
         public abstract void Die(float timeDelta);
 
 
@@ -37,6 +40,9 @@ namespace Game.Level.Enemies
             _rigidbody = GetComponent<Rigidbody2D>();
             _enemyStateMachine.SwitchToState<MoveState>();
         }
+
+        public void EndBehavior()
+            => _rigidbody.Deactivate();
 
         public void PerformBehavior(float timeDelta)
             => _enemyStateMachine.UpdateCurrentStateBehavior(timeDelta);
