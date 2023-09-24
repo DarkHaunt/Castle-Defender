@@ -3,11 +3,10 @@
 
 namespace Game.Common.Physics
 {
+    using static LevelLayersProvider;
+    
     public class LevelCollisionsService
     {
-        private const int EnemiesLayer = 6;
-        
-        
         public void EnableCollisionsSettings() 
         {
             Physics2D.IgnoreLayerCollision(EnemiesLayer, EnemiesLayer, true);
