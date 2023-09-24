@@ -1,6 +1,6 @@
 namespace Game.Level.Enemies.BehaviorTree
 {
-    public enum NodeProcessState
+    public enum ProcessState
     {
         Running,
         Success,

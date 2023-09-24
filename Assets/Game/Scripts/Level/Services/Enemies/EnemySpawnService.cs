@@ -37,8 +37,6 @@ namespace Game.Level.Services.Enemies
             _waveSpawnTime = levelInitializeData.EnemiesWaveSpawnTime;
             _enemiesPrefabs = levelInitializeData.Enemies;
             _spawnPoints = level.EnemiesSpawnPoints;
-            
-            _enemyFactory.Init(level.Castle.PhysicBody);
         }
 
         public void Enable()

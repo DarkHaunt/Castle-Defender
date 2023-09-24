@@ -1,5 +1,4 @@
-﻿using Game.Level.Enemies.StateMachine.States;
-using Game.Level.Enemies.StateMachine;
+﻿using Game.Level.Enemies.BehaviorTree;
 using Game.Level.Common.Damage;
 using Game.Common.Interfaces;
 using Game.Extensions;
@@ -19,39 +18,40 @@ namespace Game.Level.Enemies
         [SerializeField] private CollideAttackTarget _attackTarget;
 
         [Header("--- State Machine ---")]
-        [SerializeField] private EnemyStateMachineData _enemyStateMachineData; 
+        [SerializeField] private EnemyBehaviorData _enemyBehaviorData; 
 
         protected Rigidbody2D _rigidbody;
-        protected EnemyStateMachine _enemyStateMachine;
+        private EnemyBehaviorTree _behaviorTree;
 
 
+        protected abstract EnemyBehaviorTree CreateBehaviorTree(EnemyBehaviorData behaviorData);
         public abstract void Move(IAttackTarget attackTarget, float timeDelta);
-
         public abstract void Attack(IAttackTarget attackTarget);
-
         public abstract void Die(float timeDelta);
 
 
-        public void Init(IAttackTarget enemyTarget)
+        public void Init()
         {
-            _enemyStateMachine = new EnemyStateMachine(this, enemyTarget, _enemyStateMachineData);
             _attackTarget.Init(_health);
-            
             _rigidbody = GetComponent<Rigidbody2D>();
-            _enemyStateMachine.SwitchToState<MoveState>();
+
+            _behaviorTree = CreateBehaviorTree(_enemyBehaviorData);
+            _behaviorTree.Construct();
         }
 
         public void EndBehavior()
             => _rigidbody.Deactivate();
 
         public void PerformBehavior(float timeDelta)
-            => _enemyStateMachine.UpdateCurrentStateBehavior(timeDelta);
+            => _behaviorTree.UpdateTreeBehavior(timeDelta);
     }
 
 
     [Serializable]
-    public struct EnemyStateMachineData
+    public class EnemyBehaviorData
     {
+        public Vector2 SearchDirection; 
         public float AttackCooldown; 
+        public float AttackRadius; 
     }
 }

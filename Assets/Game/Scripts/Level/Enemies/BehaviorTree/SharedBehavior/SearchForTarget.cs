@@ -10,7 +10,7 @@ namespace Game.Level.Enemies.BehaviorTree.SharedBehavior
 
     public class SearchForTarget : Node
     {
-        private const float RefreshCooldown = 1f;
+        private const float RefreshCooldown = 0.5f;
         private const int MaxDetectTargets = 1;
         private const float MaxDistance = 100f;
 
@@ -28,14 +28,16 @@ namespace Game.Level.Enemies.BehaviorTree.SharedBehavior
             _searchDirection = searchDirection;
             _enemyTransform = enemyTransform;
             _tree = tree;
+
+            _passedTime = RefreshCooldown;
         }
 
-        public override NodeProcessState Process(float timeStep)
+        public override ProcessState Process(float timeStep)
         {
             _passedTime += timeStep;
 
             if (_passedTime < RefreshCooldown)
-                return NodeProcessState.Failure;
+                return ProcessState.Failure;
 
             _passedTime = 0f;
 
@@ -44,19 +46,18 @@ namespace Game.Level.Enemies.BehaviorTree.SharedBehavior
                     MaxDistance, LayerMaskExtensions.GetMaskFromLayer(PlayerLayer));
 
             if (targetsCount < MaxDetectTargets)
-                _currentNodeProcessState = NodeProcessState.Failure;
-            else
+                return UpdateStateFor(ProcessState.Failure);
+
+            var transformOfTarget = _nonAllocRaycastTargets.PickRandom().transform;
+
+            if (transformOfTarget.TryGetComponent(out IAttackTarget target))
             {
-                if (_nonAllocRaycastTargets.PickRandom().transform.TryGetComponent(out IAttackTarget target))
-                {
-                    _tree.SetTarget(target);
-                    _currentNodeProcessState = NodeProcessState.Success;
-                }
-                else
-                    _currentNodeProcessState = NodeProcessState.Failure;
+                _tree.SetTarget(target);
+
+                return UpdateStateFor(ProcessState.Success);
             }
 
-            return _currentNodeProcessState;
+            return UpdateStateFor(ProcessState.Failure);
         }
     }
 }

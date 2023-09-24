@@ -11,11 +11,11 @@ namespace Game.Level.Enemies.StateMachine
         private IEnemyState _currentState;
 
 
-        public EnemyStateMachine(IEnemy enemy, IAttackTarget enemyTarget, EnemyStateMachineData enemyStateMachineData)
+        public EnemyStateMachine(IEnemy enemy, IAttackTarget enemyTarget, EnemyBehaviorData enemyBehaviorData)
         {
             _states = new Dictionary<Type, IEnemyState>()
             {
-                [typeof(AttackState)] = new AttackState(enemy, enemyTarget, enemyStateMachineData.AttackCooldown),
+                [typeof(AttackState)] = new AttackState(enemy, enemyTarget, enemyBehaviorData.AttackCooldown),
                 [typeof(MoveState)] = new MoveState(enemy, enemyTarget),
                 [typeof(DeathState)] = new DeathState(),
             };

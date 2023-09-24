@@ -14,7 +14,7 @@ namespace Game.Level.Enemies.BehaviorTree
         }
 
 
-        public override NodeProcessState Process(float timeStep)
+        public override ProcessState Process(float timeStep)
         {
             var anyChildIsRunning = false;
 
@@ -24,23 +24,21 @@ namespace Game.Level.Enemies.BehaviorTree
 
                 switch (processResult)
                 {
-                    case NodeProcessState.Running:
+                    case ProcessState.Running:
                         anyChildIsRunning = true;
                         continue;
-                    case NodeProcessState.Failure:
-                        _currentNodeProcessState = NodeProcessState.Failure;
-                        return _currentNodeProcessState;
-                    case NodeProcessState.Success:
+                    case ProcessState.Failure:
+                        return UpdateStateFor(ProcessState.Failure);
+                    case ProcessState.Success:
                         continue;
                     default:
                         throw new ArgumentOutOfRangeException(
-                            $"{nameof(NodeProcessState)} doesn't have state {processResult}!");
+                            $"{nameof(ProcessState)} doesn't have state {processResult}!");
                 }
             }
 
-            _currentNodeProcessState = anyChildIsRunning ? NodeProcessState.Running : NodeProcessState.Success;
-
-            return _currentNodeProcessState;
+            var state = anyChildIsRunning ? ProcessState.Running : ProcessState.Success;
+            return UpdateStateFor(state);
         }
     }
 }

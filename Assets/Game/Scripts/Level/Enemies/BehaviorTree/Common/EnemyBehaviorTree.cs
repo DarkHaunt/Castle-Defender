@@ -5,7 +5,7 @@
         protected Node _root;
         private IAttackTarget _target;
         
-        public abstract EnemyBehaviorTree Construct();
+        public abstract void Construct();
 
 
         public void SetTarget(IAttackTarget attackTarget)

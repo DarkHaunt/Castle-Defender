@@ -2,8 +2,14 @@
 {
     public abstract class Node
     {
-        protected NodeProcessState _currentNodeProcessState;
+        private ProcessState _currentProcessState;
 
-        public abstract NodeProcessState Process(float timeStep);
+        public abstract ProcessState Process(float timeStep);
+
+        protected ProcessState UpdateStateFor(ProcessState newProcessState)
+        {
+            _currentProcessState = newProcessState;
+            return _currentProcessState;
+        }
     }
 }

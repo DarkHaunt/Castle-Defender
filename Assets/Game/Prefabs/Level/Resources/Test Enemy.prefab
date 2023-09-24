@@ -140,8 +140,10 @@ MonoBehaviour:
   _health: 1
   _speed: 6
   _attackTarget: {fileID: -8588280449612760407}
-  _enemyStateMachineData:
-    AttackCooldown: 2
+  _enemyBehaviorData:
+    SearchDirection: {x: 1, y: 0}
+    AttackCooldown: 1
+    AttackRadius: 2
   _meleeAttackDamage: 1000
 --- !u!114 &-8588280449612760407
 MonoBehaviour:

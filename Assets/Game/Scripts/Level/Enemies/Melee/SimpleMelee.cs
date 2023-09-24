@@ -1,10 +1,14 @@
-﻿using UnityEngine;
+﻿using Game.Level.Enemies.BehaviorTree;
+using UnityEngine;
 
 
 namespace Game.Level.Enemies.Melee
 {
     public class SimpleMelee : Melee
-    { 
+    {
+        protected override EnemyBehaviorTree CreateBehaviorTree(EnemyBehaviorData behaviorData)
+            => new SimpleEnemyBehaviorTree(this, transform, behaviorData);
+
         public override void Move(IAttackTarget attackTarget, float timeDelta)
         {
             var targetDirection = (attackTarget.Position - (Vector2)transform.position).normalized;
