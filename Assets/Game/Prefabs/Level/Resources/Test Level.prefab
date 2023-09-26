@@ -168,9 +168,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   <Castle>k__BackingField: {fileID: 2974255935473950072}
   <EnemiesSpawnPoints>k__BackingField:
-  - {fileID: 3361740014319011264}
-  - {fileID: 3361740013510654824}
-  - {fileID: 3361740013689786288}
   - {fileID: 3361740013217760237}
 --- !u!1001 &4949132527660106291
 PrefabInstance:

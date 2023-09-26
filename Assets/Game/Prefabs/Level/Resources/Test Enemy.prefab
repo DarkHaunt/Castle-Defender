@@ -142,8 +142,8 @@ MonoBehaviour:
   _attackTarget: {fileID: -8588280449612760407}
   _enemyBehaviorData:
     SearchDirection: {x: 1, y: 0}
-    AttackCooldown: 1
-    AttackRadius: 2
+    AttackCooldown: 3
+    AttackRadius: 7
   _meleeAttackDamage: 1000
 --- !u!114 &-8588280449612760407
 MonoBehaviour:

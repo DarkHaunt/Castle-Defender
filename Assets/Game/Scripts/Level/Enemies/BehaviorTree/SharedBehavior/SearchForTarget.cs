@@ -1,4 +1,5 @@
 ﻿using Game.Common.Physics;
+using Game.Common.Time;
 using Game.Extensions;
 using UnityEngine;
 
@@ -18,8 +19,7 @@ namespace Game.Level.Enemies.BehaviorTree.SharedBehavior
         private readonly Transform _enemyTransform;
         private readonly Vector2 _searchDirection;
         private readonly EnemyBehaviorTree _tree;
-
-        private float _passedTime;
+        private readonly Timer _cooldownTimer;
 
 
         public SearchForTarget(EnemyBehaviorTree tree, Transform enemyTransform, Vector2 searchDirection)
@@ -29,17 +29,17 @@ namespace Game.Level.Enemies.BehaviorTree.SharedBehavior
             _enemyTransform = enemyTransform;
             _tree = tree;
 
-            _passedTime = RefreshCooldown;
+            _cooldownTimer = new Timer(RefreshCooldown);
         }
 
         public override ProcessState Process(float timeStep)
         {
-            _passedTime += timeStep;
+            _cooldownTimer.Update(timeStep);
 
-            if (_passedTime < RefreshCooldown)
+            if (_cooldownTimer.IsRunning)
                 return ProcessState.Failure;
 
-            _passedTime = 0f;
+            _cooldownTimer.Launch(RefreshCooldown);
 
             var targetsCount =
                 Physics2D.RaycastNonAlloc(_enemyTransform.position, _searchDirection, _nonAllocRaycastTargets,

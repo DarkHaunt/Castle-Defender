@@ -4,8 +4,11 @@ using UnityEngine;
 
 namespace Game.Level.Enemies.Melee
 {
-    public class SimpleMelee : Melee
+    public class SimpleMelee : Enemy
     {
+        [SerializeField] private float _meleeAttackDamage;
+        
+        
         protected override EnemyBehaviorTree CreateBehaviorTree(EnemyBehaviorData behaviorData)
             => new SimpleEnemyBehaviorTree(this, transform, behaviorData);
 
@@ -16,7 +19,10 @@ namespace Game.Level.Enemies.Melee
         }
 
         public override void Attack(IAttackTarget attackTarget)
-            => attackTarget.GetDamage(_meleeAttackDamage);
+        {
+            _rigidbody.velocity = Vector2.zero;
+            attackTarget.GetDamage(_meleeAttackDamage);
+        }
 
         public override void Die(float timeDelta)
         {

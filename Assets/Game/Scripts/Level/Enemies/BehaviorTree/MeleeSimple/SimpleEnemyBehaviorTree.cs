@@ -26,7 +26,7 @@ namespace Game.Level.Enemies.BehaviorTree
             
             var attackSequence = CreateAttackSequence();
 
-            _root = new Selector(searchForTargetNode, moveNode);
+            _root = new Selector(searchForTargetNode, attackSequence, moveNode);
         }
 
         private Sequence CreateAttackSequence()
