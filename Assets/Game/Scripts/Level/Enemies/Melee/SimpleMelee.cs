@@ -24,7 +24,7 @@ namespace Game.Level.Enemies.Melee
             attackTarget.GetDamage(_meleeAttackDamage);
         }
 
-        public override void Die(float timeDelta)
+        public override void DieLogic(float timeDelta)
         {
             throw new System.NotImplementedException();
         }

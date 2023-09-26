@@ -10,6 +10,8 @@ namespace Game.Level.Enemies
 {
     public abstract class Enemy : MonoBehaviour, IEnemy, ICoroutineRunner
     {
+        public event Action<IEnemy> OnDeath;
+        
         [Header("--- Params ---")]
         [SerializeField] private float _health;
         [SerializeField] protected float _speed;
@@ -18,7 +20,7 @@ namespace Game.Level.Enemies
         [SerializeField] private CollideAttackTarget _attackTarget;
 
         [Header("--- State Machine ---")]
-        [SerializeField] private EnemyBehaviorData _enemyBehaviorData; 
+        [SerializeField] private EnemyBehaviorData _enemyBehaviorData;
 
         protected Rigidbody2D _rigidbody;
         private EnemyBehaviorTree _behaviorTree;
@@ -27,7 +29,7 @@ namespace Game.Level.Enemies
         protected abstract EnemyBehaviorTree CreateBehaviorTree(EnemyBehaviorData behaviorData);
         public abstract void Move(IAttackTarget attackTarget, float timeDelta);
         public abstract void Attack(IAttackTarget attackTarget);
-        public abstract void Die(float timeDelta);
+        public abstract void DieLogic(float timeDelta);
 
 
         public void Init()
@@ -44,6 +46,13 @@ namespace Game.Level.Enemies
 
         public void PerformBehavior(float timeDelta)
             => _behaviorTree.UpdateTreeBehavior(timeDelta);
+
+        public void Die(float timeDelta)
+        {
+            OnDeath?.Invoke(this);
+
+            DieLogic(timeDelta);
+        }
     }
 
 

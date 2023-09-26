@@ -12,18 +12,16 @@ namespace Game.Level.StateMachine.States
         private readonly IInitializeDataProvider _initializeDataProvider;
         private readonly IWeaponPointsContainer _weaponPointsContainer;
         private readonly CastleHandleService _castleHandleService;
-        private readonly EnemyHandleService _enemyHandleService;
         private readonly EnemySpawnService _enemySpawnService;
         private readonly IStateSwitcher _stateSwitcher;
 
 
         public InitLevelState(IStateSwitcher stateSwitcher, IInitializeDataProvider initializeDataProvider, CastleHandleService castleHandleService, 
-            IWeaponPointsContainer weaponPointsContainer, EnemyHandleService enemyHandleService, EnemySpawnService enemySpawnService)
+            IWeaponPointsContainer weaponPointsContainer, EnemySpawnService enemySpawnService)
         {
             _initializeDataProvider = initializeDataProvider;
             _weaponPointsContainer = weaponPointsContainer;
             _castleHandleService = castleHandleService;
-            _enemyHandleService = enemyHandleService;
             _enemySpawnService = enemySpawnService;
             _stateSwitcher = stateSwitcher;
         }
@@ -41,7 +39,6 @@ namespace Game.Level.StateMachine.States
             _castleHandleService.Init(castle.PhysicBody, levelInitData.CastleHealth);
             _weaponPointsContainer.Init(castle.WeaponHandlePoints);
             _enemySpawnService.Init(levelInitData, level);
-            _enemyHandleService.Init(castle.PhysicBody);
 
             SwitchToLevelStart();
         }
