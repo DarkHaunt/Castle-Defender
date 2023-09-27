@@ -62,14 +62,14 @@ namespace Game.Level.Configs
             return weapons;
         }
 
-        private Enemy[] LoadEnemies(ILevelConfig levelConfig)
+        private EnemyBehaviorHandler[] LoadEnemies(ILevelConfig levelConfig)
         {
-            var enemies = new Enemy[levelConfig.EnemiesPrefabsPatches.Length];
+            var enemies = new EnemyBehaviorHandler[levelConfig.EnemiesPrefabsPatches.Length];
 
             for (int i = 0; i < enemies.Length; i++)
             {
                 var path = levelConfig.EnemiesPrefabsPatches[i];
-                enemies[i] = Resources.Load<Enemy>(path);
+                enemies[i] = Resources.Load<EnemyBehaviorHandler>(path);
             }
 
             return enemies;

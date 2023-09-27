@@ -10,7 +10,7 @@ namespace Game.Level.Services.Enemies
 {
     public class EnemyHandleService : IEnemyRegister
     {
-        private readonly ISet<IEnemy> _enemies = new HashSet<IEnemy>();
+        private readonly ISet<IEnemyBehaviorHandler> _enemies = new HashSet<IEnemyBehaviorHandler>();
         private readonly ICoroutineRunner _coroutineRunner;
         
         private Coroutine _updateBehavior;
@@ -33,18 +33,18 @@ namespace Game.Level.Services.Enemies
                 enemy.EndBehavior();
         }
 
-        public void RegisterEnemy(IEnemy enemy)
+        public void RegisterEnemy(IEnemyBehaviorHandler enemyBehaviorHandler)
         {
-            _enemies.Add(enemy);
+            _enemies.Add(enemyBehaviorHandler);
             
-            enemy.OnDeath += UnregisterEnemy;
+            enemyBehaviorHandler.OnDeath += UnregisterEnemy;
         }
 
-        private void UnregisterEnemy(IEnemy enemy)
+        private void UnregisterEnemy(IEnemyBehaviorHandler enemyBehaviorHandler)
         {
-            _enemies.Remove(enemy);
+            _enemies.Remove(enemyBehaviorHandler);
 
-            enemy.OnDeath -= UnregisterEnemy;
+            enemyBehaviorHandler.OnDeath -= UnregisterEnemy;
         }
 
         private IEnumerator UpdateBehaviorOfEnemies()

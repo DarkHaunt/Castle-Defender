@@ -4,7 +4,7 @@ using UnityEngine;
 
 namespace Game.Level.Enemies.Melee
 {
-    public class SimpleMelee : Enemy
+    public class SimpleMelee : EnemyBehaviorHandler
     {
         [SerializeField] private float _meleeAttackDamage;
         

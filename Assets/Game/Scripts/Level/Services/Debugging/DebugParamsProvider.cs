@@ -6,6 +6,6 @@ namespace Game.Level.Services.Debugging
 {
     public class DebugParamsProvider : MonoBehaviour
     {
-        [field: SerializeField] public Enemy DebugEnemyPrefab { get; private set; }
+        [field: SerializeField] public EnemyBehaviorHandler DebugEnemyBehaviorHandlerPrefab { get; private set; }
     }
 }

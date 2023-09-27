@@ -18,7 +18,7 @@ namespace Game.Level.Services.Enemies
         private readonly IEnemyFactory _enemyFactory;
 
         private IEnumerable<Transform> _spawnPoints;
-        private IEnumerable<Enemy> _enemiesPrefabs;
+        private IEnumerable<EnemyBehaviorHandler> _enemiesPrefabs;
         
         private Coroutine _spawning;
         private float _waveSpawnTime;

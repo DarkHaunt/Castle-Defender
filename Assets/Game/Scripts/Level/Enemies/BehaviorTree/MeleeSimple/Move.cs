@@ -3,12 +3,12 @@
     public class Move : Node
     {
         private readonly EnemyBehaviorTree _tree;
-        private readonly IEnemy _enemy;
+        private readonly IEnemyBehaviorHandler _enemyBehaviorHandler;
 
         
-        public Move(IEnemy enemy, EnemyBehaviorTree tree)
+        public Move(IEnemyBehaviorHandler enemyBehaviorHandler, EnemyBehaviorTree tree)
         {
-            _enemy = enemy;
+            _enemyBehaviorHandler = enemyBehaviorHandler;
             _tree = tree;
         }
         
@@ -17,7 +17,7 @@
         {
             var target = _tree.GetTarget();
             
-            _enemy.Move(target, timeStep);
+            _enemyBehaviorHandler.Move(target, timeStep);
 
             return ProcessState.Running;
         }

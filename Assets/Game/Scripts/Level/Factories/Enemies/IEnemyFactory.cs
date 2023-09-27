@@ -6,6 +6,6 @@ namespace Game.Level.Factories.Enemies
 {
     public interface IEnemyFactory
     {
-        IEnemy CreateEnemy(Enemy prefab, Vector2 position);
+        IEnemyBehaviorHandler CreateEnemy(EnemyBehaviorHandler prefab, Vector2 position);
     }
 }

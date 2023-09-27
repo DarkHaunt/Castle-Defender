@@ -9,7 +9,7 @@ namespace Game.Level.Configs
     {
         public LevelComponentsContainer Level;
         public Weapon[] AvailableWeapons;
-        public Enemy[] Enemies;
+        public EnemyBehaviorHandler[] Enemies;
 
         public float EnemiesWaveSpawnTime;
         public float CastleHealth;

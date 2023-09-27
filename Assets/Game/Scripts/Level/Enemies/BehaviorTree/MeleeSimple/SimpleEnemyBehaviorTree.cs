@@ -8,21 +8,21 @@ namespace Game.Level.Enemies.BehaviorTree
     {
         private readonly EnemyBehaviorData _enemyBehaviorData;
         private readonly Transform _enemyTransform;
-        private readonly IEnemy _enemy;
+        private readonly IEnemyBehaviorHandler _enemyBehaviorHandler;
 
 
-        public SimpleEnemyBehaviorTree(IEnemy enemy, Transform enemyTransform, EnemyBehaviorData enemyBehaviorData)
+        public SimpleEnemyBehaviorTree(IEnemyBehaviorHandler enemyBehaviorHandler, Transform enemyTransform, EnemyBehaviorData enemyBehaviorData)
         {
             _enemyBehaviorData = enemyBehaviorData;
             _enemyTransform = enemyTransform;
-            _enemy = enemy;
+            _enemyBehaviorHandler = enemyBehaviorHandler;
         }
 
 
         public override void Construct()
         {
             var searchForTargetNode = new SearchForTarget(this, _enemyTransform, _enemyBehaviorData.SearchDirection);
-            var moveNode = new Move(_enemy, this);
+            var moveNode = new Move(_enemyBehaviorHandler, this);
             
             var attackSequence = CreateAttackSequence();
 
@@ -31,7 +31,7 @@ namespace Game.Level.Enemies.BehaviorTree
 
         private Sequence CreateAttackSequence()
         {
-            var attackNode = new Attack(this, _enemy, _enemyBehaviorData.AttackCooldown);
+            var attackNode = new Attack(this, _enemyBehaviorHandler, _enemyBehaviorData.AttackCooldown);
 
             var checkForAttackRangeNode =
                 new CheckForAttackRange(this, _enemyTransform, _enemyBehaviorData.AttackRadius);

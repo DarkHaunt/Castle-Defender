@@ -8,13 +8,13 @@ namespace Game.Level.Enemies.BehaviorTree.SharedBehavior
         private readonly EnemyBehaviorTree _tree;
         private readonly Timer _cooldownTimer;
         private readonly float _cooldown;
-        private readonly IEnemy _enemy;
+        private readonly IEnemyBehaviorHandler _enemyBehaviorHandler;
 
 
-        public Attack(EnemyBehaviorTree tree, IEnemy enemy, float cooldown)
+        public Attack(EnemyBehaviorTree tree, IEnemyBehaviorHandler enemyBehaviorHandler, float cooldown)
         {
             _cooldown = cooldown;
-            _enemy = enemy;
+            _enemyBehaviorHandler = enemyBehaviorHandler;
             _tree = tree;
 
             _cooldownTimer = new Timer(cooldown);
@@ -31,7 +31,7 @@ namespace Game.Level.Enemies.BehaviorTree.SharedBehavior
             _cooldownTimer.Launch(_cooldown);
             
             var attackTarget = _tree.GetTarget();
-            _enemy.Attack(attackTarget);
+            _enemyBehaviorHandler.Attack(attackTarget);
 
             return UpdateStateFor(ProcessState.Success);
         }

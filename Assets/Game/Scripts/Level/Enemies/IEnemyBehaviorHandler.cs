@@ -5,9 +5,9 @@ using System;
 
 namespace Game.Level.Enemies
 {
-    public interface IEnemy
+    public interface IEnemyBehaviorHandler
     {
-        event Action<IEnemy> OnDeath;
+        event Action<IEnemyBehaviorHandler> OnDeath;
         
         void PerformBehavior(float timeDelta);
         void EndBehavior();

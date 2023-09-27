@@ -8,9 +8,9 @@ using System;
 
 namespace Game.Level.Enemies
 {
-    public abstract class Enemy : MonoBehaviour, IEnemy, ICoroutineRunner
+    public abstract class EnemyBehaviorHandler : MonoBehaviour, IEnemyBehaviorHandler, ICoroutineRunner
     {
-        public event Action<IEnemy> OnDeath;
+        public event Action<IEnemyBehaviorHandler> OnDeath;
         
         [Header("--- Params ---")]
         [SerializeField] private float _health;
