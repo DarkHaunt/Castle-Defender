@@ -1,7 +1,9 @@
 ﻿using Game.Level.Weapons.StateMachine.States;
 using Game.Level.Weapons.EnemiesDetect;
 using Game.Level.Weapons.StateMachine;
+using Game.Level.Enemies;
 using UnityEngine;
+using System;
 
 
 namespace Game.Level.Weapons
@@ -22,7 +24,7 @@ namespace Game.Level.Weapons
             _weaponStateMachine.SwitchToState<WeaponSearchForTarget>();
         }
 
-        public abstract void Attack();
+        public abstract void Attack(IEnemy target, Action onComplete);
         public abstract void Reload();
     }
 }
