@@ -1,17 +1,15 @@
-﻿
-
-using System;
+﻿using System;
+using UnityEngine;
 
 
 namespace Game.Level.Enemies
 {
-    public interface IEnemyBehaviorHandler
+    public interface IEnemy
     {
-        event Action<IEnemyBehaviorHandler> OnDeath;
+        event Action<IEnemy> OnDeath;
         
-        void PerformBehavior(float timeDelta);
-        void EndBehavior();
-
+        Vector2 CurrentPosition { get; }
+        
         void Move(IAttackTarget attackTarget, float timeDelta);
         void Attack(IAttackTarget attackTarget);
         void Die(float timeDelta);

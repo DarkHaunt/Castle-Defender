@@ -11,7 +11,7 @@ namespace Game.Level.Weapons.EnemiesDetect
     {
         public event Action OnEnemyDetected;
         
-        private readonly ISet<IEnemyBehaviorHandler> _detectedEnemies = new HashSet<IEnemyBehaviorHandler>();
+        private readonly ISet<IEnemy> _detectedEnemies = new HashSet<IEnemy>();
 
         private CircleCollider2D _circleCollider2D;
 
@@ -24,7 +24,7 @@ namespace Game.Level.Weapons.EnemiesDetect
 
         private void OnTriggerEnter2D(Collider2D other)
         {
-            if (other.TryGetComponent(out IEnemyBehaviorHandler enemy))
+            if (other.TryGetComponent(out IEnemy enemy))
             {
                 OnEnemyDetected?.Invoke();                
                 RegisterDetectedEnemy(enemy);
@@ -33,28 +33,28 @@ namespace Game.Level.Weapons.EnemiesDetect
 
         private void OnTriggerExit2D(Collider2D other)
         {
-            if (other.TryGetComponent(out IEnemyBehaviorHandler enemy))
+            if (other.TryGetComponent(out IEnemy enemy))
                 UnregisterDetectedEnemy(enemy);
         }
         
         public void Init(float radius)
             => _circleCollider2D.radius = radius;
 
-        public IEnumerable<IEnemyBehaviorHandler> GetDetectedEnemies()
+        public IEnumerable<IEnemy> GetDetectedEnemies()
             => _detectedEnemies;
         
-        private void RegisterDetectedEnemy(IEnemyBehaviorHandler enemyBehaviorHandler)
+        private void RegisterDetectedEnemy(IEnemy targetBehaviorHandler)
         {
-            _detectedEnemies.Add(enemyBehaviorHandler);
+            _detectedEnemies.Add(targetBehaviorHandler);
 
-            enemyBehaviorHandler.OnDeath += UnregisterDetectedEnemy;
+            targetBehaviorHandler.OnDeath += UnregisterDetectedEnemy;
         }  
         
-        private void UnregisterDetectedEnemy(IEnemyBehaviorHandler enemyBehaviorHandler)
+        private void UnregisterDetectedEnemy(IEnemy targetBehaviorHandler)
         {
-            _detectedEnemies.Remove(enemyBehaviorHandler);
+            _detectedEnemies.Remove(targetBehaviorHandler);
 
-            enemyBehaviorHandler.OnDeath -= UnregisterDetectedEnemy; 
+            targetBehaviorHandler.OnDeath -= UnregisterDetectedEnemy; 
         }
     }
 }

@@ -33,18 +33,18 @@ namespace Game.Level.Services.Enemies
                 enemy.EndBehavior();
         }
 
-        public void RegisterEnemy(IEnemyBehaviorHandler enemyBehaviorHandler)
+        public void RegisterEnemy(IEnemyBehaviorHandler enemy)
         {
-            _enemies.Add(enemyBehaviorHandler);
+            _enemies.Add(enemy);
             
-            enemyBehaviorHandler.OnDeath += UnregisterEnemy;
+            enemy.OnBehaviorHandlingEnded += UnregisterEnemy;
         }
 
-        private void UnregisterEnemy(IEnemyBehaviorHandler enemyBehaviorHandler)
+        private void UnregisterEnemy(IEnemyBehaviorHandler enemy)
         {
-            _enemies.Remove(enemyBehaviorHandler);
+            _enemies.Remove(enemy);
 
-            enemyBehaviorHandler.OnDeath -= UnregisterEnemy;
+            enemy.OnBehaviorHandlingEnded -= UnregisterEnemy;
         }
 
         private IEnumerator UpdateBehaviorOfEnemies()

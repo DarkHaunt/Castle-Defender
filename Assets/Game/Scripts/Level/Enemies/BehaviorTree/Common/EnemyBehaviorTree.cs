@@ -1,4 +1,7 @@
-﻿namespace Game.Level.Enemies.BehaviorTree
+﻿using Game.Level.Enemies.BehaviorTree.Common.Nodes;
+
+
+namespace Game.Level.Enemies.BehaviorTree.Common
 {
     public abstract class EnemyBehaviorTree
     {

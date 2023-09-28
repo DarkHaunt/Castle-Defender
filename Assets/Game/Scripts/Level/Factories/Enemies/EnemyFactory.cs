@@ -15,7 +15,7 @@ namespace Game.Level.Factories.Enemies
         }
 
         
-        public IEnemyBehaviorHandler CreateEnemy(EnemyBehaviorHandler prefab, Vector2 position)
+        public Enemy CreateEnemy(Enemy prefab, Vector2 position)
         {
             var enemy = Object.Instantiate(prefab, position, Quaternion.identity, _parentObject);
             enemy.Init();

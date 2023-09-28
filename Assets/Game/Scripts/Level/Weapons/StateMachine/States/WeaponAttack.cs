@@ -15,6 +15,7 @@ namespace Game.Level.Weapons.StateMachine.States
         
         public void Enter()
         {
+           // if(_targetHolder.TryToGetEnemyTarget(out IEne))
         }
 
         public void Exit()

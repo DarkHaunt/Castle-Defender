@@ -5,24 +5,24 @@ namespace Game.Level.Weapons.EnemiesDetect
 {
     public class WeaponTargetHolder
     {
-        private IEnemyBehaviorHandler _target;
+        private IEnemy _target;
 
 
-        public void SetEnemyTarget(IEnemyBehaviorHandler enemyBehaviorHandler)
+        public void SetEnemyTarget(IEnemy targetBehaviorHandler)
         {
-            _target = enemyBehaviorHandler;
+            _target = targetBehaviorHandler;
             
             _target.OnDeath += SetEmptyTarget;
         }
 
-        public bool TryToGetEnemyTarget(out IEnemyBehaviorHandler enemyBehaviorHandler)
+        public bool TryToGetEnemyTarget(out IEnemy targetBehaviorHandler)
         {
-            enemyBehaviorHandler = _target;
+            targetBehaviorHandler = _target;
 
-            return enemyBehaviorHandler != null;
+            return targetBehaviorHandler != null;
         }
 
-        private void SetEmptyTarget(IEnemyBehaviorHandler target)
+        private void SetEmptyTarget(IEnemy target)
         {
             target.OnDeath -= SetEmptyTarget;
             

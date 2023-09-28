@@ -6,7 +6,7 @@ using UnityEngine;
 
 namespace Game.Level.Weapons
 {
-    public class Weapon : MonoBehaviour, IWeaponBehaviorHandler
+    public abstract class Weapon : MonoBehaviour, IWeaponBehaviorHandler
     {
         [SerializeField] private EnemiesDetector _enemiesDetector;
         [SerializeField] private float _attackRadius;
@@ -22,14 +22,7 @@ namespace Game.Level.Weapons
             _weaponStateMachine.SwitchToState<WeaponSearchForTarget>();
         }
 
-        public void Attack()
-        {
-            throw new System.NotImplementedException();
-        }
-
-        public void Reload()
-        {
-            throw new System.NotImplementedException();
-        }
+        public abstract void Attack();
+        public abstract void Reload();
     }
 }

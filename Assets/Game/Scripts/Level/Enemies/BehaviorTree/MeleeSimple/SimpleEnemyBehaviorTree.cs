@@ -1,28 +1,30 @@
-﻿using Game.Level.Enemies.BehaviorTree.SharedBehavior;
+﻿using Game.Level.Enemies.BehaviorTree.Common;
+using Game.Level.Enemies.BehaviorTree.Common.Nodes;
+using Game.Level.Enemies.BehaviorTree.SharedBehavior;
 using UnityEngine;
 
 
-namespace Game.Level.Enemies.BehaviorTree
+namespace Game.Level.Enemies.BehaviorTree.MeleeSimple
 {
     public class SimpleEnemyBehaviorTree : EnemyBehaviorTree
     {
         private readonly EnemyBehaviorData _enemyBehaviorData;
         private readonly Transform _enemyTransform;
-        private readonly IEnemyBehaviorHandler _enemyBehaviorHandler;
+        private readonly IEnemy _enemy;
 
 
-        public SimpleEnemyBehaviorTree(IEnemyBehaviorHandler enemyBehaviorHandler, Transform enemyTransform, EnemyBehaviorData enemyBehaviorData)
+        public SimpleEnemyBehaviorTree(IEnemy enemy, Transform enemyTransform, EnemyBehaviorData enemyBehaviorData)
         {
             _enemyBehaviorData = enemyBehaviorData;
             _enemyTransform = enemyTransform;
-            _enemyBehaviorHandler = enemyBehaviorHandler;
+            _enemy = enemy;
         }
 
 
         public override void Construct()
         {
             var searchForTargetNode = new SearchForTarget(this, _enemyTransform, _enemyBehaviorData.SearchDirection);
-            var moveNode = new Move(_enemyBehaviorHandler, this);
+            var moveNode = new Move(_enemy, this);
             
             var attackSequence = CreateAttackSequence();
 
@@ -31,7 +33,7 @@ namespace Game.Level.Enemies.BehaviorTree
 
         private Sequence CreateAttackSequence()
         {
-            var attackNode = new Attack(this, _enemyBehaviorHandler, _enemyBehaviorData.AttackCooldown);
+            var attackNode = new Attack(this, _enemy, _enemyBehaviorData.AttackCooldown);
 
             var checkForAttackRangeNode =
                 new CheckForAttackRange(this, _enemyTransform, _enemyBehaviorData.AttackRadius);

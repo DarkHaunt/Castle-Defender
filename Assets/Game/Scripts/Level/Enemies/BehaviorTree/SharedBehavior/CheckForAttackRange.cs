@@ -1,4 +1,6 @@
-﻿using UnityEngine;
+﻿using Game.Level.Enemies.BehaviorTree.Common;
+using Game.Level.Enemies.BehaviorTree.Common.Nodes;
+using UnityEngine;
 
 
 namespace Game.Level.Enemies.BehaviorTree.SharedBehavior

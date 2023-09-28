@@ -1,7 +1,7 @@
 ﻿using System;
 
 
-namespace Game.Level.Enemies.BehaviorTree
+namespace Game.Level.Enemies.BehaviorTree.Common.Nodes
 {
     public class Sequence : Node
     {

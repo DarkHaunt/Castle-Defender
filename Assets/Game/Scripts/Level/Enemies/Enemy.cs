@@ -2,16 +2,18 @@
 using Game.Level.Common.Damage;
 using Game.Common.Interfaces;
 using Game.Extensions;
+using Game.Level.Enemies.BehaviorTree.Common;
 using UnityEngine;
 using System;
 
 
 namespace Game.Level.Enemies
 {
-    public abstract class EnemyBehaviorHandler : MonoBehaviour, IEnemyBehaviorHandler, ICoroutineRunner
+    public abstract class Enemy : MonoBehaviour, IEnemy, IEnemyBehaviorHandler, ICoroutineRunner
     {
-        public event Action<IEnemyBehaviorHandler> OnDeath;
-        
+        public event Action<IEnemyBehaviorHandler> OnBehaviorHandlingEnded;
+        public event Action<IEnemy> OnDeath;
+
         [Header("--- Params ---")]
         [SerializeField] private float _health;
         [SerializeField] protected float _speed;
@@ -24,6 +26,8 @@ namespace Game.Level.Enemies
 
         protected Rigidbody2D _rigidbody;
         private EnemyBehaviorTree _behaviorTree;
+
+        public Vector2 CurrentPosition => _rigidbody.position;
 
 
         protected abstract EnemyBehaviorTree CreateBehaviorTree(EnemyBehaviorData behaviorData);
@@ -50,7 +54,8 @@ namespace Game.Level.Enemies
         public void Die(float timeDelta)
         {
             OnDeath?.Invoke(this);
-
+            OnBehaviorHandlingEnded?.Invoke(this);
+            
             DieLogic(timeDelta);
         }
     }
@@ -59,8 +64,8 @@ namespace Game.Level.Enemies
     [Serializable]
     public class EnemyBehaviorData
     {
-        public Vector2 SearchDirection; 
-        public float AttackCooldown; 
-        public float AttackRadius; 
+        public Vector2 SearchDirection;
+        public float AttackCooldown;
+        public float AttackRadius;
     }
 }

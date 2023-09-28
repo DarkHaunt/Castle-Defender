@@ -1,14 +1,18 @@
-﻿namespace Game.Level.Enemies.BehaviorTree
+﻿using Game.Level.Enemies.BehaviorTree.Common;
+using Game.Level.Enemies.BehaviorTree.Common.Nodes;
+
+
+namespace Game.Level.Enemies.BehaviorTree.MeleeSimple
 {
     public class Move : Node
     {
         private readonly EnemyBehaviorTree _tree;
-        private readonly IEnemyBehaviorHandler _enemyBehaviorHandler;
+        private readonly IEnemy _enemy;
 
         
-        public Move(IEnemyBehaviorHandler enemyBehaviorHandler, EnemyBehaviorTree tree)
+        public Move(IEnemy enemy, EnemyBehaviorTree tree)
         {
-            _enemyBehaviorHandler = enemyBehaviorHandler;
+            _enemy = enemy;
             _tree = tree;
         }
         
@@ -17,7 +21,7 @@
         {
             var target = _tree.GetTarget();
             
-            _enemyBehaviorHandler.Move(target, timeStep);
+            _enemy.Move(target, timeStep);
 
             return ProcessState.Running;
         }

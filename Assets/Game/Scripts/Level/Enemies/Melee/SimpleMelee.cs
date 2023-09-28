@@ -1,10 +1,12 @@
 ﻿using Game.Level.Enemies.BehaviorTree;
+using Game.Level.Enemies.BehaviorTree.Common;
+using Game.Level.Enemies.BehaviorTree.MeleeSimple;
 using UnityEngine;
 
 
 namespace Game.Level.Enemies.Melee
 {
-    public class SimpleMelee : EnemyBehaviorHandler
+    public class SimpleMelee : Enemy
     {
         [SerializeField] private float _meleeAttackDamage;
         
