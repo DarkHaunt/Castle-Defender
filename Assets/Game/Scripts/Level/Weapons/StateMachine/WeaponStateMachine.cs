@@ -1,26 +1,26 @@
-﻿using Game.Level.Weapons.StateMachine.States;
-using Game.Level.StateMachine.States;
+﻿using Game.Level.StateMachine.States;
 using System.Collections.Generic;
+using Game.Level.StateMachine;
 using System;
 
 
 namespace Game.Level.Weapons.StateMachine
 {
-    public class WeaponStateMachine : IWeaponStateSwitcher
+    public class WeaponStateMachine : IStateSwitcher
     {
-        private readonly Dictionary<Type, IWeaponState> _states;
+        private readonly Dictionary<Type, IState> _states;
         private IState _currentState;
 
 
         public WeaponStateMachine()
         {
-            _states = new Dictionary<Type, IWeaponState>
+            _states = new Dictionary<Type, IState>
             {
                 
             };
         }
 
-        public void SwitchToState<TState>() where TState : IWeaponState
+        public void SwitchToState<TState>() where TState : IState
         {
             _currentState?.Exit();
 

@@ -1,33 +1,35 @@
 ﻿using Game.Level.Weapons.EnemiesDetect;
 using Game.Level.Enemies;
+using Game.Level.StateMachine;
+using Game.Level.StateMachine.States;
 
 
 namespace Game.Level.Weapons.StateMachine.States
 {
-    public class WeaponAttack : IWeaponState
+    public class WeaponAttack : IState
     {
         private readonly IWeaponBehaviorHandler _weaponBehaviorHandler;
-        private readonly IWeaponStateSwitcher _weaponStateSwitcher;
         private readonly WeaponTargetHolder _targetHolder;
+        private readonly IStateSwitcher _stateSwitcher;
 
 
-        public WeaponAttack(IWeaponStateSwitcher weaponStateSwitcher, IWeaponBehaviorHandler weaponBehaviorHandler,
+        public WeaponAttack(IStateSwitcher stateSwitcher, IWeaponBehaviorHandler weaponBehaviorHandler,
             WeaponTargetHolder targetHolder)
         {
             _weaponBehaviorHandler = weaponBehaviorHandler;
-            _weaponStateSwitcher = weaponStateSwitcher;
+            _stateSwitcher = stateSwitcher;
             _targetHolder = targetHolder;
         }
 
 
-        public void Enter()
+        public void Enter() 
         {
             if (_targetHolder.TryToGetEnemyTarget(out IEnemy enemy))
                 _weaponBehaviorHandler.Attack(enemy, SwitchToReload);
         }
 
         private void SwitchToReload()
-            => _weaponStateSwitcher.SwitchToState<WeaponReload>();
+            => _stateSwitcher.SwitchToState<WeaponReload>();
 
         public void Exit() {}
         public void Tick() {}

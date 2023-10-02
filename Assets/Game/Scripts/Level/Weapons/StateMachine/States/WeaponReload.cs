@@ -1,20 +1,41 @@
-﻿namespace Game.Level.Weapons.StateMachine.States
+﻿using Game.Level.StateMachine.States;
+using Game.Level.StateMachine;
+using Game.Common.Interfaces;
+using System.Collections;
+using Game.Extensions;
+using UnityEngine;
+
+
+namespace Game.Level.Weapons.StateMachine.States
 {
-    public class WeaponReload : IWeaponState
+    public class WeaponReload : IState
     {
-        public void Enter()
+        private readonly IStateSwitcher _weaponStateSwitcher;
+        private readonly ICoroutineRunner _coroutineRunner;
+        private readonly float _reloadTime;
+        
+        private Coroutine _currentReloading;
+
+
+        public WeaponReload(IStateSwitcher weaponStateSwitcher, ICoroutineRunner coroutineRunner, float reloadTime)
         {
-            throw new System.NotImplementedException();
+            _weaponStateSwitcher = weaponStateSwitcher;
+            _coroutineRunner = coroutineRunner;
+            _reloadTime = reloadTime;
         }
+
+
+        public void Enter()
+            => _currentReloading = _coroutineRunner.StartCoroutine(Reloading());
 
         public void Exit()
-        {
-            throw new System.NotImplementedException();
-        }
+            => _coroutineRunner.TryToStopCoroutine(_currentReloading);
 
-        public void Tick()
+        private IEnumerator Reloading()
         {
-            throw new System.NotImplementedException();
+            yield return MonoExtensions.GetWait(_reloadTime);
+
+            _weaponStateSwitcher.SwitchToState<WeaponAttack>();
         }
     }
 }
