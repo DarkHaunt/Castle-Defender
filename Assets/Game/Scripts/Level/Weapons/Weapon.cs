@@ -11,16 +11,21 @@ namespace Game.Level.Weapons
     public abstract class Weapon : MonoBehaviour, IWeaponBehaviorHandler
     {
         [SerializeField] private EnemiesDetector _enemiesDetector;
-        [SerializeField] private float _attackRadius;
+
+        [Header("--- Weapon Behavior ---")]
+        [SerializeField] protected float _damage;
+        [SerializeField] private WeaponBehaviorData _weaponBehaviorData;
 
         private WeaponStateMachine _weaponStateMachine;
         
         
         public void Init()
         {
-            _enemiesDetector.Init(_attackRadius);
+            _enemiesDetector.Init(_weaponBehaviorData.AttackRadius);
+
+            var weaponTargetHolder = new WeaponTargetHolder();
             
-            _weaponStateMachine = new WeaponStateMachine();
+            _weaponStateMachine = new WeaponStateMachine(this, weaponTargetHolder, _weaponBehaviorData, _enemiesDetector);
             _weaponStateMachine.SwitchToState<WeaponSearchForTarget>();
         }
 

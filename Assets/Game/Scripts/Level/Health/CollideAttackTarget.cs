@@ -30,11 +30,7 @@ namespace Game.Level.Common.Damage
         public void Init(float maxHealth)
         {
             _transform = GetComponent<Transform>();
-
-            _healthParams = new HealthParamsHandler
-            (
-                initHealth: maxHealth
-            );
+            _healthParams = new HealthParamsHandler(maxHealth);
 
             UpdateHealth();
         }

@@ -10,7 +10,7 @@ namespace Game.Level.Weapons.EnemiesDetect
     public class EnemiesDetector : MonoBehaviour
     {
         public event Action OnEnemyDetected;
-        
+
         private readonly ISet<IEnemy> _detectedEnemies = new HashSet<IEnemy>();
 
         private CircleCollider2D _circleCollider2D;
@@ -22,12 +22,15 @@ namespace Game.Level.Weapons.EnemiesDetect
             col.isTrigger = true;
         }
 
+        private void Awake()
+            => _circleCollider2D = GetComponent<CircleCollider2D>();
+
         private void OnTriggerEnter2D(Collider2D other)
         {
             if (other.TryGetComponent(out IEnemy enemy))
             {
-                OnEnemyDetected?.Invoke();                
                 RegisterDetectedEnemy(enemy);
+                OnEnemyDetected?.Invoke();
             }
         }
 
@@ -36,25 +39,25 @@ namespace Game.Level.Weapons.EnemiesDetect
             if (other.TryGetComponent(out IEnemy enemy))
                 UnregisterDetectedEnemy(enemy);
         }
-        
+
         public void Init(float radius)
             => _circleCollider2D.radius = radius;
 
         public IEnumerable<IEnemy> GetDetectedEnemies()
             => _detectedEnemies;
-        
+
         private void RegisterDetectedEnemy(IEnemy targetBehaviorHandler)
         {
             _detectedEnemies.Add(targetBehaviorHandler);
 
             targetBehaviorHandler.OnDeath += UnregisterDetectedEnemy;
-        }  
-        
+        }
+
         private void UnregisterDetectedEnemy(IEnemy targetBehaviorHandler)
         {
             _detectedEnemies.Remove(targetBehaviorHandler);
 
-            targetBehaviorHandler.OnDeath -= UnregisterDetectedEnemy; 
+            targetBehaviorHandler.OnDeath -= UnregisterDetectedEnemy;
         }
     }
 }

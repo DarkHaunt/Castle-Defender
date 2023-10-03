@@ -33,8 +33,6 @@ namespace Game.Level.Weapons.StateMachine.States
         public void Exit()
             => _enemiesDetector.OnEnemyDetected -= ChoseEnemyTarget;
 
-        public void Tick() {}
-
         private void ChoseEnemyTarget()
         {
             var enemy = _enemiesDetector.GetDetectedEnemies().PickRandom();

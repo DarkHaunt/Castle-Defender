@@ -132,7 +132,8 @@ GameObject:
   - component: {fileID: 1548469810435682043}
   - component: {fileID: 1548469810435682040}
   - component: {fileID: 1548469810435682041}
-  - component: {fileID: 1548469810435682046}
+  - component: {fileID: 4610221735476587297}
+  - component: {fileID: 2652502682383663191}
   m_Layer: 0
   m_Name: Weapon
   m_TagString: Untagged
@@ -197,7 +198,7 @@ SpriteRenderer:
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: 0
   m_SortingLayer: 0
-  m_SortingOrder: 1
+  m_SortingOrder: 3
   m_Sprite: {fileID: 21300000, guid: 11277a3f23988ec47908362d708edaa8, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
@@ -225,7 +226,7 @@ CircleCollider2D:
   m_Offset: {x: 0, y: 0}
   serializedVersion: 2
   m_Radius: 5
---- !u!114 &1548469810435682046
+--- !u!114 &4610221735476587297
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -234,15 +235,26 @@ MonoBehaviour:
   m_GameObject: {fileID: 1548469810435682047}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 61429f4390f34527a1ba37fe169861fa, type: 3}
+  m_Script: {fileID: 11500000, guid: a72cf83aff134523b57648b6441f85b8, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _spriteRenderer: {fileID: 1548469810435682040}
-  _attackRange: {fileID: 1548469810435682041}
-  _deleteButton: {fileID: 3655195062829456154}
-  _deleteView: {fileID: 274820849997014291}
-  _updateButton: {fileID: 943496560069030214}
-  _updateView: {fileID: 617496971262237816}
+  _enemiesDetector: {fileID: 2652502682383663191}
+  _damage: 100
+  _weaponBehaviorData:
+    <ReloadTime>k__BackingField: 2
+    <AttackRadius>k__BackingField: 10
+--- !u!114 &2652502682383663191
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1548469810435682047}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 734b6a7e2bf9411893666a0950872047, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &5423420046461273263
 GameObject:
   m_ObjectHideFlags: 0

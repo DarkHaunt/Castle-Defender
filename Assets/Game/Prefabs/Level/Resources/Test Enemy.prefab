@@ -137,8 +137,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: deb47116d45e4d519ca318f82fe759a8, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _health: 1
-  _speed: 6
+  _health: 10
+  _speed: 20
   _attackTarget: {fileID: -8588280449612760407}
   _enemyBehaviorData:
     SearchDirection: {x: 1, y: 0}

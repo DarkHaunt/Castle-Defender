@@ -13,7 +13,7 @@ namespace Game.Level.Weapons.StateMachine.States
         private readonly IStateSwitcher _weaponStateSwitcher;
         private readonly ICoroutineRunner _coroutineRunner;
         private readonly float _reloadTime;
-        
+         
         private Coroutine _currentReloading;
 
 
@@ -24,7 +24,7 @@ namespace Game.Level.Weapons.StateMachine.States
             _reloadTime = reloadTime;
         }
 
-
+        
         public void Enter()
             => _currentReloading = _coroutineRunner.StartCoroutine(Reloading());
 
@@ -35,7 +35,7 @@ namespace Game.Level.Weapons.StateMachine.States
         {
             yield return MonoExtensions.GetWait(_reloadTime);
 
-            _weaponStateSwitcher.SwitchToState<WeaponAttack>();
+            _weaponStateSwitcher.SwitchToState<WeaponSearchForTarget>();
         }
     }
 }

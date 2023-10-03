@@ -1,7 +1,7 @@
 ﻿using Game.Level.Weapons.EnemiesDetect;
-using Game.Level.Enemies;
-using Game.Level.StateMachine;
 using Game.Level.StateMachine.States;
+using Game.Level.StateMachine;
+using Game.Level.Enemies;
 
 
 namespace Game.Level.Weapons.StateMachine.States
@@ -29,9 +29,8 @@ namespace Game.Level.Weapons.StateMachine.States
         }
 
         private void SwitchToReload()
-            => _stateSwitcher.SwitchToState<WeaponReload>();
+            => _stateSwitcher.SwitchToState<WeaponReload>();        
 
         public void Exit() {}
-        public void Tick() {}
     }
 }

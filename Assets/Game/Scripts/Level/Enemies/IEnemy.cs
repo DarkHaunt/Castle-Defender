@@ -12,6 +12,7 @@ namespace Game.Level.Enemies
         
         void Move(IAttackTarget attackTarget, float timeDelta);
         void Attack(IAttackTarget attackTarget);
+        void GetDamage(float damage);
         void Die(float timeDelta);
     }
 }

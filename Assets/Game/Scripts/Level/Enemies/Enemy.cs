@@ -45,6 +45,9 @@ namespace Game.Level.Enemies
             _behaviorTree.Construct();
         }
 
+        public void GetDamage(float damage)
+            => _attackTarget.GetDamage(damage);
+
         public void EndBehavior()
             => _rigidbody.Deactivate();
 
@@ -55,7 +58,7 @@ namespace Game.Level.Enemies
         {
             OnDeath?.Invoke(this);
             OnBehaviorHandlingEnded?.Invoke(this);
-            
+
             DieLogic(timeDelta);
         }
     }

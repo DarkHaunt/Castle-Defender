@@ -1158,7 +1158,7 @@ MonoBehaviour:
   _enemyParent: {fileID: 1918156017}
   _weaponSystemView: {fileID: 813292959}
   _castleView: {fileID: 592950273}
-  _creationPrefab: {fileID: 1548469810435682046, guid: 38d8f8588170e344f8dd26420c53c93c, type: 3}
+  _creationPrefab: {fileID: 4610221735476587297, guid: 38d8f8588170e344f8dd26420c53c93c, type: 3}
 --- !u!4 &878016073
 Transform:
   m_ObjectHideFlags: 0
