@@ -12,13 +12,15 @@ namespace Game.Level.Services.Enemies
     {
         private readonly ISet<IEnemyBehaviorHandler> _enemies = new HashSet<IEnemyBehaviorHandler>();
         private readonly ICoroutineRunner _coroutineRunner;
-        
+        private readonly EnemyPoolService _poolService;
+
         private Coroutine _updateBehavior;
 
 
-        public EnemyHandleService(ICoroutineRunner coroutineRunner)
+        public EnemyHandleService(ICoroutineRunner coroutineRunner, EnemyPoolService poolService)
         {
             _coroutineRunner = coroutineRunner;
+            _poolService = poolService;
         }
         
         

@@ -21,6 +21,6 @@ namespace Game.Level.Factories.Enemies
             enemy.Init();
             
             return enemy;
-        }
+        } 
     }
 }

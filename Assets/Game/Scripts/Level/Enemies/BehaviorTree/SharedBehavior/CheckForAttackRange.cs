@@ -9,10 +9,10 @@ namespace Game.Level.Enemies.BehaviorTree.SharedBehavior
     {
         private readonly EnemyBehaviorTree _tree;
         private readonly float _attackRange;
-        private readonly Transform _enemy;
+        private readonly IEnemy _enemy;
 
 
-        public CheckForAttackRange(EnemyBehaviorTree tree, Transform enemy, float attackRange)
+        public CheckForAttackRange(EnemyBehaviorTree tree, IEnemy enemy, float attackRange)
         {
             _attackRange = attackRange;
             _enemy = enemy;
@@ -31,6 +31,6 @@ namespace Game.Level.Enemies.BehaviorTree.SharedBehavior
         }
 
         private bool IsOnAttackDistance(IAttackTarget target)
-            => Vector2.Distance(target.Position, _enemy.position) < _attackRange;
+            => Vector2.Distance(target.Position, _enemy.CurrentPosition) < _attackRange;
     }
 }

@@ -1,6 +1,5 @@
-﻿using Game.Level.Enemies.BehaviorTree;
+﻿using Game.Level.Enemies.BehaviorTree.MeleeSimple;
 using Game.Level.Enemies.BehaviorTree.Common;
-using Game.Level.Enemies.BehaviorTree.MeleeSimple;
 using UnityEngine;
 
 
@@ -12,7 +11,7 @@ namespace Game.Level.Enemies.Melee
         
         
         protected override EnemyBehaviorTree CreateBehaviorTree(EnemyBehaviorData behaviorData)
-            => new SimpleEnemyBehaviorTree(this, transform, behaviorData);
+            => new SimpleEnemyBehaviorTree(this, behaviorData);
 
         public override void Move(IAttackTarget attackTarget, float timeDelta)
         {
@@ -26,7 +25,7 @@ namespace Game.Level.Enemies.Melee
             attackTarget.GetDamage(_meleeAttackDamage);
         }
 
-        public override void DieLogic(float timeDelta)
+        protected override void DieLogic(float timeDelta)
         {
             throw new System.NotImplementedException();
         }

@@ -18,17 +18,17 @@ namespace Game.Level.Enemies.BehaviorTree.SharedBehavior
         private const float MaxDistance = 100f;
 
         private readonly RaycastHit2D[] _nonAllocRaycastTargets;
-        private readonly Transform _enemyTransform;
         private readonly Vector2 _searchDirection;
         private readonly EnemyBehaviorTree _tree;
         private readonly Timer _cooldownTimer;
+        private readonly IEnemy _enemy;
 
 
-        public SearchForTarget(EnemyBehaviorTree tree, Transform enemyTransform, Vector2 searchDirection)
+        public SearchForTarget(EnemyBehaviorTree tree, IEnemy enemy, Vector2 searchDirection)
         {
             _nonAllocRaycastTargets = new RaycastHit2D[MaxDetectTargets];
             _searchDirection = searchDirection;
-            _enemyTransform = enemyTransform;
+            _enemy = enemy;
             _tree = tree;
 
             _cooldownTimer = new Timer(RefreshCooldown);
@@ -44,7 +44,7 @@ namespace Game.Level.Enemies.BehaviorTree.SharedBehavior
             _cooldownTimer.Launch(RefreshCooldown);
 
             var targetsCount =
-                Physics2D.RaycastNonAlloc(_enemyTransform.position, _searchDirection, _nonAllocRaycastTargets,
+                Physics2D.RaycastNonAlloc(_enemy.CurrentPosition, _searchDirection, _nonAllocRaycastTargets,
                     MaxDistance, LayerMaskExtensions.GetMaskFromLayer(PlayerLayer));
 
             if (targetsCount < MaxDetectTargets)

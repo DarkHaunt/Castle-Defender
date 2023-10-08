@@ -1,8 +1,7 @@
-﻿using Game.Level.Enemies.BehaviorTree;
+﻿using Game.Level.Enemies.BehaviorTree.Common;
 using Game.Level.Common.Damage;
 using Game.Common.Interfaces;
 using Game.Extensions;
-using Game.Level.Enemies.BehaviorTree.Common;
 using UnityEngine;
 using System;
 
@@ -11,10 +10,11 @@ namespace Game.Level.Enemies
 {
     public abstract class Enemy : MonoBehaviour, IEnemy, IEnemyBehaviorHandler, ICoroutineRunner
     {
-        public event Action<IEnemyBehaviorHandler> OnBehaviorHandlingEnded;
+        public event Action<Enemy> OnBehaviorHandlingEnded;
         public event Action<IEnemy> OnDeath;
 
         [Header("--- Params ---")]
+        [SerializeField] private int _id;
         [SerializeField] private float _health;
         [SerializeField] protected float _speed;
 
@@ -28,12 +28,12 @@ namespace Game.Level.Enemies
         private EnemyBehaviorTree _behaviorTree;
 
         public Vector2 CurrentPosition => _rigidbody.position;
-
+        public int Id => _id;
 
         protected abstract EnemyBehaviorTree CreateBehaviorTree(EnemyBehaviorData behaviorData);
         public abstract void Move(IAttackTarget attackTarget, float timeDelta);
         public abstract void Attack(IAttackTarget attackTarget);
-        public abstract void DieLogic(float timeDelta);
+        protected abstract void DieLogic(float timeDelta);
 
 
         public void Init()

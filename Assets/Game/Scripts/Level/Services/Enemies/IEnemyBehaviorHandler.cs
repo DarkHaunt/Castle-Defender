@@ -5,7 +5,7 @@ namespace Game.Level.Enemies
 {
     public interface IEnemyBehaviorHandler
     {
-        event Action<IEnemyBehaviorHandler> OnBehaviorHandlingEnded;
+        event Action<Enemy> OnBehaviorHandlingEnded;
         
         void PerformBehavior(float timeDelta);
         void EndBehavior();
