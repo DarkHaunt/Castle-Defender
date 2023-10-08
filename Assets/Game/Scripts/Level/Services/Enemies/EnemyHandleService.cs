@@ -40,6 +40,7 @@ namespace Game.Level.Services.Enemies
             _enemies.Add(enemy);
             
             enemy.OnBehaviorHandlingEnded += UnregisterEnemy;
+            enemy.OnBehaviorHandlingEnded += _poolService.PushEnemyInPool;
         }
 
         private void UnregisterEnemy(IEnemyBehaviorHandler enemy)
@@ -47,6 +48,7 @@ namespace Game.Level.Services.Enemies
             _enemies.Remove(enemy);
 
             enemy.OnBehaviorHandlingEnded -= UnregisterEnemy;
+            enemy.OnBehaviorHandlingEnded -= _poolService.PushEnemyInPool;
         }
 
         private IEnumerator UpdateBehaviorOfEnemies()

@@ -14,6 +14,7 @@ namespace Game.Level.Bootstrapping
     {
         [Header("--- Main ---")]
         [SerializeField] private LevelBootstrapper _bootstrapper;
+        [SerializeField] private CoroutineRunner _coroutineRunner;
 
         [Header("--- Parent Objects---")]
         [SerializeField] private Transform _weaponParent;
@@ -31,6 +32,7 @@ namespace Game.Level.Bootstrapping
         protected override void Configure(IContainerBuilder builder)
         {
             RegisterLevelCollisionService(builder);
+            RegisterCoroutineRunner(builder);
             
             new WeaponSystemInstaller(_creationPrefab, _weaponParent, _weaponSystemView)
                 .Install(builder);
@@ -43,6 +45,14 @@ namespace Game.Level.Bootstrapping
 
             new LevelSystemInstaller(_bootstrapper, _levelParent)
                 .Install(builder);
+        }
+
+        private void RegisterCoroutineRunner(IContainerBuilder builder)
+        {
+            builder
+                .RegisterComponentInNewPrefab(_coroutineRunner, Lifetime.Scoped)
+                .UnderTransform(_levelParent)
+                .As<ICoroutineRunner>();
         }
 
         private void RegisterLevelCollisionService(IContainerBuilder builder)
