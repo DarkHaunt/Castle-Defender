@@ -21,12 +21,10 @@ namespace Game.Level.Services.Enemies
         }
         
     
-        public void InitPools(IEnumerable<Enemy> prefabs)
+        public void Init(IEnumerable<Enemy> prefabs)
         {
             foreach (var enemyPrefab in prefabs)
             {
-                AssertPoolHaveAnId(enemyPrefab.Id);
-
                 var pool = new PoolMono<Enemy>(enemyPrefab, InitPoolSize, _parentObject, true);
                 
                 _enemyPools.Add(enemyPrefab.Id, pool);
@@ -45,8 +43,8 @@ namespace Game.Level.Services.Enemies
 
         private void AssertPoolHaveAnId(int id)
         {
-            if (_enemyPools.ContainsKey(id))
-                throw new ArgumentException();
+            if (!_enemyPools.ContainsKey(id))
+                throw new ArgumentException($"Pool Service doesn't have a key of enemy id: {id}");
         }
     }
 }

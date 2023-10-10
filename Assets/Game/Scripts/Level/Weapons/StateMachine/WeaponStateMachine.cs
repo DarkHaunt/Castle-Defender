@@ -4,7 +4,6 @@ using Game.Level.StateMachine.States;
 using System.Collections.Generic;
 using Game.Level.StateMachine;
 using System;
-using UnityEngine;
 
 
 namespace Game.Level.Weapons.StateMachine
@@ -29,11 +28,8 @@ namespace Game.Level.Weapons.StateMachine
         public void SwitchToState<TState>() where TState : IState
         {
             _currentState?.Exit();
-            Debug.Log($"<color=white>Exit - {_currentState}</color>");
 
             _currentState = _states[typeof(TState)];
-
-            Debug.Log($"<color=white>Enter - {_currentState}</color>");
 
             _currentState!.Enter();
         }

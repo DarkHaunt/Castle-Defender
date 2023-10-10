@@ -1,5 +1,6 @@
-﻿using Game.Level.Enemies.BehaviorTree.MeleeSimple;
-using Game.Level.Enemies.BehaviorTree.Common;
+﻿using Game.Level.Enemies.BehaviorTree.Common;
+using Game.Level.Enemies.Melee.Behavior;
+using System.Threading.Tasks;
 using UnityEngine;
 
 
@@ -8,8 +9,8 @@ namespace Game.Level.Enemies.Melee
     public class SimpleMelee : Enemy
     {
         [SerializeField] private float _meleeAttackDamage;
-        
-        
+
+
         protected override EnemyBehaviorTree CreateBehaviorTree(EnemyBehaviorData behaviorData)
             => new SimpleEnemyBehaviorTree(this, behaviorData);
 
@@ -25,9 +26,11 @@ namespace Game.Level.Enemies.Melee
             attackTarget.GetDamage(_meleeAttackDamage);
         }
 
-        protected override void DieLogic(float timeDelta)
+        protected override Task DieLogic()
         {
-            throw new System.NotImplementedException();
+            gameObject.SetActive(false);
+
+            return Task.CompletedTask;
         }
     }
 }

@@ -4,6 +4,7 @@ using Game.Common.Interfaces;
 using Game.Extensions;
 using UnityEngine;
 using System;
+using System.Threading.Tasks;
 
 
 namespace Game.Level.Enemies
@@ -33,16 +34,25 @@ namespace Game.Level.Enemies
         protected abstract EnemyBehaviorTree CreateBehaviorTree(EnemyBehaviorData behaviorData);
         public abstract void Move(IAttackTarget attackTarget, float timeDelta);
         public abstract void Attack(IAttackTarget attackTarget);
-        protected abstract void DieLogic(float timeDelta);
+        protected abstract Task DieLogic();
 
+
+        private void Awake()
+            => _rigidbody = GetComponent<Rigidbody2D>();
+
+        private void OnEnable()
+            => _attackTarget.OnDeath += Die;
+
+        private void OnDisable()
+            => _attackTarget.OnDeath -= Die;
 
         public void Init()
         {
-            _attackTarget.Init(_health);
-            _rigidbody = GetComponent<Rigidbody2D>();
-
             _behaviorTree = CreateBehaviorTree(_enemyBehaviorData);
             _behaviorTree.Construct();
+            
+            _attackTarget.Init(_health);
+            _attackTarget.Enable();
         }
 
         public void GetDamage(float damage)
@@ -54,12 +64,16 @@ namespace Game.Level.Enemies
         public void PerformBehavior(float timeDelta)
             => _behaviorTree.UpdateTreeBehavior(timeDelta);
 
-        public void Die(float timeDelta)
+        public async void Die()
         {
             OnDeath?.Invoke(this);
             OnBehaviorHandlingEnded?.Invoke(this);
 
-            DieLogic(timeDelta);
+            _attackTarget.Disable();
+
+            await DieLogic();
+            
+            Debug.Log($"<color=red>DEAHTH</color>");
         }
     }
 

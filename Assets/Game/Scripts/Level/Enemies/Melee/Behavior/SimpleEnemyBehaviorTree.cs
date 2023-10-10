@@ -3,7 +3,7 @@ using Game.Level.Enemies.BehaviorTree.Common.Nodes;
 using Game.Level.Enemies.BehaviorTree.Common;
 
 
-namespace Game.Level.Enemies.BehaviorTree.MeleeSimple
+namespace Game.Level.Enemies.Melee.Behavior
 {
     public class SimpleEnemyBehaviorTree : EnemyBehaviorTree
     {
