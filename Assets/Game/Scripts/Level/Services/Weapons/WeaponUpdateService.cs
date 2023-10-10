@@ -14,6 +14,18 @@ namespace Game.Level.Services.Weapons
             _weaponPointsContainer = weaponPointsContainer;
         }
         
+
+        public void Enable() 
+        {
+            foreach (var occupiedPoint in _weaponPointsContainer.OccupiedPoints)
+                occupiedPoint.Enable();
+        }
+				
+        public void Disable() 
+        {
+            foreach (var occupiedPoint in _weaponPointsContainer.OccupiedPoints)
+                occupiedPoint.Disable();
+        }
         
         public void StartHandleUpdate()
         {

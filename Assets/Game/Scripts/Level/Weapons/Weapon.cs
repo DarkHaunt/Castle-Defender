@@ -24,10 +24,17 @@ namespace Game.Level.Weapons
             _enemiesDetector.Init(_weaponBehaviorData.AttackRadius);
 
             var weaponTargetHolder = new WeaponTargetHolder();
-            
             _weaponStateMachine = new WeaponStateMachine(this, weaponTargetHolder, _weaponBehaviorData, _enemiesDetector);
+        }
+
+        public void Enable()
+        {
+            _enemiesDetector.Enable();
             _weaponStateMachine.SwitchToState<WeaponSearchForTarget>();
         }
+				
+        public void Disable() 
+            => _enemiesDetector.Disable();
 
         public abstract void Attack(IEnemy target, Action onComplete);
         public abstract void Reload();

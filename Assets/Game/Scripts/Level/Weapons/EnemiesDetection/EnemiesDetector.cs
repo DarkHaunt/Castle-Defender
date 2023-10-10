@@ -43,6 +43,12 @@ namespace Game.Level.Weapons.EnemiesDetect
         public void Init(float radius)
             => _circleCollider2D.radius = radius;
 
+        public void Enable()
+            => _circleCollider2D.enabled = true;
+				
+        public void Disable() 
+            => _circleCollider2D.enabled = false;
+
         public IEnumerable<IEnemy> GetDetectedEnemies()
             => _detectedEnemies;
 

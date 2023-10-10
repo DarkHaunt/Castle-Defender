@@ -35,6 +35,12 @@ namespace Game.Level.Weapons.HandlePoints
         public void DeleteWeapon()
             => Destroy(_handledWeapon.gameObject);
         
+        public void Enable()
+            => _handledWeapon.Enable();
+
+        public void Disable()
+            => _handledWeapon.Disable();
+
         public void EnableCreateView()
         {
             _createWeaponButton.onClick.AddListener(OnCreateButtonClick);
