@@ -39,7 +39,7 @@ namespace Game.Level.StateMachine.States
             var castle = level.Castle;
             
             _castleHandleService.Init(castle.PhysicBody, levelInitData.CastleHealth);
-            _weaponPointsContainer.Init(castle.WeaponHandlePoints);
+            //_weaponPointsContainer.Init(castle.WeaponHandlePoints);
             _enemySpawnService.Init(levelInitData, level);
             _enemyPoolService.Init(levelInitData.Enemies);
 

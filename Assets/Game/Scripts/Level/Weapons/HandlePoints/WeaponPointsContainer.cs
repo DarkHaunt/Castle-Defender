@@ -1,31 +1,32 @@
-﻿using System.Collections.Generic;
+﻿using Game.Level.Weapons.HandlePoints.MVP;
+using System.Collections.Generic;
 
 
 namespace Game.Level.Weapons.HandlePoints
 {
     public class WeaponPointsContainer : IWeaponPointsContainer
     {
-        private ISet<WeaponHandlePoint> _occupiedPoints;
-        private ISet<WeaponHandlePoint> _emptyPoints;
+        private ISet<WeaponPointPresenter> _occupiedPoints;
+        private ISet<WeaponPointPresenter> _emptyPoints;
 
         
-        public IEnumerable<WeaponHandlePoint> OccupiedPoints => _occupiedPoints;
-        public IEnumerable<WeaponHandlePoint> EmptyPoints => _emptyPoints;
+        public IEnumerable<WeaponPointPresenter> OccupiedPoints => _occupiedPoints;
+        public IEnumerable<WeaponPointPresenter> EmptyPoints => _emptyPoints;
 
         
-        public void Init(List<WeaponHandlePoint> weaponHandlePoints)
+        public void Init(List<WeaponPointPresenter> weaponHandlePoints)
         {
-            _occupiedPoints = new HashSet<WeaponHandlePoint>(weaponHandlePoints.Capacity);
-            _emptyPoints = new HashSet<WeaponHandlePoint>(weaponHandlePoints);
+            _occupiedPoints = new HashSet<WeaponPointPresenter>(weaponHandlePoints.Capacity);
+            _emptyPoints = new HashSet<WeaponPointPresenter>(weaponHandlePoints);
         }
         
-        public void RegisterPointAsOccupied(WeaponHandlePoint weaponHandlePoint)
+        public void RegisterPointAsOccupied(WeaponPointPresenter weaponHandlePoint)
         {
             _occupiedPoints.Add(weaponHandlePoint);
             _emptyPoints.Remove(weaponHandlePoint);
         }
 
-        public void UnregisterPointAsOccupied(WeaponHandlePoint weaponHandlePoint)
+        public void UnregisterPointAsOccupied(WeaponPointPresenter weaponHandlePoint)
         {
             _occupiedPoints.Remove(weaponHandlePoint);
             _emptyPoints.Add(weaponHandlePoint);

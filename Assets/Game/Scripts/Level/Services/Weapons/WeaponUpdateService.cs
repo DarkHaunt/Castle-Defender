@@ -15,45 +15,33 @@ namespace Game.Level.Services.Weapons
         }
         
 
-        public void Enable() 
-        {
-            foreach (var occupiedPoint in _weaponPointsContainer.OccupiedPoints)
-                occupiedPoint.Enable();
-        }
-				
-        public void Disable() 
-        {
-            foreach (var occupiedPoint in _weaponPointsContainer.OccupiedPoints)
-                occupiedPoint.Disable();
-        }
-        
         public void StartHandleUpdate()
         {
             foreach (var occupiedPoint in _weaponPointsContainer.OccupiedPoints)
-                EnableUpdateFor(occupiedPoint);
+                occupiedPoint.EnableUpdateView(true);
         }
 				
         public void EndHandleUpdate() 
         {
             foreach (var occupiedPoint in _weaponPointsContainer.OccupiedPoints)
-                DisableUpdateFor(occupiedPoint);
+                occupiedPoint.EnableUpdateView(false);
         }
         
-        private void UpdateWeaponAt(WeaponHandlePoint weaponHandlePoint)
+        private void UpdateWeaponAt(WeaponPointView weaponHandlePoint)
         {
             Debug.Log($"<color=yellow>Update kinda</color>");
         }
 
-        private void EnableUpdateFor(WeaponHandlePoint occupiedPoint)
+        private void EnableUpdateFor(WeaponPointView occupiedPoint)
         {
-            occupiedPoint.OnUpdateButtonPressed += UpdateWeaponAt;
-            occupiedPoint.EnableUpdateView();
+            /*occupiedPoint.OnUpdateButtonPressed += UpdateWeaponAt;
+            occupiedPoint.EnableUpdateView();*/
         }
 
-        private void DisableUpdateFor(WeaponHandlePoint occupiedPoint)
+        private void DisableUpdateFor(WeaponPointView occupiedPoint)
         {
-            occupiedPoint.OnUpdateButtonPressed -= UpdateWeaponAt;
-            occupiedPoint.DisableUpdateView();
+            /*occupiedPoint.OnUpdateButtonPressed -= UpdateWeaponAt;
+            occupiedPoint.DisableUpdateView();*/
         }
     }
 }

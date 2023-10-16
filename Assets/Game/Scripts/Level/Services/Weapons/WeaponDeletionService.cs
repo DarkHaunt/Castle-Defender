@@ -19,33 +19,33 @@ namespace Game.Level.Services.Weapons
         public void StartHandleDelete()
         {
             foreach (var occupiedPoint in _weaponPointsContainer.OccupiedPoints)
-                EnableDeletionFor(occupiedPoint);
+                occupiedPoint.EnableDeleteView(true);
         }
 				
         public void EndHandleDelete() 
         {
             foreach (var occupiedPoint in _weaponPointsContainer.OccupiedPoints)
-                DisableDeletionFor(occupiedPoint);
+                occupiedPoint.EnableDeleteView(false);
         }
         
-        private void DeleteWeaponAt(WeaponHandlePoint weaponHandlePoint)
+        private void DeleteWeaponAt(WeaponPointView weaponHandlePoint)
         {
-            _weaponPointsContainer.UnregisterPointAsOccupied(weaponHandlePoint);
+            /*_weaponPointsContainer.UnregisterPointAsOccupied(weaponHandlePoint);
             weaponHandlePoint.DeleteWeapon();
 
-            DisableDeletionFor(weaponHandlePoint);
+            DisableDeletionFor(weaponHandlePoint);*/
         }
 
-        private void EnableDeletionFor(WeaponHandlePoint occupiedPoint)
+        private void EnableDeletionFor(WeaponPointView occupiedPoint)
         {
-            occupiedPoint.OnDeleteButtonPressed += DeleteWeaponAt;
-            occupiedPoint.EnableDeleteView();
+            /*occupiedPoint.OnDeleteButtonPressed += DeleteWeaponAt;
+            occupiedPoint.EnableDeleteView();*/
         }
 
-        private void DisableDeletionFor(WeaponHandlePoint occupiedPoint)
+        private void DisableDeletionFor(WeaponPointView occupiedPoint)
         {
-            occupiedPoint.OnDeleteButtonPressed -= DeleteWeaponAt;
-            occupiedPoint.DisableDeleteView();
+            /*occupiedPoint.OnDeleteButtonPressed -= DeleteWeaponAt;
+            occupiedPoint.DisableDeleteView();*/
         }
     }
 }

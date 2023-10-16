@@ -25,13 +25,11 @@ namespace Game.Level.Services.Weapons
         public void Enable()
         {
             OnEnabled?.Invoke();
-            _weaponUpdateService.Enable();
         }
 
         public void Disable()
         {
             OnDisabled?.Invoke();
-            _weaponUpdateService.Disable();
         }
         
         public void StartHandleCreate()

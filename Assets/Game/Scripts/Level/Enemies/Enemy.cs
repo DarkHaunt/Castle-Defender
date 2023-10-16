@@ -1,10 +1,10 @@
 ﻿using Game.Level.Enemies.BehaviorTree.Common;
 using Game.Level.Common.Damage;
+using System.Threading.Tasks;
 using Game.Common.Interfaces;
 using Game.Extensions;
 using UnityEngine;
 using System;
-using System.Threading.Tasks;
 
 
 namespace Game.Level.Enemies
@@ -64,14 +64,15 @@ namespace Game.Level.Enemies
         public void PerformBehavior(float timeDelta)
             => _behaviorTree.UpdateTreeBehavior(timeDelta);
 
-        public async void Die()
+        private async void Die()
         {
             OnDeath?.Invoke(this);
-            OnBehaviorHandlingEnded?.Invoke(this);
 
             _attackTarget.Disable();
 
             await DieLogic();
+            
+            OnBehaviorHandlingEnded?.Invoke(this);
             
             Debug.Log($"<color=red>DEAHTH</color>");
         }

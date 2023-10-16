@@ -1,6 +1,7 @@
 ﻿using Game.Level.Weapons.HandlePoints;
 using Game.Level.Factories.Weapons;
 using Game.Level.Weapons;
+using Game.Level.Weapons.HandlePoints.MVP;
 
 
 namespace Game.Level.Services.Weapons
@@ -32,7 +33,7 @@ namespace Game.Level.Services.Weapons
                 DisableCreationFor(weaponPlacePoint);
         }
 
-        private void CreateWeapon(WeaponHandlePoint weaponHandlePoint)
+        private void CreateWeapon(WeaponPointPresenter weaponHandlePoint)
         {
             var newWeapon = _weaponFactory.CreateWeapon(_prefab, weaponHandlePoint.Position);
             
@@ -42,16 +43,16 @@ namespace Game.Level.Services.Weapons
             DisableCreationFor(weaponHandlePoint);
         }
 
-        private void EnableCreationFor(WeaponHandlePoint weaponPlacePoint)
+        private void EnableCreationFor(WeaponPointPresenter weaponPlacePoint)
         {
-            weaponPlacePoint.OnCreateButtonPressed += CreateWeapon;
-            weaponPlacePoint.EnableCreateView();
+            weaponPlacePoint.OnCreateWeapon += CreateWeapon;
+            weaponPlacePoint.EnableCreateView(true);
         }
 
-        private void DisableCreationFor(WeaponHandlePoint weaponPlacePoint)
+        private void DisableCreationFor(WeaponPointPresenter weaponPlacePoint)
         {
-            weaponPlacePoint.OnCreateButtonPressed -= CreateWeapon;
-            weaponPlacePoint.DisableCreateView();
+            weaponPlacePoint.OnCreateWeapon -= CreateWeapon;
+            weaponPlacePoint.EnableCreateView(false);
         }
     }
 }
