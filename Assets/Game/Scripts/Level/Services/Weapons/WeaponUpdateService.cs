@@ -1,5 +1,5 @@
-﻿using Game.Level.Weapons.HandlePoints;
-using UnityEngine;
+﻿using Game.Level.Weapons.HandlePoints.MVP;
+using Game.Level.Weapons.HandlePoints;
 
 
 namespace Game.Level.Services.Weapons
@@ -18,30 +18,24 @@ namespace Game.Level.Services.Weapons
         public void StartHandleUpdate()
         {
             foreach (var occupiedPoint in _weaponPointsContainer.OccupiedPoints)
-                occupiedPoint.EnableUpdateView(true);
+            {
+                occupiedPoint.EnableUpdate(true);
+                occupiedPoint.OnSelected += UpdateWeapon;
+            }
         }
 				
         public void EndHandleUpdate() 
         {
             foreach (var occupiedPoint in _weaponPointsContainer.OccupiedPoints)
-                occupiedPoint.EnableUpdateView(false);
+            {
+                occupiedPoint.EnableUpdate(false);
+                occupiedPoint.OnSelected -= UpdateWeapon;
+            }
         }
         
-        private void UpdateWeaponAt(WeaponPointView weaponHandlePoint)
+        private void UpdateWeapon(WeaponPointModel weaponPointModel)
         {
-            Debug.Log($"<color=yellow>Update kinda</color>");
-        }
-
-        private void EnableUpdateFor(WeaponPointView occupiedPoint)
-        {
-            /*occupiedPoint.OnUpdateButtonPressed += UpdateWeaponAt;
-            occupiedPoint.EnableUpdateView();*/
-        }
-
-        private void DisableUpdateFor(WeaponPointView occupiedPoint)
-        {
-            /*occupiedPoint.OnUpdateButtonPressed -= UpdateWeaponAt;
-            occupiedPoint.DisableUpdateView();*/
+            weaponPointModel.UpdateWeapon();
         }
     }
 }

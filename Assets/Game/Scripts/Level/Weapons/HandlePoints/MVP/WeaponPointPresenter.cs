@@ -1,65 +1,31 @@
-﻿using System;
-using UnityEngine;
-
+﻿
 
 namespace Game.Level.Weapons.HandlePoints.MVP
 {
     public class WeaponPointPresenter
     {
-        public event Action<WeaponPointPresenter> OnCreateWeapon;
-        public event Action<WeaponPointPresenter> OnUpdateWeapon;
-        public event Action<WeaponPointPresenter> OnDeleteWeapon;
-        
         private readonly WeaponPointModel _weaponPointModel;
         private readonly WeaponPointView _weaponPointView;
-
         
         public WeaponPointPresenter(WeaponPointModel weaponPointModel, WeaponPointView weaponPointView)
         {
             _weaponPointModel = weaponPointModel;
             _weaponPointView = weaponPointView;
 
-            _weaponPointView.OnUpdateButtonPressed += NotifyUpdateButtonPressed;
-            _weaponPointView.OnCreateButtonPressed += NotifyCreateButtonPressed;
-            _weaponPointView.OnDeleteButtonPressed += NotifyDeleteButtonPressed;
+            _weaponPointView.OnUpdateButtonPressed += _weaponPointModel.NotifySelected;
+            _weaponPointView.OnCreateButtonPressed += _weaponPointModel.NotifySelected;
+            _weaponPointView.OnDeleteButtonPressed += _weaponPointModel.NotifySelected;
+
+            _weaponPointModel.OnRegisterEnabled += CreateViewEnable;
+            _weaponPointModel.OnDeleteEnabled += DeleteViewEnable;
+            _weaponPointModel.OnUpdateEnabled += UpdateViewEnable;
         }
 
-        public Vector2 Position
-            => _weaponPointModel.Position;
-        
-        
-        public void EnableCreateView(bool enable)
-            => _weaponPointView.EnableCreateView(enable);    
-        public void EnableDeleteView(bool enable)
+        private void CreateViewEnable(bool enable)
+            => _weaponPointView.EnableCreateView(enable);
+        private void DeleteViewEnable(bool enable)
             => _weaponPointView.EnableDeleteView(enable);   
-        public void EnableUpdateView(bool enable)
+        private void UpdateViewEnable(bool enable)
             => _weaponPointView.EnableUpdateView(enable);
-
-
-        public void RegisterWeapon(Weapon weapon)
-        {
-            _weaponPointModel.RegisterWeapon(weapon);
-            _weaponPointView.EnableCreateView(false);
-        }
-
-        public void UpdateRegisteredWeapon()
-        {
-            _weaponPointModel.Update();
-            _weaponPointView.EnableUpdateView(false);
-        }
-
-        public void DeleteRegisteredWeapon()
-        {
-            _weaponPointModel.DeleteWeapon();
-            _weaponPointView.EnableDeleteView(false);
-        }
-        
-        
-        private void NotifyCreateButtonPressed()
-            => OnCreateWeapon?.Invoke(this);
-        private void NotifyDeleteButtonPressed()
-            => OnDeleteWeapon?.Invoke(this);
-        private void NotifyUpdateButtonPressed()
-            => OnUpdateWeapon?.Invoke(this);
     }
 }

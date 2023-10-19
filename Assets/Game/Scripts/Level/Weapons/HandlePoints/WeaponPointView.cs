@@ -39,6 +39,7 @@ namespace Game.Level.Weapons.HandlePoints
             _updateButton.onClick.RemoveListener(OnUpdateButtonClick);
         }
 
+        
         public void EnableCreateView(bool enable)
             => _createWeaponView.gameObject.SetActive(enable);
 

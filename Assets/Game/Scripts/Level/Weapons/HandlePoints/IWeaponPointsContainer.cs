@@ -6,12 +6,12 @@ namespace Game.Level.Weapons.HandlePoints
 {
     public interface IWeaponPointsContainer
     {
-        IEnumerable<WeaponPointPresenter> EmptyPoints { get; }
-        IEnumerable<WeaponPointPresenter> OccupiedPoints { get; }
+        IEnumerable<WeaponPointModel> EmptyPoints { get; }
+        IEnumerable<WeaponPointModel> OccupiedPoints { get; }
 
 
-        void Init(List<WeaponPointPresenter> weaponHandlePoints);
-        void RegisterPointAsOccupied(WeaponPointPresenter weaponHandlePoint);
-        void UnregisterPointAsOccupied(WeaponPointPresenter weaponHandlePoint);
+        void Init(IList<WeaponPointModel> weaponHandlePoints);
+        void RegisterPointAsOccupied(WeaponPointModel weaponHandlePoint);
+        void UnregisterPointAsOccupied(WeaponPointModel weaponHandlePoint);
     }
 }
