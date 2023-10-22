@@ -1,7 +1,7 @@
 ﻿using System;
 
 
-namespace Game.Level.Configs
+namespace Game.Configs.Game
 {
     [Serializable]
     public class SerializedPlayerProgressData : IPlayerProgressData

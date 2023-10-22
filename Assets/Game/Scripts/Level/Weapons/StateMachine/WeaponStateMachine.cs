@@ -1,8 +1,8 @@
 ﻿using Game.Level.Weapons.StateMachine.States;
-using Game.Level.Weapons.EnemiesDetect;
 using Game.Level.StateMachine.States;
 using System.Collections.Generic;
 using Game.Level.StateMachine;
+using Game.Level.Weapons.EnemiesDetection;
 using System;
 
 

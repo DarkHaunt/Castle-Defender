@@ -1,8 +1,7 @@
-﻿using Game.Level.Common.Damage;
-using UnityEngine;
+﻿using UnityEngine;
 
 
-namespace Game.Level.Enemies
+namespace Game.Level.Health
 {
     public interface IAttackTarget : IDamageable
     {

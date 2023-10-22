@@ -1,10 +1,10 @@
-﻿using System.Collections.Generic;
-using Game.Level.Enemies;
-using UnityEngine;
+﻿using Game.Level.Enemies;
 using System;
+using System.Collections.Generic;
+using UnityEngine;
 
 
-namespace Game.Level.Weapons.EnemiesDetect
+namespace Game.Level.Weapons.EnemiesDetection
 {
     [RequireComponent(typeof(CircleCollider2D))]
     public class EnemiesDetector : MonoBehaviour

@@ -1,7 +1,7 @@
 ﻿using UnityEngine;
 
- 
-namespace Game.Level.Configs
+
+namespace Game.Configs.Level
 {
     [CreateAssetMenu(fileName = "Level_Config", menuName = "Scriptables/LevelConfig", order = 52)]
     public class LevelConfig : ScriptableObject, ILevelConfig

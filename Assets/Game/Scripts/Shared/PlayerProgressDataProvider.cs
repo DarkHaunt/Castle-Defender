@@ -1,5 +1,6 @@
-﻿using Game.Level.Configs;
-using Game.Common.Save;
+﻿using Game.Common.Save;
+using Game.Configs.Game;
+using Game.Static;
 
 
 namespace Game.Shared

@@ -1,5 +1,6 @@
 ﻿using Game.Common.Save;
-using Game.Level.Configs;
+using Game.Configs.Game;
+using Game.Static;
 using UnityEngine;
 using UnityEngine.Serialization;
 

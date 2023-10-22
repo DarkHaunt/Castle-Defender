@@ -1,9 +1,9 @@
 ﻿using Game.Extensions;
-using UnityEngine;
 using System;
+using UnityEngine;
 
 
-namespace Game.Level.Common.Damage
+namespace Game.Level.Health
 {
     public class HealthParamsHandler : IHealthParamsProvider
     {

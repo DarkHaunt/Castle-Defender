@@ -1,7 +1,8 @@
-﻿using System;
+﻿using Game.Level.Enemies;
+using System;
 
 
-namespace Game.Level.Enemies
+namespace Game.Level.Services.Enemies
 {
     public interface IEnemyBehaviorHandler
     {

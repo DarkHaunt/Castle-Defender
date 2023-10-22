@@ -1,9 +1,10 @@
-﻿using Game.Level.Configs;
-using Game.Common.Save;
+﻿using Game.Common.Save;
+using Game.Configs.Level;
+using Game.Static;
 using UnityEngine;
 
 
-namespace Game.Test
+namespace Game.Level.Services.Debugging
 {
     public class ForcibleLevelConfigSetter : MonoBehaviour
     {

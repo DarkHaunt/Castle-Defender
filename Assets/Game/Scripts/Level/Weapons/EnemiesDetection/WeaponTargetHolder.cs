@@ -1,7 +1,7 @@
 ﻿using Game.Level.Enemies;
 
 
-namespace Game.Level.Weapons.EnemiesDetect
+namespace Game.Level.Weapons.EnemiesDetection
 {
     public class WeaponTargetHolder
     {

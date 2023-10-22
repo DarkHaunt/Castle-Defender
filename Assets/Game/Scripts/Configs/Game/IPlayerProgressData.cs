@@ -1,6 +1,6 @@
 ﻿
 
-namespace Game.Level.Configs
+namespace Game.Configs.Game
 {
     public interface IPlayerProgressData
     {

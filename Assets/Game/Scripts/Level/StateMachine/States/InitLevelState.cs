@@ -1,6 +1,6 @@
 ﻿using Game.Level.Services.Castles;
 using Game.Level.Services.Enemies;
-using Game.Level.Configs;
+using Game.Level.Services.Level;
 using UnityEngine;
 
 

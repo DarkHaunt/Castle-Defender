@@ -1,7 +1,7 @@
-﻿using Game.Level.Weapons.EnemiesDetect;
-using Game.Level.StateMachine.States;
+﻿using Game.Level.StateMachine.States;
 using Game.Level.StateMachine;
 using Game.Level.Enemies;
+using Game.Level.Weapons.EnemiesDetection;
 
 
 namespace Game.Level.Weapons.StateMachine.States

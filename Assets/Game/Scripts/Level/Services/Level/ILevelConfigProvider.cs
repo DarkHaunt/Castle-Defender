@@ -1,6 +1,9 @@
 ﻿
 
-namespace Game.Level.Configs
+using Game.Configs.Level;
+
+
+namespace Game.Level.Services.Level
 {
     public interface ILevelConfigProvider
     {

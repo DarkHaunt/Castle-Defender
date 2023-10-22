@@ -1,4 +1,4 @@
-﻿namespace Game.Common.Physics
+﻿namespace Game.Level.Common.Physics
 {
     public static class LevelLayersProvider
     {

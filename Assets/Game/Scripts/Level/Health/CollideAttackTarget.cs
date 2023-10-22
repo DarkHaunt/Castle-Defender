@@ -1,9 +1,8 @@
-﻿using Game.Level.Enemies;
+﻿using System;
 using UnityEngine;
-using System;
 
 
-namespace Game.Level.Common.Damage
+namespace Game.Level.Health
 {
     [DisallowMultipleComponent]
     [RequireComponent(typeof(Collider2D))]

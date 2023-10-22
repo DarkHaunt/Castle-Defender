@@ -1,7 +1,7 @@
 ﻿using System;
 
 
-namespace Game.Level.Configs
+namespace Game.Level.Services.Level
 {
     public interface IInitializeDataProvider
     {

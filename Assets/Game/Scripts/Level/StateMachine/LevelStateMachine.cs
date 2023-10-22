@@ -1,4 +1,4 @@
-﻿using Game.Level.StateMachine.States.Factories;
+﻿using Game.Level.Factories.States;
 using Game.Level.StateMachine.States;
 using System.Collections.Generic;
 using System;

@@ -1,7 +1,7 @@
 ﻿using UnityEngine;
 
 
-namespace Game.Level.Configs
+namespace Game.Configs.Game
 {
     [CreateAssetMenu(fileName = "Global_Game_Data", menuName = "Scriptables/GlobalGameData", order = 52)]
     public class PlayerProgressData : ScriptableObject, IPlayerProgressData

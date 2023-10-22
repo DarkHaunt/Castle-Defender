@@ -1,7 +1,7 @@
 ﻿using Game.Level.Weapons.StateMachine.States;
-using Game.Level.Weapons.EnemiesDetect;
 using Game.Level.Weapons.StateMachine;
 using Game.Level.Enemies;
+using Game.Level.Weapons.EnemiesDetection;
 using UnityEngine;
 using System;
 

@@ -1,7 +1,7 @@
 ﻿using Game.Level.Views.Castles;
 using Game.Level.Views.Weapons;
 using Game.Common.Interfaces;
-using Game.Common.Physics;
+using Game.Level.Common.Physics;
 using Game.Level.Weapons;
 using VContainer.Unity;
 using UnityEngine;

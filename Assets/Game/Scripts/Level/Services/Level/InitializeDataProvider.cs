@@ -1,4 +1,6 @@
-﻿using Game.Level.Common;
+﻿using Game.Configs.Game;
+using Game.Configs.Level;
+using Game.Level.Common;
 using Game.Level.Enemies;
 using Game.Level.Factories.Level;
 using Game.Level.Weapons;
@@ -7,7 +9,7 @@ using System;
 using UnityEngine;
 
 
-namespace Game.Level.Configs
+namespace Game.Level.Services.Level
 {
     public class InitializeDataProvider : IInitializeDataProvider
     {

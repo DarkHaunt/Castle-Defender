@@ -1,4 +1,4 @@
-﻿using Game.Level.Configs;
+﻿using Game.Level.Services.Level;
 using UnityEngine;
 
 

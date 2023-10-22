@@ -1,8 +1,9 @@
 ﻿using Game.Level.Enemies.BehaviorTree.Common;
-using Game.Level.Common.Damage;
 using System.Threading.Tasks;
 using Game.Common.Interfaces;
 using Game.Extensions;
+using Game.Level.Health;
+using Game.Level.Services.Enemies;
 using UnityEngine;
 using System;
 

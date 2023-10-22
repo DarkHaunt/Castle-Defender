@@ -1,4 +1,4 @@
-﻿namespace Game.Level.Common.Lifecycle
+﻿namespace Game.Common.Interfaces
 {
     public interface IEnableable
     {

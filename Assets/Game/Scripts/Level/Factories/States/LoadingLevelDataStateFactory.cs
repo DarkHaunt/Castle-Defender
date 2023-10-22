@@ -1,7 +1,9 @@
-﻿using Game.Level.Configs;
+﻿using Game.Level.Services.Level;
+using Game.Level.StateMachine;
+using Game.Level.StateMachine.States;
 
 
-namespace Game.Level.StateMachine.States.Factories
+namespace Game.Level.Factories.States
 {
     public class LoadingLevelDataStateFactory
     {

@@ -4,7 +4,6 @@ using Game.Level.StateMachine;
 using Game.Common.Interfaces;
 using UnityEngine;
 using VContainer;
-using Game.Test;
 
 
 namespace Game.Level.Bootstrapping

@@ -1,4 +1,4 @@
-﻿using Game.Level.Configs;
+﻿using Game.Configs.Game;
 
 
 namespace Game.Shared

@@ -1,4 +1,7 @@
-﻿namespace Game.Level.StateMachine.States.Factories
+﻿using Game.Level.StateMachine.States;
+
+
+namespace Game.Level.Factories.States
 {
     public class EndLevelStateFactory
     {

@@ -1,10 +1,12 @@
-﻿using Game.Level.Services.Castles;
+﻿using Game.Level.Common.Physics;
+using Game.Level.Services.Castles;
 using Game.Level.Services.Enemies;
 using Game.Level.Services.Weapons;
-using Game.Common.Physics;
+using Game.Level.StateMachine;
+using Game.Level.StateMachine.States;
 
 
-namespace Game.Level.StateMachine.States.Factories
+namespace Game.Level.Factories.States
 {
     public class StartLevelStateFactory
     {

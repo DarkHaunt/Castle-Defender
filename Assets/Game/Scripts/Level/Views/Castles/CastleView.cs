@@ -1,5 +1,5 @@
-﻿using Game.Level.Common.Damage;
-using Game.Level.Binders;
+﻿using Game.Level.Binders;
+using Game.Level.Health;
 using UnityEngine;
 using VContainer;
 

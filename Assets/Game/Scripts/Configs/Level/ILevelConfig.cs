@@ -1,4 +1,4 @@
-﻿namespace Game.Level.Configs
+﻿namespace Game.Configs.Level
 {
     public interface ILevelConfig
     {

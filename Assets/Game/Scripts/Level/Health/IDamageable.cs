@@ -1,7 +1,7 @@
 ﻿using System;
 
 
-namespace Game.Level.Common.Damage
+namespace Game.Level.Health
 {
     public interface IDamageable
     {

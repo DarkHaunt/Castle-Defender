@@ -1,7 +1,9 @@
 ﻿using Game.Common.Save;
- 
+using Game.Configs.Level;
+using Game.Static;
 
-namespace Game.Level.Configs
+
+namespace Game.Level.Services.Level
 {
     public class LevelConfigProvider : ILevelConfigProvider
     {
