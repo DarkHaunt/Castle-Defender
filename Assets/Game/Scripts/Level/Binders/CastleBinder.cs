@@ -14,35 +14,33 @@ namespace Game.Level.Binders
         
         public readonly ReactiveProperty<IHealthParamsProvider> HealthView = new();
 
-        private readonly ICastleService _castleService;
+        private readonly CastleModel _castleModel;
         
 
-        public CastleBinder(ICastleService castleService)
+        public CastleBinder(CastleModel castleModel)
         {
-            _castleService = castleService;
+            _castleModel = castleModel;
 
-            _castleService.OnEnabled += Enable;
-            _castleService.OnDisabled += Disable;
+            _castleModel.OnEnabled += Enable;
+            _castleModel.OnDisabled += Disable;
         }
         
         
         private void Enable()
         {
-            _castleService.OnCastleHealthUpdated += UpdateHealth;
+            _castleModel.PhysicBody.OnHealthUpdate += UpdateHealth;
             
             OnSystemEnabled?.Invoke();
         }
 				
         private void Disable()
         {
-            _castleService.OnCastleHealthUpdated -= UpdateHealth;
+            _castleModel.PhysicBody.OnHealthUpdate -= UpdateHealth;
             
             OnSystemDisabled?.Invoke();
         }
 
         private void UpdateHealth(HealthParamsHandler healthParams)
-        {
-            HealthView.Value = healthParams;
-        }
+            => HealthView.Value = healthParams;
     }
 }

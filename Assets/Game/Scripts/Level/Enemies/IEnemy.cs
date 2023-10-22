@@ -1,10 +1,17 @@
-﻿using Game.Level.Common.Damage;
+﻿using UnityEngine;
+using System;
 
 
 namespace Game.Level.Enemies
 {
-    public interface IEnemy : IDamageable
+    public interface IEnemy
     {
-        void Move(IAttackTarget enemiesTarget);
+        event Action<IEnemy> OnDeath;
+        
+        Vector2 CurrentPosition { get; }
+        
+        void Move(IAttackTarget attackTarget, float timeDelta);
+        void Attack(IAttackTarget attackTarget);
+        void GetDamage(float damage);
     }
 }

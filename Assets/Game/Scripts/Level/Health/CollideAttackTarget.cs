@@ -13,8 +13,9 @@ namespace Game.Level.Common.Damage
         public event Action<float> OnDamage;
         public event Action OnDeath;
 
-        private Transform _transform;
         private HealthParamsHandler _healthParams;
+        private Collider2D _collider2D;
+        private Transform _transform;
 
 
         public Vector2 Position
@@ -27,17 +28,24 @@ namespace Game.Level.Common.Damage
             self.isTrigger = false;
         }
 
-        public void Init(float maxHealth)
+        private void Awake()
         {
             _transform = GetComponent<Transform>();
+            _collider2D = GetComponent<Collider2D>();
+        }
 
-            _healthParams = new HealthParamsHandler
-            (
-                initHealth: maxHealth
-            );
+        public void Init(float maxHealth)
+        {
+            _healthParams = new HealthParamsHandler(maxHealth);
 
             UpdateHealth();
         }
+
+        public void Enable()
+            => _collider2D.enabled = true;
+				
+        public void Disable() 
+            => _collider2D.enabled = false;
 
         public void GetDamage(float damage)
         {
@@ -45,7 +53,7 @@ namespace Game.Level.Common.Damage
             
             OnDamage?.Invoke(damage);
             UpdateHealth();
-            
+
             if (_healthParams.IsCurrentHealthZero())
                 OnDeath?.Invoke();
         }

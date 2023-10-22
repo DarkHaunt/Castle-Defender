@@ -1,4 +1,6 @@
-﻿using Game.Level.Enemies;
+﻿using Game.Level.Services.Enemies;
+using Game.Level.Enemies;
+using Game.Extensions;
 using UnityEngine;
 
 
@@ -6,19 +8,23 @@ namespace Game.Level.Factories.Enemies
 {
     public class EnemyFactory : IEnemyFactory
     {
-        private readonly Transform _parentObject;
+        private readonly EnemyPoolService _enemyPoolService;
 
-        public EnemyFactory(Transform parentObject)
+
+        public EnemyFactory(EnemyPoolService enemyPoolService)
         {
-            _parentObject = parentObject;
+            _enemyPoolService = enemyPoolService;
         }
+
         
-        public IEnemy CreateEnemy(Enemy prefab, Vector2 position)
+        public Enemy CreateEnemy(Enemy prefab, Vector2 position)
         {
-            var enemy = Object.Instantiate(prefab, position, Quaternion.identity, _parentObject);
+            var enemy = _enemyPoolService.PopEnemyFromPool(prefab.Id);
+            
             enemy.Init();
+            enemy.transform.SetInPosition(position);
             
             return enemy;
-        }
+        } 
     }
 }

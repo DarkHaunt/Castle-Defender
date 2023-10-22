@@ -28,7 +28,7 @@ namespace Game.Level.Bootstrapping
             _configSetter.ForceSetCachedConfig();
             _gameDataSetter.ForceSetCachedPlayerProgressData();
             
-            _stateSwitcher.SwitchToState<DataLoadingState>();
+            _stateSwitcher.SwitchToState<LoadingLevelDataState>();
         }
     }
 }

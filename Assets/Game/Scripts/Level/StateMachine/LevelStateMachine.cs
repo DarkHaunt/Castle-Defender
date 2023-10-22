@@ -12,11 +12,13 @@ namespace Game.Level.StateMachine
         private IState _currentState;
 
 
-        public LevelStateMachine(DataLoadingStateFactory dataLoadingStateFactory, StartLevelStateFactory startLevelSateFactory, EndLevelStateFactory endLevelStateFactory)
+        public LevelStateMachine(LoadingLevelDataStateFactory loadingLevelDataStateFactory, InitLevelStateFactory initLevelStateFactory,
+            StartLevelStateFactory startLevelSateFactory, EndLevelStateFactory endLevelStateFactory)
         {
             _states = new Dictionary<Type, IState>
             {
-                [typeof(DataLoadingState)] = dataLoadingStateFactory.CreateState(this),
+                [typeof(LoadingLevelDataState)] = loadingLevelDataStateFactory.CreateState(this),
+                [typeof(InitLevelState)] = initLevelStateFactory.CreateState(this),
                 [typeof(StartLevelState)] = startLevelSateFactory.CreateState(this),
                 [typeof(EndLevelState)] = endLevelStateFactory.CreateState(),
             };

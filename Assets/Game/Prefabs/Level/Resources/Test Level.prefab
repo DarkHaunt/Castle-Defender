@@ -167,6 +167,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   <Castle>k__BackingField: {fileID: 2974255935473950072}
+  <EnemiesSpawnPoints>k__BackingField:
+  - {fileID: 3361740013217760237}
 --- !u!1001 &4949132527660106291
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -174,6 +176,14 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 6282379114582688333}
     m_Modifications:
+    - target: {fileID: 464590053961271954, guid: d3ea1a31e6295c4478a6d218d055ebfe, type: 3}
+      propertyPath: m_Size.y
+      value: 6.651058
+      objectReference: {fileID: 0}
+    - target: {fileID: 464590053961271954, guid: d3ea1a31e6295c4478a6d218d055ebfe, type: 3}
+      propertyPath: m_Offset.y
+      value: -0.36978483
+      objectReference: {fileID: 0}
     - target: {fileID: 1405588499658474536, guid: d3ea1a31e6295c4478a6d218d055ebfe, type: 3}
       propertyPath: m_Name
       value: Castle
@@ -255,6 +265,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: Enemy Spawn Point (1)
       objectReference: {fileID: 0}
+    - target: {fileID: 591628577750426357, guid: 67d5199b70f0cc84088f114327275859, type: 3}
+      propertyPath: m_IsActive
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 8757304724318120408, guid: 67d5199b70f0cc84088f114327275859, type: 3}
       propertyPath: m_RootOrder
       value: 0
@@ -317,6 +331,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: Enemy Spawn Point (2)
       objectReference: {fileID: 0}
+    - target: {fileID: 591628577750426357, guid: 67d5199b70f0cc84088f114327275859, type: 3}
+      propertyPath: m_IsActive
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 8757304724318120408, guid: 67d5199b70f0cc84088f114327275859, type: 3}
       propertyPath: m_RootOrder
       value: 1
@@ -378,6 +396,10 @@ PrefabInstance:
     - target: {fileID: 591628577750426357, guid: 67d5199b70f0cc84088f114327275859, type: 3}
       propertyPath: m_Name
       value: Enemy Spawn Point (3)
+      objectReference: {fileID: 0}
+    - target: {fileID: 591628577750426357, guid: 67d5199b70f0cc84088f114327275859, type: 3}
+      propertyPath: m_IsActive
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 8757304724318120408, guid: 67d5199b70f0cc84088f114327275859, type: 3}
       propertyPath: m_RootOrder

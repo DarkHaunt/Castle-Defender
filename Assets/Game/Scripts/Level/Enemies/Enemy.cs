@@ -1,41 +1,89 @@
-﻿using Game.Level.Common.Damage;
+﻿using Game.Level.Enemies.BehaviorTree.Common;
+using Game.Level.Common.Damage;
+using System.Threading.Tasks;
+using Game.Common.Interfaces;
+using Game.Extensions;
 using UnityEngine;
 using System;
 
 
 namespace Game.Level.Enemies
 {
-    public abstract class Enemy : MonoBehaviour, IEnemy
+    public abstract class Enemy : MonoBehaviour, IEnemy, IEnemyBehaviorHandler, ICoroutineRunner
     {
-        public event Action<HealthParamsHandler> OnHealthUpdate;
-        public event Action<float> OnDamage;
-        public event Action OnDeath;
+        public event Action<Enemy> OnBehaviorHandlingEnded;
+        public event Action<IEnemy> OnDeath;
 
+        [Header("--- Params ---")]
+        [SerializeField] private int _id;
         [SerializeField] private float _health;
         [SerializeField] protected float _speed;
-        
 
-        private HealthParamsHandler _healthParamsHandler;
+        [Header("--- Components ---")]
+        [SerializeField] private CollideAttackTarget _attackTarget;
+
+        [Header("--- State Machine ---")]
+        [SerializeField] private EnemyBehaviorData _enemyBehaviorData;
+
+        protected Rigidbody2D _rigidbody;
+        private EnemyBehaviorTree _behaviorTree;
+
+        public Vector2 CurrentPosition => _rigidbody.position;
+        public int Id => _id;
+
+        protected abstract EnemyBehaviorTree CreateBehaviorTree(EnemyBehaviorData behaviorData);
+        public abstract void Move(IAttackTarget attackTarget, float timeDelta);
+        public abstract void Attack(IAttackTarget attackTarget);
+        protected abstract Task DieLogic();
 
 
-        public abstract void Move(IAttackTarget enemiesTarget);
-        protected abstract void Attack(IAttackTarget attackTarget);
+        private void Awake()
+            => _rigidbody = GetComponent<Rigidbody2D>();
 
+        private void OnEnable()
+            => _attackTarget.OnDeath += Die;
+
+        private void OnDisable()
+            => _attackTarget.OnDeath -= Die;
 
         public void Init()
         {
-            _healthParamsHandler = new HealthParamsHandler(_health);
+            _behaviorTree = CreateBehaviorTree(_enemyBehaviorData);
+            _behaviorTree.Construct();
+            
+            _attackTarget.Init(_health);
+            _attackTarget.Enable();
         }
 
         public void GetDamage(float damage)
+            => _attackTarget.GetDamage(damage);
+
+        public void EndBehavior()
+            => _rigidbody.Deactivate();
+
+        public void PerformBehavior(float timeDelta)
+            => _behaviorTree.UpdateTreeBehavior(timeDelta);
+
+        private async void Die()
         {
-            _healthParamsHandler.DecreaseHealthBy(damage);
+            OnDeath?.Invoke(this);
+
+            _attackTarget.Disable();
+
+            await DieLogic();
             
-            OnDamage?.Invoke(damage);
-            OnHealthUpdate?.Invoke(_healthParamsHandler);
+            OnBehaviorHandlingEnded?.Invoke(this);
             
-            if (_healthParamsHandler.IsCurrentHealthZero())
-                OnDeath?.Invoke();
+            Debug.Log($"<color=red>DEAHTH</color>");
         }
+    }
+
+
+    [Serializable]
+    public class EnemyBehaviorData
+    {
+        public Vector2 SearchDirection;
+        public float AttackCooldown;
+        public float AttackRadius;
     }
 }

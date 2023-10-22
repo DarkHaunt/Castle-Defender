@@ -17,7 +17,10 @@ namespace Game.Level.Factories.Weapons
         
         public Weapon CreateWeapon(Weapon prefab, Vector2 position)
         {
-            return Object.Instantiate(prefab, position, Quaternion.identity, _createdWeaponsParentObject);
+            var weapon = Object.Instantiate(prefab, position, Quaternion.identity, _createdWeaponsParentObject);
+            weapon.Init();
+            
+            return weapon;
         }
     }
 }

@@ -10,7 +10,7 @@ GameObject:
   m_Component:
   - component: {fileID: 1405588499658474543}
   - component: {fileID: 7919711663467962187}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: Test Castle
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -65,7 +65,7 @@ GameObject:
   - component: {fileID: 5383712942576414364}
   - component: {fileID: 464590053961271954}
   - component: {fileID: 8009972938344832178}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: Physic Body
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -155,7 +155,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 948375596615834553}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: Weapon Points
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -191,7 +191,7 @@ GameObject:
   m_Component:
   - component: {fileID: 3380434633604027998}
   - component: {fileID: 3884228060633332646}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: Sprite
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -276,6 +276,34 @@ PrefabInstance:
       propertyPath: m_Name
       value: Weapon Point
       objectReference: {fileID: 0}
+    - target: {fileID: 591628577750426357, guid: ee209be9ad8bb6549a61fb6ad0d94a24, type: 3}
+      propertyPath: m_Layer
+      value: 6
+      objectReference: {fileID: 0}
+    - target: {fileID: 642186120273111988, guid: ee209be9ad8bb6549a61fb6ad0d94a24, type: 3}
+      propertyPath: m_Layer
+      value: 6
+      objectReference: {fileID: 0}
+    - target: {fileID: 5363372364277726987, guid: ee209be9ad8bb6549a61fb6ad0d94a24, type: 3}
+      propertyPath: m_Layer
+      value: 6
+      objectReference: {fileID: 0}
+    - target: {fileID: 7221088668796518573, guid: ee209be9ad8bb6549a61fb6ad0d94a24, type: 3}
+      propertyPath: m_Layer
+      value: 6
+      objectReference: {fileID: 0}
+    - target: {fileID: 7273537709005747981, guid: ee209be9ad8bb6549a61fb6ad0d94a24, type: 3}
+      propertyPath: m_Layer
+      value: 6
+      objectReference: {fileID: 0}
+    - target: {fileID: 7680596414659693935, guid: ee209be9ad8bb6549a61fb6ad0d94a24, type: 3}
+      propertyPath: m_Layer
+      value: 6
+      objectReference: {fileID: 0}
+    - target: {fileID: 7691674577789852611, guid: ee209be9ad8bb6549a61fb6ad0d94a24, type: 3}
+      propertyPath: m_Layer
+      value: 6
+      objectReference: {fileID: 0}
     - target: {fileID: 8640820365715956059, guid: ee209be9ad8bb6549a61fb6ad0d94a24, type: 3}
       propertyPath: _radius
       value: 0.3
@@ -352,6 +380,34 @@ PrefabInstance:
     - target: {fileID: 591628577750426357, guid: ee209be9ad8bb6549a61fb6ad0d94a24, type: 3}
       propertyPath: m_Name
       value: Weapon Point 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 591628577750426357, guid: ee209be9ad8bb6549a61fb6ad0d94a24, type: 3}
+      propertyPath: m_Layer
+      value: 6
+      objectReference: {fileID: 0}
+    - target: {fileID: 642186120273111988, guid: ee209be9ad8bb6549a61fb6ad0d94a24, type: 3}
+      propertyPath: m_Layer
+      value: 6
+      objectReference: {fileID: 0}
+    - target: {fileID: 5363372364277726987, guid: ee209be9ad8bb6549a61fb6ad0d94a24, type: 3}
+      propertyPath: m_Layer
+      value: 6
+      objectReference: {fileID: 0}
+    - target: {fileID: 7221088668796518573, guid: ee209be9ad8bb6549a61fb6ad0d94a24, type: 3}
+      propertyPath: m_Layer
+      value: 6
+      objectReference: {fileID: 0}
+    - target: {fileID: 7273537709005747981, guid: ee209be9ad8bb6549a61fb6ad0d94a24, type: 3}
+      propertyPath: m_Layer
+      value: 6
+      objectReference: {fileID: 0}
+    - target: {fileID: 7680596414659693935, guid: ee209be9ad8bb6549a61fb6ad0d94a24, type: 3}
+      propertyPath: m_Layer
+      value: 6
+      objectReference: {fileID: 0}
+    - target: {fileID: 7691674577789852611, guid: ee209be9ad8bb6549a61fb6ad0d94a24, type: 3}
+      propertyPath: m_Layer
+      value: 6
       objectReference: {fileID: 0}
     - target: {fileID: 8640820365715956059, guid: ee209be9ad8bb6549a61fb6ad0d94a24, type: 3}
       propertyPath: _radius
@@ -430,6 +486,34 @@ PrefabInstance:
       propertyPath: m_Name
       value: Weapon Point 2
       objectReference: {fileID: 0}
+    - target: {fileID: 591628577750426357, guid: ee209be9ad8bb6549a61fb6ad0d94a24, type: 3}
+      propertyPath: m_Layer
+      value: 6
+      objectReference: {fileID: 0}
+    - target: {fileID: 642186120273111988, guid: ee209be9ad8bb6549a61fb6ad0d94a24, type: 3}
+      propertyPath: m_Layer
+      value: 6
+      objectReference: {fileID: 0}
+    - target: {fileID: 5363372364277726987, guid: ee209be9ad8bb6549a61fb6ad0d94a24, type: 3}
+      propertyPath: m_Layer
+      value: 6
+      objectReference: {fileID: 0}
+    - target: {fileID: 7221088668796518573, guid: ee209be9ad8bb6549a61fb6ad0d94a24, type: 3}
+      propertyPath: m_Layer
+      value: 6
+      objectReference: {fileID: 0}
+    - target: {fileID: 7273537709005747981, guid: ee209be9ad8bb6549a61fb6ad0d94a24, type: 3}
+      propertyPath: m_Layer
+      value: 6
+      objectReference: {fileID: 0}
+    - target: {fileID: 7680596414659693935, guid: ee209be9ad8bb6549a61fb6ad0d94a24, type: 3}
+      propertyPath: m_Layer
+      value: 6
+      objectReference: {fileID: 0}
+    - target: {fileID: 7691674577789852611, guid: ee209be9ad8bb6549a61fb6ad0d94a24, type: 3}
+      propertyPath: m_Layer
+      value: 6
+      objectReference: {fileID: 0}
     - target: {fileID: 8640820365715956059, guid: ee209be9ad8bb6549a61fb6ad0d94a24, type: 3}
       propertyPath: _radius
       value: 0.3
@@ -506,6 +590,34 @@ PrefabInstance:
     - target: {fileID: 591628577750426357, guid: ee209be9ad8bb6549a61fb6ad0d94a24, type: 3}
       propertyPath: m_Name
       value: Weapon Point 3
+      objectReference: {fileID: 0}
+    - target: {fileID: 591628577750426357, guid: ee209be9ad8bb6549a61fb6ad0d94a24, type: 3}
+      propertyPath: m_Layer
+      value: 6
+      objectReference: {fileID: 0}
+    - target: {fileID: 642186120273111988, guid: ee209be9ad8bb6549a61fb6ad0d94a24, type: 3}
+      propertyPath: m_Layer
+      value: 6
+      objectReference: {fileID: 0}
+    - target: {fileID: 5363372364277726987, guid: ee209be9ad8bb6549a61fb6ad0d94a24, type: 3}
+      propertyPath: m_Layer
+      value: 6
+      objectReference: {fileID: 0}
+    - target: {fileID: 7221088668796518573, guid: ee209be9ad8bb6549a61fb6ad0d94a24, type: 3}
+      propertyPath: m_Layer
+      value: 6
+      objectReference: {fileID: 0}
+    - target: {fileID: 7273537709005747981, guid: ee209be9ad8bb6549a61fb6ad0d94a24, type: 3}
+      propertyPath: m_Layer
+      value: 6
+      objectReference: {fileID: 0}
+    - target: {fileID: 7680596414659693935, guid: ee209be9ad8bb6549a61fb6ad0d94a24, type: 3}
+      propertyPath: m_Layer
+      value: 6
+      objectReference: {fileID: 0}
+    - target: {fileID: 7691674577789852611, guid: ee209be9ad8bb6549a61fb6ad0d94a24, type: 3}
+      propertyPath: m_Layer
+      value: 6
       objectReference: {fileID: 0}
     - target: {fileID: 8640820365715956059, guid: ee209be9ad8bb6549a61fb6ad0d94a24, type: 3}
       propertyPath: _radius

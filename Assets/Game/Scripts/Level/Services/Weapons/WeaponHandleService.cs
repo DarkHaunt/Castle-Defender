@@ -20,14 +20,17 @@ namespace Game.Level.Services.Weapons
             _weaponCreateService = weaponCreateService;
             _weaponUpdateService = weaponUpdateService;
         }
-        
-        
+
+
         public void Enable()
-            => OnEnabled?.Invoke();
+        {
+            OnEnabled?.Invoke();
+        }
 
         public void Disable()
-            => OnDisabled?.Invoke();
-        
+        {
+            OnDisabled?.Invoke();
+        }
         
         public void StartHandleCreate()
             => _weaponCreateService.StartHandleCreate();

@@ -1,4 +1,5 @@
-﻿using System.Collections.Generic;
+﻿using Game.Common.Interfaces;
+using System.Collections.Generic;
 using UnityEngine.Events;
 using System.Collections;
 using UnityEngine;
@@ -33,8 +34,14 @@ namespace Game.Extensions
             }
 
             return wait;
+        }        
+        
+        public static void TryToStopCoroutine(this ICoroutineRunner runner, Coroutine coroutine)
+        {
+            if(coroutine != null)
+                runner.StopCoroutine(coroutine);
         }
-
+        
         private static IEnumerator ExecuteAction(float delay, UnityAction action)
         {
             yield return new WaitForSecondsRealtime(delay);
