@@ -11,17 +11,17 @@ namespace Game.Level.StateMachine.States
     {
         private readonly IWeaponHandleService _weaponHandleService;
         private readonly LevelCollisionsService _collisionsService;
-        private readonly CastleHandleService _castleHandleService;
         private readonly EnemyHandleService _enemyHandleService;
         private readonly EnemySpawnService _enemySpawnService;
         private readonly IStateSwitcher _stateSwitcher;
+        private readonly CastleModel _castleModel;
 
 
-        public StartLevelState(IStateSwitcher stateSwitcher, CastleHandleService castleHandleService, LevelCollisionsService collisionsService,
+        public StartLevelState(IStateSwitcher stateSwitcher, CastleModel castleModel, LevelCollisionsService collisionsService,
             IWeaponHandleService weaponHandleService, EnemyHandleService enemyHandleService, EnemySpawnService enemySpawnService)
         {
             _weaponHandleService = weaponHandleService;
-            _castleHandleService = castleHandleService;
+            _castleModel = castleModel;
             _enemyHandleService = enemyHandleService;
             _enemySpawnService = enemySpawnService;
             _collisionsService = collisionsService;
@@ -33,29 +33,27 @@ namespace Game.Level.StateMachine.States
         {
             Debug.Log($"<color=yellow>Start level</color>");
             
-            _castleHandleService.OnCastleDestroyed += FinishLevel;
+            _castleModel.PhysicBody.OnDeath += FinishLevel;
 
             _collisionsService.EnableCollisionsSettings();
             _weaponHandleService.Enable();
-            _castleHandleService.Enable();
             _enemyHandleService.Enable();
             _enemySpawnService.Enable();
+            _castleModel.Enable();
         }
 
         public void Exit()
         {
-            _castleHandleService.OnCastleDestroyed -= FinishLevel;
+            _castleModel.PhysicBody.OnDeath -= FinishLevel;
             
             _collisionsService.DisableCollisionsSettings();
             _weaponHandleService.Disable();
-            _castleHandleService.Disable();
             _enemyHandleService.Disable();
             _enemySpawnService.Disable();
+            _castleModel.Disable();
         }
 
         private void FinishLevel()
-        {
-            _stateSwitcher.SwitchToState<EndLevelState>();
-        }
+            => _stateSwitcher.SwitchToState<EndLevelState>();
     }
 }

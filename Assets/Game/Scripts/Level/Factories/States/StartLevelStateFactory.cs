@@ -10,16 +10,16 @@ namespace Game.Level.StateMachine.States.Factories
     {
         private readonly IWeaponHandleService _weaponHandleService;
         private readonly LevelCollisionsService _collisionsService;
-        private readonly CastleHandleService _castleHandleService;
+        private readonly CastleModel _castleModel;
         private readonly EnemyHandleService _enemyHandleService;
         private readonly EnemySpawnService _enemySpawnService;
 
 
-        public StartLevelStateFactory(CastleHandleService castleHandleService, IWeaponHandleService weaponHandleService, 
+        public StartLevelStateFactory(CastleModel castleModel, IWeaponHandleService weaponHandleService, 
             LevelCollisionsService collisionsService, EnemySpawnService enemySpawnService, EnemyHandleService enemyHandleService)
         {
             _weaponHandleService = weaponHandleService;
-            _castleHandleService = castleHandleService;
+            _castleModel = castleModel;
             _enemyHandleService = enemyHandleService;
             _enemySpawnService = enemySpawnService;
             _collisionsService = collisionsService;
@@ -27,6 +27,6 @@ namespace Game.Level.StateMachine.States.Factories
         
         
         public StartLevelState CreateState(IStateSwitcher stateSwitcher)
-            => new (stateSwitcher, _castleHandleService, _collisionsService, _weaponHandleService, _enemyHandleService, _enemySpawnService);
+            => new (stateSwitcher, _castleModel, _collisionsService, _weaponHandleService, _enemyHandleService, _enemySpawnService);
     }
 }
