@@ -1,6 +1,7 @@
 ﻿using Game.Level.Views.Castles;
 using Game.Level.Views.Weapons;
 using Game.Common.Interfaces;
+using Game.Common.Scene;
 using Game.Level.Common.Physics;
 using Game.Level.Weapons;
 using VContainer.Unity;
@@ -45,6 +46,8 @@ namespace Game.Level.Bootstrapping
 
             new LevelSystemInstaller(_bootstrapper, _levelParent)
                 .Install(builder);
+            
+            Debug.Log($"<color=white>{builder.Exists(typeof(SceneTransitionHandler))}</color>");
         }
 
         private void RegisterCoroutineRunner(IContainerBuilder builder)
@@ -57,7 +60,7 @@ namespace Game.Level.Bootstrapping
 
         private void RegisterLevelCollisionService(IContainerBuilder builder)
         {
-            builder.Register<LevelCollisionsService>(Lifetime.Singleton);
+            builder.Register<LevelCollisionsService>(Lifetime.Scoped);
         }
     }
 }

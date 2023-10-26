@@ -1,4 +1,5 @@
-﻿using Game.Level.Services.Castles;
+﻿using Game.Common.Scene;
+using Game.Level.Services.Castles;
 using Game.Level.Services.Enemies;
 using Game.Level.Services.Level;
 using UnityEngine;
@@ -29,6 +30,8 @@ namespace Game.Level.StateMachine.States
         public void Enter()
         {
             Debug.Log($"<color=yellow>Init Level</color>");
+
+            SceneLoader.LoadSceneWithTransition("MainMenu");
             
             var levelInitData = _initializeDataProvider.GetInitializeData();
             

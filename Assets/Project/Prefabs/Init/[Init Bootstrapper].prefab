@@ -49,7 +49,8 @@ MonoBehaviour:
     TypeName: 
   autoRun: 1
   autoInjectGameObjects: []
-  _coroutineRunner: {fileID: 6852599251593044384, guid: 98413e2d4d5185f449c3f077c523331a, type: 3}
+  _sceneLoader: {fileID: 1903917626407721409, guid: c3d5200150175d948a229f2db1d80008, type: 3}
+  _sceneTransitionHandler: {fileID: 8356741252273116629, guid: 537fffbedbf35f34c898ee97d3e60e66, type: 3}
 --- !u!114 &-7295393252782337813
 MonoBehaviour:
   m_ObjectHideFlags: 0

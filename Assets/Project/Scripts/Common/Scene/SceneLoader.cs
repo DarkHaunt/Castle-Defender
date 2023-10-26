@@ -1,9 +1,9 @@
-using System;
-using System.Threading;
-using System.Threading.Tasks;
-using UnityEngine;
 using UnityEngine.SceneManagement;
+using System.Threading.Tasks;
+using System.Threading;
+using UnityEngine;
 using VContainer;
+using System;
 
 
 namespace Game.Common.Scene
@@ -25,25 +25,25 @@ namespace Game.Common.Scene
             _cancellationTokenSource = new CancellationTokenSource();
             
             Application.quitting += _cancellationTokenSource.Cancel;
+
+            Debug.Log($"<color=white>CONSTRUCT</color>");
+            
+            _instance = this;
         }
 
 
-        public static async Task LoadSceneWithTransition(string sceneKey, LoadSceneMode loadMode = LoadSceneMode.Single)
+        public static async void LoadSceneWithTransition(string sceneKey, LoadSceneMode loadMode = LoadSceneMode.Single)
         {
-            await _instance._transitionHandler.PlayFadeOutAnimation();
+            await _instance._transitionHandler.PlayFadeInAnimation();
 
             var loadSceneProcess = LoadSceneAsync(sceneKey, loadMode);
 
             var longTimeSceneLoadingImitationTask = Task.Delay(TimeSpan.FromSeconds(RequiredTimeToExecuteTransition),
                 _instance._cancellationTokenSource.Token);
 
-            var animationTask = _instance._transitionHandler.PlayLoadingAnimation(longTimeSceneLoadingImitationTask);
+            await Task.WhenAny(longTimeSceneLoadingImitationTask, loadSceneProcess);
 
-            var loadingAnimationTask = Task.WhenAny(longTimeSceneLoadingImitationTask, animationTask);
-
-            await Task.WhenAll(loadingAnimationTask, loadSceneProcess);
-
-            await _instance._transitionHandler.PlayFadeInAnimation();
+            await _instance._transitionHandler.PlayFadeOutAnimation();
         }
 
         private static async Task LoadSceneAsync(string sceneKey, LoadSceneMode loadMode)
