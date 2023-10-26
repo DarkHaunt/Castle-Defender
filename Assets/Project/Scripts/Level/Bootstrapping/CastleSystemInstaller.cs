@@ -27,7 +27,7 @@ namespace Game.Level.Bootstrapping
 
         private void RegisterCastleService(IContainerBuilder builder)
         {
-            builder.Register<CastleModel>(Lifetime.Singleton);
+            builder.Register<CastleModel>(Lifetime.Scoped);
         }
 
         private void RegisterCastleView(IContainerBuilder builder)
@@ -37,7 +37,7 @@ namespace Game.Level.Bootstrapping
 
         private void RegisterCastleBinder(IContainerBuilder builder)
         {
-            builder.Register<CastleBinder>(Lifetime.Singleton);
+            builder.Register<CastleBinder>(Lifetime.Scoped);
         }
     }
 }

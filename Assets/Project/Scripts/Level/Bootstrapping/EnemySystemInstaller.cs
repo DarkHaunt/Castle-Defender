@@ -29,28 +29,28 @@ namespace Game.Level.Bootstrapping
         private void RegisterEnemyPoolService(IContainerBuilder builder)
         {
             builder
-                .Register<EnemyPoolService>(Lifetime.Singleton)
+                .Register<EnemyPoolService>(Lifetime.Scoped)
                 .WithParameter(_enemyParent);
         }
 
         private void RegisterEnemyFactory(IContainerBuilder builder)
         {
             builder
-                .Register<EnemyFactory>(Lifetime.Singleton)
+                .Register<EnemyFactory>(Lifetime.Scoped)
                 .As<IEnemyFactory>();
         }
 
         private void RegisterEnemyHandleService(IContainerBuilder builder)
         {
             builder
-                .Register<EnemyHandleService>(Lifetime.Singleton)
+                .Register<EnemyHandleService>(Lifetime.Scoped)
                 .As<IEnemyRegister>()
                 .AsSelf();
         }
 
         private void RegisterEnemySpawnService(IContainerBuilder builder)
         {
-            builder.Register<EnemySpawnService>(Lifetime.Singleton);
+            builder.Register<EnemySpawnService>(Lifetime.Scoped);
         }
     }
 }

@@ -43,28 +43,28 @@ namespace Game.Level.Bootstrapping
         private void RegisterWeaponPointsContainer(IContainerBuilder builder)
         {
             builder
-                .Register<WeaponPointsContainer>(Lifetime.Singleton)
+                .Register<WeaponPointsContainer>(Lifetime.Scoped)
                 .As<IWeaponPointsContainer>();
         }
 
         private static void RegisterWeaponDeleteService(IContainerBuilder builder)
         {
-            builder.Register<WeaponDeletionService>(Lifetime.Singleton);
+            builder.Register<WeaponDeletionService>(Lifetime.Scoped);
         }
 
         private static void RegisterWeaponUpdateService(IContainerBuilder builder)
         {
-            builder.Register<WeaponUpdateService>(Lifetime.Singleton);
+            builder.Register<WeaponUpdateService>(Lifetime.Scoped);
         }
 
         private void RegisterWeaponCreationService(IContainerBuilder builder)
         {
             builder
-                .Register<WeaponCreateService>(Lifetime.Singleton)
+                .Register<WeaponCreateService>(Lifetime.Scoped)
                 .WithParameter(_creationPrefab);
 
             builder
-                .Register<WeaponFactory>(Lifetime.Singleton)
+                .Register<WeaponFactory>(Lifetime.Scoped)
                 .WithParameter(_weaponParent)
                 .As<IWeaponFactory>();
         }
@@ -76,13 +76,13 @@ namespace Game.Level.Bootstrapping
 
         private void RegisterWeaponSystemBinder(IContainerBuilder builder)
         {
-            builder.Register<WeaponSystemBinder>(Lifetime.Singleton);
+            builder.Register<WeaponSystemBinder>(Lifetime.Scoped);
         }
 
         private void RegisterWeaponHandleService(IContainerBuilder builder)
         {
             builder
-                .Register<WeaponHandleService>(Lifetime.Singleton)
+                .Register<WeaponHandleService>(Lifetime.Scoped)
                 .As<IWeaponHandleService>();
         }
     }
