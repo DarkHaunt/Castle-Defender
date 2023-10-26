@@ -21,17 +21,17 @@ namespace Game.Common.Scene
         [Inject]
         private void Construct(SceneTransitionHandler transitionHandler)
         {
+            Debug.Log($"<color=white>CONSTRUCT</color>");
+            
             _transitionHandler = transitionHandler;
             _cancellationTokenSource = new CancellationTokenSource();
             
             Application.quitting += _cancellationTokenSource.Cancel;
-
-            Debug.Log($"<color=white>CONSTRUCT</color>");
             
             _instance = this;
         }
-
-
+        
+        
         public static async void LoadSceneWithTransition(string sceneKey, LoadSceneMode loadMode = LoadSceneMode.Single)
         {
             await _instance._transitionHandler.PlayFadeInAnimation();

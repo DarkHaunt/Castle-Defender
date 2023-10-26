@@ -1,8 +1,6 @@
-﻿using Game.Level.Views.Castles;
+﻿using Game.Level.Common.Physics;
+using Game.Level.Views.Castles;
 using Game.Level.Views.Weapons;
-using Game.Common.Interfaces;
-using Game.Common.Scene;
-using Game.Level.Common.Physics;
 using Game.Level.Weapons;
 using VContainer.Unity;
 using UnityEngine;
@@ -15,17 +13,16 @@ namespace Game.Level.Bootstrapping
     {
         [Header("--- Main ---")]
         [SerializeField] private LevelBootstrapper _bootstrapper;
-        [SerializeField] private CoroutineRunner _coroutineRunner;
 
         [Header("--- Parent Objects---")]
         [SerializeField] private Transform _weaponParent;
         [SerializeField] private Transform _levelParent;
         [SerializeField] private Transform _enemyParent;
-        
+
         [Header("--- Views ---")]
         [SerializeField] private WeaponSystemView _weaponSystemView;
         [SerializeField] private CastleView _castleView;
-        
+
         [Header("--- TEMP ---")]
         [SerializeField] private Weapon _creationPrefab;
 
@@ -33,8 +30,7 @@ namespace Game.Level.Bootstrapping
         protected override void Configure(IContainerBuilder builder)
         {
             RegisterLevelCollisionService(builder);
-            RegisterCoroutineRunner(builder);
-            
+
             new WeaponSystemInstaller(_creationPrefab, _weaponParent, _weaponSystemView)
                 .Install(builder);
 
@@ -46,16 +42,6 @@ namespace Game.Level.Bootstrapping
 
             new LevelSystemInstaller(_bootstrapper, _levelParent)
                 .Install(builder);
-            
-            Debug.Log($"<color=white>{builder.Exists(typeof(SceneTransitionHandler))}</color>");
-        }
-
-        private void RegisterCoroutineRunner(IContainerBuilder builder)
-        {
-            builder
-                .RegisterComponentInNewPrefab(_coroutineRunner, Lifetime.Scoped)
-                .UnderTransform(_levelParent)
-                .As<ICoroutineRunner>();
         }
 
         private void RegisterLevelCollisionService(IContainerBuilder builder)

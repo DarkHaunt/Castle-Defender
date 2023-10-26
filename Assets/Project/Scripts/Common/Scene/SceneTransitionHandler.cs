@@ -1,7 +1,6 @@
 using System.Threading.Tasks;
 using System.Threading;
 using UnityEngine;
-using VContainer;
 
 
 namespace Game.Common.Scene
@@ -32,8 +31,7 @@ namespace Game.Common.Scene
         }
 
         
-        [Inject]
-        private void Construct()
+        private void Awake()
         {
             _animator = gameObject.AddComponent<Animator>();
             _transitionCancellationSource = new CancellationTokenSource();
@@ -56,7 +54,7 @@ namespace Game.Common.Scene
             
             if (IsAnimationPlaying())
             {
-                Debug.LogError($"Animation component in {gameObject.name} is playing clip, so you can't play another until clip will end");
+                Debug.LogError($"Animation component in {nameof(SceneTransitionHandler)} is playing clip, so you can't play another until clip will end");
                 await Task.FromCanceled(CancellationToken.None);
             }
             
