@@ -1,5 +1,4 @@
-﻿using Game.Common.Scene;
-using Game.Level.Services.Castles;
+﻿using Game.Level.Services.Castles;
 using Game.Level.Services.Enemies;
 using Game.Level.Services.Level;
 using UnityEngine;
@@ -20,10 +19,10 @@ namespace Game.Level.StateMachine.States
             CastleModel castleModel, EnemySpawnService enemySpawnService, EnemyPoolService enemyPoolService)
         {
             _initializeDataProvider = initializeDataProvider;
-            _castleModel = castleModel;
             _enemySpawnService = enemySpawnService;
             _enemyPoolService = enemyPoolService;
             _stateSwitcher = stateSwitcher;
+            _castleModel = castleModel;
         }
 
 
@@ -31,8 +30,6 @@ namespace Game.Level.StateMachine.States
         {
             Debug.Log($"<color=yellow>Init Level</color>");
 
-            SceneLoader.LoadSceneWithTransition("MainMenu");
-            
             var levelInitData = _initializeDataProvider.GetInitializeData();
             
             var level = levelInitData.Level;

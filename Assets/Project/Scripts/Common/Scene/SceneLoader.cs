@@ -2,55 +2,51 @@ using UnityEngine.SceneManagement;
 using System.Threading.Tasks;
 using System.Threading;
 using UnityEngine;
-using VContainer;
 using System;
 
 
 namespace Game.Common.Scene
 {
-    public class SceneLoader : MonoBehaviour
+    public class SceneLoader
     {
-        private static SceneLoader _instance;
-
         private const float RequiredTimeToExecuteTransition = 1f;
 
+        private readonly SceneTransitionHandler _transitionHandler;
+        
         private CancellationTokenSource _cancellationTokenSource;
-        private SceneTransitionHandler _transitionHandler;
 
 
-        [Inject]
-        private void Construct(SceneTransitionHandler transitionHandler)
+        public SceneLoader(SceneTransitionHandler transitionHandler)
         {
-            Debug.Log($"<color=white>CONSTRUCT</color>");
-            
             _transitionHandler = transitionHandler;
             _cancellationTokenSource = new CancellationTokenSource();
             
             Application.quitting += _cancellationTokenSource.Cancel;
-            
-            _instance = this;
         }
         
-        
-        public static async void LoadSceneWithTransition(string sceneKey, LoadSceneMode loadMode = LoadSceneMode.Single)
+        public async void LoadSceneWithTransition(string sceneKey, LoadSceneMode loadMode = LoadSceneMode.Single)
         {
-            await _instance._transitionHandler.PlayFadeInAnimation();
+            Debug.Log($"<color=white>Start</color>");
+            
+            await _transitionHandler.PlayFadeInAnimation();
 
+            Debug.Log($"<color=white>End</color>");
+            
             var loadSceneProcess = LoadSceneAsync(sceneKey, loadMode);
 
             var longTimeSceneLoadingImitationTask = Task.Delay(TimeSpan.FromSeconds(RequiredTimeToExecuteTransition),
-                _instance._cancellationTokenSource.Token);
+                _cancellationTokenSource.Token);
 
-            await Task.WhenAny(longTimeSceneLoadingImitationTask, loadSceneProcess);
+            await Task.WhenAll(longTimeSceneLoadingImitationTask, loadSceneProcess);
 
-            await _instance._transitionHandler.PlayFadeOutAnimation();
+            await _transitionHandler.PlayFadeOutAnimation();
         }
 
-        private static async Task LoadSceneAsync(string sceneKey, LoadSceneMode loadMode)
+        private async Task LoadSceneAsync(string sceneKey, LoadSceneMode loadMode)
         {
             var loadSceneProcess = SceneManager.LoadSceneAsync(sceneKey, loadMode);
 
-            while (!loadSceneProcess.isDone && !_instance._cancellationTokenSource.IsCancellationRequested)
+            while (!loadSceneProcess.isDone && !_cancellationTokenSource.IsCancellationRequested)
                 await Task.Yield();
         }
     }

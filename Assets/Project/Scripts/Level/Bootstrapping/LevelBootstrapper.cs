@@ -2,6 +2,7 @@
 using Game.Level.Services.Debugging;
 using Game.Level.StateMachine;
 using Game.Common.Interfaces;
+using Game.Common.Scene;
 using UnityEngine;
 using VContainer;
 
@@ -17,9 +18,11 @@ namespace Game.Level.Bootstrapping
 
         
         [Inject]
-        private void Construct(IStateSwitcher stateSwitcher)
+        private void Construct(IStateSwitcher stateSwitcher, SceneLoader sceneLoader)
         {
             _stateSwitcher = stateSwitcher;
+            
+            sceneLoader.LoadSceneWithTransition(Scenes.MainMenu);
         }
 
         private void Awake()

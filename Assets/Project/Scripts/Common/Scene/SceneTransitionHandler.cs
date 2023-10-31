@@ -5,6 +5,7 @@ using UnityEngine;
 
 namespace Game.Common.Scene
 {
+    [RequireComponent(typeof(Animator))]
     public class SceneTransitionHandler : MonoBehaviour
     {
         private const string FadeOutClipID = "FadeOut";
@@ -33,12 +34,10 @@ namespace Game.Common.Scene
         
         private void Awake()
         {
-            _animator = gameObject.AddComponent<Animator>();
+            _animator = gameObject.GetComponent<Animator>();
             _transitionCancellationSource = new CancellationTokenSource();
             
             Application.quitting += _transitionCancellationSource.Cancel;
-
-            gameObject.SetActive(false);
         }
 
         public async Task PlayFadeInAnimation()
@@ -60,15 +59,11 @@ namespace Game.Common.Scene
             
             _animator.SetTrigger(trigger);
 
-            gameObject.SetActive(true);
-
             await WaitUntilPlayingEnds();
-
-            gameObject.SetActive(false);
         }
 
         private bool IsAnimationPlaying()
-            => _animator.GetCurrentAnimatorStateInfo(0).normalizedTime < 1f;
+            => _animator.GetCurrentAnimatorStateInfo(0).normalizedTime > 1f;
 
         private async Task WaitUntilPlayingEnds()
         {
