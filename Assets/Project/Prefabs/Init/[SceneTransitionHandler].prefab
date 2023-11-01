@@ -11,7 +11,6 @@ GameObject:
   - component: {fileID: 8356741252273116631}
   - component: {fileID: 8356741252273116630}
   - component: {fileID: 8356741252273116624}
-  - component: {fileID: 8356741252273116628}
   - component: {fileID: 8356741252273116629}
   m_Layer: 5
   m_Name: '[SceneTransitionHandler]'
@@ -79,27 +78,6 @@ MonoBehaviour:
   m_BlockingMask:
     serializedVersion: 2
     m_Bits: 4294967295
---- !u!95 &8356741252273116628
-Animator:
-  serializedVersion: 5
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 8356741252273116627}
-  m_Enabled: 1
-  m_Avatar: {fileID: 0}
-  m_Controller: {fileID: 9100000, guid: 00a009e389b25d14892968cb7246788a, type: 2}
-  m_CullingMode: 0
-  m_UpdateMode: 0
-  m_ApplyRootMotion: 0
-  m_LinearVelocityBlending: 0
-  m_StabilizeFeet: 0
-  m_WarningMessage: 
-  m_HasTransformHierarchy: 1
-  m_AllowConstantClipSamplingOptimization: 1
-  m_KeepAnimatorStateOnDisable: 0
-  m_WriteDefaultValuesOnDisable: 0
 --- !u!114 &8356741252273116629
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -112,6 +90,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 4486604cf948d754ba1f93a29814e3e9, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  _image: {fileID: 8356741252662164513}
 --- !u!1 &8356741252662164515
 GameObject:
   m_ObjectHideFlags: 0

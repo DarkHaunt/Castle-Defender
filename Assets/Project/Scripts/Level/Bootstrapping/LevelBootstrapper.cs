@@ -13,23 +13,30 @@ namespace Game.Level.Bootstrapping
     {
         [SerializeField] private ForcibleLevelConfigSetter _configSetter;
         [SerializeField] private ForcibleGameDataSetter _gameDataSetter;
-        
-        private IStateSwitcher _stateSwitcher;
 
-        
+        private IStateSwitcher _stateSwitcher;
+        private SceneLoader _sceneLoader;
+
+
         [Inject]
         private void Construct(IStateSwitcher stateSwitcher, SceneLoader sceneLoader)
         {
+            _sceneLoader = sceneLoader;
             _stateSwitcher = stateSwitcher;
-            
-            sceneLoader.LoadSceneWithTransition(Scenes.MainMenu);
+
+            Invoke(nameof(NewMethod), 1f);
+        }
+
+        private void NewMethod()
+        {
+            _sceneLoader.LoadSceneWithTransition(Scenes.MainMenu);
         }
 
         private void Awake()
         {
             _configSetter.ForceSetCachedConfig();
             _gameDataSetter.ForceSetCachedPlayerProgressData();
-            
+
             _stateSwitcher.SwitchToState<LoadingLevelDataState>();
         }
     }

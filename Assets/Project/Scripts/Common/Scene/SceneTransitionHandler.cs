@@ -1,74 +1,50 @@
 using System.Threading.Tasks;
 using System.Threading;
+using UnityEngine.UI;
+using DG.Tweening;
 using UnityEngine;
 
 
 namespace Game.Common.Scene
 {
-    [RequireComponent(typeof(Animator))]
     public class SceneTransitionHandler : MonoBehaviour
     {
-        private const string FadeOutClipID = "FadeOut";
-        private const string FadeInClipID = "FadeIn";
+        private const float FadeInTime = 1f;
+        private const float FadeOutTime = 0.5f;
 
-        private Animator _animator;
-        private CancellationTokenSource _transitionCancellationSource;
-
-
-        private bool TaskWasCancelled
-        {
-            get
-            {
-                var wasCancelled = _transitionCancellationSource.IsCancellationRequested;
-
-                if (wasCancelled)
-                {
-                    _transitionCancellationSource.Dispose();
-                    _transitionCancellationSource = new CancellationTokenSource();
-                }
-
-                return wasCancelled;
-            }
-        }
-
+        [SerializeField] private Image _image;
         
+        private CancellationTokenSource _cancellationToken;
+
+
         private void Awake()
-        {
-            _animator = gameObject.GetComponent<Animator>();
-            _transitionCancellationSource = new CancellationTokenSource();
-            
-            Application.quitting += _transitionCancellationSource.Cancel;
-        }
+            => _cancellationToken = new CancellationTokenSource();
 
         public async Task PlayFadeInAnimation()
-            => await PlayAnimationClip(FadeInClipID);
+            => await PlayAnimationClip(_image.DOFade(1f, FadeInTime));
 
         public async Task PlayFadeOutAnimation()
-            => await PlayAnimationClip(FadeOutClipID);
+            => await PlayAnimationClip(_image.DOFade(0f, FadeOutTime));
 
-        private async Task PlayAnimationClip(string trigger)
+        public void CancelTransition()
+            => _cancellationToken?.Cancel();
+
+        private async Task PlayAnimationClip(Tween animationTween)
         {
-            if (TaskWasCancelled)
-                await Task.FromCanceled(_transitionCancellationSource.Token);
-            
-            if (IsAnimationPlaying())
+            if (_cancellationToken.IsCancellationRequested)
             {
-                Debug.LogError($"Animation component in {nameof(SceneTransitionHandler)} is playing clip, so you can't play another until clip will end");
-                await Task.FromCanceled(CancellationToken.None);
+                UpdateCancellationSource();
+                
+                await Task.FromCanceled(_cancellationToken.Token);
             }
-            
-            _animator.SetTrigger(trigger);
 
-            await WaitUntilPlayingEnds();
+            await animationTween.AsyncWaitForCompletion();
         }
 
-        private bool IsAnimationPlaying()
-            => _animator.GetCurrentAnimatorStateInfo(0).normalizedTime > 1f;
-
-        private async Task WaitUntilPlayingEnds()
+        private void UpdateCancellationSource()
         {
-            while (!TaskWasCancelled && IsAnimationPlaying())
-                await Task.Yield();
+            _cancellationToken?.Dispose();
+            _cancellationToken = new CancellationTokenSource();
         }
     }
 }
