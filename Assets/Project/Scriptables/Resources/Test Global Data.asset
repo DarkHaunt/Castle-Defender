@@ -12,5 +12,5 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 3dfd7000db674180945fd49ee21a959c, type: 3}
   m_Name: Test Global Data
   m_EditorClassIdentifier: 
-  <CastleHealth>k__BackingField: 20000
+  <CastleHealth>k__BackingField: 1
   <AvailableWeapons>k__BackingField: []

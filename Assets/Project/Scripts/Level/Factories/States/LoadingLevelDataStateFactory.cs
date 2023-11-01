@@ -1,6 +1,6 @@
-﻿using Game.Level.Services.Level;
+﻿using Game.Level.StateMachine.States;
+using Game.Level.Services.Level;
 using Game.Level.StateMachine;
-using Game.Level.StateMachine.States;
 
 
 namespace Game.Level.Factories.States

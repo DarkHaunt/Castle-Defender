@@ -505,7 +505,7 @@ MonoBehaviour:
   _weaponParent: {fileID: 147842628}
   _levelParent: {fileID: 1394128274}
   _enemyParent: {fileID: 1918156017}
-  _gameOverUIService: {fileID: 0}
+  _gameOverUIService: {fileID: 899789266}
   _weaponSystemView: {fileID: 813292959}
   _castleView: {fileID: 592950273}
   _creationPrefab: {fileID: 4610221735476587297, guid: 38d8f8588170e344f8dd26420c53c93c, type: 3}
@@ -529,6 +529,17 @@ RectTransform:
   m_CorrespondingSourceObject: {fileID: 8153642290106871284, guid: 728621f1ee27f9e48844ae63ab740ecf, type: 3}
   m_PrefabInstance: {fileID: 8153642290834676793}
   m_PrefabAsset: {fileID: 0}
+--- !u!114 &899789266 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 942380935384431330, guid: 728621f1ee27f9e48844ae63ab740ecf, type: 3}
+  m_PrefabInstance: {fileID: 8153642290834676793}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 5b97b3e86aff4a41af93d040eaf275e9, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &949823445
 GameObject:
   m_ObjectHideFlags: 0
@@ -1307,7 +1318,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 8153642290106871285, guid: 728621f1ee27f9e48844ae63ab740ecf, type: 3}
       propertyPath: m_IsActive
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 728621f1ee27f9e48844ae63ab740ecf, type: 3}

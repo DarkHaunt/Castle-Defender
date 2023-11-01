@@ -9,8 +9,8 @@ namespace Game.Common.Scene
 {
     public class SceneTransitionHandler : MonoBehaviour
     {
-        private const float FadeInTime = 1f;
-        private const float FadeOutTime = 0.5f;
+        private const float FadeInTime = 0.7f;
+        private const float FadeOutTime = 0.35f;
 
         [SerializeField] private Image _image;
         
@@ -18,13 +18,21 @@ namespace Game.Common.Scene
 
 
         private void Awake()
-            => _cancellationToken = new CancellationTokenSource();
+            => UpdateCancellationSource();
 
         public async Task PlayFadeInAnimation()
-            => await PlayAnimationClip(_image.DOFade(1f, FadeInTime));
+        {
+            _image.raycastTarget = true;
+            
+            await PlayAnimationClip(_image.DOFade(1f, FadeInTime));
+        }
 
         public async Task PlayFadeOutAnimation()
-            => await PlayAnimationClip(_image.DOFade(0f, FadeOutTime));
+        {
+            _image.raycastTarget = false;
+            
+            await PlayAnimationClip(_image.DOFade(0f, FadeOutTime));
+        }
 
         public void CancelTransition()
             => _cancellationToken?.Cancel();

@@ -22,12 +22,16 @@ namespace Game.UI.Common
         
         public void Enable() 
         {
+            gameObject.SetActive(true);
+            
             _menuButton.onClick.AddListener(GoToMenuScene);
             _restartButton.onClick.AddListener(GoToLevelScene);
         }
 				
         public void Disable() 
         {
+            gameObject.SetActive(false);
+            
             _menuButton.onClick.RemoveListener(GoToMenuScene);
             _restartButton.onClick.RemoveListener(GoToLevelScene);
         }
