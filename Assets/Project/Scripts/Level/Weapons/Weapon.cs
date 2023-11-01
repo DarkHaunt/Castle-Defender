@@ -1,7 +1,7 @@
 ﻿using Game.Level.Weapons.StateMachine.States;
+using Game.Level.Weapons.EnemiesDetection;
 using Game.Level.Weapons.StateMachine;
 using Game.Level.Enemies;
-using Game.Level.Weapons.EnemiesDetection;
 using UnityEngine;
 using System;
 
@@ -14,17 +14,18 @@ namespace Game.Level.Weapons
 
         [Header("--- Weapon Behavior ---")]
         [SerializeField] protected float _damage;
-        [SerializeField] private WeaponBehaviorData _weaponBehaviorData;
-
+        [SerializeField] private float _attackRadius;
+        [SerializeField] private float _reloadTime;
+        
         private WeaponStateMachine _weaponStateMachine;
         
         
         public void Init()
         {
-            _enemiesDetector.Init(_weaponBehaviorData.AttackRadius);
+            _enemiesDetector.Init(_attackRadius);
 
             var weaponTargetHolder = new WeaponTargetHolder();
-            _weaponStateMachine = new WeaponStateMachine(this, weaponTargetHolder, _weaponBehaviorData, _enemiesDetector);
+            _weaponStateMachine = new WeaponStateMachine(this, weaponTargetHolder, _enemiesDetector, _reloadTime);
         }
 
         public void Enable()

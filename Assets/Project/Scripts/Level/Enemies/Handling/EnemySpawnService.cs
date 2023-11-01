@@ -1,11 +1,11 @@
 ﻿using Game.Level.Factories.Enemies;
 using System.Collections.Generic;
+using Game.Level.Services.Level;
 using Game.Common.Interfaces;
 using System.Collections;
 using Game.Level.Enemies;
 using Game.Level.Common;
 using Game.Extensions;
-using Game.Level.Services.Level;
 using UnityEngine;
 
 
