@@ -2,6 +2,7 @@
 using Game.Level.Factories.States;
 using Game.Level.Factories.Level;
 using Game.Level.Services.Level;
+using Game.Level.Common.Physics;
 using Game.Level.StateMachine;
 using Game.Level.Common;
 using VContainer.Unity;
@@ -36,6 +37,13 @@ namespace Game.Level.Bootstrapping
             RegisterStateFactories(builder);
             RegisterStateMachine(builder);
             RegisterStates(builder);
+
+            RegisterLevelCollisionService(builder);
+        }
+        
+        private void RegisterLevelCollisionService(IContainerBuilder builder)
+        {
+            builder.Register<LevelCollisionsService>(Lifetime.Scoped);
         }
 
         private void RegisterLevelBootstrapper(IContainerBuilder builder)

@@ -1,8 +1,8 @@
-﻿using Game.Level.Common.Physics;
-using Game.Level.Views.Castles;
+﻿using Game.Level.Views.Castles;
 using Game.Level.Views.Weapons;
 using Game.Level.Weapons;
 using VContainer.Unity;
+using Game.UI.Common;
 using UnityEngine;
 using VContainer;
 
@@ -20,6 +20,7 @@ namespace Game.Level.Bootstrapping
         [SerializeField] private Transform _enemyParent;
 
         [Header("--- Views ---")]
+        [SerializeField] private GameOverUIService _gameOverUIService;
         [SerializeField] private WeaponSystemView _weaponSystemView;
         [SerializeField] private CastleView _castleView;
 
@@ -29,8 +30,6 @@ namespace Game.Level.Bootstrapping
 
         protected override void Configure(IContainerBuilder builder)
         {
-            RegisterLevelCollisionService(builder);
-
             new WeaponSystemInstaller(_creationPrefab, _weaponParent, _weaponSystemView)
                 .Install(builder);
 
@@ -42,11 +41,9 @@ namespace Game.Level.Bootstrapping
 
             new LevelSystemInstaller(_bootstrapper, _levelParent)
                 .Install(builder);
-        }
-
-        private void RegisterLevelCollisionService(IContainerBuilder builder)
-        {
-            builder.Register<LevelCollisionsService>(Lifetime.Scoped);
+            
+            new UIInstaller(_gameOverUIService)
+                .Install(builder);
         }
     }
 }
