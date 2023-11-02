@@ -1,0 +1,629 @@
+fileFormatVersion: 2
+guid: 1f4816342bda5e748975fbb75d24f66b
+TextureImporter:
+  internalIDToNameTable: []
+  externalObjects: {}
+  serializedVersion: 12
+  mipmaps:
+    mipMapMode: 0
+    enableMipMap: 0
+    sRGBTexture: 1
+    linearTexture: 0
+    fadeOut: 0
+    borderMipMap: 0
+    mipMapsPreserveCoverage: 0
+    alphaTestReferenceValue: 0.5
+    mipMapFadeDistanceStart: 1
+    mipMapFadeDistanceEnd: 3
+  bumpmap:
+    convertToNormalMap: 0
+    externalNormalMap: 0
+    heightScale: 0.25
+    normalMapFilter: 0
+  isReadable: 0
+  streamingMipmaps: 0
+  streamingMipmapsPriority: 0
+  vTOnly: 0
+  ignoreMasterTextureLimit: 0
+  grayScaleToAlpha: 0
+  generateCubemap: 6
+  cubemapConvolution: 0
+  seamlessCubemap: 0
+  textureFormat: 1
+  maxTextureSize: 2048
+  textureSettings:
+    serializedVersion: 2
+    filterMode: 1
+    aniso: 1
+    mipBias: 0
+    wrapU: 1
+    wrapV: 1
+    wrapW: 1
+  nPOTScale: 0
+  lightmap: 0
+  compressionQuality: 50
+  spriteMode: 2
+  spriteExtrude: 1
+  spriteMeshType: 0
+  alignment: 0
+  spritePivot: {x: 0.5, y: 0.5}
+  spritePixelsToUnits: 100
+  spriteBorder: {x: 0, y: 0, z: 0, w: 0}
+  spriteGenerateFallbackPhysicsShape: 0
+  alphaUsage: 1
+  alphaIsTransparency: 1
+  spriteTessellationDetail: -1
+  textureType: 8
+  textureShape: 1
+  singleChannelComponent: 0
+  flipbookRows: 1
+  flipbookColumns: 1
+  maxTextureSizeSet: 0
+  compressionQualitySet: 0
+  textureFormatSet: 0
+  ignorePngGamma: 0
+  applyGammaDecoding: 0
+  cookieLightType: 0
+  platformSettings:
+  - serializedVersion: 3
+    buildTarget: DefaultTexturePlatform
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  - serializedVersion: 3
+    buildTarget: Standalone
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  - serializedVersion: 3
+    buildTarget: Server
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  - serializedVersion: 3
+    buildTarget: Android
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: 50
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 1
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  spriteSheet:
+    serializedVersion: 2
+    sprites:
+    - serializedVersion: 2
+      name: Toggle BG Light
+      rect:
+        serializedVersion: 2
+        x: 1793
+        y: 1838
+        width: 165
+        height: 165
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: c8d8371f5f1e3734e8f0c44668dd68f1
+      internalID: 1673337625
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Menu_1
+      rect:
+        serializedVersion: 2
+        x: 693
+        y: 1680
+        width: 333
+        height: 346
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 9e907aa4a4a1bd84f850990e315fb40d
+      internalID: -1975096321
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Play
+      rect:
+        serializedVersion: 2
+        x: 18
+        y: 1680
+        width: 330
+        height: 343
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 88496b4a8d2c3b44699c00fadfaccb24
+      internalID: 190903635
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Reset
+      rect:
+        serializedVersion: 2
+        x: 354
+        y: 1679
+        width: 333
+        height: 344
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 1d9fc833fd99ca04897593f03db7c830
+      internalID: -246542711
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Menu_2
+      rect:
+        serializedVersion: 2
+        x: 1035
+        y: 1680
+        width: 330
+        height: 341
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: b399950e6be6bc84fb3e6bb2289f8b97
+      internalID: 206109696
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Slider Handle Light
+      rect:
+        serializedVersion: 2
+        x: 1430
+        y: 1717
+        width: 249
+        height: 258
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 913b08161d5fbff47badd7c34aa6a167
+      internalID: 1851548723
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Toggle Fill Light
+      rect:
+        serializedVersion: 2
+        x: 1814
+        y: 1681
+        width: 119
+        height: 119
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: d111a764134e259448faefb8ce21e6f4
+      internalID: 1429751888
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Pause
+      rect:
+        serializedVersion: 2
+        x: 17
+        y: 1314
+        width: 329
+        height: 341
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 7f1037aa6fc15e642b40d3fadbc2bd23
+      internalID: -174377774
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Cancel
+      rect:
+        serializedVersion: 2
+        x: 361
+        y: 1312
+        width: 330
+        height: 342
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 88d1052ea6aa5a04f8759e5a7aec90ec
+      internalID: 185418550
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Apply
+      rect:
+        serializedVersion: 2
+        x: 698
+        y: 1311
+        width: 330
+        height: 342
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 17791ec265fbc4b43a90c5cc326183c1
+      internalID: 1252191999
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Settings
+      rect:
+        serializedVersion: 2
+        x: 1032
+        y: 1311
+        width: 330
+        height: 342
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 9e4ea5e5dc3e66b4485a376c07deaf71
+      internalID: -825111428
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Toggle Fill
+      rect:
+        serializedVersion: 2
+        x: 1814
+        y: 1516
+        width: 119
+        height: 120
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: b710288ef1bc13b4081590fa5f9dcafe
+      internalID: -123120427
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Slider Handle
+      rect:
+        serializedVersion: 2
+        x: 1422
+        y: 1336
+        width: 250
+        height: 259
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 94904dd14c4520648b3acfbc09a1f107
+      internalID: 1666689361
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Toggle BG
+      rect:
+        serializedVersion: 2
+        x: 1793
+        y: 1307
+        width: 164
+        height: 165
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 95632a3d110b1e54d899f844cbe2e8e3
+      internalID: -1375075127
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Slider Fill Light
+      rect:
+        serializedVersion: 2
+        x: 70
+        y: 952
+        width: 1880
+        height: 122
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 44, y: 0, z: 44, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: b75dffbf11729d140817b3b0de6d8c96
+      internalID: -1541386317
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Slider BG Light
+      rect:
+        serializedVersion: 2
+        x: 29
+        y: 635
+        width: 1974
+        height: 202
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 95, y: 0, z: 95, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 8d40c7ea7bd7ee544a47bd368c236500
+      internalID: -340347981
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Slider Fill
+      rect:
+        serializedVersion: 2
+        x: 69
+        y: 351
+        width: 1880
+        height: 123
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 44, y: 0, z: 44, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 996da869543899d46a342ec4217bf000
+      internalID: 759875452
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Slider BG
+      rect:
+        serializedVersion: 2
+        x: 32
+        y: 55
+        width: 1971
+        height: 202
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 95, y: 0, z: 95, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 8b232a66305c73847a65c47afc7828a1
+      internalID: 1176681879
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    outline: []
+    physicsShape: []
+    bones: []
+    spriteID: 5e97eb03825dee720800000000000000
+    internalID: 0
+    vertices: []
+    indices: 
+    edges: []
+    weights: []
+    secondaryTextures: []
+    nameFileIdTable:
+      Apply: 1252191999
+      Cancel: 185418550
+      Menu_1: -1975096321
+      Menu_2: 206109696
+      Pause: -174377774
+      Play: 190903635
+      Reset: -246542711
+      Settings: -825111428
+      Slider BG: 1176681879
+      Slider BG Light: -340347981
+      Slider Fill: 759875452
+      Slider Fill Light: -1541386317
+      Slider Handle: 1666689361
+      Slider Handle Light: 1851548723
+      Toggle BG: -1375075127
+      Toggle BG Light: 1673337625
+      Toggle Fill: -123120427
+      Toggle Fill Light: 1429751888
+      UI_0: 425253156
+      UI_1: 633786328
+      UI_10: 271855400
+      UI_100: -718169915
+      UI_101: 2043268351
+      UI_102: 1210152607
+      UI_103: -883531081
+      UI_104: -429537930
+      UI_105: -375264135
+      UI_106: 1332560116
+      UI_107: 1763313226
+      UI_108: -660583788
+      UI_109: -662739403
+      UI_11: -1962814465
+      UI_110: 653091309
+      UI_111: -267162627
+      UI_12: 826871522
+      UI_13: 1291349255
+      UI_14: -1067206135
+      UI_15: -1099123384
+      UI_16: -1737442989
+      UI_17: 259781637
+      UI_18: -144446099
+      UI_19: -733508912
+      UI_2: -361115813
+      UI_21: -377213019
+      UI_22: -401582025
+      UI_24: 246567537
+      UI_26: -1356995432
+      UI_28: 1169725232
+      UI_3: 727109255
+      UI_30: -1826403940
+      UI_32: 108169291
+      UI_33: 7180718
+      UI_34: 1651446330
+      UI_35: 33946318
+      UI_36: -1309981034
+      UI_37: 1383601825
+      UI_38: -599591545
+      UI_39: 1274467425
+      UI_4: -708609872
+      UI_41: 619892123
+      UI_42: 1512436204
+      UI_43: -1978388417
+      UI_44: 1525397065
+      UI_45: 2086925333
+      UI_46: -1866051374
+      UI_47: 1633011616
+      UI_48: 1559805992
+      UI_49: -1606079139
+      UI_5: 1637642813
+      UI_50: -1908345924
+      UI_51: 1635035932
+      UI_52: 648538607
+      UI_53: -1196864123
+      UI_54: -1915076546
+      UI_55: 1080356582
+      UI_56: 556968608
+      UI_57: -1594118054
+      UI_6: -518167462
+      UI_61: 1650162903
+      UI_63: -281041375
+      UI_64: 737174514
+      UI_66: -1499569413
+      UI_67: 609380839
+      UI_68: 1833339210
+      UI_69: 1998614526
+      UI_7: -1436989385
+      UI_70: 1392441489
+      UI_72: -1870534864
+      UI_73: -1590251604
+      UI_74: 1278569234
+      UI_75: -52565160
+      UI_76: 1417314321
+      UI_77: 291852823
+      UI_78: -550529084
+      UI_79: -1975647872
+      UI_8: 480926441
+      UI_81: -351386635
+      UI_82: 1057774043
+      UI_83: -1768186422
+      UI_84: 456270448
+      UI_85: 325030936
+      UI_86: 380441233
+      UI_87: 182781043
+      UI_88: 1643821898
+      UI_89: -1163561912
+      UI_9: -1704107027
+      UI_90: -863609617
+      UI_91: -767130987
+      UI_92: 1419077601
+      UI_93: 1165236049
+      UI_94: -410710426
+      UI_95: 539632021
+      UI_96: 1359436191
+      UI_97: 1513527575
+      UI_98: -1864765668
+      UI_99: 1966459679
+  spritePackingTag: 
+  pSDRemoveMatte: 0
+  pSDShowRemoveMatteOption: 0
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
