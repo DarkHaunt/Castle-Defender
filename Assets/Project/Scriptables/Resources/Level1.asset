@@ -10,8 +10,9 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: f977c72932444a81b7a13fe854505ef6, type: 3}
-  m_Name: Test Level Config
+  m_Name: Level1
   m_EditorClassIdentifier: 
+  <Number>k__BackingField: 1
   <LevelPrefabPath>k__BackingField: Test Level
   <EnemiesPrefabsPatches>k__BackingField:
   - Test Enemy
