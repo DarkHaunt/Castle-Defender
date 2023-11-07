@@ -26,12 +26,8 @@ namespace Game.Common.Scene
         
         public async void LoadSceneWithTransition(string sceneKey, LoadSceneMode loadMode = LoadSceneMode.Single)
         {
-            Debug.Log($"<color=white>Start</color>");
-            
             await _transitionHandler.PlayFadeInAnimation();
 
-            Debug.Log($"<color=white>End</color>");
-            
             var loadSceneProcess = LoadSceneAsync(sceneKey, loadMode);
 
             var longTimeSceneLoadingImitationTask = Task.Delay(TimeSpan.FromSeconds(RequiredTimeToExecuteTransition),

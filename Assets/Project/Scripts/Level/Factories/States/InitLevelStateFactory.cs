@@ -18,13 +18,12 @@ namespace Game.Level.Factories.States
 
 
         public InitLevelStateFactory(IInitializeDataProvider initializeDataProvider, CastleModel castleModel, 
-            IWeaponPointsContainer weaponPointsContainer, EnemySpawnService enemySpawnService, EnemyPoolService enemyPoolService)
+            EnemySpawnService enemySpawnService, EnemyPoolService enemyPoolService)
         {
             _initializeDataProvider = initializeDataProvider;
-            _weaponPointsContainer = weaponPointsContainer;
-            _castleModel = castleModel;
             _enemySpawnService = enemySpawnService;
             _enemyPoolService = enemyPoolService;
+            _castleModel = castleModel;
         }
         
         

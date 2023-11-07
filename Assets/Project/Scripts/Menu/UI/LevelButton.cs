@@ -10,7 +10,7 @@ namespace Project.Scripts.Menu.UI
     [RequireComponent(typeof(Button))]
     public class LevelButton : MonoBehaviour
     {
-        public event Action<LevelConfig>OnClicked;
+        public event Action<LevelConfig> OnClicked;
         
         [SerializeField] private LevelConfig _config;
         [SerializeField] private TextMeshProUGUI _numberField;

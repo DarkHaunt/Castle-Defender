@@ -24,10 +24,12 @@ namespace Game.Level.Bootstrapping
             _levelBootstrapper = levelBootstrapper;
             _levelParentObject = levelParentObject;
         }
-        
-        
+
+
         public void Install(IContainerBuilder builder)
         {
+            RegisterStateMachine(builder);
+            
             RegisterPlayerProgressDataProvider(builder);
             RegisterInitializeDataProvider(builder);
             RegisterLevelConfigProvider(builder);
@@ -35,12 +37,19 @@ namespace Game.Level.Bootstrapping
 
             RegisterLevelBootstrapper(builder);
             RegisterStateFactories(builder);
-            RegisterStateMachine(builder);
             RegisterStates(builder);
 
             RegisterLevelCollisionService(builder);
         }
-        
+
+        private void RegisterStateMachine(IContainerBuilder builder)
+        {
+            builder
+                .RegisterEntryPoint<LevelStateMachine>()
+                .As<IStateSwitcher>()
+                .AsSelf();
+        }
+
         private void RegisterLevelCollisionService(IContainerBuilder builder)
         {
             builder.Register<LevelCollisionsService>(Lifetime.Scoped);
@@ -83,14 +92,6 @@ namespace Game.Level.Bootstrapping
                 container.Resolve<LevelFactory>().CreateLevel, Lifetime.Scoped);
         }
 
-        private void RegisterStateMachine(IContainerBuilder builder)
-        {
-            builder
-                .RegisterEntryPoint<LevelStateMachine>()
-                .As<IStateSwitcher>()
-                .AsSelf();
-        }
-        
         private void RegisterStates(IContainerBuilder builder)
         {
             builder.Register<LoadingLevelDataState>(Lifetime.Scoped);

@@ -1,9 +1,9 @@
-﻿using Game.Level.Common.Physics;
+﻿using Game.Level.StateMachine.States;
 using Game.Level.Services.Castles;
 using Game.Level.Services.Enemies;
 using Game.Level.Services.Weapons;
+using Game.Level.Common.Physics;
 using Game.Level.StateMachine;
-using Game.Level.StateMachine.States;
 
 
 namespace Game.Level.Factories.States
@@ -12,19 +12,19 @@ namespace Game.Level.Factories.States
     {
         private readonly IWeaponHandleService _weaponHandleService;
         private readonly LevelCollisionsService _collisionsService;
-        private readonly CastleModel _castleModel;
         private readonly EnemyHandleService _enemyHandleService;
         private readonly EnemySpawnService _enemySpawnService;
+        private readonly CastleModel _castleModel;
 
 
         public StartLevelStateFactory(CastleModel castleModel, IWeaponHandleService weaponHandleService, 
             LevelCollisionsService collisionsService, EnemySpawnService enemySpawnService, EnemyHandleService enemyHandleService)
         {
             _weaponHandleService = weaponHandleService;
-            _castleModel = castleModel;
             _enemyHandleService = enemyHandleService;
             _enemySpawnService = enemySpawnService;
             _collisionsService = collisionsService;
+            _castleModel = castleModel;
         }
         
         

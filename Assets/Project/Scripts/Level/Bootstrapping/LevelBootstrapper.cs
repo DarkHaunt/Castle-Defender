@@ -1,14 +1,13 @@
 ﻿using Game.Level.StateMachine.States;
 using Game.Level.Services.Debugging;
 using Game.Level.StateMachine;
-using Game.Common.Interfaces;
 using UnityEngine;
 using VContainer;
 
 
 namespace Game.Level.Bootstrapping
 {
-    public class LevelBootstrapper : MonoBehaviour, ICoroutineRunner
+    public class LevelBootstrapper : MonoBehaviour
     {
         [SerializeField] private ForcibleLevelConfigSetter _configSetter;
         [SerializeField] private ForcibleGameDataSetter _gameDataSetter;
