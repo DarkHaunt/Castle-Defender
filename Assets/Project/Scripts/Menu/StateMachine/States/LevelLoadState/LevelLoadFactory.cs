@@ -1,7 +1,7 @@
 ﻿using Game.Common.Scene;
 
 
-namespace Project.Scripts.Menu.StateMachine.State
+namespace Project.Scripts.Menu.StateMachine.States.LevelLoadState
 {
     public class LevelLoadFactory
     {

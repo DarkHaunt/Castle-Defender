@@ -1,9 +1,11 @@
-﻿using Game.Level.StateMachine.States;
+﻿using Game.Level.StateMachine;
+using Game.Level.StateMachine.States;
 using Project.Scripts.Menu.Data;
-using Game.Level.StateMachine;
+using Project.Scripts.Menu.StateMachine.States.LevelSelectState;
+using Project.Scripts.Menu.StateMachine.States.SettingsSelectState;
 
 
-namespace Project.Scripts.Menu.StateMachine.State
+namespace Project.Scripts.Menu.StateMachine.States.MenuHandleState
 {
     public class MenuHandle : IState
     {
@@ -23,6 +25,7 @@ namespace Project.Scripts.Menu.StateMachine.State
             _menuData.MenuCanvas.gameObject.SetActive(true);
 
             _menuData.StartButton.onClick.AddListener(SelectLevel);
+            _menuData.SettingsButton.onClick.AddListener(SelectSettings);
         }
 
         public void Exit()
@@ -30,9 +33,13 @@ namespace Project.Scripts.Menu.StateMachine.State
             _menuData.MenuCanvas.gameObject.SetActive(false);
             
             _menuData.StartButton.onClick.RemoveListener(SelectLevel);
+            _menuData.SettingsButton.onClick.RemoveListener(SelectSettings);
         }
 
         private void SelectLevel()
-            => _stateSwitcher.SwitchToState<LevelSelect>();
+            => _stateSwitcher.SwitchToState<LevelSelect>();   
+        
+        private void SelectSettings()
+            => _stateSwitcher.SwitchToState<SettingsSelect>();
     }
 }

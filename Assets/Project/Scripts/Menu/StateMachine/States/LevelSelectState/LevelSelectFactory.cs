@@ -2,7 +2,7 @@
 using Project.Scripts.Menu.Data;
 
 
-namespace Project.Scripts.Menu.StateMachine.State
+namespace Project.Scripts.Menu.StateMachine.States.LevelSelectState
 {
     public class LevelSelectFactory
     {

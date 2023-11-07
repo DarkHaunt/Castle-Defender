@@ -35,6 +35,9 @@ namespace Project.Scripts.Menu.UI
             => _button.onClick.RemoveListener(NotifyClicked);
 
         private void NotifyClicked()
-            => OnClicked?.Invoke(_config);
+        {
+            Debug.Log($"<color=red>Log</color>");
+            OnClicked?.Invoke(_config);
+        }
     }
 }

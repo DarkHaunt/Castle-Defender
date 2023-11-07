@@ -1,12 +1,13 @@
-﻿using Game.Level.StateMachine.States;
-using Project.Scripts.Menu.Data;
-using Game.Level.StateMachine;
+﻿using Game.Common.Save;
 using Game.Configs.Level;
-using Game.Common.Save;
+using Game.Level.StateMachine;
+using Game.Level.StateMachine.States;
 using Game.Static;
+using Project.Scripts.Menu.Data;
+using Project.Scripts.Menu.StateMachine.States.LevelLoadState;
 
 
-namespace Project.Scripts.Menu.StateMachine.State
+namespace Project.Scripts.Menu.StateMachine.States.LevelSelectState
 {
     public class LevelSelect : IState
     {

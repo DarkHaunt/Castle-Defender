@@ -1,4 +1,7 @@
-﻿using Project.Scripts.Menu.StateMachine.State;
+﻿using Project.Scripts.Menu.StateMachine.States.SettingsSelectState;
+using Project.Scripts.Menu.StateMachine.States.LevelSelectState;
+using Project.Scripts.Menu.StateMachine.States.MenuHandleState;
+using Project.Scripts.Menu.StateMachine.States.LevelLoadState;
 using Game.Level.StateMachine.States;
 using System.Collections.Generic;
 using Game.Level.StateMachine;
@@ -15,11 +18,12 @@ namespace Project.Scripts.Menu.StateMachine
 
 
         public MenuStateMachine(MenuHandleFactory menuHandleFactory, LevelSelectFactory levelSelectFactory,
-            LevelLoadFactory levelLoadFactory)
+            LevelLoadFactory levelLoadFactory, SettingsSelectFactory settingsSelectFactory)
         {
             _states = new Dictionary<Type, IState>()
             {
                 [typeof(MenuHandle)] = menuHandleFactory.CreateState(this),
+                [typeof(SettingsSelect)] = settingsSelectFactory.CreateState(this),
                 [typeof(LevelSelect)] = levelSelectFactory.CreateState(this),
                 [typeof(LevelLoad)] = levelLoadFactory.CreateState(),
             };

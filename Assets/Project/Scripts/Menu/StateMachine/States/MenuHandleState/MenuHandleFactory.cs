@@ -1,8 +1,8 @@
-﻿using Project.Scripts.Menu.Data;
-using Game.Level.StateMachine;
+﻿using Game.Level.StateMachine;
+using Project.Scripts.Menu.Data;
 
 
-namespace Project.Scripts.Menu.StateMachine.State
+namespace Project.Scripts.Menu.StateMachine.States.MenuHandleState
 {
     public class MenuHandleFactory
     {

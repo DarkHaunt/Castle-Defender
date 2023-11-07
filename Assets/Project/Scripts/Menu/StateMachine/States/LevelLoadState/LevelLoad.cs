@@ -1,8 +1,8 @@
-﻿using Game.Level.StateMachine.States;
-using Game.Common.Scene;
+﻿using Game.Common.Scene;
+using Game.Level.StateMachine.States;
 
 
-namespace Project.Scripts.Menu.StateMachine.State
+namespace Project.Scripts.Menu.StateMachine.States.LevelLoadState
 {
     public class LevelLoad : IState
     {
