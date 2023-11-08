@@ -1,9 +1,9 @@
 ﻿using Game.Common.Interfaces;
-using Game.Level.Enemies;
+using Project.Scripts.Level.Enemies;
 using System;
 
 
-namespace Game.Level.Weapons
+namespace Project.Scripts.Level.Weapons
 {
     public interface IWeaponBehaviorHandler : ICoroutineRunner
     {

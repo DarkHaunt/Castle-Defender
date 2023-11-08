@@ -1,9 +1,8 @@
-﻿using Game.Level.Services.Weapons;
-using Game.Extra;
+﻿using Game.Extra;
 using System;
 
 
-namespace Game.Level.Binders
+namespace Project.Scripts.Level.Weapons.Handling
 {
     public class WeaponSystemBinder
     {

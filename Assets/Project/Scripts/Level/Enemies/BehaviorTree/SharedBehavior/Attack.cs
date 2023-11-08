@@ -1,9 +1,9 @@
 ﻿using Game.Common.Time;
-using Game.Level.Enemies.BehaviorTree.Common;
-using Game.Level.Enemies.BehaviorTree.Common.Nodes;
+using Project.Scripts.Level.Enemies.BehaviorTree.Common;
+using Project.Scripts.Level.Enemies.BehaviorTree.Common.Nodes;
 
 
-namespace Game.Level.Enemies.BehaviorTree.SharedBehavior
+namespace Project.Scripts.Level.Enemies.BehaviorTree.SharedBehavior
 {
     public class Attack : Node
     {

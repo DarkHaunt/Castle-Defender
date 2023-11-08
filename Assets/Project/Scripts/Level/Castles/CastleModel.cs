@@ -1,13 +1,11 @@
-﻿using Game.Level.Weapons.HandlePoints.MVP;
-using Game.Level.Weapons.HandlePoints;
-using System.Collections.Generic;
-using Game.Level.Castles;
-using Game.Level.Enemies;
-using Game.Level.Health;
+﻿using Project.Scripts.Level.Common.Damage;
+using Project.Scripts.Level.Weapons.HandlePoints;
+using Project.Scripts.Level.Weapons.HandlePoints.MVP;
 using System;
+using System.Collections.Generic;
 
 
-namespace Game.Level.Services.Castles
+namespace Project.Scripts.Level.Castles
 {
     public class CastleModel
     {

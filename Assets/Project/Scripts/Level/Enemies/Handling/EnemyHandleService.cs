@@ -1,12 +1,11 @@
-﻿using System.Collections.Generic;
-using Game.Common.Interfaces;
-using Game.Level.Enemies;
-using System.Collections;
+﻿using Game.Common.Interfaces;
 using Game.Extensions;
+using System.Collections;
+using System.Collections.Generic;
 using UnityEngine;
 
 
-namespace Game.Level.Services.Enemies
+namespace Project.Scripts.Level.Enemies.Handling
 {
     public class EnemyHandleService : IEnemyRegister
     {

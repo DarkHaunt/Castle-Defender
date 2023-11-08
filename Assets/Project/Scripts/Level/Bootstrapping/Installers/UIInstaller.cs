@@ -1,9 +1,9 @@
-﻿using VContainer.Unity;
-using Game.UI.Common;
+﻿using Game.UI.Common;
 using VContainer;
+using VContainer.Unity;
 
 
-namespace Game.Level.Bootstrapping
+namespace Project.Scripts.Level.Bootstrapping.Installers
 {
     public class UIInstaller : IInstaller
     {

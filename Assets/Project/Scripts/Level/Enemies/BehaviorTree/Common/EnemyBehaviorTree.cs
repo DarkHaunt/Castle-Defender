@@ -1,8 +1,8 @@
-﻿using Game.Level.Enemies.BehaviorTree.Common.Nodes;
-using Game.Level.Health;
+﻿using Project.Scripts.Level.Common.Damage;
+using Project.Scripts.Level.Enemies.BehaviorTree.Common.Nodes;
 
 
-namespace Game.Level.Enemies.BehaviorTree.Common
+namespace Project.Scripts.Level.Enemies.BehaviorTree.Common
 {
     public abstract class EnemyBehaviorTree
     {

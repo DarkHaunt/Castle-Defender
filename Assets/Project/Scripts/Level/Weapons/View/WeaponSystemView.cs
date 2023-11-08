@@ -1,9 +1,9 @@
-﻿using Game.Level.Binders;
+﻿using Project.Scripts.Level.Weapons.Handling;
 using UnityEngine;
 using VContainer;
 
 
-namespace Game.Level.Views.Weapons
+namespace Project.Scripts.Level.Weapons.View
 {
     public abstract class WeaponSystemView : MonoBehaviour
     {

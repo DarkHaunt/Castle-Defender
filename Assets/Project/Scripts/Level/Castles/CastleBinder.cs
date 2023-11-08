@@ -1,10 +1,9 @@
-﻿using Game.Level.Services.Castles;
-using Game.Extra;
-using Game.Level.Health;
+﻿using Game.Extra;
+using Project.Scripts.Level.Common.Damage;
 using System;
 
 
-namespace Game.Level.Binders
+namespace Project.Scripts.Level.Castles
 {
     public class CastleBinder
     {

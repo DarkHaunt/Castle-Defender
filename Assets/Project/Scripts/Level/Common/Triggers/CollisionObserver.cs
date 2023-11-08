@@ -1,8 +1,8 @@
-using UnityEngine;
 using System;
+using UnityEngine;
 
 
-namespace Game.Level.Common.Triggers
+namespace Project.Scripts.Level.Common.Triggers
 {
     public class CollisionObserver : MonoBehaviour, ICollisionObserver
     {

@@ -1,8 +1,8 @@
-﻿using Game.Level.Weapons.HandlePoints.MVP;
-using Game.Level.Weapons.HandlePoints;
+﻿using Project.Scripts.Level.Weapons.HandlePoints;
+using Project.Scripts.Level.Weapons.HandlePoints.MVP;
 
 
-namespace Game.Level.Services.Weapons
+namespace Project.Scripts.Level.Weapons.Handling
 {
     public class WeaponUpdateService
     {

@@ -1,13 +1,13 @@
 ﻿using Game.Common.Time;
 using Game.Extensions;
-using Game.Level.Common.Physics;
-using Game.Level.Enemies.BehaviorTree.Common;
-using Game.Level.Enemies.BehaviorTree.Common.Nodes;
-using Game.Level.Health;
+using Project.Scripts.Level.Common.Damage;
+using Project.Scripts.Level.Common.Physics;
+using Project.Scripts.Level.Enemies.BehaviorTree.Common;
+using Project.Scripts.Level.Enemies.BehaviorTree.Common.Nodes;
 using UnityEngine;
 
 
-namespace Game.Level.Enemies.BehaviorTree.SharedBehavior
+namespace Project.Scripts.Level.Enemies.BehaviorTree.SharedBehavior
 {
     using static LevelLayersProvider;
 

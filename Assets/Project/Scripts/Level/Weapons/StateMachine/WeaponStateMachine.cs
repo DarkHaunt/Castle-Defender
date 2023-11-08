@@ -1,12 +1,12 @@
-﻿using Game.Level.Weapons.StateMachine.States;
-using Game.Level.Weapons.EnemiesDetection;
+﻿using Game.Level.StateMachine;
 using Game.Level.StateMachine.States;
-using System.Collections.Generic;
-using Game.Level.StateMachine;
+using Project.Scripts.Level.Weapons.EnemiesDetection;
+using Project.Scripts.Level.Weapons.StateMachine.States;
 using System;
+using System.Collections.Generic;
 
 
-namespace Game.Level.Weapons.StateMachine
+namespace Project.Scripts.Level.Weapons.StateMachine
 {
     public class WeaponStateMachine : IStateSwitcher
     {

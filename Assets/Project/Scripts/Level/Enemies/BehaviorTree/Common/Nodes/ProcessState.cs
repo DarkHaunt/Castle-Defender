@@ -1,4 +1,4 @@
-namespace Game.Level.Enemies.BehaviorTree.Common.Nodes
+namespace Project.Scripts.Level.Enemies.BehaviorTree.Common.Nodes
 {
     public enum ProcessState
     {

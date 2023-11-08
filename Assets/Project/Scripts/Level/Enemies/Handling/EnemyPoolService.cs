@@ -1,11 +1,10 @@
-﻿using System.Collections.Generic;
-using Game.Level.Enemies;
-using UnityEngine;
-using Game.Extra;
+﻿using Game.Extra;
 using System;
+using System.Collections.Generic;
+using UnityEngine;
 
 
-namespace Game.Level.Services.Enemies
+namespace Project.Scripts.Level.Enemies.Handling
 {
     public class EnemyPoolService
     {

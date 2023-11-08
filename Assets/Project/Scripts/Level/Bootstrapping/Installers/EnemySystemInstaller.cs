@@ -1,11 +1,11 @@
-﻿using Game.Level.Factories.Enemies;
-using Game.Level.Services.Enemies;
+﻿using Project.Scripts.Level.Enemies.Creation;
+using Project.Scripts.Level.Enemies.Handling;
 using VContainer.Unity;
 using UnityEngine;
 using VContainer;
 
 
-namespace Game.Level.Bootstrapping
+namespace Project.Scripts.Level.Bootstrapping.Installers
 {
     public class EnemySystemInstaller : IInstaller
     {
@@ -35,9 +35,7 @@ namespace Game.Level.Bootstrapping
 
         private void RegisterEnemyFactory(IContainerBuilder builder)
         {
-            builder
-                .Register<EnemyFactory>(Lifetime.Scoped)
-                .As<IEnemyFactory>();
+            builder.Register<EnemyFactory>(Lifetime.Scoped);
         }
 
         private void RegisterEnemyHandleService(IContainerBuilder builder)

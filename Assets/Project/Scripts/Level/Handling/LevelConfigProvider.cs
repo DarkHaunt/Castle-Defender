@@ -3,9 +3,9 @@ using Game.Configs.Level;
 using Game.Static;
 
 
-namespace Game.Level.Services.Level
+namespace Project.Scripts.Level.Handling
 {
-    public class LevelConfigProvider : ILevelConfigProvider
+    public class LevelConfigProvider
     {
         private ILevelConfig _levelConfig;
         

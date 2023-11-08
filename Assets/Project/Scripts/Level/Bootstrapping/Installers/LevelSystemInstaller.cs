@@ -1,17 +1,20 @@
-﻿using Game.Level.StateMachine.States;
-using Game.Level.Factories.States;
-using Game.Level.Factories.Level;
-using Game.Level.Services.Level;
-using Game.Level.Common.Physics;
-using Game.Level.StateMachine;
-using Game.Level.Common;
-using VContainer.Unity;
+﻿using Game.Level.StateMachine;
 using Game.Shared;
+using Project.Scripts.Level.Common;
+using Project.Scripts.Level.Common.Physics;
+using Project.Scripts.Level.Creation;
+using Project.Scripts.Level.Handling;
+using Project.Scripts.Level.StateMachine;
+using Project.Scripts.Level.StateMachine.States.EndLevel;
+using Project.Scripts.Level.StateMachine.States.InitLevel;
+using Project.Scripts.Level.StateMachine.States.LoadingLevelData;
+using Project.Scripts.Level.StateMachine.States.StartLevel;
 using UnityEngine;
 using VContainer;
+using VContainer.Unity;
 
 
-namespace Game.Level.Bootstrapping
+namespace Project.Scripts.Level.Bootstrapping.Installers
 {
     public class LevelSystemInstaller : IInstaller
     {
@@ -69,24 +72,19 @@ namespace Game.Level.Bootstrapping
 
         private void RegisterInitializeDataProvider(IContainerBuilder builder)
         {
-            builder
-                .Register<InitializeDataProvider>(Lifetime.Scoped)
-                .As<IInitializeDataProvider>();
+            builder.Register<InitializeDataProvider>(Lifetime.Scoped);
         }
 
         private void RegisterLevelConfigProvider(IContainerBuilder builder)
         {
-            builder
-                .Register<LevelConfigProvider>(Lifetime.Scoped)
-                .As<ILevelConfigProvider>();
+            builder.Register<LevelConfigProvider>(Lifetime.Scoped);
         }
 
         private void RegisterLevelFactory(IContainerBuilder builder)
         {
             builder
                 .Register<LevelFactory>(Lifetime.Scoped)
-                .WithParameter(_levelParentObject)
-                .As<ILevelFactory>();
+                .WithParameter(_levelParentObject);
 
             builder.RegisterFactory<string, LevelComponentsContainer>(container =>
                 container.Resolve<LevelFactory>().CreateLevel, Lifetime.Scoped);

@@ -1,10 +1,14 @@
-﻿using Game.Level.Factories.States;
+﻿using Game.Level.StateMachine;
 using Game.Level.StateMachine.States;
-using System.Collections.Generic;
+using Project.Scripts.Level.StateMachine.States.EndLevel;
+using Project.Scripts.Level.StateMachine.States.InitLevel;
+using Project.Scripts.Level.StateMachine.States.LoadingLevelData;
+using Project.Scripts.Level.StateMachine.States.StartLevel;
 using System;
+using System.Collections.Generic;
 
 
-namespace Game.Level.StateMachine
+namespace Project.Scripts.Level.StateMachine
 {
     public class LevelStateMachine : IStateSwitcher
     {

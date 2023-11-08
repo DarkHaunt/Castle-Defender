@@ -2,7 +2,7 @@
 using UnityEngine;
 
 
-namespace Game.Level.Views.Weapons
+namespace Project.Scripts.Level.Weapons.View
 {
     public class DefaultSystemView : WeaponSystemView
     {

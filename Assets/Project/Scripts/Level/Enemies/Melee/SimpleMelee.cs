@@ -1,11 +1,11 @@
-﻿using Game.Level.Enemies.BehaviorTree.Common;
-using Game.Level.Enemies.Melee.Behavior;
+﻿using Project.Scripts.Level.Common.Damage;
+using Project.Scripts.Level.Enemies.BehaviorTree.Common;
+using Project.Scripts.Level.Enemies.Melee.Behavior;
 using System.Threading.Tasks;
-using Game.Level.Health;
 using UnityEngine;
 
 
-namespace Game.Level.Enemies.Melee
+namespace Project.Scripts.Level.Enemies.Melee
 {
     public class SimpleMelee : Enemy
     {

@@ -1,10 +1,10 @@
-﻿using Game.Level.Health;
-using Game.Level.Weapons.HandlePoints;
+﻿using Project.Scripts.Level.Common.Damage;
+using Project.Scripts.Level.Weapons.HandlePoints.MVP;
 using System.Collections.Generic;
 using UnityEngine;
 
 
-namespace Game.Level.Castles
+namespace Project.Scripts.Level.Castles
 {
     public class Castle : MonoBehaviour
     {

@@ -1,10 +1,9 @@
-﻿using Game.Level.Binders;
-using Game.Level.Health;
+﻿using Project.Scripts.Level.Common.Damage;
 using UnityEngine;
 using VContainer;
 
 
-namespace Game.Level.Views.Castles
+namespace Project.Scripts.Level.Castles
 {
     public abstract class CastleView : MonoBehaviour
     {

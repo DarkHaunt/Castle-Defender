@@ -1,7 +1,7 @@
-﻿using Game.Level.Enemies;
+﻿using Project.Scripts.Level.Enemies;
 
 
-namespace Game.Level.Weapons.EnemiesDetection
+namespace Project.Scripts.Level.Weapons.EnemiesDetection
 {
     public class WeaponTargetHolder
     {

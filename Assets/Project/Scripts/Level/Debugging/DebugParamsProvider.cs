@@ -1,8 +1,8 @@
-﻿using Game.Level.Enemies;
+﻿using Project.Scripts.Level.Enemies;
 using UnityEngine;
 
 
-namespace Game.Level.Services.Debugging
+namespace Project.Scripts.Level.Debugging
 {
     public class DebugParamsProvider : MonoBehaviour
     {

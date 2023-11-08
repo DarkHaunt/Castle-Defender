@@ -1,10 +1,10 @@
-﻿using Game.Level.StateMachine.States;
+﻿using Game.Extensions;
 using Game.Level.StateMachine;
-using Game.Extensions;
-using Game.Level.Weapons.EnemiesDetection;
+using Game.Level.StateMachine.States;
+using Project.Scripts.Level.Weapons.EnemiesDetection;
 
 
-namespace Game.Level.Weapons.StateMachine.States
+namespace Project.Scripts.Level.Weapons.StateMachine.States
 {
     public class WeaponSearchForTarget : IState
     {

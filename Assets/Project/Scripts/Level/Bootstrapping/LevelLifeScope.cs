@@ -1,13 +1,14 @@
-﻿using Game.Level.Views.Castles;
-using Game.Level.Views.Weapons;
-using Game.Level.Weapons;
-using VContainer.Unity;
-using Game.UI.Common;
+﻿using Game.UI.Common;
+using Project.Scripts.Level.Bootstrapping.Installers;
+using Project.Scripts.Level.Castles;
+using Project.Scripts.Level.Weapons;
+using Project.Scripts.Level.Weapons.View;
 using UnityEngine;
 using VContainer;
+using VContainer.Unity;
 
 
-namespace Game.Level.Bootstrapping
+namespace Project.Scripts.Level.Bootstrapping
 {
     public class LevelLifeScope : LifetimeScope
     {

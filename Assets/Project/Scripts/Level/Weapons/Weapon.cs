@@ -1,12 +1,12 @@
-﻿using Game.Level.Weapons.StateMachine.States;
-using Game.Level.Weapons.EnemiesDetection;
-using Game.Level.Weapons.StateMachine;
-using Game.Level.Enemies;
-using UnityEngine;
+﻿using Project.Scripts.Level.Enemies;
+using Project.Scripts.Level.Weapons.EnemiesDetection;
+using Project.Scripts.Level.Weapons.StateMachine;
+using Project.Scripts.Level.Weapons.StateMachine.States;
 using System;
+using UnityEngine;
 
 
-namespace Game.Level.Weapons
+namespace Project.Scripts.Level.Weapons
 {
     public abstract class Weapon : MonoBehaviour, IWeaponBehaviorHandler
     {

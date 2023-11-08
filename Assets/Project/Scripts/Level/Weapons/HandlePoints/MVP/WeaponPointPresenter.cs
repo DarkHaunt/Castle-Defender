@@ -1,6 +1,6 @@
 ﻿
 
-namespace Game.Level.Weapons.HandlePoints.MVP
+namespace Project.Scripts.Level.Weapons.HandlePoints.MVP
 {
     public class WeaponPointPresenter
     {

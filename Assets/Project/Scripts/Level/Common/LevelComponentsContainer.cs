@@ -1,9 +1,9 @@
-﻿using System.Collections.Generic;
-using Game.Level.Castles;
+﻿using Project.Scripts.Level.Castles;
+using System.Collections.Generic;
 using UnityEngine;
 
 
-namespace Game.Level.Common
+namespace Project.Scripts.Level.Common
 {
     public class LevelComponentsContainer : MonoBehaviour
     {

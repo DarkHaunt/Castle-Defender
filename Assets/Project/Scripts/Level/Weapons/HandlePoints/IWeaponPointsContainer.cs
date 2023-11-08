@@ -1,8 +1,8 @@
-﻿using Game.Level.Weapons.HandlePoints.MVP;
+﻿using Project.Scripts.Level.Weapons.HandlePoints.MVP;
 using System.Collections.Generic;
 
 
-namespace Game.Level.Weapons.HandlePoints
+namespace Project.Scripts.Level.Weapons.HandlePoints
 {
     public interface IWeaponPointsContainer
     {

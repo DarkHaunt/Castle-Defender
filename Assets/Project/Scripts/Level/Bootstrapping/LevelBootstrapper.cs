@@ -1,11 +1,11 @@
-﻿using Game.Level.StateMachine.States;
-using Game.Level.Services.Debugging;
-using Game.Level.StateMachine;
+﻿using Game.Level.StateMachine;
+using Project.Scripts.Level.Debugging;
+using Project.Scripts.Level.StateMachine.States.LoadingLevelData;
 using UnityEngine;
 using VContainer;
 
 
-namespace Game.Level.Bootstrapping
+namespace Project.Scripts.Level.Bootstrapping
 {
     public class LevelBootstrapper : MonoBehaviour
     {

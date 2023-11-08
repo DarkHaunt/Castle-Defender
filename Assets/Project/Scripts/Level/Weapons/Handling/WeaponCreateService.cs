@@ -1,10 +1,9 @@
-﻿using Game.Level.Weapons.HandlePoints.MVP;
-using Game.Level.Weapons.HandlePoints;
-using Game.Level.Factories.Weapons;
-using Game.Level.Weapons;
+﻿using Project.Scripts.Level.Weapons.Creation;
+using Project.Scripts.Level.Weapons.HandlePoints;
+using Project.Scripts.Level.Weapons.HandlePoints.MVP;
 
 
-namespace Game.Level.Services.Weapons
+namespace Project.Scripts.Level.Weapons.Handling
 {
     public class WeaponCreateService
     {

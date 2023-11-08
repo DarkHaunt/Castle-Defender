@@ -2,7 +2,7 @@
 using System;
 
 
-namespace Game.Level.Services.Weapons
+namespace Project.Scripts.Level.Weapons.Handling
 {
     public interface IWeaponHandleService : IEnableable
     {

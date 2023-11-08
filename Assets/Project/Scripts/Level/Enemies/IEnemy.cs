@@ -1,9 +1,9 @@
-﻿using Game.Level.Health;
-using UnityEngine;
+﻿using Project.Scripts.Level.Common.Damage;
 using System;
+using UnityEngine;
 
 
-namespace Game.Level.Enemies
+namespace Project.Scripts.Level.Enemies
 {
     public interface IEnemy
     {

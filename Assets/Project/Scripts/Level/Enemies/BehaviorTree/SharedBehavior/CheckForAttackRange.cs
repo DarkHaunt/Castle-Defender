@@ -1,10 +1,10 @@
-﻿using Game.Level.Enemies.BehaviorTree.Common;
-using Game.Level.Enemies.BehaviorTree.Common.Nodes;
-using Game.Level.Health;
+﻿using Project.Scripts.Level.Common.Damage;
+using Project.Scripts.Level.Enemies.BehaviorTree.Common;
+using Project.Scripts.Level.Enemies.BehaviorTree.Common.Nodes;
 using UnityEngine;
 
 
-namespace Game.Level.Enemies.BehaviorTree.SharedBehavior
+namespace Project.Scripts.Level.Enemies.BehaviorTree.SharedBehavior
 {
     public class CheckForAttackRange : Node
     {

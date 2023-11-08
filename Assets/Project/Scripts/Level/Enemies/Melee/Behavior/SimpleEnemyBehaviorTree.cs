@@ -1,9 +1,9 @@
-﻿using Game.Level.Enemies.BehaviorTree.SharedBehavior;
-using Game.Level.Enemies.BehaviorTree.Common.Nodes;
-using Game.Level.Enemies.BehaviorTree.Common;
+﻿using Project.Scripts.Level.Enemies.BehaviorTree.Common;
+using Project.Scripts.Level.Enemies.BehaviorTree.Common.Nodes;
+using Project.Scripts.Level.Enemies.BehaviorTree.SharedBehavior;
 
 
-namespace Game.Level.Enemies.Melee.Behavior
+namespace Project.Scripts.Level.Enemies.Melee.Behavior
 {
     public class SimpleEnemyBehaviorTree : EnemyBehaviorTree
     {

@@ -1,7 +1,7 @@
 ﻿using UnityEngine;
 
 
-namespace Game.Level.Common.Physics
+namespace Project.Scripts.Level.Common.Physics
 {
     using static LevelLayersProvider;
     

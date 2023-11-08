@@ -1,15 +1,14 @@
-﻿using Game.Level.Weapons.HandlePoints;
-using Game.Level.Factories.Weapons;
-using Game.Level.Services.Weapons;
-using Game.Level.Views.Weapons;
-using Game.Level.Weapons;
-using Game.Level.Binders;
-using VContainer.Unity;
+﻿using Project.Scripts.Level.Weapons;
+using Project.Scripts.Level.Weapons.Creation;
+using Project.Scripts.Level.Weapons.HandlePoints;
+using Project.Scripts.Level.Weapons.Handling;
+using Project.Scripts.Level.Weapons.View;
 using UnityEngine;
 using VContainer;
+using VContainer.Unity;
 
 
-namespace Game.Level.Bootstrapping
+namespace Project.Scripts.Level.Bootstrapping.Installers
 {
     public class WeaponSystemInstaller : IInstaller
     {

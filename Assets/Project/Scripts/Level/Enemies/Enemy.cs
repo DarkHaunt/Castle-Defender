@@ -1,14 +1,13 @@
-﻿using Game.Level.Enemies.BehaviorTree.Common;
-using System.Threading.Tasks;
-using Game.Common.Interfaces;
+﻿using Game.Common.Interfaces;
 using Game.Extensions;
-using Game.Level.Health;
-using Game.Level.Services.Enemies;
-using UnityEngine;
+using Project.Scripts.Level.Common.Damage;
+using Project.Scripts.Level.Enemies.BehaviorTree.Common;
 using System;
+using System.Threading.Tasks;
+using UnityEngine;
 
 
-namespace Game.Level.Enemies
+namespace Project.Scripts.Level.Enemies
 {
     public abstract class Enemy : MonoBehaviour, IEnemy, IEnemyBehaviorHandler, ICoroutineRunner
     {

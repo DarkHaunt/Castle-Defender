@@ -1,9 +1,9 @@
-﻿using UnityEngine.UI;
+﻿using System;
 using UnityEngine;
-using System;
+using UnityEngine.UI;
 
 
-namespace Game.Level.Weapons.HandlePoints
+namespace Project.Scripts.Level.Weapons.HandlePoints.MVP
 {
     public class WeaponPointView : MonoBehaviour
     {

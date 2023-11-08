@@ -1,7 +1,4 @@
-﻿using Game.Level.Enemies;
-
-
-namespace Game.Level.Services.Enemies
+﻿namespace Project.Scripts.Level.Enemies.Handling
 {
     public interface IEnemyRegister
     {

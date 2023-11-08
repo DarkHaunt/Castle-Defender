@@ -5,7 +5,7 @@ using UnityEngine;
 using UnityEngine.Serialization;
 
 
-namespace Game.Level.Services.Debugging
+namespace Project.Scripts.Level.Debugging
 {
     public class ForcibleGameDataSetter : MonoBehaviour
     {

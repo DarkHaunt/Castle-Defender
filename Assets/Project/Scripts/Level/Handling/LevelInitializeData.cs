@@ -1,9 +1,9 @@
-﻿using Game.Level.Common;
-using Game.Level.Enemies;
-using Game.Level.Weapons;
+﻿using Project.Scripts.Level.Common;
+using Project.Scripts.Level.Enemies;
+using Project.Scripts.Level.Weapons;
 
 
-namespace Game.Level.Services.Level
+namespace Project.Scripts.Level.Handling
 {
     public record LevelInitializeData
     {

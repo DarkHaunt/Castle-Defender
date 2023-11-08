@@ -1,12 +1,12 @@
-﻿using Game.Level.StateMachine.States;
-using Game.Level.StateMachine;
-using Game.Common.Interfaces;
-using System.Collections;
+﻿using Game.Common.Interfaces;
 using Game.Extensions;
+using Game.Level.StateMachine;
+using Game.Level.StateMachine.States;
+using System.Collections;
 using UnityEngine;
 
 
-namespace Game.Level.Weapons.StateMachine.States
+namespace Project.Scripts.Level.Weapons.StateMachine.States
 {
     public class WeaponReload : IState
     {

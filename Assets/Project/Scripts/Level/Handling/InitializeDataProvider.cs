@@ -1,28 +1,28 @@
 ﻿using Game.Configs.Game;
 using Game.Configs.Level;
-using Game.Level.Common;
-using Game.Level.Enemies;
-using Game.Level.Factories.Level;
-using Game.Level.Weapons;
 using Game.Shared;
+using Project.Scripts.Level.Common;
+using Project.Scripts.Level.Creation;
+using Project.Scripts.Level.Enemies;
+using Project.Scripts.Level.Weapons;
 using System;
 using UnityEngine;
 
 
-namespace Game.Level.Services.Level
+namespace Project.Scripts.Level.Handling
 {
-    public class InitializeDataProvider : IInitializeDataProvider
+    public class InitializeDataProvider
     {
         public event Action OnInitializeDataReady;
         
         private readonly IPlayerProgressDataProvider _playerProgressDataProvider;
-        private readonly ILevelConfigProvider _levelConfigProvider;
-        private readonly ILevelFactory _levelFactory;
+        private readonly LevelConfigProvider _levelConfigProvider;
+        private readonly LevelFactory _levelFactory;
 
         private LevelInitializeData _levelInitializeData;
 
 
-        public InitializeDataProvider(ILevelFactory levelFactory, ILevelConfigProvider levelConfigProvider, IPlayerProgressDataProvider playerProgressDataProvider)
+        public InitializeDataProvider(LevelFactory levelFactory, LevelConfigProvider levelConfigProvider, IPlayerProgressDataProvider playerProgressDataProvider)
         {
             _playerProgressDataProvider = playerProgressDataProvider;
             _levelConfigProvider = levelConfigProvider;

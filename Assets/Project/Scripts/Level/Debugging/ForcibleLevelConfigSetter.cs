@@ -4,7 +4,7 @@ using Game.Static;
 using UnityEngine;
 
 
-namespace Game.Level.Services.Debugging
+namespace Project.Scripts.Level.Debugging
 {
     public class ForcibleLevelConfigSetter : MonoBehaviour
     {

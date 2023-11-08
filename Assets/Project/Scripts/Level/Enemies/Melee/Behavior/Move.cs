@@ -1,8 +1,8 @@
-﻿using Game.Level.Enemies.BehaviorTree.Common.Nodes;
-using Game.Level.Enemies.BehaviorTree.Common;
+﻿using Project.Scripts.Level.Enemies.BehaviorTree.Common;
+using Project.Scripts.Level.Enemies.BehaviorTree.Common.Nodes;
 
 
-namespace Game.Level.Enemies.Melee.Behavior
+namespace Project.Scripts.Level.Enemies.Melee.Behavior
 {
     public class Move : Node
     {

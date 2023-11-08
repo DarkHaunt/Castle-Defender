@@ -1,10 +1,10 @@
-using Game.Level.Health;
-using UnityEngine.UI;
-using UnityEngine;
+using Project.Scripts.Level.Common.Damage;
 using TMPro;
+using UnityEngine;
+using UnityEngine.UI;
 
 
-namespace Game.Level.Views.Castles
+namespace Project.Scripts.Level.Castles
 {
     public class DefaultCastleView : CastleView
     {

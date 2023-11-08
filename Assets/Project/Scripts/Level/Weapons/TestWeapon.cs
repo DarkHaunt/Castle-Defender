@@ -1,9 +1,9 @@
-﻿using Game.Level.Enemies;
-using UnityEngine;
+﻿using Project.Scripts.Level.Enemies;
 using System;
+using UnityEngine;
 
 
-namespace Game.Level.Weapons
+namespace Project.Scripts.Level.Weapons
 {
     public class TestWeapon : Weapon
     {
