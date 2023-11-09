@@ -1,16 +1,16 @@
-﻿using Game.Level.StateMachine;
-using Game.Level.StateMachine.States;
-using Project.Scripts.Level.StateMachine.States.EndLevel;
-using Project.Scripts.Level.StateMachine.States.InitLevel;
+﻿using Project.Scripts.Common.StateMachine;
 using Project.Scripts.Level.StateMachine.States.LoadingLevelData;
 using Project.Scripts.Level.StateMachine.States.StartLevel;
-using System;
+using Project.Scripts.Level.StateMachine.States.InitLevel;
+using Project.Scripts.Level.StateMachine.States.EndLevel;
 using System.Collections.Generic;
+using System;
+using VContainer.Unity;
 
 
 namespace Project.Scripts.Level.StateMachine
 {
-    public class LevelStateMachine : IStateSwitcher
+    public class LevelStateMachine : IStateSwitcher, IStartable
     {
         private readonly Dictionary<Type, IState> _states;
         private IState _currentState;
@@ -36,5 +36,8 @@ namespace Project.Scripts.Level.StateMachine
             
             _currentState!.Enter();
         }
+
+        void IStartable.Start()
+            => SwitchToState<LoadingLevelDataState>();
     }
 }

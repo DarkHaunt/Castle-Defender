@@ -1,4 +1,4 @@
-﻿using Game.Level.StateMachine;
+﻿using Project.Scripts.Common.StateMachine;
 using Project.Scripts.Menu.Data;
 
 

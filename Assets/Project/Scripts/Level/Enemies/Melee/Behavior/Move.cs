@@ -1,5 +1,5 @@
-﻿using Project.Scripts.Level.Enemies.BehaviorTree.Common;
-using Project.Scripts.Level.Enemies.BehaviorTree.Common.Nodes;
+﻿using Project.Scripts.Level.Enemies.BehaviorTree.Common.Nodes;
+using Project.Scripts.Level.Enemies.BehaviorTree.Common;
 
 
 namespace Project.Scripts.Level.Enemies.Melee.Behavior

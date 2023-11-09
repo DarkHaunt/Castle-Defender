@@ -1,7 +1,4 @@
-﻿using Game.Level.StateMachine.States;
-
-
-namespace Game.Level.StateMachine
+﻿namespace Project.Scripts.Common.StateMachine
 {
     public interface IStateSwitcher
     {

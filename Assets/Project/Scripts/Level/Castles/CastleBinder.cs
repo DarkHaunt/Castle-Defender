@@ -1,4 +1,4 @@
-﻿using Game.Extra;
+﻿using Project.Scripts.Extra;
 using Project.Scripts.Level.Common.Damage;
 using System;
 

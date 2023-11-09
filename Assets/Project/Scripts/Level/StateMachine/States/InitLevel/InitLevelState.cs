@@ -1,10 +1,9 @@
-﻿using Game.Level.StateMachine;
-using Game.Level.StateMachine.States;
-using Project.Scripts.Level.Castles;
+﻿using Project.Scripts.Common.StateMachine;
+using Project.Scripts.Level.StateMachine.States.StartLevel;
 using Project.Scripts.Level.Enemies.Creation;
 using Project.Scripts.Level.Enemies.Handling;
 using Project.Scripts.Level.Handling;
-using Project.Scripts.Level.StateMachine.States.StartLevel;
+using Project.Scripts.Level.Castles;
 using UnityEngine;
 
 

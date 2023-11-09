@@ -1,10 +1,9 @@
-﻿using Game.Common.Save;
-using Game.Configs.Level;
-using Game.Level.StateMachine;
-using Game.Level.StateMachine.States;
-using Game.Static;
+﻿using Project.Scripts.Common.Save;
+using Project.Scripts.Common.StateMachine;
+using Project.Scripts.Configs.Level;
 using Project.Scripts.Menu.Data;
 using Project.Scripts.Menu.StateMachine.States.LevelLoadState;
+using Project.Scripts.Static;
 
 
 namespace Project.Scripts.Menu.StateMachine.States.LevelSelectState

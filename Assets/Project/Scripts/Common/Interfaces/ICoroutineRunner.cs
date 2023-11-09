@@ -2,7 +2,7 @@
 using UnityEngine;
 
 
-namespace Game.Common.Interfaces
+namespace Project.Scripts.Common.Interfaces
 {
     public interface ICoroutineRunner
     {

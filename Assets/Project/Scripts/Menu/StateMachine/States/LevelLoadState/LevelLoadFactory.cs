@@ -1,4 +1,4 @@
-﻿using Game.Common.Scene;
+﻿using Project.Scripts.Common.Scene;
 
 
 namespace Project.Scripts.Menu.StateMachine.States.LevelLoadState

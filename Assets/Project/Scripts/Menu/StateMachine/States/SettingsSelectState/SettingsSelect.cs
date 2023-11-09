@@ -1,7 +1,6 @@
-﻿using Project.Scripts.Menu.StateMachine.States.MenuHandleState;
-using Game.Level.StateMachine.States;
+﻿using Project.Scripts.Common.StateMachine;
+using Project.Scripts.Menu.StateMachine.States.MenuHandleState;
 using Project.Scripts.Menu.Data;
-using Game.Level.StateMachine;
 
 
 namespace Project.Scripts.Menu.StateMachine.States.SettingsSelectState

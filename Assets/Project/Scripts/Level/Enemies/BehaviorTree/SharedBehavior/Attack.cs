@@ -1,4 +1,4 @@
-﻿using Game.Common.Time;
+﻿using Project.Scripts.Common.Time;
 using Project.Scripts.Level.Enemies.BehaviorTree.Common;
 using Project.Scripts.Level.Enemies.BehaviorTree.Common.Nodes;
 

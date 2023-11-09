@@ -3,7 +3,7 @@ using System.IO;
 using UnityEngine;
 
 
-namespace Game.Common.Save
+namespace Project.Scripts.Common.Save
 {
     public static class JsonSerializer
     {

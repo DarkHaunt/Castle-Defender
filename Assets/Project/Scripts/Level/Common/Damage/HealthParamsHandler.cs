@@ -1,4 +1,4 @@
-﻿using Game.Extensions;
+﻿using Project.Scripts.Extensions;
 using System;
 using UnityEngine;
 

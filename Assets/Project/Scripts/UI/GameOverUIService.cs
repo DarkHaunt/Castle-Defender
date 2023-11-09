@@ -1,10 +1,10 @@
-﻿using Game.Common.Scene;
-using UnityEngine.UI;
+﻿using Project.Scripts.Common.Scene;
 using UnityEngine;
+using UnityEngine.UI;
 using VContainer;
 
 
-namespace Game.UI.Common
+namespace Project.Scripts.UI
 {
     public class GameOverUIService : MonoBehaviour
     {

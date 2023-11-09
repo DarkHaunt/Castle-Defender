@@ -1,8 +1,8 @@
-﻿using Project.Scripts.Level.Common.Damage;
+﻿using Project.Scripts.Level.Weapons.HandlePoints.MVP;
 using Project.Scripts.Level.Weapons.HandlePoints;
-using Project.Scripts.Level.Weapons.HandlePoints.MVP;
-using System;
+using Project.Scripts.Level.Common.Damage;
 using System.Collections.Generic;
+using System;
 
 
 namespace Project.Scripts.Level.Castles

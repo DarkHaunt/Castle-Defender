@@ -1,17 +1,16 @@
-﻿using Game.Common.Interfaces;
-using Game.Extensions;
+﻿using Project.Scripts.Level.Enemies.BehaviorTree.Common;
 using Project.Scripts.Level.Common.Damage;
-using Project.Scripts.Level.Enemies.BehaviorTree.Common;
-using System;
+using Project.Scripts.Extensions;
 using System.Threading.Tasks;
 using UnityEngine;
+using System;
 
 
 namespace Project.Scripts.Level.Enemies
 {
-    public abstract class Enemy : MonoBehaviour, IEnemy, IEnemyBehaviorHandler, ICoroutineRunner
+    public abstract class Enemy : MonoBehaviour, IEnemy
     {
-        public event Action<Enemy> OnBehaviorHandlingEnded;
+        public event Action<Enemy> OnDeactivate;
         public event Action<IEnemy> OnDeath;
 
         [Header("--- Params ---")]
@@ -72,9 +71,7 @@ namespace Project.Scripts.Level.Enemies
 
             await DieLogic();
             
-            OnBehaviorHandlingEnded?.Invoke(this);
-            
-            Debug.Log($"<color=red>DEAHTH</color>");
+            OnDeactivate?.Invoke(this);
         }
     }
 

@@ -1,5 +1,4 @@
-﻿using Game.Extensions;
-using Game.Extra;
+﻿using Project.Scripts.Extra;
 using UnityEditor;
 using UnityEngine;
 

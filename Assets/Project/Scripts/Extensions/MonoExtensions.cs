@@ -1,11 +1,11 @@
-﻿using Game.Common.Interfaces;
-using System.Collections.Generic;
-using UnityEngine.Events;
+﻿using Project.Scripts.Common.Interfaces;
 using System.Collections;
+using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.Events;
 
 
-namespace Game.Extensions
+namespace Project.Scripts.Extensions
 {
     public static class MonoExtensions
     {

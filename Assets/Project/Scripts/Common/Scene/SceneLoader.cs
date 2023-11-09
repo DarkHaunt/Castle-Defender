@@ -1,11 +1,11 @@
-using UnityEngine.SceneManagement;
-using System.Threading.Tasks;
-using System.Threading;
-using UnityEngine;
 using System;
+using System.Threading;
+using System.Threading.Tasks;
+using UnityEngine;
+using UnityEngine.SceneManagement;
 
 
-namespace Game.Common.Scene
+namespace Project.Scripts.Common.Scene
 {
     public class SceneLoader
     {

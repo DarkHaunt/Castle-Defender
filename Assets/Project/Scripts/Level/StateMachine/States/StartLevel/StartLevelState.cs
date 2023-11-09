@@ -1,11 +1,10 @@
-﻿using Game.Level.StateMachine;
-using Game.Level.StateMachine.States;
-using Project.Scripts.Level.Castles;
-using Project.Scripts.Level.Common.Physics;
+﻿using Project.Scripts.Level.StateMachine.States.EndLevel;
 using Project.Scripts.Level.Enemies.Creation;
 using Project.Scripts.Level.Enemies.Handling;
-using Project.Scripts.Level.StateMachine.States.EndLevel;
 using Project.Scripts.Level.Weapons.Handling;
+using Project.Scripts.Level.Common.Physics;
+using Project.Scripts.Common.StateMachine;
+using Project.Scripts.Level.Castles;
 using UnityEngine;
 
 
@@ -25,11 +24,11 @@ namespace Project.Scripts.Level.StateMachine.States.StartLevel
             IWeaponHandleService weaponHandleService, EnemyHandleService enemyHandleService, EnemySpawnService enemySpawnService)
         {
             _weaponHandleService = weaponHandleService;
-            _castleModel = castleModel;
             _enemyHandleService = enemyHandleService;
             _enemySpawnService = enemySpawnService;
             _collisionsService = collisionsService;
             _stateSwitcher = stateSwitcher;
+            _castleModel = castleModel;
         }
         
         
@@ -37,6 +36,7 @@ namespace Project.Scripts.Level.StateMachine.States.StartLevel
         {
             Debug.Log($"<color=yellow>Start level</color>");
             
+            _enemyHandleService.OnRequairedEnemiesKilled += FinishLevel;
             _castleModel.PhysicBody.OnDeath += FinishLevel;
 
             _collisionsService.EnableCollisionsSettings();
@@ -48,6 +48,7 @@ namespace Project.Scripts.Level.StateMachine.States.StartLevel
 
         public void Exit()
         {
+            _enemyHandleService.OnRequairedEnemiesKilled -= FinishLevel;
             _castleModel.PhysicBody.OnDeath -= FinishLevel;
             
             _collisionsService.DisableCollisionsSettings();

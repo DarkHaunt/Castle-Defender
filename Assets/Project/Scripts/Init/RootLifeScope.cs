@@ -1,11 +1,11 @@
-using Game.Common.Interfaces;
-using Game.Common.Scene;
-using VContainer.Unity;
+using Project.Scripts.Common.Interfaces;
+using Project.Scripts.Common.Scene;
 using UnityEngine;
 using VContainer;
+using VContainer.Unity;
 
 
-namespace Game.Init
+namespace Project.Scripts.Init
 {
     public class RootLifeScope : LifetimeScope
     {

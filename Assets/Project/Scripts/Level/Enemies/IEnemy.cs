@@ -1,6 +1,6 @@
 ﻿using Project.Scripts.Level.Common.Damage;
-using System;
 using UnityEngine;
+using System;
 
 
 namespace Project.Scripts.Level.Enemies

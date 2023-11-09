@@ -1,11 +1,11 @@
-using System.Threading.Tasks;
-using System.Threading;
-using UnityEngine.UI;
 using DG.Tweening;
+using System.Threading;
+using System.Threading.Tasks;
 using UnityEngine;
+using UnityEngine.UI;
 
 
-namespace Game.Common.Scene
+namespace Project.Scripts.Common.Scene
 {
     public class SceneTransitionHandler : MonoBehaviour
     {

@@ -1,12 +1,13 @@
-﻿using Game.Configs.Game;
-using Game.Configs.Level;
-using Game.Shared;
-using Project.Scripts.Level.Common;
-using Project.Scripts.Level.Creation;
+﻿using Project.Scripts.Common.Save;
+using Project.Scripts.Configs.Game;
+using Project.Scripts.Configs.Level;
 using Project.Scripts.Level.Enemies;
 using Project.Scripts.Level.Weapons;
-using System;
+using Project.Scripts.Level.Common;
+using Project.Scripts.Level.Common.Prefab;
+using Project.Scripts.Static;
 using UnityEngine;
+using System;
 
 
 namespace Project.Scripts.Level.Handling
@@ -15,30 +16,30 @@ namespace Project.Scripts.Level.Handling
     {
         public event Action OnInitializeDataReady;
         
-        private readonly IPlayerProgressDataProvider _playerProgressDataProvider;
-        private readonly LevelConfigProvider _levelConfigProvider;
         private readonly LevelFactory _levelFactory;
 
         private LevelInitializeData _levelInitializeData;
 
 
-        public InitializeDataProvider(LevelFactory levelFactory, LevelConfigProvider levelConfigProvider, IPlayerProgressDataProvider playerProgressDataProvider)
+        public InitializeDataProvider(LevelFactory levelFactory)
         {
-            _playerProgressDataProvider = playerProgressDataProvider;
-            _levelConfigProvider = levelConfigProvider;
             _levelFactory = levelFactory;
         }
 
 
+        public LevelInitializeData GetInitializeData()
+            => _levelInitializeData;
+
         public void LoadInitializeData()
         {
-            var playerProgressData = _playerProgressDataProvider.GetPlayerProgressData();
-            var levelConfig = _levelConfigProvider.GetLevelConfig();
+            var playerProgressData = LoadPlayerConfig();
+            var levelConfig = LoadLevelConfig();
             
             _levelInitializeData = new LevelInitializeData
             {
                 Level = LoadLevel(levelConfig),
                 Enemies = LoadEnemies(levelConfig),
+                CountEnemiesToKill = levelConfig.CountToKillEnemies,
                 AvailableWeapons = LoadAvailableWeapons(playerProgressData),
                 
                 CastleHealth = playerProgressData.CastleHealth,
@@ -48,16 +49,13 @@ namespace Project.Scripts.Level.Handling
             OnInitializeDataReady?.Invoke();
         }
 
-        public LevelInitializeData GetInitializeData()
-            => _levelInitializeData;
-
-        private Weapon[] LoadAvailableWeapons(IPlayerProgressData playerProgressData)
+        private Weapon[] LoadAvailableWeapons(IPlayerConfig playerConfig)
         {
-            var weapons = new Weapon[playerProgressData.AvailableWeapons.Length];
+            var weapons = new Weapon[playerConfig.AvailableWeapons.Length];
 
             for (int i = 0; i < weapons.Length; i++)
             {
-                var path = playerProgressData.AvailableWeapons[i];
+                var path = playerConfig.AvailableWeapons[i];
                 weapons[i] = Resources.Load<Weapon>(path);
             }
 
@@ -76,6 +74,12 @@ namespace Project.Scripts.Level.Handling
 
             return enemies;
         }
+        
+        private ILevelConfig LoadLevelConfig()
+            => JsonSerializer.LoadFile<SerializedLevelConfig>(StaticDataContainer.LevelConfigsPath);   
+        
+        private IPlayerConfig LoadPlayerConfig()
+            => JsonSerializer.LoadFile<SerializedPlayerConfig>(StaticDataContainer.PlayerConfigPath);
 
         private LevelComponentsContainer LoadLevel(ILevelConfig levelConfig)
             => _levelFactory.CreateLevel(levelConfig.LevelPrefabPath);

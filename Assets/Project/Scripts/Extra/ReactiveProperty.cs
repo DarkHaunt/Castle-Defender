@@ -1,7 +1,7 @@
 ﻿using System;
 
 
-namespace Game.Extra
+namespace Project.Scripts.Extra
 {
     public class ReactiveProperty<T>
     {

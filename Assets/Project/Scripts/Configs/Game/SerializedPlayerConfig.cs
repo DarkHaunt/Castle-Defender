@@ -1,10 +1,10 @@
 ﻿using System;
 
 
-namespace Game.Configs.Game
+namespace Project.Scripts.Configs.Game
 {
     [Serializable]
-    public class SerializedPlayerProgressData : IPlayerProgressData
+    public class SerializedPlayerConfig : IPlayerConfig
     {
         public float CastleHealthSerialized;
         public string[] AvailableWeaponSerialized;
@@ -13,18 +13,18 @@ namespace Game.Configs.Game
         public string[] AvailableWeapons => AvailableWeaponSerialized;
 
 
-        public SerializedPlayerProgressData(IPlayerProgressData gameData)
+        public SerializedPlayerConfig(IPlayerConfig gameData)
         {
             CastleHealthSerialized = gameData.CastleHealth;
             AvailableWeaponSerialized = gameData.AvailableWeapons;
         }
 
-        private SerializedPlayerProgressData(float castleHealthSerialized, string[] availableWeaponsSerialized)
+        private SerializedPlayerConfig(float castleHealthSerialized, string[] availableWeaponsSerialized)
         {
             CastleHealthSerialized = castleHealthSerialized;
             AvailableWeaponSerialized = availableWeaponsSerialized;
         }
 
-        public SerializedPlayerProgressData() : this(float.NaN, Array.Empty<string>()) {}
+        public SerializedPlayerConfig() : this(float.NaN, Array.Empty<string>()) {}
     }
 }

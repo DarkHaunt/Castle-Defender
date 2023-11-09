@@ -1,10 +1,10 @@
-﻿using Game.Common.Interfaces;
-using Game.Extensions;
-using Project.Scripts.Level.Common;
-using Project.Scripts.Level.Enemies.Handling;
+﻿using Project.Scripts.Level.Enemies.Handling;
+using Project.Scripts.Level.Common.Prefab;
+using Project.Scripts.Common.Interfaces;
 using Project.Scripts.Level.Handling;
-using System.Collections;
+using Project.Scripts.Extensions;
 using System.Collections.Generic;
+using System.Collections;
 using UnityEngine;
 
 

@@ -1,31 +1,31 @@
-﻿using Game.Level.StateMachine;
-using Game.Shared;
-using Project.Scripts.Level.Common;
-using Project.Scripts.Level.Common.Physics;
-using Project.Scripts.Level.Creation;
-using Project.Scripts.Level.Handling;
-using Project.Scripts.Level.StateMachine;
-using Project.Scripts.Level.StateMachine.States.EndLevel;
-using Project.Scripts.Level.StateMachine.States.InitLevel;
+﻿using Project.Scripts.Common.StateMachine;
 using Project.Scripts.Level.StateMachine.States.LoadingLevelData;
 using Project.Scripts.Level.StateMachine.States.StartLevel;
+using Project.Scripts.Level.StateMachine.States.InitLevel;
+using Project.Scripts.Level.StateMachine.States.EndLevel;
+using Project.Scripts.Level.Common.Physics;
+using Project.Scripts.Level.StateMachine;
+using Project.Scripts.Level.Debugging;
+using Project.Scripts.Level.Handling;
+using Project.Scripts.Level.Common;
+using Project.Scripts.Level.Common.Prefab;
+using VContainer.Unity;
 using UnityEngine;
 using VContainer;
-using VContainer.Unity;
 
 
 namespace Project.Scripts.Level.Bootstrapping.Installers
 {
     public class LevelSystemInstaller : IInstaller
     {
-        private readonly LevelBootstrapper _levelBootstrapper;
+        private readonly DebugService _debugService;
         private readonly Transform _levelParentObject;
 
 
-        public LevelSystemInstaller(LevelBootstrapper levelBootstrapper, Transform levelParentObject)
+        public LevelSystemInstaller(DebugService debugService, Transform levelParentObject)
         {
-            _levelBootstrapper = levelBootstrapper;
             _levelParentObject = levelParentObject;
+            _debugService = debugService;
         }
 
 
@@ -33,9 +33,7 @@ namespace Project.Scripts.Level.Bootstrapping.Installers
         {
             RegisterStateMachine(builder);
             
-            RegisterPlayerProgressDataProvider(builder);
             RegisterInitializeDataProvider(builder);
-            RegisterLevelConfigProvider(builder);
             RegisterLevelFactory(builder);
 
             RegisterLevelBootstrapper(builder);
@@ -60,24 +58,12 @@ namespace Project.Scripts.Level.Bootstrapping.Installers
 
         private void RegisterLevelBootstrapper(IContainerBuilder builder)
         {
-            builder.RegisterComponent(_levelBootstrapper);
-        }
-
-        private void RegisterPlayerProgressDataProvider(IContainerBuilder builder)
-        {
-            builder
-                .Register<PlayerProgressDataProvider>(Lifetime.Scoped)
-                .As<IPlayerProgressDataProvider>();
+            builder.RegisterComponent(_debugService);
         }
 
         private void RegisterInitializeDataProvider(IContainerBuilder builder)
         {
             builder.Register<InitializeDataProvider>(Lifetime.Scoped);
-        }
-
-        private void RegisterLevelConfigProvider(IContainerBuilder builder)
-        {
-            builder.Register<LevelConfigProvider>(Lifetime.Scoped);
         }
 
         private void RegisterLevelFactory(IContainerBuilder builder)

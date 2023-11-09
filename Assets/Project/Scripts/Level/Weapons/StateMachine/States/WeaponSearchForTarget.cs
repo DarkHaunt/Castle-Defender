@@ -1,6 +1,5 @@
-﻿using Game.Extensions;
-using Game.Level.StateMachine;
-using Game.Level.StateMachine.States;
+﻿using Project.Scripts.Common.StateMachine;
+using Project.Scripts.Extensions;
 using Project.Scripts.Level.Weapons.EnemiesDetection;
 
 

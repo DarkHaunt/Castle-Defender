@@ -1,7 +1,7 @@
 ﻿using UnityEngine;
 
 
-namespace Game.UI.Common
+namespace Project.Scripts.Common.UICamera
 {
     [RequireComponent(typeof(Camera))]
     public class UICamera : MonoBehaviour

@@ -1,4 +1,4 @@
-﻿using Game.UI.Common;
+﻿using Project.Scripts.UI;
 using VContainer;
 using VContainer.Unity;
 

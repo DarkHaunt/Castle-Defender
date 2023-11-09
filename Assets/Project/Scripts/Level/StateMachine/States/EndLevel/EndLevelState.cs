@@ -1,5 +1,5 @@
-﻿using Game.Level.StateMachine.States;
-using Game.UI.Common;
+﻿using Project.Scripts.Common.StateMachine;
+using Project.Scripts.UI;
 using UnityEngine;
 
 

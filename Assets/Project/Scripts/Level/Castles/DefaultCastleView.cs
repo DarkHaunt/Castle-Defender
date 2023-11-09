@@ -1,7 +1,7 @@
 using Project.Scripts.Level.Common.Damage;
-using TMPro;
-using UnityEngine;
 using UnityEngine.UI;
+using UnityEngine;
+using TMPro;
 
 
 namespace Project.Scripts.Level.Castles

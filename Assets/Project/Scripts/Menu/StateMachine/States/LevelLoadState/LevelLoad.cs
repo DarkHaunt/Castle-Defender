@@ -1,5 +1,5 @@
-﻿using Game.Common.Scene;
-using Game.Level.StateMachine.States;
+﻿using Project.Scripts.Common.Scene;
+using Project.Scripts.Common.StateMachine;
 
 
 namespace Project.Scripts.Menu.StateMachine.States.LevelLoadState

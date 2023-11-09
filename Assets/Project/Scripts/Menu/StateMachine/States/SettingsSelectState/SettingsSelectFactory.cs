@@ -1,5 +1,5 @@
-﻿using Project.Scripts.Menu.Data;
-using Game.Level.StateMachine;
+﻿using Project.Scripts.Common.StateMachine;
+using Project.Scripts.Menu.Data;
 
 
 namespace Project.Scripts.Menu.StateMachine.States.SettingsSelectState

@@ -1,4 +1,4 @@
-﻿namespace Game.Extensions
+﻿namespace Project.Scripts.Extensions
 {
     public static class MathfExtensions
     {

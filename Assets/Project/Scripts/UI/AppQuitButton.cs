@@ -1,8 +1,8 @@
-using UnityEngine.UI;
 using UnityEngine;
+using UnityEngine.UI;
 
 
-namespace Game.UI.Common
+namespace Project.Scripts.UI
 {
     [RequireComponent(typeof(Button))]
     public class AppQuitButton : MonoBehaviour

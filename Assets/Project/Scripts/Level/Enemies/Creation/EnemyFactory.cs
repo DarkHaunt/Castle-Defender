@@ -1,4 +1,4 @@
-﻿using Game.Extensions;
+﻿using Project.Scripts.Extensions;
 using Project.Scripts.Level.Enemies.Handling;
 using UnityEngine;
 

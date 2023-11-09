@@ -1,4 +1,4 @@
-﻿using Game.Level.StateMachine;
+﻿using Project.Scripts.Common.StateMachine;
 using Project.Scripts.Level.Castles;
 using Project.Scripts.Level.Enemies.Creation;
 using Project.Scripts.Level.Enemies.Handling;

@@ -1,10 +1,9 @@
-﻿using UnityEngine.Events;
+﻿using System;
+using UnityEngine.Events;
 using UnityEngine.UI;
-using System;
-using UnityEngine;
 
 
-namespace Game.Extra.UI
+namespace Project.Scripts.Extra.UI
 {
     public sealed class PressHandlingButton : Button
     {

@@ -1,4 +1,4 @@
-﻿using Game.Common.Interfaces;
+﻿using Project.Scripts.Common.Interfaces;
 using Project.Scripts.Level.Enemies;
 using System;
 

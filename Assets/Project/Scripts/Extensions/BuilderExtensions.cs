@@ -1,12 +1,11 @@
 ﻿using JetBrains.Annotations;
 using System;
 using UnityEngine;
-using VContainer;
 using VContainer.Unity;
 using Object = UnityEngine.Object;
 
 
-namespace Game.Extensions
+namespace Project.Scripts.Extensions
 {
     public static class BuilderExtensions
     {

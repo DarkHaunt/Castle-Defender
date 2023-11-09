@@ -1,4 +1,4 @@
-﻿using Game.UI.Common;
+﻿using Project.Scripts.UI;
 
 
 namespace Project.Scripts.Level.StateMachine.States.EndLevel

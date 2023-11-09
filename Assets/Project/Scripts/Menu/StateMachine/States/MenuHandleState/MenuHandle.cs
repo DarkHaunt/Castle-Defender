@@ -1,5 +1,4 @@
-﻿using Game.Level.StateMachine;
-using Game.Level.StateMachine.States;
+﻿using Project.Scripts.Common.StateMachine;
 using Project.Scripts.Menu.Data;
 using Project.Scripts.Menu.StateMachine.States.LevelSelectState;
 using Project.Scripts.Menu.StateMachine.States.SettingsSelectState;

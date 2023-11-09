@@ -1,8 +1,8 @@
 ﻿
 
-namespace Game.Configs.Game
+namespace Project.Scripts.Configs.Game
 {
-    public interface IPlayerProgressData
+    public interface IPlayerConfig
     {
         float CastleHealth { get; }
         string[] AvailableWeapons { get; }

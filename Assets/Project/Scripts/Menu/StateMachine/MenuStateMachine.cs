@@ -1,10 +1,9 @@
-﻿using Project.Scripts.Menu.StateMachine.States.SettingsSelectState;
+﻿using Project.Scripts.Common.StateMachine;
+using Project.Scripts.Menu.StateMachine.States.SettingsSelectState;
 using Project.Scripts.Menu.StateMachine.States.LevelSelectState;
 using Project.Scripts.Menu.StateMachine.States.MenuHandleState;
 using Project.Scripts.Menu.StateMachine.States.LevelLoadState;
-using Game.Level.StateMachine.States;
 using System.Collections.Generic;
-using Game.Level.StateMachine;
 using VContainer.Unity;
 using System;
 

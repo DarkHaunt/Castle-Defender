@@ -1,7 +1,8 @@
-﻿using UnityEngine;
+﻿using Project.Scripts.Common.UICamera;
+using UnityEngine;
 
 
-namespace Game.UI.Common
+namespace Project.Scripts.UI
 {
     [RequireComponent(typeof(Canvas))]
     public class UICanvasValidator : MonoBehaviour

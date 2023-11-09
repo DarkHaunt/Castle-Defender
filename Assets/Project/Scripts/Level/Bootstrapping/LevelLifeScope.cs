@@ -1,19 +1,20 @@
-﻿using Game.UI.Common;
-using Project.Scripts.Level.Bootstrapping.Installers;
-using Project.Scripts.Level.Castles;
-using Project.Scripts.Level.Weapons;
+﻿using Project.Scripts.Level.Bootstrapping.Installers;
 using Project.Scripts.Level.Weapons.View;
+using Project.Scripts.Level.Debugging;
+using Project.Scripts.Level.Weapons;
+using Project.Scripts.Level.Castles;
+using Project.Scripts.UI;
+using VContainer.Unity;
 using UnityEngine;
 using VContainer;
-using VContainer.Unity;
 
 
 namespace Project.Scripts.Level.Bootstrapping
 {
     public class LevelLifeScope : LifetimeScope
     {
-        [Header("--- Main ---")]
-        [SerializeField] private LevelBootstrapper _bootstrapper;
+        [Header("--- Debug ---")]
+        [SerializeField] private DebugService _debugService;
 
         [Header("--- Parent Objects---")]
         [SerializeField] private Transform _weaponParent;
@@ -40,7 +41,7 @@ namespace Project.Scripts.Level.Bootstrapping
             new EnemySystemInstaller(_enemyParent)
                 .Install(builder);
 
-            new LevelSystemInstaller(_bootstrapper, _levelParent)
+            new LevelSystemInstaller(_debugService, _levelParent)
                 .Install(builder);
             
             new UIInstaller(_gameOverUIService)

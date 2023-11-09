@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 
 
-namespace Project.Scripts.Level.Common
+namespace Project.Scripts.Level.Common.Prefab
 {
     public class LevelComponentsContainer : MonoBehaviour
     {

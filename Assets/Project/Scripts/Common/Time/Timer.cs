@@ -1,4 +1,4 @@
-﻿namespace Game.Common.Time
+﻿namespace Project.Scripts.Common.Time
 {
     public class Timer
     {

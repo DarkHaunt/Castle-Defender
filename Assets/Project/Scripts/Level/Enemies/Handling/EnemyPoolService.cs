@@ -1,7 +1,7 @@
-﻿using Game.Extra;
-using System;
+﻿using Project.Scripts.Extra;
 using System.Collections.Generic;
 using UnityEngine;
+using System;
 
 
 namespace Project.Scripts.Level.Enemies.Handling

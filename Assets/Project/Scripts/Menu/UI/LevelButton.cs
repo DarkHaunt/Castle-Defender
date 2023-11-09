@@ -1,4 +1,4 @@
-﻿using Game.Configs.Level;
+﻿using Project.Scripts.Configs.Level;
 using UnityEngine.UI;
 using UnityEngine;
 using System;

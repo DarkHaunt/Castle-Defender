@@ -2,7 +2,7 @@
 using UnityEngine;
 
 
-namespace Game.Extra
+namespace Project.Scripts.Extra
 {
     [Serializable]
     public sealed record WorldPoint

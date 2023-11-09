@@ -1,4 +1,4 @@
-﻿namespace Game.Common.Scene
+﻿namespace Project.Scripts.Common.Scene
 {
     public static class Scenes
     {

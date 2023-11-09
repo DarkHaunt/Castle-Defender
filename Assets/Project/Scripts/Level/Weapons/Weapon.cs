@@ -1,9 +1,9 @@
-﻿using Project.Scripts.Level.Enemies;
+﻿using Project.Scripts.Level.Weapons.StateMachine.States;
 using Project.Scripts.Level.Weapons.EnemiesDetection;
 using Project.Scripts.Level.Weapons.StateMachine;
-using Project.Scripts.Level.Weapons.StateMachine.States;
-using System;
+using Project.Scripts.Level.Enemies;
 using UnityEngine;
+using System;
 
 
 namespace Project.Scripts.Level.Weapons

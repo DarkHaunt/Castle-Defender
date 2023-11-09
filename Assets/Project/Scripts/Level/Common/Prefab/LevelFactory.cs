@@ -1,8 +1,7 @@
-﻿using Project.Scripts.Level.Common;
-using UnityEngine;
+﻿using UnityEngine;
 
 
-namespace Project.Scripts.Level.Creation
+namespace Project.Scripts.Level.Common.Prefab
 {
     public class LevelFactory
     {
