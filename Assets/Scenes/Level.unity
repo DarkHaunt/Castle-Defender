@@ -213,10 +213,8 @@ GameObject:
   m_Component:
   - component: {fileID: 335707726}
   - component: {fileID: 335707727}
-  - component: {fileID: 335707728}
-  - component: {fileID: 335707729}
   m_Layer: 0
-  m_Name: LevelBootstrapper
+  m_Name: Debugger
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -246,37 +244,14 @@ MonoBehaviour:
   m_GameObject: {fileID: 335707725}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 2c11e986522b4af3a18941cf2a377fa8, type: 3}
+  m_Script: {fileID: 11500000, guid: fbcc1a790e954e6bade5e3163a0ed8b2, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _configSetter: {fileID: 335707728}
-  _gameDataSetter: {fileID: 335707729}
---- !u!114 &335707728
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 335707725}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 4ae0331732374f1db15dc58bc352113f, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  _forceLevelConfig: {fileID: 11400000, guid: a6e9b1b001456df488200fb6e02f77c8, type: 2}
---- !u!114 &335707729
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 335707725}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: a86833da78ef4b66a33edcca62aa02a2, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  _forcePlayerProgressData: {fileID: 11400000, guid: 597123d376e664f49ba890652745315a, type: 2}
+  _isDebugEnabled: 1
+  _isDebugPlayer: 1
+  _debugPlayerConfig: {fileID: 11400000, guid: 597123d376e664f49ba890652745315a, type: 2}
+  _isDebugLevel: 1
+  _debugLevelConfig: {fileID: 11400000, guid: a6e9b1b001456df488200fb6e02f77c8, type: 2}
 --- !u!1 &348519668
 GameObject:
   m_ObjectHideFlags: 0
@@ -501,7 +476,7 @@ MonoBehaviour:
     TypeName: 
   autoRun: 1
   autoInjectGameObjects: []
-  _bootstrapper: {fileID: 335707727}
+  _debugService: {fileID: 335707727}
   _weaponParent: {fileID: 147842628}
   _levelParent: {fileID: 1394128274}
   _enemyParent: {fileID: 1918156017}
