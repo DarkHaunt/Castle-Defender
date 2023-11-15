@@ -1,6 +1,5 @@
 ﻿using Project.Scripts.Common.Interfaces;
 using Project.Scripts.Extensions;
-using Project.Scripts.Level.Handling;
 using System.Collections.Generic;
 using System.Collections;
 using UnityEngine;
@@ -11,7 +10,7 @@ namespace Project.Scripts.Level.Enemies.Handling
 {
     public class EnemyHandleService : IEnemyRegister
     {
-        public event Action OnRequairedEnemiesKilled;
+        public event Action OnRequiredEnemiesKilled;
         
         private readonly ISet<Enemy> _enemies = new HashSet<Enemy>();
         private readonly ICoroutineRunner _coroutineRunner;
@@ -27,10 +26,10 @@ namespace Project.Scripts.Level.Enemies.Handling
             _poolService = poolService;
         }
         
-        public void Init(LevelInitializeData initializeData)
+        public void Init(IEnumerable<Enemy> enemies, int countEnemiesToKill)
         {
-            _countEnemiesToKill = initializeData.CountEnemiesToKill;
-            _poolService.Init(initializeData.Enemies);
+            _countEnemiesToKill = countEnemiesToKill;
+            _poolService.Init(enemies);
         }
         
         public void Enable()
@@ -65,7 +64,7 @@ namespace Project.Scripts.Level.Enemies.Handling
         private void ProcessEnemyKilled()
         {
             if(--_countEnemiesToKill <= 0)
-                OnRequairedEnemiesKilled?.Invoke();
+                OnRequiredEnemiesKilled?.Invoke();
         }
         
         private IEnumerator UpdateBehaviorOfEnemies()

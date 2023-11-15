@@ -1,10 +1,9 @@
-﻿using Project.Scripts.Common.Save;
-using Project.Scripts.Configs.Game;
-using Project.Scripts.Configs.Level;
+﻿using Project.Scripts.Level.Common.Prefab;
 using Project.Scripts.Level.Enemies;
 using Project.Scripts.Level.Weapons;
-using Project.Scripts.Level.Common;
-using Project.Scripts.Level.Common.Prefab;
+using Project.Scripts.Configs.Level;
+using Project.Scripts.Configs.Game;
+using Project.Scripts.Common.Save;
 using Project.Scripts.Static;
 using UnityEngine;
 using System;

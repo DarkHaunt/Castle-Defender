@@ -1,6 +1,6 @@
-﻿using Project.Scripts.Common.Save;
+﻿using Project.Scripts.Configs.Level;
 using Project.Scripts.Configs.Game;
-using Project.Scripts.Configs.Level;
+using Project.Scripts.Common.Save;
 using Project.Scripts.Static;
 using UnityEngine;
 
@@ -22,10 +22,10 @@ namespace Project.Scripts.Level.Debugging
         
         public void PerformDebug()
         {
-            if (_isDebugEnabled)
+            if (!_isDebugEnabled)
                 return;
 
-            Debug.Log($"<color=blue>!!! Debug Enabled !!!</color>");
+            Debug.Log($"<color=#76d1e3>!!! Debug Enabled !!!</color>");
             
             if (_isDebugPlayer)
                 ForceSetCachedPlayerProgressData();

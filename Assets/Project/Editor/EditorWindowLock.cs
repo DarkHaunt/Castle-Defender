@@ -1,11 +1,10 @@
-﻿using System.Reflection;
+﻿using System;
+using System.Reflection;
 using UnityEditor;
 using UnityEngine;
-using System;
-
 using Object = UnityEngine.Object;
 
-namespace Editor
+namespace Project.Editor
 {
     public class EditorWindowLock
     {

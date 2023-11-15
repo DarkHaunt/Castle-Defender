@@ -1,14 +1,13 @@
-﻿using Project.Scripts.Common.StateMachine;
-using Project.Scripts.Level.StateMachine.States.LoadingLevelData;
+﻿using Project.Scripts.Level.StateMachine.States.LoadingLevelData;
 using Project.Scripts.Level.StateMachine.States.StartLevel;
 using Project.Scripts.Level.StateMachine.States.InitLevel;
 using Project.Scripts.Level.StateMachine.States.EndLevel;
 using Project.Scripts.Level.Common.Physics;
+using Project.Scripts.Common.StateMachine;
+using Project.Scripts.Level.Common.Prefab;
 using Project.Scripts.Level.StateMachine;
 using Project.Scripts.Level.Debugging;
 using Project.Scripts.Level.Handling;
-using Project.Scripts.Level.Common;
-using Project.Scripts.Level.Common.Prefab;
 using VContainer.Unity;
 using UnityEngine;
 using VContainer;
@@ -47,7 +46,6 @@ namespace Project.Scripts.Level.Bootstrapping.Installers
         {
             builder
                 .RegisterEntryPoint<LevelStateMachine>()
-                .As<IStateSwitcher>()
                 .AsSelf();
         }
 

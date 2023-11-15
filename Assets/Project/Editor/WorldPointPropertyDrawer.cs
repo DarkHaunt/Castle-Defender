@@ -3,7 +3,7 @@ using UnityEditor;
 using UnityEngine;
 
 
-namespace Editor
+namespace Project.Editor
 {
     [CustomPropertyDrawer(typeof(WorldPoint))]
     public sealed class WorldPointPropertyDrawer : PropertyDrawer

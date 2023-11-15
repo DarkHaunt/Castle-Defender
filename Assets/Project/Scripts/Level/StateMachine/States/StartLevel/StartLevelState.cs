@@ -36,7 +36,7 @@ namespace Project.Scripts.Level.StateMachine.States.StartLevel
         {
             Debug.Log($"<color=yellow>Start level</color>");
             
-            _enemyHandleService.OnRequairedEnemiesKilled += FinishLevel;
+            _enemyHandleService.OnRequiredEnemiesKilled += FinishLevel;
             _castleModel.PhysicBody.OnDeath += FinishLevel;
 
             _collisionsService.EnableCollisionsSettings();
@@ -48,7 +48,7 @@ namespace Project.Scripts.Level.StateMachine.States.StartLevel
 
         public void Exit()
         {
-            _enemyHandleService.OnRequairedEnemiesKilled -= FinishLevel;
+            _enemyHandleService.OnRequiredEnemiesKilled -= FinishLevel;
             _castleModel.PhysicBody.OnDeath -= FinishLevel;
             
             _collisionsService.DisableCollisionsSettings();

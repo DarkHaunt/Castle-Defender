@@ -1,7 +1,7 @@
-﻿using Project.Scripts.Common.StateMachine;
-using Project.Scripts.Level.StateMachine.States.StartLevel;
+﻿using Project.Scripts.Level.StateMachine.States.StartLevel;
 using Project.Scripts.Level.Enemies.Creation;
 using Project.Scripts.Level.Enemies.Handling;
+using Project.Scripts.Common.StateMachine;
 using Project.Scripts.Level.Handling;
 using Project.Scripts.Level.Castles;
 using UnityEngine;
@@ -12,18 +12,18 @@ namespace Project.Scripts.Level.StateMachine.States.InitLevel
     public class InitLevelState : IState
     {
         private readonly InitializeDataProvider _initializeDataProvider;
+        private readonly EnemyHandleService _enemyHandleService;
         private readonly EnemySpawnService _enemySpawnService;
-        private readonly EnemyPoolService _enemyPoolService;
         private readonly IStateSwitcher _stateSwitcher;
         private readonly CastleModel _castleModel;
 
 
         public InitLevelState(IStateSwitcher stateSwitcher, InitializeDataProvider initializeDataProvider, 
-            CastleModel castleModel, EnemySpawnService enemySpawnService, EnemyPoolService enemyPoolService)
+            CastleModel castleModel, EnemySpawnService enemySpawnService, EnemyHandleService enemyHandleService)
         {
             _initializeDataProvider = initializeDataProvider;
+            _enemyHandleService = enemyHandleService;
             _enemySpawnService = enemySpawnService;
-            _enemyPoolService = enemyPoolService;
             _stateSwitcher = stateSwitcher;
             _castleModel = castleModel;
         }
@@ -38,9 +38,9 @@ namespace Project.Scripts.Level.StateMachine.States.InitLevel
             var level = levelInitData.Level;
             var castle = level.Castle;
             
+            _enemyHandleService.Init(levelInitData.Enemies, levelInitData.CountEnemiesToKill);
             _castleModel.Init(castle, levelInitData.CastleHealth);
             _enemySpawnService.Init(levelInitData, level);
-            _enemyPoolService.Init(levelInitData.Enemies);
 
             SwitchToLevelStart();
         }
