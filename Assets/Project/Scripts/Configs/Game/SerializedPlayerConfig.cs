@@ -1,4 +1,5 @@
-﻿using System;
+﻿using Project.Scripts.Global;
+using System;
 
 
 namespace Project.Scripts.Configs.Game
@@ -7,10 +8,10 @@ namespace Project.Scripts.Configs.Game
     public class SerializedPlayerConfig : IPlayerConfig
     {
         public float CastleHealthSerialized;
-        public string[] AvailableWeaponSerialized;
+        public WeaponType[] AvailableWeaponSerialized;
 
         public float CastleHealth => CastleHealthSerialized;
-        public string[] AvailableWeapons => AvailableWeaponSerialized;
+        public WeaponType[] AvailableWeapons => AvailableWeaponSerialized;
 
 
         public SerializedPlayerConfig(IPlayerConfig gameData)
@@ -19,12 +20,12 @@ namespace Project.Scripts.Configs.Game
             AvailableWeaponSerialized = gameData.AvailableWeapons;
         }
 
-        private SerializedPlayerConfig(float castleHealthSerialized, string[] availableWeaponsSerialized)
+        private SerializedPlayerConfig(float castleHealthSerialized, WeaponType[] availableWeaponsSerialized)
         {
             CastleHealthSerialized = castleHealthSerialized;
             AvailableWeaponSerialized = availableWeaponsSerialized;
         }
 
-        public SerializedPlayerConfig() : this(float.NaN, Array.Empty<string>()) {}
+        public SerializedPlayerConfig() : this(float.NaN, Array.Empty<WeaponType>()) {}
     }
 }

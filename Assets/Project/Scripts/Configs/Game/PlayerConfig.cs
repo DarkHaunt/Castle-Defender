@@ -1,4 +1,5 @@
-﻿using UnityEngine;
+﻿using Project.Scripts.Global;
+using UnityEngine;
 
 
 namespace Project.Scripts.Configs.Game
@@ -7,6 +8,6 @@ namespace Project.Scripts.Configs.Game
     public class PlayerConfig : ScriptableObject, IPlayerConfig
     {
         [field: SerializeField] public float CastleHealth { get; private set; }
-        [field: SerializeField] public string[] AvailableWeapons { get; private set; }
+        [field: SerializeField] public WeaponType[] AvailableWeapons { get; private set; }
     }
 }

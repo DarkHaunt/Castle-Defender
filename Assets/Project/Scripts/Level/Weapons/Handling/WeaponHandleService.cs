@@ -3,7 +3,7 @@
 
 namespace Project.Scripts.Level.Weapons.Handling
 {
-    public class WeaponHandleService : IWeaponHandleService
+    public class WeaponHandleService
     {
         public event Action OnEnabled;
         public event Action OnDisabled;

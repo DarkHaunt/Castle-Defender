@@ -1,9 +1,9 @@
 ﻿using Project.Scripts.Common.Save;
 using Project.Scripts.Common.StateMachine;
 using Project.Scripts.Configs.Level;
+using Project.Scripts.Global;
 using Project.Scripts.Menu.Data;
 using Project.Scripts.Menu.StateMachine.States.LevelLoadState;
-using Project.Scripts.Static;
 
 
 namespace Project.Scripts.Menu.StateMachine.States.LevelSelectState

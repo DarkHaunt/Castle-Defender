@@ -10,14 +10,14 @@ namespace Project.Scripts.Level.StateMachine.States.StartLevel
 {
     public class StartLevelStateFactory
     {
-        private readonly IWeaponHandleService _weaponHandleService;
+        private readonly WeaponHandleService _weaponHandleService;
         private readonly LevelCollisionsService _collisionsService;
         private readonly EnemyHandleService _enemyHandleService;
         private readonly EnemySpawnService _enemySpawnService;
         private readonly CastleModel _castleModel;
 
 
-        public StartLevelStateFactory(CastleModel castleModel, IWeaponHandleService weaponHandleService, 
+        public StartLevelStateFactory(CastleModel castleModel, WeaponHandleService weaponHandleService, 
             LevelCollisionsService collisionsService, EnemySpawnService enemySpawnService, EnemyHandleService enemyHandleService)
         {
             _weaponHandleService = weaponHandleService;

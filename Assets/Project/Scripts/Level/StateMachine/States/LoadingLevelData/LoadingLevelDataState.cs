@@ -24,13 +24,13 @@ namespace Project.Scripts.Level.StateMachine.States.LoadingLevelData
 
         public void Enter()
         {
-            Debug.Log($"<color=yellow>Load Level Data</color>");
-            
             _debugService.PerformDebug();
             
             _initializeDataProvider.OnInitializeDataReady += SwitchToLevelInitialize;
             
             _initializeDataProvider.LoadInitializeData();
+            
+            Debug.Log($"<color=yellow>Load Level Data</color>");
         }
 
         public void Exit()

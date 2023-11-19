@@ -12,7 +12,7 @@ namespace Project.Scripts.Level.StateMachine.States.StartLevel
 {
     public class StartLevelState : IState
     {
-        private readonly IWeaponHandleService _weaponHandleService;
+        private readonly WeaponHandleService _weaponHandleService;
         private readonly LevelCollisionsService _collisionsService;
         private readonly EnemyHandleService _enemyHandleService;
         private readonly EnemySpawnService _enemySpawnService;
@@ -21,7 +21,7 @@ namespace Project.Scripts.Level.StateMachine.States.StartLevel
 
 
         public StartLevelState(IStateSwitcher stateSwitcher, CastleModel castleModel, LevelCollisionsService collisionsService,
-            IWeaponHandleService weaponHandleService, EnemyHandleService enemyHandleService, EnemySpawnService enemySpawnService)
+            WeaponHandleService weaponHandleService, EnemyHandleService enemyHandleService, EnemySpawnService enemySpawnService)
         {
             _weaponHandleService = weaponHandleService;
             _enemyHandleService = enemyHandleService;

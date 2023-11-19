@@ -12,13 +12,13 @@ namespace Project.Scripts.Level.Castles
         public event Action OnDisabled;
         public event Action OnEnabled;
 
-        private readonly IWeaponPointsContainer _weaponPointsContainer;
+        private readonly WeaponPointsContainer _weaponPointsContainer;
         
         private IList<WeaponPointPresenter> _weaponPointPresenters;
         public IAttackTarget PhysicBody;
 
 
-        public CastleModel(IWeaponPointsContainer weaponPointsContainer)
+        public CastleModel(WeaponPointsContainer weaponPointsContainer)
         {
             _weaponPointsContainer = weaponPointsContainer;
         }

@@ -1,7 +1,7 @@
 ﻿using Project.Scripts.Configs.Level;
 using Project.Scripts.Configs.Game;
 using Project.Scripts.Common.Save;
-using Project.Scripts.Static;
+using Project.Scripts.Global;
 using UnityEngine;
 
 

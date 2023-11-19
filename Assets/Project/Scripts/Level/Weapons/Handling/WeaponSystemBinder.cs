@@ -13,10 +13,10 @@ namespace Project.Scripts.Level.Weapons.Handling
         public readonly ReactiveProperty<bool> DeleteOptionSelected = new();
         public readonly ReactiveProperty<bool> UpdateOptionSelected = new();
 
-        private readonly IWeaponHandleService _weaponHandleService;
+        private readonly WeaponHandleService _weaponHandleService;
 
 
-        public WeaponSystemBinder(IWeaponHandleService weaponHandleService)
+        public WeaponSystemBinder(WeaponHandleService weaponHandleService)
         {
             _weaponHandleService = weaponHandleService;
 
