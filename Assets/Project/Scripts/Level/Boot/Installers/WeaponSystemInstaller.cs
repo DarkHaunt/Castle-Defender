@@ -1,11 +1,12 @@
-﻿using Project.Scripts.Level.Weapons;
+﻿using Project.Scripts.Level.Weapons.HandlePoints;
 using Project.Scripts.Level.Weapons.Creation;
-using Project.Scripts.Level.Weapons.HandlePoints;
 using Project.Scripts.Level.Weapons.Handling;
 using Project.Scripts.Level.Weapons.View;
+using Project.Scripts.Level.Weapons;
+using Project.Scripts.Configs.Game;
+using VContainer.Unity;
 using UnityEngine;
 using VContainer;
-using VContainer.Unity;
 
 
 namespace Project.Scripts.Level.Boot.Installers
@@ -28,7 +29,7 @@ namespace Project.Scripts.Level.Boot.Installers
         
         public void Install(IContainerBuilder builder)
         {
-            RegisterWeaponPointsContainer(builder);
+            RegisterWeaponProvider(builder);
             
             RegisterWeaponDeleteService(builder);
             RegisterWeaponUpdateService(builder);
@@ -39,19 +40,9 @@ namespace Project.Scripts.Level.Boot.Installers
             RegisterWeaponHandleService(builder);
         }
 
-        private void RegisterWeaponPointsContainer(IContainerBuilder builder)
+        private void RegisterWeaponProvider(IContainerBuilder builder)
         {
-            builder.Register<WeaponPointsContainer>(Lifetime.Scoped);
-        }
-
-        private static void RegisterWeaponDeleteService(IContainerBuilder builder)
-        {
-            builder.Register<WeaponDeletionService>(Lifetime.Scoped);
-        }
-
-        private static void RegisterWeaponUpdateService(IContainerBuilder builder)
-        {
-            builder.Register<WeaponUpdateService>(Lifetime.Scoped);
+            builder.Register<WeaponProvider>(Lifetime.Scoped);
         }
 
         private void RegisterWeaponCreationService(IContainerBuilder builder)
@@ -59,10 +50,22 @@ namespace Project.Scripts.Level.Boot.Installers
             builder
                 .Register<WeaponCreateService>(Lifetime.Scoped)
                 .WithParameter(_creationPrefab);
+            
+            builder.Register<WeaponPointsContainer>(Lifetime.Scoped);
 
             builder
                 .Register<WeaponFactory>(Lifetime.Scoped)
                 .WithParameter(_weaponParent);
+        }
+
+        private void RegisterWeaponUpdateService(IContainerBuilder builder)
+        {
+            builder.Register<WeaponUpdateService>(Lifetime.Scoped);
+        }
+
+        private void RegisterWeaponDeleteService(IContainerBuilder builder)
+        {
+            builder.Register<WeaponDeletionService>(Lifetime.Scoped);
         }
 
         private void RegisterWeaponSystemView(IContainerBuilder builder)

@@ -9,7 +9,7 @@ namespace Project.Scripts.Level.Castles
     public class DefaultCastleView : CastleView
     {
         [Header("--- GUI View ---")]
-        [SerializeField] private Slider _healthBar;
+        [SerializeField] private Image _healthBar;
         [SerializeField] private TextMeshProUGUI _healthText;
 
 
@@ -34,7 +34,7 @@ namespace Project.Scripts.Level.Castles
         {
             var healthPercent = healthParams.CurrentHealth / healthParams.MaxHealth;
             
-            _healthBar.value = healthPercent;
+            _healthBar.fillAmount = healthPercent;
         }        
     }
 }

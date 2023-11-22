@@ -13,8 +13,8 @@ MonoBehaviour:
   m_Name: Level1
   m_EditorClassIdentifier: 
   <Number>k__BackingField: 1
-  <LevelPrefabPath>k__BackingField: Level 1
+  <LevelPrefabPath>k__BackingField: Levels/Level 1
   <EnemiesPrefabsPatches>k__BackingField:
-  - Goblin
+  - Enemies/Goblin
   <CountToKillEnemies>k__BackingField: 1
   <EnemiesSpawnWaveTime>k__BackingField: 6

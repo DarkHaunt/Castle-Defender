@@ -1,42 +1,45 @@
 ﻿using System;
-using UnityEngine.Events;
+using UnityEngine;
 using UnityEngine.UI;
+using UnityEngine.Events;
 
 
 namespace Project.Scripts.Extra.UI
 {
-    public sealed class PressHandlingButton : Button
+    public sealed class PressHandlingButton : MonoBehaviour
     {
         public event Action OnBeenPressed;
         public event Action OnBeenUnpressed;
 
+        [Header("--- Source ---")]
+        [SerializeField] private Image _image;
+        [SerializeField] private Button _button;
+        
+        [Header("--- Visuals ---")]
+        [SerializeField] private Sprite _unpressedGraphcics;
+        [SerializeField] private Sprite _pressedGraphcics;
+        
         private bool _hasBeenPressed;
 
 
         public void AddListener(UnityAction listener)
-            => onClick.AddListener(listener);
+            => _button.onClick.AddListener(listener);
 
         public void RemoveListener(UnityAction listener)
-            => onClick.RemoveListener(listener);    
-        
-        protected override void OnEnable()
-        {
-            base.OnEnable();
+            => _button.onClick.RemoveListener(listener);
 
-            AddListener(ProcessPressState);
-        }
+        private void OnEnable()
+            => AddListener(ProcessPressState);
 
-        protected override void OnDisable()
-        {
-            base.OnDisable();
-
-            RemoveListener(ProcessPressState);
-        }
+        private void OnDisable()
+            => RemoveListener(ProcessPressState);
 
         private void ProcessPressState()
         {
             _hasBeenPressed = !_hasBeenPressed;
 
+            _image.sprite = _hasBeenPressed ? _pressedGraphcics : _unpressedGraphcics;
+            
             if (_hasBeenPressed)
                 OnBeenPressed?.Invoke();
             else
