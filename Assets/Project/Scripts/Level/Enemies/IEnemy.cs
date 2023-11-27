@@ -9,7 +9,7 @@ namespace Project.Scripts.Level.Enemies
     {
         event Action<IEnemy> OnDeath;
         
-        Vector2 CurrentPosition { get; }
+        Vector3 Position { get; }
         
         void Move(IAttackTarget attackTarget, float timeDelta);
         void Attack(IAttackTarget attackTarget);

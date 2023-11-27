@@ -1,5 +1,12 @@
 {
   "dependencies": {
+    "com.darkhaunt.range-value": {
+      "version": "https://github.com/DarkHaunt/RangeValue.git#package",
+      "depth": 0,
+      "source": "git",
+      "dependencies": {},
+      "hash": "ba8fe4e5a4c4d1037e79be9dbbab7460d9a3d9e4"
+    },
     "com.unity.2d.animation": {
       "version": "7.0.10",
       "depth": 1,

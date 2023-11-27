@@ -2,7 +2,7 @@
 {
     public enum WeaponType
     {
-        Arbalest,
+        Crossbow,
         Catapult
     }
 }

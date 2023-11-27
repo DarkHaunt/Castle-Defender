@@ -27,7 +27,7 @@ namespace Project.Scripts.Level.Enemies
         protected Rigidbody2D _rigidbody;
         private EnemyBehaviorTree _behaviorTree;
 
-        public Vector2 CurrentPosition => _rigidbody.position;
+        public Vector3 Position => _rigidbody.position;
         public int Id => _id;
 
         protected abstract EnemyBehaviorTree CreateBehaviorTree(EnemyBehaviorData behaviorData);

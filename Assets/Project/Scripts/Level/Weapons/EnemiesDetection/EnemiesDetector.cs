@@ -1,7 +1,7 @@
 ﻿using Project.Scripts.Level.Enemies;
-using System;
 using System.Collections.Generic;
 using UnityEngine;
+using System;
 
 
 namespace Project.Scripts.Level.Weapons.EnemiesDetection
@@ -13,7 +13,7 @@ namespace Project.Scripts.Level.Weapons.EnemiesDetection
 
         private readonly ISet<IEnemy> _detectedEnemies = new HashSet<IEnemy>();
 
-        private CircleCollider2D _circleCollider2D;
+        private CircleCollider2D _collider;
 
 
         private void OnValidate()
@@ -23,7 +23,7 @@ namespace Project.Scripts.Level.Weapons.EnemiesDetection
         }
 
         private void Awake()
-            => _circleCollider2D = GetComponent<CircleCollider2D>();
+            => _collider = GetComponent<CircleCollider2D>();
 
         private void OnTriggerEnter2D(Collider2D other)
         {
@@ -41,13 +41,13 @@ namespace Project.Scripts.Level.Weapons.EnemiesDetection
         }
 
         public void Init(float radius)
-            => _circleCollider2D.radius = radius;
+            => _collider.radius = radius;
 
         public void Enable()
-            => _circleCollider2D.enabled = true;
+            => _collider.enabled = true;
 				
         public void Disable() 
-            => _circleCollider2D.enabled = false;
+            => _collider.enabled = false;
 
         public IEnumerable<IEnemy> GetDetectedEnemies()
             => _detectedEnemies;

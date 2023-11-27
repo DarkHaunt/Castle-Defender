@@ -45,7 +45,7 @@ namespace Project.Scripts.Level.Enemies.BehaviorTree.SharedBehavior
             _cooldownTimer.Launch(RefreshCooldown);
 
             var targetsCount =
-                Physics2D.RaycastNonAlloc(_enemy.CurrentPosition, _searchDirection, _nonAllocRaycastTargets,
+                Physics2D.RaycastNonAlloc(_enemy.Position, _searchDirection, _nonAllocRaycastTargets,
                     MaxDistance, LayerMaskExtensions.GetMaskFromLayer(PlayerLayer));
 
             if (targetsCount < MaxDetectTargets)

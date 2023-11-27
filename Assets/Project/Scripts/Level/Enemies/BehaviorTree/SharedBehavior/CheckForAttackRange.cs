@@ -32,6 +32,6 @@ namespace Project.Scripts.Level.Enemies.BehaviorTree.SharedBehavior
         }
 
         private bool IsOnAttackDistance(IAttackTarget target)
-            => Vector2.Distance(target.Position, _enemy.CurrentPosition) < _attackRange;
+            => Vector2.Distance(target.Position, _enemy.Position) < _attackRange;
     }
 }

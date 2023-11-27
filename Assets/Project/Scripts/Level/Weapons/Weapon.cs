@@ -26,18 +26,15 @@ namespace Project.Scripts.Level.Weapons
 
             var weaponTargetHolder = new WeaponTargetHolder();
             _weaponStateMachine = new WeaponStateMachine(this, weaponTargetHolder, _enemiesDetector, _reloadTime);
-        }
 
-        public void Enable()
-        {
+            InitInternal();
+            
             _enemiesDetector.Enable();
             _weaponStateMachine.SwitchToState<WeaponSearchForTarget>();
         }
-				
-        public void Disable() 
-            => _enemiesDetector.Disable();
 
         public abstract void Attack(IEnemy target, Action onComplete);
+        protected abstract void InitInternal();
         public abstract void Reload();
     }
 }

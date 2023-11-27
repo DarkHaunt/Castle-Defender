@@ -12,7 +12,7 @@ namespace Project.Scripts.Configs.Game
         {
             var prefabPath = weaponType switch
             {
-                WeaponType.Arbalest => "Weapons/Arbalest",
+                WeaponType.Crossbow => "Weapons/Crossbow",
                 WeaponType.Catapult => "Weapons/Catapult",
                 _ => throw new ArgumentOutOfRangeException(nameof(weaponType), weaponType, null),
             };
