@@ -1,6 +1,6 @@
-﻿using Project.Scripts.Level.Common.Damage;
+﻿using Project.Scripts.Level.Enemies.BehaviorTree.Common.Nodes;
 using Project.Scripts.Level.Enemies.BehaviorTree.Common;
-using Project.Scripts.Level.Enemies.BehaviorTree.Common.Nodes;
+using Project.Scripts.Level.Common.Damage;
 using UnityEngine;
 
 

@@ -225,6 +225,12 @@ MonoBehaviour:
     AttackCooldown: 3
     AttackRadius: 7
   _meleeAttackDamage: 1000
+  _animation: {fileID: 6003407901332955024}
+  _skeleton: {fileID: 11400000, guid: d35f273de2a515c4e924bdc891115a21, type: 2}
+  _idleAnim: idle
+  _walkAnim: run
+  _attackAnim: kick
+  _deathAnim: dead
 --- !u!114 &-8588280449612760407
 MonoBehaviour:
   m_ObjectHideFlags: 0

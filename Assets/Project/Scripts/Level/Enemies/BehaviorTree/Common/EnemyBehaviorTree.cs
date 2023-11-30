@@ -1,5 +1,5 @@
-﻿using Project.Scripts.Level.Common.Damage;
-using Project.Scripts.Level.Enemies.BehaviorTree.Common.Nodes;
+﻿using Project.Scripts.Level.Enemies.BehaviorTree.Common.Nodes;
+using Project.Scripts.Level.Common.Damage;
 
 
 namespace Project.Scripts.Level.Enemies.BehaviorTree.Common
