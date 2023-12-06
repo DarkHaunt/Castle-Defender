@@ -33,7 +33,7 @@ namespace Project.Scripts.Level.Enemies.Melee
         public override void Move(IAttackTarget attackTarget, float timeDelta)
         {
             var targetDirection = (attackTarget.Position - (Vector2)transform.position).normalized;
-            _rigidbody.AddForce(targetDirection * _speed * timeDelta);
+            _rigidbody.velocity = targetDirection * _speed;
         }
 
         public override void Attack(IAttackTarget attackTarget)

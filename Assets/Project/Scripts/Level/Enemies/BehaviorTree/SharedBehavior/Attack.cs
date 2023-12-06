@@ -2,6 +2,7 @@
 using Project.Scripts.Level.Enemies.BehaviorTree.Common;
 using Project.Scripts.Level.Enemies.Animation;
 using Project.Scripts.Common.Time;
+using UnityEngine;
 
 
 namespace Project.Scripts.Level.Enemies.BehaviorTree.SharedBehavior
@@ -12,34 +13,42 @@ namespace Project.Scripts.Level.Enemies.BehaviorTree.SharedBehavior
         private readonly EnemyBehaviorTree _tree;
         
         private readonly Timer _cooldownTimer;
-        
-        private readonly float _cooldown;
+        private readonly Timer _attackTimer;
         private readonly IEnemy _enemy;
 
 
-        public Attack(EnemyBehaviorTree tree, IEnemy enemy, AnimationModel animationModel,  float cooldown)
+        public Attack(EnemyBehaviorTree tree, IEnemy enemy, AnimationModel animationModel, Timer cooldownTimer)
         {
             _animationModel = animationModel;
-            _cooldown = cooldown;
+            _cooldownTimer = cooldownTimer;
+            
             _enemy = enemy;
             _tree = tree;
 
-            _cooldownTimer = new Timer(cooldown);
+            _attackTimer = new Timer();
         }
 
 
         public override ProcessState Process(float timeStep)
         {
             _cooldownTimer.Update(timeStep);
-
-            if (_cooldownTimer.IsRunning)
+            _attackTimer.Update(timeStep);
+            
+            if(_cooldownTimer.IsRunning)
+                return UpdateStateFor(ProcessState.Failure);
+            
+            if(_attackTimer.IsRunning)
                 return UpdateStateFor(ProcessState.Running);
 
-            _animationModel.PlayAttackAnimation();
-            _cooldownTimer.Launch(_cooldown);
+            Debug.Log($"<color=white>Log</color>");
             
+            var attackTime = _animationModel.PlayAttackAnimation();
+            _attackTimer.Launch(attackTime);
+
             var attackTarget = _tree.GetTarget();
             _enemy.Attack(attackTarget);
+
+            _cooldownTimer.Relaunch();
 
             return UpdateStateFor(ProcessState.Success);
         }

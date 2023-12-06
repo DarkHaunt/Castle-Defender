@@ -17,4 +17,4 @@ MonoBehaviour:
   <EnemiesPrefabsPatches>k__BackingField:
   - Enemies/Goblin
   <CountToKillEnemies>k__BackingField: 10
-  <EnemiesSpawnWaveTime>k__BackingField: 6
+  <EnemiesSpawnWaveTime>k__BackingField: 10

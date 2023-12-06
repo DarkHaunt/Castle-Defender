@@ -1,4 +1,5 @@
-﻿using Project.Scripts.Level.Enemies.BehaviorTree.SharedBehavior;
+﻿using Project.Scripts.Common.Time;
+using Project.Scripts.Level.Enemies.BehaviorTree.SharedBehavior;
 using Project.Scripts.Level.Enemies.BehaviorTree.Common.Nodes;
 using Project.Scripts.Level.Enemies.BehaviorTree.Common;
 using Project.Scripts.Level.Enemies.Animation;
@@ -31,12 +32,15 @@ namespace Project.Scripts.Level.Enemies.Melee.Behavior
 
         private Sequence CreateAttackSequence()
         {
-            var attackNode = new Attack(this, _enemy, _animationModel, _enemyBehaviorData.AttackCooldown);
-
-            var checkForAttackRangeNode =
-                new CheckForAttackRange(this, _enemy, _enemyBehaviorData.AttackRadius);
-
-            return new Sequence(checkForAttackRangeNode, attackNode);
+            var cooldownTimer = new Timer();
+            
+            var checkForAttackRangeNode = new CheckForAttackRange(this, _enemy, _enemyBehaviorData.AttackRadius);
+            var attackNode = new Attack(this, _enemy, _animationModel, cooldownTimer);
+            var idleNode = new Idle(_animationModel, cooldownTimer);
+            
+            cooldownTimer.Launch(_enemyBehaviorData.AttackCooldown);
+            
+            return new Sequence(checkForAttackRangeNode, attackNode, idleNode);
         }
     }
 }

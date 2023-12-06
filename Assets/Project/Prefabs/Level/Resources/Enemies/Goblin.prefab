@@ -218,11 +218,11 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _id: 0
   _health: 10
-  _speed: 20
+  _speed: 6
   _attackTarget: {fileID: -8588280449612760407}
   _enemyBehaviorData:
     SearchDirection: {x: 1, y: 0}
-    AttackCooldown: 3
+    AttackCooldown: 2
     AttackRadius: 7
   _meleeAttackDamage: 1000
   _animation: {fileID: 6003407901332955024}

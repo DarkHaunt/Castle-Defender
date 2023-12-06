@@ -1,5 +1,6 @@
 ﻿using Spine.Unity;
 using Spine;
+using UnityEngine;
 
 
 namespace Project.Scripts.Level.Enemies.Animation
@@ -25,18 +26,20 @@ namespace Project.Scripts.Level.Enemies.Animation
         public void PlayIdleAnimation()
             => PlayTrack(_animations.IdleAnimName, true);        
         
-        public void PlayAttackAnimation()
-            => PlayTrack(_animations.AttackAnimName);        
+        public float PlayAttackAnimation()
+            => PlayTrack(_animations.AttackAnimName).Animation.Duration;        
         
         public void PlayDeathAnimation()
             => PlayTrack(_animations.DeathAnimName);
 
-        private void PlayTrack(string animName, bool isLooped = false, int tackIndex = 0)
+        private TrackEntry PlayTrack(string animName, bool isLooped = false, int tackIndex = 0)
         {
             if (IsShouldNotSwitchAnimation(animName))
-                return;
-            
+                return _lastTrack;
+
             _lastTrack = _animation.state.SetAnimation(tackIndex, animName, isLooped);
+
+            return _lastTrack;
         }
 
         private bool IsShouldNotSwitchAnimation(string animName)

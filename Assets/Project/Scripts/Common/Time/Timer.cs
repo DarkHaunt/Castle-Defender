@@ -16,25 +16,24 @@
 
         public void Launch(float seconds)
         {
-            Reset();
-
+            IsRunning = true;
+            
             _targetTime = seconds;
+            _passedTime = 0f;
         }
 
+        public void Relaunch()
+        {
+            IsRunning = true;
+            _passedTime = 0f;
+        }
+        
         public void Update(float timeStep)
         {
             _passedTime += timeStep;
 
             if (_passedTime > _targetTime)
                 IsRunning = false;
-        }
-
-        private void Reset()
-        {
-            IsRunning = true;
-
-            _passedTime = 0f;
-            _targetTime = 0f;
         }
     }
 }
