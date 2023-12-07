@@ -48,9 +48,9 @@ namespace Project.Scripts.Level.Enemies.Creation
         {
             while (true)
             {
-                yield return MonoExtensions.GetWait(_waveSpawnTime);
-                
                 SpawnEnemiesInPoints();
+                
+                yield return MonoExtensions.GetWait(_waveSpawnTime);
             }
         }
 

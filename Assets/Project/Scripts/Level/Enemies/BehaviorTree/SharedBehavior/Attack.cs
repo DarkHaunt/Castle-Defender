@@ -11,7 +11,7 @@ namespace Project.Scripts.Level.Enemies.BehaviorTree.SharedBehavior
     {
         private readonly AnimationModel _animationModel;
         private readonly EnemyBehaviorTree _tree;
-        
+
         private readonly Timer _cooldownTimer;
         private readonly Timer _attackTimer;
         private readonly IEnemy _enemy;
@@ -21,7 +21,7 @@ namespace Project.Scripts.Level.Enemies.BehaviorTree.SharedBehavior
         {
             _animationModel = animationModel;
             _cooldownTimer = cooldownTimer;
-            
+
             _enemy = enemy;
             _tree = tree;
 
@@ -31,17 +31,14 @@ namespace Project.Scripts.Level.Enemies.BehaviorTree.SharedBehavior
 
         public override ProcessState Process(float timeStep)
         {
-            _cooldownTimer.Update(timeStep);
             _attackTimer.Update(timeStep);
-            
-            if(_cooldownTimer.IsRunning)
-                return UpdateStateFor(ProcessState.Failure);
-            
-            if(_attackTimer.IsRunning)
-                return UpdateStateFor(ProcessState.Running);
 
-            Debug.Log($"<color=white>Log</color>");
+            if (_attackTimer.IsRunning)
+                return UpdateStateFor(ProcessState.Running);
             
+            if (_cooldownTimer.IsRunning)
+                return UpdateStateFor(ProcessState.Failure);
+
             var attackTime = _animationModel.PlayAttackAnimation();
             _attackTimer.Launch(attackTime);
 

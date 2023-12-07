@@ -1,7 +1,6 @@
 ﻿using Project.Scripts.Level.Enemies.BehaviorTree.Common.Nodes;
 using Project.Scripts.Level.Enemies.Animation;
 using Project.Scripts.Common.Time;
-using UnityEngine;
 
 
 namespace Project.Scripts.Level.Enemies.BehaviorTree.SharedBehavior
@@ -21,9 +20,10 @@ namespace Project.Scripts.Level.Enemies.BehaviorTree.SharedBehavior
 
         public override ProcessState Process(float timeStep)
         {
+            _cooldownTimer.Update(timeStep);
+            
             if (_cooldownTimer.IsRunning)
             {
-                Debug.Log($"<color=white>Log pidar</color>");
                 _animationModel.PlayIdleAnimation();
                 return UpdateStateFor(ProcessState.Running);
             }

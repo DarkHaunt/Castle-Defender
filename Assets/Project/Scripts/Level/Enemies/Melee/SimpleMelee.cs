@@ -33,7 +33,9 @@ namespace Project.Scripts.Level.Enemies.Melee
         public override void Move(IAttackTarget attackTarget, float timeDelta)
         {
             var targetDirection = (attackTarget.Position - (Vector2)transform.position).normalized;
-            _rigidbody.velocity = targetDirection * _speed;
+            var moveStep = (targetDirection * _speed * timeDelta);
+            
+            _rigidbody.MovePosition(_rigidbody.position + moveStep);
         }
 
         public override void Attack(IAttackTarget attackTarget)

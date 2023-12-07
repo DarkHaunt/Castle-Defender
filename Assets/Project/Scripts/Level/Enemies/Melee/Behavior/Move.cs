@@ -1,6 +1,7 @@
 ﻿using Project.Scripts.Level.Enemies.BehaviorTree.Common.Nodes;
 using Project.Scripts.Level.Enemies.BehaviorTree.Common;
 using Project.Scripts.Level.Enemies.Animation;
+using UnityEngine;
 
 
 namespace Project.Scripts.Level.Enemies.Melee.Behavior
@@ -26,6 +27,8 @@ namespace Project.Scripts.Level.Enemies.Melee.Behavior
             
             _animationModel.PlayWalkAnimation();
             _enemy.Move(target, timeStep);
+
+            Debug.Log($"<color=white>MOVE SHIT</color>");
 
             return ProcessState.Running;
         }
