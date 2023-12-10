@@ -1,12 +1,12 @@
 ﻿using Project.Scripts.Common.Scene;
-using UnityEngine;
 using UnityEngine.UI;
+using UnityEngine;
 using VContainer;
 
 
 namespace Project.Scripts.UI
 {
-    public class GameOverUIService : MonoBehaviour
+    public class GameOverView : MonoBehaviour
     {
         [SerializeField] private Button _menuButton;
         [SerializeField] private Button _restartButton;

@@ -1,4 +1,5 @@
-﻿using Project.Scripts.Level.Boot.Installers;
+﻿using Project.Scripts.Consume;
+using Project.Scripts.Level.Boot.Installers;
 using Project.Scripts.Level.Castles;
 using Project.Scripts.Level.Debugging;
 using Project.Scripts.Level.Weapons;
@@ -22,8 +23,9 @@ namespace Project.Scripts.Level.Boot
         [SerializeField] private Transform _enemyParent;
 
         [Header("--- Views ---")]
-        [SerializeField] private GameOverUIService _gameOverUIService;
+        [SerializeField] private GameOverView _gameOverView;
         [SerializeField] private WeaponSystemView _weaponSystemView;
+        [SerializeField] private CoinsHandleView _coinsHandleView;
         [SerializeField] private CastleView _castleView;
 
         [Header("--- TEMP ---")]
@@ -44,7 +46,7 @@ namespace Project.Scripts.Level.Boot
             new LevelSystemInstaller(_debugService, _levelParent)
                 .Install(builder);
             
-            new UIInstaller(_gameOverUIService)
+            new UIInstaller(_gameOverView, _coinsHandleView)
                 .Install(builder);
         }
     }

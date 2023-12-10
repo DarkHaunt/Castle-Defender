@@ -7,7 +7,7 @@ namespace Project.Scripts.Configs.Game
 {
     public interface IPlayerConfig
     {
-        int Crystals { get; }
+        int Coins { get; }
         float CastleHealth { get; }
         WeaponType[] AvailableWeapons { get; }
     }

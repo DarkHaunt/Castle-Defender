@@ -1,6 +1,7 @@
 using Project.Scripts.Common.Coroutines;
 using Project.Scripts.Common.Scene;
 using Project.Scripts.Configs;
+using Project.Scripts.Consume;
 using VContainer.Unity;
 using UnityEngine;
 using VContainer;
@@ -16,12 +17,18 @@ namespace Project.Scripts.Boot
         
         protected override void Configure(IContainerBuilder builder)
         {
+            RegisterCoinsHandleService(builder);
             RegisterSceneLoaderSystem(builder);
             RegisterCoroutineRunner(builder);
             RegisterConfigProvider(builder);
         }
 
-        private static void RegisterConfigProvider(IContainerBuilder builder)
+        private void RegisterCoinsHandleService(IContainerBuilder builder)
+        {
+            builder.Register<CoinsHandleService>(Lifetime.Singleton);
+        }
+
+        private void RegisterConfigProvider(IContainerBuilder builder)
         {
             builder.Register<ConfigsProvider>(Lifetime.Singleton);
         }

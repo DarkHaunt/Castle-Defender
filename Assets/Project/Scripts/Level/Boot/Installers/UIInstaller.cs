@@ -1,29 +1,38 @@
-﻿using Project.Scripts.UI;
-using VContainer;
+﻿using Project.Scripts.Consume;
+using Project.Scripts.UI;
 using VContainer.Unity;
+using VContainer;
 
 
 namespace Project.Scripts.Level.Boot.Installers
 {
     public class UIInstaller : IInstaller
     {
-        private readonly GameOverUIService _gameOverUIService;
+        private readonly GameOverView _gameOverView;
+        private readonly CoinsHandleView _coinsHandleView;
 
-        
-        public UIInstaller(GameOverUIService gameOverUIService)
+
+        public UIInstaller(GameOverView gameOverView, CoinsHandleView coinsHandleView)
         {
-            _gameOverUIService = gameOverUIService;
+            _gameOverView = gameOverView;
+            _coinsHandleView = coinsHandleView;
         }
         
         
         public void Install(IContainerBuilder builder)
         {
-            RegisterGameOverUIService(builder);
+            RegisterGameOverView(builder);
+            RegisterCoinsHandleView(builder);
         }
-        
-        private void RegisterGameOverUIService(IContainerBuilder builder)
+
+        private void RegisterCoinsHandleView(IContainerBuilder builder)
         {
-            builder.RegisterComponent(_gameOverUIService);
+            builder.RegisterComponent(_coinsHandleView);
+        }
+
+        private void RegisterGameOverView(IContainerBuilder builder)
+        {
+            builder.RegisterComponent(_gameOverView);
         }
     }
 }

@@ -8,23 +8,23 @@ namespace Project.Scripts.Level.StateMachine.States.EndLevel
 {
     public class EndLevelState : IState
     {
-        private readonly GameOverUIService _gameOverUIService;
+        private readonly GameOverView _gameOverView;
         private readonly ConfigsProvider _configsProvider;
 
-        public EndLevelState(ConfigsProvider configsProvider, GameOverUIService gameOverUIService)
+        public EndLevelState(ConfigsProvider configsProvider, GameOverView gameOverView)
         {
-            _gameOverUIService = gameOverUIService;
+            _gameOverView = gameOverView;
             _configsProvider = configsProvider;
         }
         
         public void Enter()
         {
             _configsProvider.SaveConfigs();
-            _gameOverUIService.Enable();
+            _gameOverView.Enable();
             Debug.Log($"<color=yellow>End Level</color>");
         }
 
         public void Exit()
-            => _gameOverUIService.Disable();
+            => _gameOverView.Disable();
     }
 }

@@ -1,8 +1,8 @@
-﻿using Project.Scripts.Common.StateMachine;
-using Project.Scripts.Menu.StateMachine.States.SettingsSelectState;
+﻿using Project.Scripts.Menu.StateMachine.States.SettingsSelectState;
 using Project.Scripts.Menu.StateMachine.States.LevelSelectState;
 using Project.Scripts.Menu.StateMachine.States.MenuHandleState;
 using Project.Scripts.Menu.StateMachine.States.LevelLoadState;
+using Project.Scripts.Common.StateMachine;
 using System.Collections.Generic;
 using VContainer.Unity;
 using System;
