@@ -7,25 +7,27 @@ namespace Project.Scripts.Configs.Game
     [Serializable]
     public class SerializedPlayerConfig : IPlayerConfig
     {
+        public int CrystalsSerialized;
         public float CastleHealthSerialized;
         public WeaponType[] AvailableWeaponSerialized;
 
+        public int Crystals => CrystalsSerialized;
         public float CastleHealth => CastleHealthSerialized;
         public WeaponType[] AvailableWeapons => AvailableWeaponSerialized;
 
 
         public SerializedPlayerConfig(IPlayerConfig gameData)
         {
+            CrystalsSerialized = gameData.Crystals;
             CastleHealthSerialized = gameData.CastleHealth;
             AvailableWeaponSerialized = gameData.AvailableWeapons;
         }
 
-        private SerializedPlayerConfig(float castleHealthSerialized, WeaponType[] availableWeaponsSerialized)
+        private SerializedPlayerConfig()
         {
-            CastleHealthSerialized = castleHealthSerialized;
-            AvailableWeaponSerialized = availableWeaponsSerialized;
+            CrystalsSerialized = int.MinValue;
+            CastleHealthSerialized = float.NaN;
+            AvailableWeaponSerialized = Array.Empty<WeaponType>();
         }
-
-        public SerializedPlayerConfig() : this(float.NaN, Array.Empty<WeaponType>()) {}
     }
 }

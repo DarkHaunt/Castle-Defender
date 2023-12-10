@@ -1,5 +1,6 @@
 using Project.Scripts.Common.Coroutines;
 using Project.Scripts.Common.Scene;
+using Project.Scripts.Configs;
 using VContainer.Unity;
 using UnityEngine;
 using VContainer;
@@ -15,17 +16,32 @@ namespace Project.Scripts.Boot
         
         protected override void Configure(IContainerBuilder builder)
         {
+            RegisterSceneLoaderSystem(builder);
+            RegisterCoroutineRunner(builder);
+            RegisterConfigProvider(builder);
+        }
+
+        private static void RegisterConfigProvider(IContainerBuilder builder)
+        {
+            builder.Register<ConfigsProvider>(Lifetime.Singleton);
+        }
+
+        private void RegisterCoroutineRunner(IContainerBuilder builder)
+        {
+            builder
+                .RegisterComponentInNewPrefab(_coroutineRunner, Lifetime.Singleton)
+                .DontDestroyOnLoad()
+                .As<ICoroutineRunner>();
+        }
+
+        private void RegisterSceneLoaderSystem(IContainerBuilder builder)
+        {
             builder
                 .Register<SceneLoader>(Lifetime.Singleton);
 
             builder
                 .RegisterComponentInNewPrefab(_transitionHandler, Lifetime.Singleton)
                 .DontDestroyOnLoad();
-            
-            builder
-                .RegisterComponentInNewPrefab(_coroutineRunner, Lifetime.Singleton)
-                .DontDestroyOnLoad()
-                .As<ICoroutineRunner>();
         }
     }
 }

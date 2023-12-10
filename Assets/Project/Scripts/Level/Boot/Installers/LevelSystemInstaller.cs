@@ -32,7 +32,7 @@ namespace Project.Scripts.Level.Boot.Installers
         {
             RegisterStateMachine(builder);
             
-            RegisterInitializeDataProvider(builder);
+            RegisterInitializeService(builder);
             RegisterLevelFactory(builder);
 
             RegisterLevelBootstrapper(builder);
@@ -59,9 +59,9 @@ namespace Project.Scripts.Level.Boot.Installers
             builder.RegisterComponent(_debugService);
         }
 
-        private void RegisterInitializeDataProvider(IContainerBuilder builder)
+        private void RegisterInitializeService(IContainerBuilder builder)
         {
-            builder.Register<InitializeDataProvider>(Lifetime.Scoped);
+            builder.Register<InitializeService>(Lifetime.Scoped);
         }
 
         private void RegisterLevelFactory(IContainerBuilder builder)

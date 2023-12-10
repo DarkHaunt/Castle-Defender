@@ -9,16 +9,16 @@ namespace Project.Scripts.Level.StateMachine.States.InitLevel
 {
     public class InitLevelStateFactory
     {
-        private readonly InitializeDataProvider _initializeDataProvider;
+        private readonly InitializeService _initializeService;
         private readonly EnemyHandleService _enemyHandleService;
         private readonly EnemySpawnService _enemySpawnService;
         private readonly CastleModel _castleModel;
 
 
-        public InitLevelStateFactory(InitializeDataProvider initializeDataProvider, CastleModel castleModel, 
+        public InitLevelStateFactory(InitializeService initializeService, CastleModel castleModel, 
             EnemySpawnService enemySpawnService, EnemyHandleService enemyHandleService)
         {
-            _initializeDataProvider = initializeDataProvider;
+            _initializeService = initializeService;
             _enemyHandleService = enemyHandleService;
             _enemySpawnService = enemySpawnService;
             _castleModel = castleModel;
@@ -26,6 +26,6 @@ namespace Project.Scripts.Level.StateMachine.States.InitLevel
         
         
          public InitLevelState CreateState(IStateSwitcher stateSwitcher)
-            => new(stateSwitcher, _initializeDataProvider, _castleModel, _enemySpawnService, _enemyHandleService);
+            => new(stateSwitcher, _initializeService, _castleModel, _enemySpawnService, _enemyHandleService);
     }
 }

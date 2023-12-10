@@ -1,21 +1,22 @@
-﻿using Project.Scripts.Common.Infrastructure;
+﻿using Project.Scripts.Menu.StateMachine.States.LevelLoadState;
 using Project.Scripts.Common.StateMachine;
 using Project.Scripts.Configs.Level;
-using Project.Scripts.Global;
 using Project.Scripts.Menu.Data;
-using Project.Scripts.Menu.StateMachine.States.LevelLoadState;
+using Project.Scripts.Configs;
 
 
 namespace Project.Scripts.Menu.StateMachine.States.LevelSelectState
 {
     public class LevelSelect : IState
     {
+        private readonly ConfigsProvider _configsProvider;
         private readonly IStateSwitcher _stateSwitcher;
         private readonly LevelSelectData _selectData;
 
         
-        public LevelSelect(IStateSwitcher stateSwitcher, LevelSelectData selectData)
+        public LevelSelect(IStateSwitcher stateSwitcher, ConfigsProvider configsProvider, LevelSelectData selectData)
         {
+            _configsProvider = configsProvider;
             _stateSwitcher = stateSwitcher;
             _selectData = selectData;
         }
@@ -39,10 +40,7 @@ namespace Project.Scripts.Menu.StateMachine.States.LevelSelectState
 
         private void SaveSelectedLevel(LevelConfig levelConfig)
         {
-            var serializedLevelConfigs = new SerializedLevelConfig(levelConfig);
-            
-            JsonSerializer.SaveToFile(InfrastructureKeys.LevelConfigsPath, serializedLevelConfigs);
-         
+            _configsProvider.UpdateLevelConfig(levelConfig);
             _stateSwitcher.SwitchToState<LevelLoad>();
         }
     }

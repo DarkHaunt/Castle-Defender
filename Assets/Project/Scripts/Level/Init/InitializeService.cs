@@ -1,28 +1,29 @@
-﻿using Project.Scripts.Common.Infrastructure;
-using Project.Scripts.Configs.Game;
+﻿using Project.Scripts.Level.Common.Prefab;
 using Project.Scripts.Configs.Level;
-using Project.Scripts.Global;
-using Project.Scripts.Level.Common.Prefab;
+using Project.Scripts.Configs.Game;
 using Project.Scripts.Level.Enemies;
 using Project.Scripts.Level.Weapons;
-using System;
+using Project.Scripts.Configs;
 using UnityEngine;
+using System;
 
 
 namespace Project.Scripts.Level.Init
 {
-    public class InitializeDataProvider
+    public class InitializeService
     {
         public event Action OnInitializeDataReady;
-        
+
+        private readonly ConfigsProvider _configsProvider;
         private readonly WeaponProvider _weaponProvider;
         private readonly LevelFactory _levelFactory;
 
         private LevelInitializeData _levelInitializeData;
 
 
-        public InitializeDataProvider(LevelFactory levelFactory, WeaponProvider weaponProvider)
+        public InitializeService(ConfigsProvider configsProvider, LevelFactory levelFactory, WeaponProvider weaponProvider)
         {
+            _configsProvider = configsProvider;
             _weaponProvider = weaponProvider;
             _levelFactory = levelFactory;
         }
@@ -33,8 +34,8 @@ namespace Project.Scripts.Level.Init
 
         public void LoadInitializeData()
         {
-            var playerProgressData = LoadPlayerConfig();
-            var levelConfig = LoadLevelConfig();
+            var playerProgressData = _configsProvider.PlayerConfig;
+            var levelConfig = _configsProvider.LevelConfig;
             
             _levelInitializeData = new LevelInitializeData
             {
@@ -75,12 +76,6 @@ namespace Project.Scripts.Level.Init
 
             return enemies;
         }
-        
-        private ILevelConfig LoadLevelConfig()
-            => JsonSerializer.LoadFile<SerializedLevelConfig>(InfrastructureKeys.LevelConfigsPath);   
-        
-        private IPlayerConfig LoadPlayerConfig()
-            => JsonSerializer.LoadFile<SerializedPlayerConfig>(InfrastructureKeys.PlayerConfigPath);
 
         private LevelComponentsContainer LoadLevel(ILevelConfig levelConfig)
             => _levelFactory.CreateLevel(levelConfig.LevelPrefabPath);

@@ -11,17 +11,17 @@ namespace Project.Scripts.Level.StateMachine.States.InitLevel
 {
     public class InitLevelState : IState
     {
-        private readonly InitializeDataProvider _initializeDataProvider;
+        private readonly InitializeService _initializeService;
         private readonly EnemyHandleService _enemyHandleService;
         private readonly EnemySpawnService _enemySpawnService;
         private readonly IStateSwitcher _stateSwitcher;
         private readonly CastleModel _castleModel;
 
 
-        public InitLevelState(IStateSwitcher stateSwitcher, InitializeDataProvider initializeDataProvider, 
+        public InitLevelState(IStateSwitcher stateSwitcher, InitializeService initializeService, 
             CastleModel castleModel, EnemySpawnService enemySpawnService, EnemyHandleService enemyHandleService)
         {
-            _initializeDataProvider = initializeDataProvider;
+            _initializeService = initializeService;
             _enemyHandleService = enemyHandleService;
             _enemySpawnService = enemySpawnService;
             _stateSwitcher = stateSwitcher;
@@ -33,7 +33,7 @@ namespace Project.Scripts.Level.StateMachine.States.InitLevel
         {
             Debug.Log($"<color=yellow>Init Level</color>");
 
-            var levelInitData = _initializeDataProvider.GetInitializeData();
+            var levelInitData = _initializeService.GetInitializeData();
             
             var level = levelInitData.Level;
             var castle = level.Castle;

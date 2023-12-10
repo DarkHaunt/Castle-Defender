@@ -36,16 +36,16 @@ namespace Project.Scripts.Level.Debugging
         
         private void ForceSetCachedPlayerProgressData()
         {
-            var serializedLevelConfigs = new SerializedPlayerConfig(_debugPlayerConfig);
+            var playerConfig = new SerializedPlayerConfig(_debugPlayerConfig);
             
-            JsonSerializer.SaveToFile(InfrastructureKeys.PlayerConfigPath, serializedLevelConfigs);
+            JsonSerializer.SaveToFile(InfrastructureKeys.PlayerConfigPath, playerConfig);
         }
         
         private void ForceSetCachedConfig()
         {
-            var serializedLevelConfigs = new SerializedLevelConfig(_debugLevelConfig);
+            var levelConfig = new SerializedLevelConfig(_debugLevelConfig);
             
-            JsonSerializer.SaveToFile(InfrastructureKeys.LevelConfigsPath, serializedLevelConfigs);
+            JsonSerializer.SaveToFile(InfrastructureKeys.LevelConfigsPath, levelConfig);
         }
     }
 }

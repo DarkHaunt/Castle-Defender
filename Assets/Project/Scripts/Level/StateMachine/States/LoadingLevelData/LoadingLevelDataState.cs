@@ -1,7 +1,8 @@
-﻿using Project.Scripts.Common.StateMachine;
-using Project.Scripts.Level.StateMachine.States.InitLevel;
+﻿using Project.Scripts.Level.StateMachine.States.InitLevel;
+using Project.Scripts.Common.StateMachine;
 using Project.Scripts.Level.Debugging;
 using Project.Scripts.Level.Init;
+using Project.Scripts.Configs;
 using UnityEngine;
 
 
@@ -9,14 +10,17 @@ namespace Project.Scripts.Level.StateMachine.States.LoadingLevelData
 {
     public class LoadingLevelDataState : IState
     {
-        private readonly InitializeDataProvider _initializeDataProvider;
+        private readonly InitializeService _initializeService;
+        private readonly ConfigsProvider _configsProvider;
         private readonly IStateSwitcher _stateSwitcher;
         private readonly DebugService _debugService;
 
 
-        public LoadingLevelDataState(IStateSwitcher stateSwitcher, InitializeDataProvider initializeDataProvider, DebugService debugService) 
+        public LoadingLevelDataState(IStateSwitcher stateSwitcher, ConfigsProvider configsProvider, 
+            InitializeService initializeService, DebugService debugService) 
         {
-            _initializeDataProvider = initializeDataProvider;
+            _initializeService = initializeService;
+            _configsProvider = configsProvider;
             _stateSwitcher = stateSwitcher;
             _debugService = debugService;
         }
@@ -25,18 +29,17 @@ namespace Project.Scripts.Level.StateMachine.States.LoadingLevelData
         public void Enter()
         {
             _debugService.PerformDebug();
+            _configsProvider.LoadConfigs();
             
-            _initializeDataProvider.OnInitializeDataReady += SwitchToLevelInitialize;
+            _initializeService.OnInitializeDataReady += SwitchToLevelInitialize;
             
-            _initializeDataProvider.LoadInitializeData();
+            _initializeService.LoadInitializeData();
             
             Debug.Log($"<color=yellow>Load Level Data</color>");
         }
 
         public void Exit()
-        {
-            _initializeDataProvider.OnInitializeDataReady -= SwitchToLevelInitialize;
-        }
+            => _initializeService.OnInitializeDataReady -= SwitchToLevelInitialize;
 
         private void SwitchToLevelInitialize()
             => _stateSwitcher.SwitchToState<InitLevelState>();
