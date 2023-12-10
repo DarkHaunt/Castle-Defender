@@ -1,8 +1,8 @@
-﻿using Project.Scripts.Level.Enemies.Handling;
+﻿using Project.Scripts.Common.Coroutines;
+using Project.Scripts.Level.Enemies.Handling;
 using Project.Scripts.Level.Common.Prefab;
-using Project.Scripts.Common.Interfaces;
-using Project.Scripts.Level.Handling;
 using Project.Scripts.Extensions;
+using Project.Scripts.Level.Init;
 using System.Collections.Generic;
 using System.Collections;
 using UnityEngine;

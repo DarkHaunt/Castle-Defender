@@ -1,6 +1,6 @@
-﻿using Project.Scripts.Configs.Level;
+﻿using Project.Scripts.Common.Infrastructure;
+using Project.Scripts.Configs.Level;
 using Project.Scripts.Configs.Game;
-using Project.Scripts.Common.Save;
 using Project.Scripts.Global;
 using UnityEngine;
 
@@ -38,14 +38,14 @@ namespace Project.Scripts.Level.Debugging
         {
             var serializedLevelConfigs = new SerializedPlayerConfig(_debugPlayerConfig);
             
-            JsonSerializer.SaveToFile(StaticDataContainer.PlayerConfigPath, serializedLevelConfigs);
+            JsonSerializer.SaveToFile(InfrastructureKeys.PlayerConfigPath, serializedLevelConfigs);
         }
         
         private void ForceSetCachedConfig()
         {
             var serializedLevelConfigs = new SerializedLevelConfig(_debugLevelConfig);
             
-            JsonSerializer.SaveToFile(StaticDataContainer.LevelConfigsPath, serializedLevelConfigs);
+            JsonSerializer.SaveToFile(InfrastructureKeys.LevelConfigsPath, serializedLevelConfigs);
         }
     }
 }

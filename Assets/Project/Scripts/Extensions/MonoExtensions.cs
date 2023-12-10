@@ -1,4 +1,4 @@
-﻿using Project.Scripts.Common.Interfaces;
+﻿using Project.Scripts.Common.Coroutines;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;

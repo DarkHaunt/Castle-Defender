@@ -1,9 +1,12 @@
-﻿using Project.Scripts.Level.Weapons.HandlePoints;
-using Project.Scripts.Level.Weapons.Creation;
-using Project.Scripts.Level.Weapons.Handling;
+﻿using Project.Scripts.Level.Weapons.Handling;
 using Project.Scripts.Level.Weapons.View;
 using Project.Scripts.Level.Weapons;
 using Project.Scripts.Configs.Game;
+using Project.Scripts.Level.Init;
+using Project.Scripts.Level.Weapons.Handling.Create;
+using Project.Scripts.Level.Weapons.Handling.Delete;
+using Project.Scripts.Level.Weapons.Handling.Update;
+using Project.Scripts.Level.Weapons.Handling.WeaponPoints;
 using VContainer.Unity;
 using UnityEngine;
 using VContainer;

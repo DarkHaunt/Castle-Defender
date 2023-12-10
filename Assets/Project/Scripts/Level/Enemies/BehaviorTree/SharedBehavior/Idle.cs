@@ -1,6 +1,6 @@
-﻿using Project.Scripts.Level.Enemies.BehaviorTree.Common.Nodes;
+﻿using Project.Scripts.Common.Infrastructure;
+using Project.Scripts.Level.Enemies.BehaviorTree.Common.Nodes;
 using Project.Scripts.Level.Enemies.Animation;
-using Project.Scripts.Common.Time;
 
 
 namespace Project.Scripts.Level.Enemies.BehaviorTree.SharedBehavior

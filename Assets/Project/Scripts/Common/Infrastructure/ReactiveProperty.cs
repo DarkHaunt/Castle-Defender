@@ -1,7 +1,7 @@
 ﻿using System;
 
 
-namespace Project.Scripts.Extra
+namespace Project.Scripts.Common.Infrastructure
 {
     public class ReactiveProperty<T>
     {

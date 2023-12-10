@@ -3,7 +3,7 @@ using UnityEngine;
 using Object = UnityEngine.Object;
 
 
-namespace Project.Scripts.Level.Weapons.HandlePoints.MVP
+namespace Project.Scripts.Level.Weapons.Handling.WeaponPoints.MVP
 {
     public class WeaponPointModel
     {

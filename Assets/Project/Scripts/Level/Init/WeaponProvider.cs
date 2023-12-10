@@ -1,10 +1,10 @@
-﻿using Project.Scripts.Level.Weapons;
-using Project.Scripts.Global;
-using UnityEngine;
+﻿using Project.Scripts.Global;
+using Project.Scripts.Level.Weapons;
 using System;
+using UnityEngine;
 
 
-namespace Project.Scripts.Configs.Game
+namespace Project.Scripts.Level.Init
 {
     public class WeaponProvider
     {

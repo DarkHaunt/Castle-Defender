@@ -1,4 +1,6 @@
-﻿using System;
+﻿using Project.Scripts.Level.Weapons.Handling.Create;
+using Project.Scripts.Level.Weapons.Handling.Delete;
+using System;
 
 
 namespace Project.Scripts.Level.Weapons.Handling
@@ -10,33 +12,23 @@ namespace Project.Scripts.Level.Weapons.Handling
 
         private readonly WeaponDeletionService _weaponDeletionService;
         private readonly WeaponCreateService _weaponCreateService;
-        private readonly WeaponUpdateService _weaponUpdateService;
 
 
-        public WeaponHandleService(WeaponCreateService weaponCreateService, WeaponDeletionService weaponDeletionService,
-            WeaponUpdateService weaponUpdateService)
+        public WeaponHandleService(WeaponCreateService weaponCreateService, WeaponDeletionService weaponDeletionService)
         {
             _weaponDeletionService = weaponDeletionService;
             _weaponCreateService = weaponCreateService;
-            _weaponUpdateService = weaponUpdateService;
         }
 
 
         public void Enable()
-        {
-            OnEnabled?.Invoke();
-        }
+            => OnEnabled?.Invoke();
 
         public void Disable()
-        {
-            OnDisabled?.Invoke();
-        }
-        
+            => OnDisabled?.Invoke();
+
         public void StartHandleCreate()
             => _weaponCreateService.StartHandleCreate();
-
-        public void StartHandleUpdate()
-            => _weaponUpdateService.StartHandleUpdate();
 
         public void StartHandleDelete()
             => _weaponDeletionService.StartHandleDelete();
@@ -44,9 +36,6 @@ namespace Project.Scripts.Level.Weapons.Handling
         
         public void EndHandleCreate()
             => _weaponCreateService.EndHandleCreate();
-
-        public void EndHandleUpdate()
-            => _weaponUpdateService.EndHandleUpdate();
 
         public void EndHandleDelete()
             => _weaponDeletionService.EndHandleDelete();

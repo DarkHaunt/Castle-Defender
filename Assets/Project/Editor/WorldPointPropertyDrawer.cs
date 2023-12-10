@@ -1,4 +1,4 @@
-﻿using Project.Scripts.Extra;
+﻿using Project.Scripts.Common.World;
 using UnityEditor;
 using UnityEngine;
 

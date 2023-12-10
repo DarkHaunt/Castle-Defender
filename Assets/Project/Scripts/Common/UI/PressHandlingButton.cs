@@ -1,10 +1,10 @@
 ﻿using System;
 using UnityEngine;
-using UnityEngine.UI;
 using UnityEngine.Events;
+using UnityEngine.UI;
 
 
-namespace Project.Scripts.Extra.UI
+namespace Project.Scripts.Common.UI
 {
     public sealed class PressHandlingButton : MonoBehaviour
     {

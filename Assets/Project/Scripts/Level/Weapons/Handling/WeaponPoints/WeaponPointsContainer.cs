@@ -1,8 +1,8 @@
-﻿using Project.Scripts.Level.Weapons.HandlePoints.MVP;
+﻿using Project.Scripts.Level.Weapons.Handling.WeaponPoints.MVP;
 using System.Collections.Generic;
 
 
-namespace Project.Scripts.Level.Weapons.HandlePoints
+namespace Project.Scripts.Level.Weapons.Handling.WeaponPoints
 {
     public class WeaponPointsContainer
     {

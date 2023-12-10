@@ -1,4 +1,4 @@
-using Project.Scripts.Common.Interfaces;
+using Project.Scripts.Common.Coroutines;
 using Project.Scripts.Common.Scene;
 using VContainer.Unity;
 using UnityEngine;

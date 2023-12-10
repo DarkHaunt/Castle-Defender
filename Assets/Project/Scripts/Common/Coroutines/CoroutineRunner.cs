@@ -1,7 +1,7 @@
 ﻿using UnityEngine;
 
 
-namespace Project.Scripts.Common.Interfaces
+namespace Project.Scripts.Common.Coroutines
 {
     public class CoroutineRunner : MonoBehaviour, ICoroutineRunner {}
 }

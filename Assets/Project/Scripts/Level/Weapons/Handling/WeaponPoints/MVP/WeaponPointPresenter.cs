@@ -1,6 +1,6 @@
 ﻿
 
-namespace Project.Scripts.Level.Weapons.HandlePoints.MVP
+namespace Project.Scripts.Level.Weapons.Handling.WeaponPoints.MVP
 {
     public class WeaponPointPresenter
     {

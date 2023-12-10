@@ -1,15 +1,15 @@
-﻿using Project.Scripts.Level.Common.Prefab;
+﻿using Project.Scripts.Common.Infrastructure;
+using Project.Scripts.Configs.Game;
+using Project.Scripts.Configs.Level;
+using Project.Scripts.Global;
+using Project.Scripts.Level.Common.Prefab;
 using Project.Scripts.Level.Enemies;
 using Project.Scripts.Level.Weapons;
-using Project.Scripts.Configs.Level;
-using Project.Scripts.Configs.Game;
-using Project.Scripts.Common.Save;
-using Project.Scripts.Global;
-using UnityEngine;
 using System;
+using UnityEngine;
 
 
-namespace Project.Scripts.Level.Handling
+namespace Project.Scripts.Level.Init
 {
     public class InitializeDataProvider
     {
@@ -77,10 +77,10 @@ namespace Project.Scripts.Level.Handling
         }
         
         private ILevelConfig LoadLevelConfig()
-            => JsonSerializer.LoadFile<SerializedLevelConfig>(StaticDataContainer.LevelConfigsPath);   
+            => JsonSerializer.LoadFile<SerializedLevelConfig>(InfrastructureKeys.LevelConfigsPath);   
         
         private IPlayerConfig LoadPlayerConfig()
-            => JsonSerializer.LoadFile<SerializedPlayerConfig>(StaticDataContainer.PlayerConfigPath);
+            => JsonSerializer.LoadFile<SerializedPlayerConfig>(InfrastructureKeys.PlayerConfigPath);
 
         private LevelComponentsContainer LoadLevel(ILevelConfig levelConfig)
             => _levelFactory.CreateLevel(levelConfig.LevelPrefabPath);

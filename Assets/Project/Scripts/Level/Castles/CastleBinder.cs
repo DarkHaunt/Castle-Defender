@@ -1,4 +1,4 @@
-﻿using Project.Scripts.Extra;
+﻿using Project.Scripts.Common.Infrastructure;
 using Project.Scripts.Level.Common.Damage;
 using System;
 

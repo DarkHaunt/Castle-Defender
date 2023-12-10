@@ -1,8 +1,8 @@
 ﻿using Project.Scripts.Level.Enemies.Creation;
 using Project.Scripts.Level.Enemies.Handling;
 using Project.Scripts.Common.StateMachine;
-using Project.Scripts.Level.Handling;
 using Project.Scripts.Level.Castles;
+using Project.Scripts.Level.Init;
 
 
 namespace Project.Scripts.Level.StateMachine.States.InitLevel

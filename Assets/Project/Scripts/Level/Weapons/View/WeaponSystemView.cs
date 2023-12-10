@@ -22,7 +22,6 @@ namespace Project.Scripts.Level.Weapons.View
         private void Enable()
         {
             _weaponSystemBinder.CreateOptionSelected.OnChanged += OnCreateOptionSelected;
-            _weaponSystemBinder.UpdateOptionSelected.OnChanged += OnUpdateOptionSelected;
             _weaponSystemBinder.DeleteOptionSelected.OnChanged += OnDeleteOptionSelected;
 
             OnEnableCustom();
@@ -31,7 +30,6 @@ namespace Project.Scripts.Level.Weapons.View
         private void Disable()
         {
             _weaponSystemBinder.CreateOptionSelected.OnChanged -= OnCreateOptionSelected;
-            _weaponSystemBinder.UpdateOptionSelected.OnChanged -= OnUpdateOptionSelected;
             _weaponSystemBinder.DeleteOptionSelected.OnChanged -= OnDeleteOptionSelected;
             
             OnDisableCustom();
@@ -39,7 +37,6 @@ namespace Project.Scripts.Level.Weapons.View
 
         protected abstract void OnCreateOptionSelected(bool isEnabled);
         protected abstract void OnDeleteOptionSelected(bool isEnabled);
-        protected abstract void OnUpdateOptionSelected(bool isEnabled);
         protected abstract void OnDisableCustom();
         protected abstract void OnEnableCustom();
     }

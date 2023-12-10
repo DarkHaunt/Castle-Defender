@@ -1,4 +1,4 @@
-﻿using Project.Scripts.Common.Time;
+﻿using Project.Scripts.Common.Infrastructure;
 using Project.Scripts.Extensions;
 using Project.Scripts.Level.Common.Damage;
 using Project.Scripts.Level.Common.Physics;

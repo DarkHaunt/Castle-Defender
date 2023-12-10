@@ -1,6 +1,6 @@
 ﻿using Project.Scripts.Common.StateMachine;
 using Project.Scripts.Level.Debugging;
-using Project.Scripts.Level.Handling;
+using Project.Scripts.Level.Init;
 
 
 namespace Project.Scripts.Level.StateMachine.States.LoadingLevelData

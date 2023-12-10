@@ -1,9 +1,9 @@
-﻿using Project.Scripts.Level.Weapons;
+﻿using Project.Scripts.Level.Common.Prefab;
 using Project.Scripts.Level.Enemies;
-using Project.Scripts.Level.Common.Prefab;
+using Project.Scripts.Level.Weapons;
 
 
-namespace Project.Scripts.Level.Handling
+namespace Project.Scripts.Level.Init
 {
     public record LevelInitializeData
     {

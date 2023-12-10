@@ -4,7 +4,7 @@ using System.Linq;
 using UnityEngine;
 using Object = UnityEngine.Object;
 
-namespace Project.Scripts.Extra
+namespace Project.Scripts.Common.World
 {
     public class PoolMono<T> where T : MonoBehaviour
     {

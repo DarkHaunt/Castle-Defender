@@ -1,7 +1,7 @@
 ﻿using UnityEngine;
 
 
-namespace Project.Scripts.Level.Weapons.Creation
+namespace Project.Scripts.Level.Weapons.Handling.Create
 {
     public class WeaponFactory
     {

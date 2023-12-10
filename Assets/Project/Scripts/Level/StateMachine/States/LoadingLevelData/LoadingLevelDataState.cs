@@ -1,7 +1,7 @@
 ﻿using Project.Scripts.Common.StateMachine;
 using Project.Scripts.Level.StateMachine.States.InitLevel;
-using Project.Scripts.Level.Handling;
 using Project.Scripts.Level.Debugging;
+using Project.Scripts.Level.Init;
 using UnityEngine;
 
 

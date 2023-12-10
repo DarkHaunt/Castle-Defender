@@ -1,4 +1,4 @@
-﻿using Project.Scripts.Extra;
+﻿using Project.Scripts.Common.Infrastructure;
 using System;
 
 
@@ -11,7 +11,6 @@ namespace Project.Scripts.Level.Weapons.Handling
         
         public readonly ReactiveProperty<bool> CreateOptionSelected = new();
         public readonly ReactiveProperty<bool> DeleteOptionSelected = new();
-        public readonly ReactiveProperty<bool> UpdateOptionSelected = new();
 
         private readonly WeaponHandleService _weaponHandleService;
 
@@ -52,21 +51,6 @@ namespace Project.Scripts.Level.Weapons.Handling
             _weaponHandleService.EndHandleDelete();
 
             DeleteOptionSelected.Value = false;
-        }
-
-        
-        public void UpdateEnable()
-        {
-            _weaponHandleService.StartHandleUpdate();
-
-            UpdateOptionSelected.Value = true;
-        }
-
-        public void UpdateDisable()
-        {
-            _weaponHandleService.EndHandleUpdate();
-
-            UpdateOptionSelected.Value = false;
         }
     }
 }

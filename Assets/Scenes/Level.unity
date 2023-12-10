@@ -303,17 +303,6 @@ MonoBehaviour:
   Text_Color: {r: 0.42921937, g: 1, b: 0, a: 1}
   TextStyle: 1
   Background_Color: {r: 0.2196079, g: 0.2196079, b: 0.2196079, a: 1}
---- !u!114 &369438791 stripped
-MonoBehaviour:
-  m_CorrespondingSourceObject: {fileID: 835837760826829712, guid: d3ecabfa3a43d134f9895b6263364ca6, type: 3}
-  m_PrefabInstance: {fileID: 3749346259252861855}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 0}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 835a9c0790d244fc91b34248b93e4940, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!1 &562981025
 GameObject:
   m_ObjectHideFlags: 0
@@ -441,7 +430,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _createButton: {fileID: 1360543265}
-  _updateButton: {fileID: 369438791}
+  _updateButton: {fileID: 0}
   _deleteButton: {fileID: 828705657}
 --- !u!114 &828705657 stripped
 MonoBehaviour:

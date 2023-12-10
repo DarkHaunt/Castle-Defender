@@ -1,4 +1,4 @@
-﻿using Project.Scripts.Common.Save;
+﻿using Project.Scripts.Common.Infrastructure;
 using Project.Scripts.Common.StateMachine;
 using Project.Scripts.Configs.Level;
 using Project.Scripts.Global;
@@ -41,7 +41,7 @@ namespace Project.Scripts.Menu.StateMachine.States.LevelSelectState
         {
             var serializedLevelConfigs = new SerializedLevelConfig(levelConfig);
             
-            JsonSerializer.SaveToFile(StaticDataContainer.LevelConfigsPath, serializedLevelConfigs);
+            JsonSerializer.SaveToFile(InfrastructureKeys.LevelConfigsPath, serializedLevelConfigs);
          
             _stateSwitcher.SwitchToState<LevelLoad>();
         }

@@ -3,7 +3,7 @@ using System.Linq;
 using UnityEngine;
 
 
-namespace Project.Scripts.Extra
+namespace Project.Scripts.Common.Infrastructure
 {
     public class AssetProvider
     {  

@@ -1,6 +1,6 @@
-﻿using Project.Scripts.Level.Weapons.HandlePoints.MVP;
-using Project.Scripts.Level.Weapons.HandlePoints;
-using Project.Scripts.Level.Common.Damage;
+﻿using Project.Scripts.Level.Common.Damage;
+using Project.Scripts.Level.Weapons.Handling.WeaponPoints;
+using Project.Scripts.Level.Weapons.Handling.WeaponPoints.MVP;
 using System.Collections.Generic;
 using System;
 

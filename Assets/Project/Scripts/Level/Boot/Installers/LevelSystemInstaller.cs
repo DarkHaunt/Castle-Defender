@@ -7,7 +7,7 @@ using Project.Scripts.Common.StateMachine;
 using Project.Scripts.Level.Common.Prefab;
 using Project.Scripts.Level.StateMachine;
 using Project.Scripts.Level.Debugging;
-using Project.Scripts.Level.Handling;
+using Project.Scripts.Level.Init;
 using VContainer.Unity;
 using UnityEngine;
 using VContainer;
