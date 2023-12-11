@@ -11,7 +11,7 @@ namespace Project.Scripts.Level.Enemies
         
         Vector3 Position { get; }
         
-        void Move(IAttackTarget attackTarget, float timeDelta);
+        void Move(Vector2 attackTarget, float timeDelta);
         void Attack(IAttackTarget attackTarget);
         void GetDamage(float damage);
     }

@@ -217,6 +217,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _id: 0
+  _reward: 3
   _health: 10
   _speed: 6
   _attackTarget: {fileID: -8588280449612760407}

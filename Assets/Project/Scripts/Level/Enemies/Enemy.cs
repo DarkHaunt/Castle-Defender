@@ -15,6 +15,7 @@ namespace Project.Scripts.Level.Enemies
 
         [Header("--- Params ---")]
         [SerializeField] private int _id;
+        [SerializeField] private int _reward;
         [SerializeField] private float _health;
         [SerializeField] protected float _speed;
 
@@ -28,10 +29,12 @@ namespace Project.Scripts.Level.Enemies
         private EnemyBehaviorTree _behaviorTree;
 
         public Vector3 Position => _rigidbody.position;
+        public int CoinsReward => _reward;
         public int Id => _id;
 
+        
         protected abstract EnemyBehaviorTree CreateBehaviorTree(EnemyBehaviorData behaviorData);
-        public abstract void Move(IAttackTarget attackTarget, float timeDelta);
+        public abstract void Move(Vector2 attackTarget, float timeDelta);
         public abstract void Attack(IAttackTarget attackTarget);
         protected abstract Task DieLogic();
 

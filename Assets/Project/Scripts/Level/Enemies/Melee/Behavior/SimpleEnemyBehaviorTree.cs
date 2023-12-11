@@ -1,8 +1,8 @@
-﻿using Project.Scripts.Common.Infrastructure;
-using Project.Scripts.Level.Enemies.BehaviorTree.SharedBehavior;
+﻿using Project.Scripts.Level.Enemies.BehaviorTree.SharedBehavior;
 using Project.Scripts.Level.Enemies.BehaviorTree.Common.Nodes;
 using Project.Scripts.Level.Enemies.BehaviorTree.Common;
 using Project.Scripts.Level.Enemies.Animation;
+using Project.Scripts.Common.Infrastructure;
 
 
 namespace Project.Scripts.Level.Enemies.Melee.Behavior
@@ -26,7 +26,7 @@ namespace Project.Scripts.Level.Enemies.Melee.Behavior
         {
             var searchForTargetNode = new SearchForTarget(this, _enemy, _enemyBehaviorData.SearchDirection);
             var moveNode = new Move(_enemy, _animationModel, this);
-            
+
             _root = new Selector(searchForTargetNode, CreateAttackNode(), moveNode);
         }
 

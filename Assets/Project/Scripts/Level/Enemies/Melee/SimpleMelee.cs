@@ -30,9 +30,9 @@ namespace Project.Scripts.Level.Enemies.Melee
             return new SimpleEnemyBehaviorTree(this, animationModel, behaviorData);
         }
 
-        public override void Move(IAttackTarget attackTarget, float timeDelta)
+        public override void Move(Vector2 position, float timeDelta)
         {
-            var targetDirection = (attackTarget.Position - (Vector2)transform.position).normalized;
+            var targetDirection = (position - (Vector2)transform.position).normalized;
             var moveStep = (targetDirection * _speed * timeDelta);
             
             _rigidbody.MovePosition(_rigidbody.position + moveStep);

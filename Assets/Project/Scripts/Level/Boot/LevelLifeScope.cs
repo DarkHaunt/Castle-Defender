@@ -1,13 +1,13 @@
-﻿using Project.Scripts.Consume;
-using Project.Scripts.Level.Boot.Installers;
-using Project.Scripts.Level.Castles;
-using Project.Scripts.Level.Debugging;
-using Project.Scripts.Level.Weapons;
+﻿using Project.Scripts.Level.Boot.Installers;
 using Project.Scripts.Level.Weapons.View;
+using Project.Scripts.Level.Debugging;
+using Project.Scripts.Level.Castles;
+using Project.Scripts.Level.Weapons;
+using Project.Scripts.Consume;
 using Project.Scripts.UI;
+using VContainer.Unity;
 using UnityEngine;
 using VContainer;
-using VContainer.Unity;
 
 
 namespace Project.Scripts.Level.Boot

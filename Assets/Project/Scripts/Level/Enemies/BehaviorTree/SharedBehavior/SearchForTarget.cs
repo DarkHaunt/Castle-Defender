@@ -1,9 +1,9 @@
-﻿using Project.Scripts.Common.Infrastructure;
-using Project.Scripts.Extensions;
-using Project.Scripts.Level.Common.Damage;
-using Project.Scripts.Level.Common.Physics;
+﻿using Project.Scripts.Level.Enemies.BehaviorTree.Common.Nodes;
 using Project.Scripts.Level.Enemies.BehaviorTree.Common;
-using Project.Scripts.Level.Enemies.BehaviorTree.Common.Nodes;
+using Project.Scripts.Common.Infrastructure;
+using Project.Scripts.Level.Common.Physics;
+using Project.Scripts.Level.Common.Damage;
+using Project.Scripts.Extensions;
 using UnityEngine;
 
 
@@ -33,6 +33,7 @@ namespace Project.Scripts.Level.Enemies.BehaviorTree.SharedBehavior
             _tree = tree;
 
             _cooldownTimer = new Timer(RefreshCooldown);
+            _cooldownTimer.Launch(RefreshCooldown);
         }
 
         public override ProcessState Process(float timeStep)
@@ -40,9 +41,9 @@ namespace Project.Scripts.Level.Enemies.BehaviorTree.SharedBehavior
             _cooldownTimer.Update(timeStep);
 
             if (_cooldownTimer.IsRunning)
-                return ProcessState.Failure;
+                return UpdateStateFor(ProcessState.Failure);
 
-            _cooldownTimer.Launch(RefreshCooldown);
+            _cooldownTimer.Relaunch();
 
             var targetsCount =
                 Physics2D.RaycastNonAlloc(_enemy.Position, _searchDirection, _nonAllocRaycastTargets,
