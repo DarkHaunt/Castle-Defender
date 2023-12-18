@@ -3,6 +3,7 @@ using Project.Scripts.Level.Enemies.BehaviorTree.Common.Nodes;
 using Project.Scripts.Level.Enemies.BehaviorTree.Common;
 using Project.Scripts.Level.Enemies.Animation;
 using Project.Scripts.Common.Infrastructure;
+using UnityEngine;
 
 
 namespace Project.Scripts.Level.Enemies.Melee.Behavior
@@ -33,6 +34,7 @@ namespace Project.Scripts.Level.Enemies.Melee.Behavior
         private Node CreateAttackNode()
         {
             var cooldownTimer = new Timer();
+            cooldownTimer.Launch(_enemyBehaviorData.AttackCooldown);
             
             var checkForAttackRangeNode = new CheckForAttackRange(this, _enemy, _enemyBehaviorData.AttackRadius);
             
@@ -40,8 +42,6 @@ namespace Project.Scripts.Level.Enemies.Melee.Behavior
             var idleNode = new Idle(_animationModel, cooldownTimer);
 
             var attackSelector = new Selector(attackNode, idleNode);
-            
-            cooldownTimer.Launch(_enemyBehaviorData.AttackCooldown);
             
             return new Sequence(checkForAttackRangeNode, attackSelector);
         }

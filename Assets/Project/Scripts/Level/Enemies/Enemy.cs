@@ -64,7 +64,7 @@ namespace Project.Scripts.Level.Enemies
             => _rigidbody.Deactivate();
 
         public void PerformBehavior(float timeDelta)
-            => _behaviorTree.UpdateTreeBehavior(timeDelta);
+            => _behaviorTree?.UpdateTreeBehavior(timeDelta);
 
         private async void Die()
         {

@@ -23,7 +23,7 @@ namespace Project.Scripts.Level.Enemies.Melee.Behavior
         public override ProcessState Process(float timeStep)
         {
             var target = _tree.GetTarget();
-
+            
             if (target == null)
                 return UpdateStateFor(ProcessState.Failure);
             

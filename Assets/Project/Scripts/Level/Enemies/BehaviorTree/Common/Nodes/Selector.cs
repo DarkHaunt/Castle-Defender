@@ -7,7 +7,7 @@ namespace Project.Scripts.Level.Enemies.BehaviorTree.Common.Nodes
     {
         private readonly Node[] _children;
 
-        
+
         public Selector(params Node[] children)
         {
             _children = children;
@@ -19,7 +19,7 @@ namespace Project.Scripts.Level.Enemies.BehaviorTree.Common.Nodes
             foreach (var child in _children)
             {
                 var processResult = child.Process(timeStep);
-                
+
                 switch (processResult)
                 {
                     case ProcessState.Running:
@@ -32,6 +32,7 @@ namespace Project.Scripts.Level.Enemies.BehaviorTree.Common.Nodes
                         throw new ArgumentOutOfRangeException($"{nameof(ProcessState)} doesn't have state {processResult}!");
                 }
             }
+
 
             return UpdateStateFor(ProcessState.Failure);
         }

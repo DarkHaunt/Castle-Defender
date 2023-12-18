@@ -1,8 +1,7 @@
-﻿using Project.Scripts.Common.Infrastructure;
-using Project.Scripts.Level.Enemies.BehaviorTree.Common.Nodes;
+﻿using Project.Scripts.Level.Enemies.BehaviorTree.Common.Nodes;
 using Project.Scripts.Level.Enemies.BehaviorTree.Common;
 using Project.Scripts.Level.Enemies.Animation;
-using UnityEngine;
+using Project.Scripts.Common.Infrastructure;
 
 
 namespace Project.Scripts.Level.Enemies.BehaviorTree.SharedBehavior

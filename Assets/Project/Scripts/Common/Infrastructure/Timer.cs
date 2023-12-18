@@ -1,4 +1,5 @@
-﻿namespace Project.Scripts.Common.Infrastructure
+﻿
+namespace Project.Scripts.Common.Infrastructure
 {
     public class Timer
     {

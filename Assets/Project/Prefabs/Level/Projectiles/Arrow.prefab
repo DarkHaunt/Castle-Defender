@@ -10,7 +10,7 @@ GameObject:
   m_Component:
   - component: {fileID: 1973581752612298071}
   - component: {fileID: 6148306840822242534}
-  m_Layer: 6
+  m_Layer: 3
   m_Name: Sprite
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -93,11 +93,12 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 815787304565699837}
+  - component: {fileID: 5584831612881751983}
   - component: {fileID: 626575336805890335}
   - component: {fileID: 4819574871860802403}
   - component: {fileID: 912527122196569464}
   - component: {fileID: 5737834251817147794}
-  m_Layer: 6
+  m_Layer: 3
   m_Name: Arrow
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -120,6 +121,17 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!210 &5584831612881751983
+SortingGroup:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6245232564499359075}
+  m_Enabled: 1
+  m_SortingLayerID: 0
+  m_SortingLayer: 0
+  m_SortingOrder: 4
 --- !u!50 &626575336805890335
 Rigidbody2D:
   serializedVersion: 4
