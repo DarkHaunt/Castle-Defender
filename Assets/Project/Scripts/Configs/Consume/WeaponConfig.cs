@@ -3,7 +3,7 @@ using UnityEngine;
 
 namespace Project.Scripts.Configs.Consume
 {
-    [CreateAssetMenu(fileName = "Weapon_Config", menuName = "Scriptables/GlobalGameData", order = 52)]
+    [CreateAssetMenu(fileName = "Weapon_Config", menuName = "Scriptables/WeaponConfig", order = 52)]
     public class WeaponConfig : ScriptableObject
     {
         [field: SerializeField] public WeaponType Type { get; private set; }

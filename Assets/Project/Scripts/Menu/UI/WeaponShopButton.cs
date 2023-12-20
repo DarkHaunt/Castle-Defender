@@ -10,15 +10,16 @@ namespace Project.Scripts.Menu.UI
     [RequireComponent(typeof(Button))]
     public class WeaponShopButton : MonoBehaviour
     {
-        public event Action<WeaponConfig> OnSucessConsumed; 
-        
+        public event Action<WeaponConfig> OnSucessConsumed;
+
         [SerializeField] private WeaponConfig _config;
 
         [Header("--- UI ---")]
         [SerializeField] private TextMeshProUGUI _coinsText;
+
         [SerializeField] private GameObject _coinsView;
         [SerializeField] private Image _icon;
-        
+
         private CoinsHandleService _coinsHandleService;
         private Button _button;
 
@@ -26,11 +27,17 @@ namespace Project.Scripts.Menu.UI
         {
             _button = GetComponent<Button>();
             _icon.sprite = _config.Icon;
-
+            
             if (_config.IsFree)
                 _coinsView.SetActive(false);
             else
                 _coinsText.text = _config.Price.ToString();
+        }
+
+        private void OnValidate()
+        {
+            if (_icon && _config)
+                _icon.sprite = _config.Icon;
         }
 
         public void Construct(CoinsHandleService coinsHandleService)
@@ -43,7 +50,7 @@ namespace Project.Scripts.Menu.UI
                 OnSucessConsumed?.Invoke(_config);
                 return;
             }
-            
+
             _coinsHandleService.TryToConsume(_config.Price, onSuccess: () => OnSucessConsumed?.Invoke(_config));
         }
 

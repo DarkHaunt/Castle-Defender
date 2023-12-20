@@ -13,7 +13,7 @@ namespace Project.Scripts.Level.Init
             var prefabPath = weaponType switch
             {
                 WeaponType.Crossbow => "Weapons/Crossbow",
-                WeaponType.Catapult => "Weapons/Catapult",
+                WeaponType.Cannon => "Weapons/Catapult",
                 _ => throw new ArgumentOutOfRangeException(nameof(weaponType), weaponType, null),
             };
 

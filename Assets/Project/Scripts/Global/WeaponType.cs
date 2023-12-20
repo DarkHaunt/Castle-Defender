@@ -3,6 +3,6 @@
     public enum WeaponType
     {
         Crossbow,
-        Catapult
+        Cannon
     }
 }
