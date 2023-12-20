@@ -4,16 +4,16 @@ using Project.Scripts.Menu.Data;
 
 namespace Project.Scripts.Menu.StateMachine.States.SettingsSelectState
 {
-    public class SettingsSelectFactory
+    public class SettingsHandleFactory
     {
         private readonly SettingsSelectData _settingsSelectData;
 
-        public SettingsSelectFactory(SettingsSelectData settingsSelectData)
+        public SettingsHandleFactory(SettingsSelectData settingsSelectData)
         {
             _settingsSelectData = settingsSelectData;
         }
 
-        public SettingsSelect CreateState(IStateSwitcher stateSwitcher)
+        public SettingsHandle CreateState(IStateSwitcher stateSwitcher)
             => new (stateSwitcher, _settingsSelectData);
     }
 }

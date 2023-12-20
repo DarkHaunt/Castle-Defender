@@ -2,6 +2,7 @@
 using Project.Scripts.Menu.Data;
 using Project.Scripts.Menu.StateMachine.States.LevelSelectState;
 using Project.Scripts.Menu.StateMachine.States.SettingsSelectState;
+using Project.Scripts.Menu.StateMachine.States.ShopHandleState;
 
 
 namespace Project.Scripts.Menu.StateMachine.States.MenuHandleState
@@ -23,22 +24,27 @@ namespace Project.Scripts.Menu.StateMachine.States.MenuHandleState
         {
             _menuData.MenuCanvas.gameObject.SetActive(true);
 
+            _menuData.ShopButton.onClick.AddListener(OpenShop);
             _menuData.StartButton.onClick.AddListener(SelectLevel);
-            _menuData.SettingsButton.onClick.AddListener(SelectSettings);
+            _menuData.SettingsButton.onClick.AddListener(OpenSettings);
         }
 
         public void Exit()
         {
             _menuData.MenuCanvas.gameObject.SetActive(false);
             
+            _menuData.ShopButton.onClick.RemoveListener(OpenShop);
             _menuData.StartButton.onClick.RemoveListener(SelectLevel);
-            _menuData.SettingsButton.onClick.RemoveListener(SelectSettings);
+            _menuData.SettingsButton.onClick.RemoveListener(OpenSettings);
         }
 
         private void SelectLevel()
-            => _stateSwitcher.SwitchToState<LevelSelect>();   
-        
-        private void SelectSettings()
-            => _stateSwitcher.SwitchToState<SettingsSelect>();
+            => _stateSwitcher.SwitchToState<LevelSelect>();
+
+        private void OpenShop()
+            => _stateSwitcher.SwitchToState<ShopHandle>();
+
+        private void OpenSettings()
+            => _stateSwitcher.SwitchToState<SettingsHandle>();
     }
 }

@@ -1,13 +1,14 @@
-﻿using Project.Scripts.Common.StateMachine;
-using Project.Scripts.Menu.Data;
-using Project.Scripts.Menu.StateMachine;
-using Project.Scripts.Menu.StateMachine.States.LevelLoadState;
+﻿using Project.Scripts.Menu.StateMachine.States.SettingsSelectState;
 using Project.Scripts.Menu.StateMachine.States.LevelSelectState;
+using Project.Scripts.Menu.StateMachine.States.ShopHandleState;
 using Project.Scripts.Menu.StateMachine.States.MenuHandleState;
-using Project.Scripts.Menu.StateMachine.States.SettingsSelectState;
+using Project.Scripts.Menu.StateMachine.States.LevelLoadState;
+using Project.Scripts.Common.StateMachine;
+using Project.Scripts.Menu.StateMachine;
+using Project.Scripts.Menu.Data;
+using VContainer.Unity;
 using UnityEngine;
 using VContainer;
-using VContainer.Unity;
 
 
 namespace Project.Scripts.Menu.Boot
@@ -15,6 +16,7 @@ namespace Project.Scripts.Menu.Boot
     public class MenuLifeScope : LifetimeScope
     {
         [Header("--- Data ---")]
+        [SerializeField] private ShopData _shopData;
         [SerializeField] private MenuData _menuData;
         [SerializeField] private LevelSelectData _levelSelectData;
         [SerializeField] private SettingsSelectData _settingsSelectData;
@@ -24,8 +26,9 @@ namespace Project.Scripts.Menu.Boot
         {
             RegisterStateMachine(builder);
 
-            RegisterSettingsSelectFactory(builder);
+            RegisterSettingsHandleFactory(builder);
             RegisterLevelSelectFactory(builder);
+            RegisterShopHandleFactory(builder);
             RegisterMenuHandleFactory(builder);
             RegisterLevelLoadFactory(builder);
         }
@@ -35,13 +38,22 @@ namespace Project.Scripts.Menu.Boot
             builder.RegisterEntryPoint<MenuStateMachine>();
         }
 
-        private void RegisterSettingsSelectFactory(IContainerBuilder builder)
+        private void RegisterSettingsHandleFactory(IContainerBuilder builder)
         {
-            builder.Register<SettingsSelectFactory>(Lifetime.Scoped)
+            builder.Register<SettingsHandleFactory>(Lifetime.Scoped)
                 .WithParameter(_settingsSelectData);
 
-            builder.RegisterFactory<IStateSwitcher, SettingsSelect>(container =>
-                container.Resolve<SettingsSelectFactory>().CreateState, Lifetime.Scoped);
+            builder.RegisterFactory<IStateSwitcher, SettingsHandle>(container =>
+                container.Resolve<SettingsHandleFactory>().CreateState, Lifetime.Scoped);
+        }  
+        
+        private void RegisterShopHandleFactory(IContainerBuilder builder)
+        {
+            builder.Register<ShopHandleFactory>(Lifetime.Scoped)
+                .WithParameter(_settingsSelectData);
+
+            builder.RegisterFactory<IStateSwitcher, ShopHandle>(container =>
+                container.Resolve<ShopHandleFactory>().CreateState, Lifetime.Scoped);
         }
 
         private void RegisterLevelLoadFactory(IContainerBuilder builder)

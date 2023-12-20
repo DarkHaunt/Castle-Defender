@@ -5,12 +5,12 @@ using Project.Scripts.Menu.Data;
 
 namespace Project.Scripts.Menu.StateMachine.States.SettingsSelectState
 {
-    public class SettingsSelect : IState
+    public class SettingsHandle : IState
     {
         private readonly IStateSwitcher _stateSwitcher;
         private readonly SettingsSelectData _settingsSelectData;
 
-        public SettingsSelect(IStateSwitcher stateSwitcher, SettingsSelectData settingsSelectData)
+        public SettingsHandle(IStateSwitcher stateSwitcher, SettingsSelectData settingsSelectData)
         {
             _stateSwitcher = stateSwitcher;
             _settingsSelectData = settingsSelectData;

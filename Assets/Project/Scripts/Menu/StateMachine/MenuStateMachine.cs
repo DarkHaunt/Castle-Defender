@@ -17,12 +17,12 @@ namespace Project.Scripts.Menu.StateMachine
 
 
         public MenuStateMachine(MenuHandleFactory menuHandleFactory, LevelSelectFactory levelSelectFactory,
-            LevelLoadFactory levelLoadFactory, SettingsSelectFactory settingsSelectFactory)
+            LevelLoadFactory levelLoadFactory, SettingsHandleFactory settingsHandleFactory)
         {
             _states = new Dictionary<Type, IState>()
             {
                 [typeof(MenuHandle)] = menuHandleFactory.CreateState(this),
-                [typeof(SettingsSelect)] = settingsSelectFactory.CreateState(this),
+                [typeof(SettingsHandle)] = settingsHandleFactory.CreateState(this),
                 [typeof(LevelSelect)] = levelSelectFactory.CreateState(this),
                 [typeof(LevelLoad)] = levelLoadFactory.CreateState(),
             };
