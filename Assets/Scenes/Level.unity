@@ -258,7 +258,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: fbcc1a790e954e6bade5e3163a0ed8b2, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _isDebugEnabled: 1
+  _isDebugEnabled: 0
   _isDebugPlayer: 1
   _debugPlayerConfig: {fileID: 11400000, guid: 597123d376e664f49ba890652745315a, type: 2}
   _isDebugLevel: 1

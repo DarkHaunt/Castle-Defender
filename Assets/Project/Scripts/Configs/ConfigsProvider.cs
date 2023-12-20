@@ -28,9 +28,15 @@ namespace Project.Scripts.Configs
         }
         
         public void UpdatePlayerConfig(IPlayerConfig newPlayerConfig)
-            => PlayerConfig = newPlayerConfig;
+        {
+            PlayerConfig = newPlayerConfig;
+            SaveConfigs();
+        }
 
         public void UpdateLevelConfig(ILevelConfig newLevelConfig)
-            => LevelConfig = newLevelConfig;
+        {
+            LevelConfig = newLevelConfig;
+            SaveConfigs();
+        }
     }
 }

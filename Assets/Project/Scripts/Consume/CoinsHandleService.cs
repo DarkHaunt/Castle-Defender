@@ -36,25 +36,23 @@ namespace Project.Scripts.Consume
                 onSuccess?.Invoke();
             }
 
-            UpdateConfig();
+            UpdateCoins();
         }
 
         public void AddCoins(int coins)
         {
             _playerCoinsCount += coins;
 
-            UpdateConfig();
+            UpdateCoins();
         }
 
-        private void UpdateConfig()
+        private void UpdateCoins()
         {
             OnCoinsUpdated?.Invoke(_playerCoinsCount);
-            
-            var newConfig = new SerializedPlayerConfig(_configsProvider.PlayerConfig)
-            {
-                coinsSerialized = _playerCoinsCount
-            };
 
+            var newConfig = new SerializedPlayerConfig(_configsProvider.PlayerConfig);
+            newConfig.coinsSerialized = _playerCoinsCount;
+            
             _configsProvider.UpdatePlayerConfig(newConfig);
         }
     }
