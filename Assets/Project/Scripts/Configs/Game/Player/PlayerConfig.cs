@@ -4,7 +4,7 @@ using UnityEngine;
 
 namespace Project.Scripts.Configs.Game
 {
-    [CreateAssetMenu(fileName = "Global_Game_Data", menuName = "Scriptables/GlobalGameData", order = 52)]
+    [CreateAssetMenu(fileName = "Player_Config", menuName = "Scriptables/PlayerConfig", order = 52)]
     public class PlayerConfig : ScriptableObject, IPlayerConfig
     {
         [field: SerializeField] public int Coins { get; private set; }
