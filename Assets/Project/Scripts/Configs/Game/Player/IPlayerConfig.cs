@@ -1,6 +1,4 @@
-﻿
-
-using Project.Scripts.Global;
+﻿using Project.Scripts.Global;
 
 
 namespace Project.Scripts.Configs.Game

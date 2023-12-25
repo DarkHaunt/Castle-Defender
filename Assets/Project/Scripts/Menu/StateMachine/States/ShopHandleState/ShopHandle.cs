@@ -1,6 +1,6 @@
 using Project.Scripts.Menu.StateMachine.States.MenuHandleState;
 using Project.Scripts.Common.StateMachine;
-using Project.Scripts.Configs;
+using Project.Scripts.Menu.Services;
 using Project.Scripts.Menu.Data;
 using Project.Scripts.Consume;
 
@@ -10,23 +10,24 @@ namespace Project.Scripts.Menu.StateMachine.States.ShopHandleState
     {
         private readonly IStateSwitcher _stateSwitcher;
         private readonly CoinsHandleService _coinsHandleService;
-        private readonly ConfigsProvider _configsProvider;
+        private readonly ShopService _shopService;
         private readonly ShopData _shopData;
 
         
-        public ShopHandle(IStateSwitcher stateSwitcher, ConfigsProvider configsProvider, 
-            CoinsHandleService coinsHandleService, ShopData shopData)
+        public ShopHandle(IStateSwitcher stateSwitcher, CoinsHandleService coinsHandleService, 
+            ShopService shopService, ShopData shopData)
         {
-            _coinsHandleService = coinsHandleService;
-            _configsProvider = configsProvider;
             _stateSwitcher = stateSwitcher;
+            _coinsHandleService = coinsHandleService;
+            _shopService = shopService;
             _shopData = shopData;
         }
         
         
         public void Enter()
         {
-            _configsProvider.LoadConfigs();
+            _shopService.Enable();
+            
             _coinsHandleService.Init();
             
             _shopData.ShopCanvas.gameObject.SetActive(true);
@@ -35,7 +36,7 @@ namespace Project.Scripts.Menu.StateMachine.States.ShopHandleState
 
         public void Exit()
         {
-            _configsProvider.SaveConfigs();
+            _shopService.Disable();
             
             _shopData.ShopCanvas.gameObject.SetActive(false);
             _shopData.ExitButton.onClick.AddListener(SwitchToMenu);
