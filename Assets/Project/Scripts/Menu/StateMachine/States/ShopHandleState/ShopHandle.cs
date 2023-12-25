@@ -30,14 +30,14 @@ namespace Project.Scripts.Menu.StateMachine.States.ShopHandleState
             _coinsHandleService.Init();
             
             _shopData.ShopCanvas.gameObject.SetActive(true);
-
             _shopData.ExitButton.onClick.AddListener(SwitchToMenu);
         }
 
         public void Exit()
         {
-            _shopData.ShopCanvas.gameObject.SetActive(false);
+            _configsProvider.SaveConfigs();
             
+            _shopData.ShopCanvas.gameObject.SetActive(false);
             _shopData.ExitButton.onClick.AddListener(SwitchToMenu);
         }
 
