@@ -1,11 +1,12 @@
-﻿using Project.Scripts.Menu.StateMachine.States.SettingsSelectState;
-using Project.Scripts.Menu.StateMachine.States.LevelSelectState;
+﻿using Project.Scripts.Menu.StateMachine.States.LevelSelectState;
 using Project.Scripts.Menu.StateMachine.States.ShopHandleState;
 using Project.Scripts.Menu.StateMachine.States.MenuHandleState;
 using Project.Scripts.Menu.StateMachine.States.LevelLoadState;
 using Project.Scripts.Common.StateMachine;
+using Project.Scripts.Consume;
 using Project.Scripts.Menu.StateMachine;
 using Project.Scripts.Menu.Data;
+using Project.Scripts.Menu.StateMachine.States.SettingsHandleState;
 using VContainer.Unity;
 using UnityEngine;
 using VContainer;
@@ -20,10 +21,14 @@ namespace Project.Scripts.Menu.Boot
         [SerializeField] private MenuData _menuData;
         [SerializeField] private LevelSelectData _levelSelectData;
         [SerializeField] private SettingsSelectData _settingsSelectData;
+
+        [Header("--- View ---")]
+        [SerializeField] private CoinsHandleView _coinsHandleView;
         
         
         protected override void Configure(IContainerBuilder builder)
         {
+            RegisterCoinsHandleView(builder);
             RegisterStateMachine(builder);
 
             RegisterSettingsHandleFactory(builder);
@@ -33,7 +38,12 @@ namespace Project.Scripts.Menu.Boot
             RegisterLevelLoadFactory(builder);
         }
 
-        private static void RegisterStateMachine(IContainerBuilder builder)
+        private void RegisterCoinsHandleView(IContainerBuilder builder)
+        {
+            builder.RegisterComponent(_coinsHandleView);
+        }
+
+        private void RegisterStateMachine(IContainerBuilder builder)
         {
             builder.RegisterEntryPoint<MenuStateMachine>();
         }
@@ -50,7 +60,7 @@ namespace Project.Scripts.Menu.Boot
         private void RegisterShopHandleFactory(IContainerBuilder builder)
         {
             builder.Register<ShopHandleFactory>(Lifetime.Scoped)
-                .WithParameter(_settingsSelectData);
+                .WithParameter(_shopData);
 
             builder.RegisterFactory<IStateSwitcher, ShopHandle>(container =>
                 container.Resolve<ShopHandleFactory>().CreateState, Lifetime.Scoped);

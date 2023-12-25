@@ -1,7 +1,7 @@
 ﻿using Project.Scripts.Common.StateMachine;
 using Project.Scripts.Menu.Data;
 using Project.Scripts.Menu.StateMachine.States.LevelSelectState;
-using Project.Scripts.Menu.StateMachine.States.SettingsSelectState;
+using Project.Scripts.Menu.StateMachine.States.SettingsHandleState;
 using Project.Scripts.Menu.StateMachine.States.ShopHandleState;
 
 

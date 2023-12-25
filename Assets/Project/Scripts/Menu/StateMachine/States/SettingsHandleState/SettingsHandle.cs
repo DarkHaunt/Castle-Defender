@@ -1,9 +1,8 @@
 ﻿using Project.Scripts.Common.StateMachine;
-using Project.Scripts.Menu.StateMachine.States.MenuHandleState;
 using Project.Scripts.Menu.Data;
+using Project.Scripts.Menu.StateMachine.States.MenuHandleState;
 
-
-namespace Project.Scripts.Menu.StateMachine.States.SettingsSelectState
+namespace Project.Scripts.Menu.StateMachine.States.SettingsHandleState
 {
     public class SettingsHandle : IState
     {
