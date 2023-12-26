@@ -10,13 +10,16 @@ namespace Project.Scripts.Level.Weapons.View
         [SerializeField] private PressHandlingButton _createButton;
         [SerializeField] private PressHandlingButton _deleteButton;
 
+        [Header("--- Panels ---")]
+        [SerializeField] private GameObject _choseWeaponPanel;
+
 
         protected override void OnEnableCustom()
         {
             EnableAllButtons();
             
-            _createButton.OnBeenPressed +=  _weaponSystemBinder.CreateEnable;
-            _createButton.OnBeenUnpressed += _weaponSystemBinder.CreateDisable;
+            _createButton.OnBeenPressed += HandleCreateButtonPressed;
+            _createButton.OnBeenUnpressed += HandleCreateButtonUnpressed;
             
             _deleteButton.OnBeenPressed += _weaponSystemBinder.DeleteEnable;
             _deleteButton.OnBeenUnpressed += _weaponSystemBinder.DeleteDisable;            
@@ -26,11 +29,23 @@ namespace Project.Scripts.Level.Weapons.View
         {
             DisableAllButtons();
             
-            _createButton.OnBeenPressed -= _weaponSystemBinder.CreateEnable;
-            _createButton.OnBeenUnpressed -= _weaponSystemBinder.CreateDisable;
+            _createButton.OnBeenPressed -= HandleCreateButtonPressed;
+            _createButton.OnBeenUnpressed -= HandleCreateButtonUnpressed;
             
             _deleteButton.OnBeenPressed -= _weaponSystemBinder.DeleteEnable;
             _deleteButton.OnBeenUnpressed -= _weaponSystemBinder.DeleteDisable;            
+        }
+
+        private void HandleCreateButtonPressed()
+        {
+            _weaponSystemBinder.CreateEnable();
+            _choseWeaponPanel.SetActive(true);
+        }  
+        
+        private void HandleCreateButtonUnpressed()
+        {
+            _weaponSystemBinder.CreateDisable();
+            _choseWeaponPanel.SetActive(false);
         }
 
         protected override void OnCreateOptionSelected(bool isEnabled)

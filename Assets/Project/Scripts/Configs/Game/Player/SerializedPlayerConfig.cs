@@ -23,7 +23,7 @@ namespace Project.Scripts.Configs.Game
             availableWeaponSerialized = gameData.AvailableWeapons;
         }
 
-        private SerializedPlayerConfig()
+        public SerializedPlayerConfig()
         {
             coinsSerialized = int.MinValue;
             castleHealthSerialized = float.NaN;
