@@ -12,7 +12,7 @@ GameObject:
   - component: {fileID: 1612645127476150831}
   - component: {fileID: 9202026788509739069}
   m_Layer: 5
-  m_Name: Weapon Chose Button
+  m_Name: Weapon Purchase Button
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0

@@ -16,7 +16,6 @@ namespace Project.Scripts.Menu.UI
 
         [Header("--- UI ---")]
         [SerializeField] private TextMeshProUGUI _coinsText;
-
         [SerializeField] private GameObject _coinsView;
         [SerializeField] private Image _icon;
 

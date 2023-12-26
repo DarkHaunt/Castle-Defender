@@ -1,5 +1,5 @@
-﻿using Project.Scripts.Level.Weapons.Handling.WeaponPoints;
-using Project.Scripts.Level.Weapons.Handling.WeaponPoints.MVP;
+﻿using Project.Scripts.Level.Weapons.Handling.WeaponPoints.MVP;
+using Project.Scripts.Level.Weapons.Handling.WeaponPoints;
 
 
 namespace Project.Scripts.Level.Weapons.Handling.Create
@@ -7,16 +7,16 @@ namespace Project.Scripts.Level.Weapons.Handling.Create
     public class WeaponCreateService
     {
         private readonly WeaponPointsContainer _weaponPointsContainer;
+        private readonly WeaponChoseService _weaponChoseService;
         private readonly WeaponFactory _weaponFactory;
-        private readonly Weapon _prefab;
 
 
         public WeaponCreateService(WeaponFactory weaponFactory, WeaponPointsContainer weaponPointsContainer,
-            Weapon prefab)
+            WeaponChoseService weaponChoseService)
         {
             _weaponPointsContainer = weaponPointsContainer;
+            _weaponChoseService = weaponChoseService;
             _weaponFactory = weaponFactory;
-            _prefab = prefab;
         }
 
 
@@ -46,7 +46,7 @@ namespace Project.Scripts.Level.Weapons.Handling.Create
 
         private void CreateWeapon(WeaponPointModel weaponHandlePoint)
         {
-            var newWeapon = _weaponFactory.CreateWeapon(_prefab, weaponHandlePoint.Position);
+            var newWeapon = _weaponFactory.CreateWeapon(_weaponChoseService.ChosenWeapon, weaponHandlePoint.Position);
 
             _weaponPointsContainer.RegisterPointAsOccupied(weaponHandlePoint);
             weaponHandlePoint.RegisterWeapon(newWeapon);

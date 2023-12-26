@@ -27,7 +27,7 @@ namespace Project.Scripts.Configs.Game
         {
             coinsSerialized = int.MinValue;
             castleHealthSerialized = float.NaN;
-            availableWeaponSerialized = InfrastructureKeys.DefaultAvaliableWeapons;
+            availableWeaponSerialized = InfrastructureKeys.DefaultAvailableWeapons;
         }
     }
 }

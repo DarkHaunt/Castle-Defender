@@ -7,6 +7,6 @@
         
         public const string UICameraName = "UICamera";
 
-        public static readonly WeaponType[] DefaultAvaliableWeapons = { WeaponType.Crossbow };
+        public static readonly WeaponType[] DefaultAvailableWeapons = { WeaponType.Crossbow };
     }
 }
