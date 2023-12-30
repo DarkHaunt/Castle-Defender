@@ -44,6 +44,7 @@ namespace Project.Scripts.Level.Init
             {
                 Level = _levelProvider.LoadLevel(levelConfig),
                 Enemies = _enemyProvider.LoadEnemies(levelConfig),
+                StartCountOfCrystals = levelConfig.StartCountOfCrystals,
                 AvailableWeapons = _weaponProvider.LoadWeapons(playerConfig),
                 
                 CastleHealth = playerConfig.CastleHealth,

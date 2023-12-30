@@ -13,11 +13,12 @@ namespace Project.Scripts.Level.Enemies
         public event Action<Enemy> OnDeactivate;
         public event Action<IEnemy> OnDeath;
 
-        [Header("--- Params ---")]
-        [SerializeField] private int _id;
-        [SerializeField] private int _reward;
-        [SerializeField] private float _health;
+        [field: Header("--- Params ---")]
+        [field: SerializeField] public int Id { get; private set; }
+        [field: SerializeField] public int CrystalReward { get; private set; }
+        
         [SerializeField] protected float _speed;
+        [SerializeField] private float _health;
 
         [Header("--- Components ---")]
         [SerializeField] private CollideAttackTarget _attackTarget;
@@ -29,8 +30,6 @@ namespace Project.Scripts.Level.Enemies
         private EnemyBehaviorTree _behaviorTree;
 
         public Vector3 Position => _rigidbody.position;
-        public int CoinsReward => _reward;
-        public int Id => _id;
 
         
         protected abstract EnemyBehaviorTree CreateBehaviorTree(EnemyBehaviorData behaviorData);

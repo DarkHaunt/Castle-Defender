@@ -518,7 +518,7 @@ MonoBehaviour:
   _enemyParent: {fileID: 1918156017}
   _gameOverView: {fileID: 1353619609}
   _weaponSystemView: {fileID: 813292959}
-  _coinsHandleView: {fileID: 1012984802}
+  _crystalHandleView: {fileID: 1012984802}
   _castleView: {fileID: 592950273}
 --- !u!4 &878016073
 Transform:
@@ -679,7 +679,7 @@ GameObject:
   - component: {fileID: 1012984801}
   - component: {fileID: 1012984802}
   m_Layer: 0
-  m_Name: Coins Handle View
+  m_Name: Crystal Handle View
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -709,10 +709,10 @@ MonoBehaviour:
   m_GameObject: {fileID: 1012984800}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: bb81841bd63243b5b842956efd8adcb8, type: 3}
+  m_Script: {fileID: 11500000, guid: 7f1101d3dbbd4c70a5e21bc1e999e9d6, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _coinsText: {fileID: 433848994}
+  _crystalText: {fileID: 433848994}
 --- !u!114 &1030521752 stripped
 MonoBehaviour:
   m_CorrespondingSourceObject: {fileID: 4877410195867274989, guid: d3ecabfa3a43d134f9895b6263364ca6, type: 3}

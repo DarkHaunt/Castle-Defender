@@ -146,6 +146,7 @@ GameObject:
   - component: {fileID: 702119643807337387}
   - component: {fileID: 4412117166373488746}
   - component: {fileID: 5914003422982227609}
+  - component: {fileID: 687991218665528638}
   m_Layer: 5
   m_Name: Coins View
   m_TagString: Untagged
@@ -212,3 +213,16 @@ MonoBehaviour:
   m_FillOrigin: 0
   m_UseSpriteMesh: 0
   m_PixelsPerUnitMultiplier: 6
+--- !u!114 &687991218665528638
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 9104187657536888408}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: bec5fe4346dc4b08af6d08bfc64db217, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _priceText: {fileID: 6657647740109588154}

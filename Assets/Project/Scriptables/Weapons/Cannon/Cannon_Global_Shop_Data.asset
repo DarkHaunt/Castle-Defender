@@ -10,7 +10,7 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 1566b81f6ead464a8f7dd12ae2a7a641, type: 3}
-  m_Name: Cannon
+  m_Name: Cannon_Global_Shop_Data
   m_EditorClassIdentifier: 
   <Type>k__BackingField: 1
   <IsFree>k__BackingField: 0

@@ -1,5 +1,6 @@
 ﻿using Project.Scripts.Level.Enemies.Creation;
 using Project.Scripts.Level.Enemies.Handling;
+using Project.Scripts.Level.Common.Crystals;
 using Project.Scripts.Common.StateMachine;
 using Project.Scripts.Level.Castles;
 using Project.Scripts.Level.Init;
@@ -10,6 +11,7 @@ namespace Project.Scripts.Level.StateMachine.States.InitLevel
 {
     public class InitLevelStateFactory
     {
+        private readonly CrystalHandleService _crystalHandleService;
         private readonly CoinsHandleService _coinsHandleService;
         private readonly EnemyHandleService _enemyHandleService;
         private readonly InitializeService _initializeService;
@@ -17,9 +19,10 @@ namespace Project.Scripts.Level.StateMachine.States.InitLevel
         private readonly CastleModel _castleModel;
 
 
-        public InitLevelStateFactory(CoinsHandleService coinsHandleService, InitializeService initializeService, CastleModel castleModel, 
-            EnemySpawnService enemySpawnService, EnemyHandleService enemyHandleService)
+        public InitLevelStateFactory(CoinsHandleService coinsHandleService, CrystalHandleService crystalHandleService, InitializeService initializeService, 
+            CastleModel castleModel, EnemySpawnService enemySpawnService, EnemyHandleService enemyHandleService)
         {
+            _crystalHandleService = crystalHandleService;
             _coinsHandleService = coinsHandleService;
             _enemyHandleService = enemyHandleService;
             _initializeService = initializeService;
@@ -29,6 +32,6 @@ namespace Project.Scripts.Level.StateMachine.States.InitLevel
         
         
          public InitLevelState CreateState(IStateSwitcher stateSwitcher)
-            => new(stateSwitcher, _coinsHandleService, _initializeService, _castleModel, _enemySpawnService, _enemyHandleService);
+            => new(stateSwitcher, _coinsHandleService, _crystalHandleService, _initializeService, _castleModel, _enemySpawnService, _enemyHandleService);
     }
 }

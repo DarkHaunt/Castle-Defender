@@ -4,7 +4,6 @@ using Project.Scripts.Global;
 using UnityEngine.UI;
 using UnityEngine;
 using System;
-using TMPro;
 
 namespace Project.Scripts.Menu.UI
 {
@@ -15,8 +14,7 @@ namespace Project.Scripts.Menu.UI
         [field: SerializeField] public WeaponConfig Config { get; private set; }
 
         [Header("--- UI ---")]
-        [SerializeField] private TextMeshProUGUI _coinsText;
-        [SerializeField] private GameObject _coinsView;
+        [SerializeField] private PriceView _priceView;
         [SerializeField] private Image _icon;
 
         private CoinsHandleService _coinsHandleService;
@@ -30,6 +28,8 @@ namespace Project.Scripts.Menu.UI
         private void Awake()
         {
             _button = GetComponent<Button>();
+            _priceView.Show();
+            
             SetConfigData();
         }
 
@@ -50,8 +50,8 @@ namespace Project.Scripts.Menu.UI
             if (_icon)
                 _icon.sprite = Config.Icon;
 
-            if (_coinsText)
-                _coinsText.text = Config.Price.ToString();
+            if (_priceView)
+                _priceView.UpdatePriceText(Config.Price);
         }
 
         public void Construct(CoinsHandleService coinsHandleService)
@@ -73,7 +73,8 @@ namespace Project.Scripts.Menu.UI
 
         public void Unlock()
         {
-            _coinsView.SetActive(false);
+            _priceView.Hide();
+            
             _isPurchased = true; 
         }
     }

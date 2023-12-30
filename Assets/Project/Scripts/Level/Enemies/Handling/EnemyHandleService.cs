@@ -1,4 +1,6 @@
-﻿using Project.Scripts.Common.Coroutines;
+﻿using Project.Scripts.Level.Common.Crystals;
+using Project.Scripts.Common.Coroutines;
+using Project.Scripts.Level.Common;
 using Project.Scripts.Extensions;
 using System.Collections.Generic;
 using Project.Scripts.Consume;
@@ -14,17 +16,22 @@ namespace Project.Scripts.Level.Enemies.Handling
         public event Action OnRequiredEnemiesKilled;
         
         private readonly ISet<Enemy> _enemies = new HashSet<Enemy>();
-        private readonly CoinsHandleService _coinsHandleService;
         private readonly ICoroutineRunner _coroutineRunner;
         private readonly EnemyPoolService _poolService;
+        
+        private readonly CrystalHandleService _crystalHandleService;
+        private readonly CoinsHandleService _coinsHandleService;
 
         private Coroutine _updateBehavior;
         private int _countEnemiesToKill;
 
 
-        public EnemyHandleService(ICoroutineRunner coroutineRunner, EnemyPoolService poolService, CoinsHandleService coinsHandleService)
+        public EnemyHandleService(ICoroutineRunner coroutineRunner, EnemyPoolService poolService, 
+            CoinsHandleService coinsHandleService, CrystalHandleService crystalHandleService)
         {
+            _crystalHandleService = crystalHandleService;
             _coinsHandleService = coinsHandleService;
+            
             _coroutineRunner = coroutineRunner;
             _poolService = poolService;
         }
@@ -70,7 +77,8 @@ namespace Project.Scripts.Level.Enemies.Handling
             if(--_countEnemiesToKill <= 0)
                 OnRequiredEnemiesKilled?.Invoke();
             
-            _coinsHandleService.AddCoins(enemy.CoinsReward);
+            _crystalHandleService.AddCrystals(enemy.CrystalReward);
+            _coinsHandleService.AddCoins(LevelStaticData.RewardCoinsForKillEnemy);
         }
         
         private IEnumerator UpdateBehaviorOfEnemies()

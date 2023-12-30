@@ -16,6 +16,7 @@ namespace Project.Scripts.Configs.Level
 
         [field: Header("--- Settings  ---")]
         [field: SerializeField] public int CountToKillEnemies { get; private set; }
+        [field: SerializeField] public int StartCountOfCrystals { get; private set; }
         [field: SerializeField] public float EnemiesSpawnWaveTime { get; private set; }
     }
 }

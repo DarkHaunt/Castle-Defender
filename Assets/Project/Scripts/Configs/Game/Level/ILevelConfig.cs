@@ -5,6 +5,7 @@
         string LevelPrefabPath { get; }
         
         int CountToKillEnemies { get; }
+        int StartCountOfCrystals { get; }
         float EnemiesSpawnWaveTime { get; }
         string[] EnemiesPrefabsPatches { get; }
     }

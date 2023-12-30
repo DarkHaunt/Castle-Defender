@@ -9,10 +9,10 @@ MonoBehaviour:
   m_GameObject: {fileID: 0}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 1566b81f6ead464a8f7dd12ae2a7a641, type: 3}
-  m_Name: Crossbow
+  m_Script: {fileID: 11500000, guid: 83fdf49c4a314010b46dbee2d6af80b8, type: 3}
+  m_Name: Crossbow_Create_Config
   m_EditorClassIdentifier: 
-  <Type>k__BackingField: 0
-  <IsFree>k__BackingField: 1
-  <Price>k__BackingField: 0
+  <WeaponType>k__BackingField: 0
+  <Prefab>k__BackingField: {fileID: 4610221735476587297, guid: 38d8f8588170e344f8dd26420c53c93c, type: 3}
   <Icon>k__BackingField: {fileID: 21300000, guid: 58fdb375c60edad4c81d3c6fc9d70c8c, type: 3}
+  <Price>k__BackingField: 25

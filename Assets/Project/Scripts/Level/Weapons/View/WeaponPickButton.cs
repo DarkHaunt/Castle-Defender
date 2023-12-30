@@ -1,4 +1,6 @@
-using Project.Scripts.Global;
+using Project.Scripts.Level.Common.Crystals;
+using Project.Scripts.Configs.Game.Weapons;
+using Project.Scripts.Consume;
 using UnityEngine.UI;
 using UnityEngine;
 using System;
@@ -9,35 +11,72 @@ namespace Project.Scripts.Level.Weapons.View
     {
         public event Action<Weapon> OnChosenPrefab;
 
-        [field: SerializeField] public WeaponType Type { get; private set; }
-        [field: SerializeField] public Weapon Prefab { get; private set; }
         
+        [field: Header("--- Base ---")]
+        [field: SerializeField] public WeaponCreateConfig Config { get; private set; }
+        [SerializeField] private Image _icon;
+        
+        [Header("--- Price ---")]
+        [SerializeField] private PriceView _priceView;
+        
+        [Header("--- Lock ---")]
         [SerializeField] private GameObject _lockView;
+        
+        private CrystalHandleService _crystalHandleService;
         
         private bool _isLocked = true;
         private Button _button;
-        
+
+
+        private void OnValidate()
+            => SetConfigData();
 
         private void Awake()
-            => _button = GetComponent<Button>();
+        {
+            _button = GetComponent<Button>();
+            _lockView.SetActive(true);
+            _priceView.Hide();
+
+            SetConfigData();
+        }
 
         private void OnEnable()
             => _button.onClick.AddListener(TryToPick);
 
         private void OnDisable()
             => _button.onClick.RemoveListener(TryToPick);
+        
+        public void Construct(CrystalHandleService crystalHandleService)
+            => _crystalHandleService = crystalHandleService;
+        
+        private void SetConfigData()
+        {
+            if (!Config)
+                return;
+
+            if (_icon)
+                _icon.sprite = Config.Icon;
+
+            if (_priceView)
+                _priceView.UpdatePriceText(Config.Price);
+        }
 
         private void TryToPick()
         {
             if(_isLocked)
                 return;
             
-            OnChosenPrefab?.Invoke(Prefab);
+            _crystalHandleService.TryToConsume(Config.Price, onSuccess: NotifySuccessPrefabChose);
         }
+
+        private void NotifySuccessPrefabChose()
+            => OnChosenPrefab?.Invoke(Config.Prefab);
 
         public void Unlock()
         {
             _lockView.SetActive(false);
+            _priceView.Show();
+            
             _isLocked = false; 
         }
     }

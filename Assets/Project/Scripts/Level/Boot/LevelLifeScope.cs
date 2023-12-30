@@ -3,6 +3,7 @@ using Project.Scripts.Level.Weapons.View;
 using Project.Scripts.Level.Debugging;
 using Project.Scripts.Level.Castles;
 using Project.Scripts.Consume;
+using Project.Scripts.Level.Common.Crystals;
 using Project.Scripts.UI;
 using VContainer.Unity;
 using UnityEngine;
@@ -24,7 +25,7 @@ namespace Project.Scripts.Level.Boot
         [Header("--- Views ---")]
         [SerializeField] private GameOverView _gameOverView;
         [SerializeField] private WeaponSystemView _weaponSystemView;
-        [SerializeField] private CoinsHandleView _coinsHandleView;
+        [SerializeField] private CrystalHandleView _crystalHandleView;
         [SerializeField] private CastleView _castleView;
 
        
@@ -42,7 +43,7 @@ namespace Project.Scripts.Level.Boot
             new LevelSystemInstaller(_debugService, _levelParent)
                 .Install(builder);
             
-            new UIInstaller(_gameOverView, _coinsHandleView)
+            new UIInstaller(_gameOverView, _crystalHandleView)
                 .Install(builder);
         }
     }

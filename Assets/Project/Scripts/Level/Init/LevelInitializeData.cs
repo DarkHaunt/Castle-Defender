@@ -9,6 +9,7 @@ namespace Project.Scripts.Level.Init
     {
         public LevelComponentsContainer Level;
         public Weapon[] AvailableWeapons;
+        public int StartCountOfCrystals;
         public Enemy[] Enemies;
 
         public float EnemiesWaveSpawnTime;

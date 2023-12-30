@@ -12,7 +12,7 @@ GameObject:
   - component: {fileID: 5314330571057616255}
   - component: {fileID: 3984126902847575309}
   m_Layer: 5
-  m_Name: Coins Panel
+  m_Name: Crystal Panel
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -639,7 +639,7 @@ GameObject:
   - component: {fileID: 7285142284653125915}
   - component: {fileID: 3673580714640634362}
   m_Layer: 5
-  m_Name: Coins Text
+  m_Name: Crystal Text
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -702,8 +702,8 @@ MonoBehaviour:
   m_fontMaterials: []
   m_fontColor32:
     serializedVersion: 2
-    rgba: 4278246911
-  m_fontColor: {r: 1, g: 0.8674295, b: 0, a: 1}
+    rgba: 4294180739
+  m_fontColor: {r: 0.514151, g: 1, b: 0.95404404, a: 1}
   m_enableVertexGradient: 0
   m_colorMode: 3
   m_fontColorGradient:
@@ -926,7 +926,7 @@ GameObject:
   - component: {fileID: 8436397408566326263}
   - component: {fileID: 8260013675597532856}
   m_Layer: 5
-  m_Name: Coins Icon
+  m_Name: Crystal Icon
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -980,7 +980,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_Sprite: {fileID: 21300000, guid: fcdf4bae7b3fa284abdd52100e298d85, type: 3}
+  m_Sprite: {fileID: 21300000, guid: ce1619126af4eab41ab84813db822047, type: 3}
   m_Type: 0
   m_PreserveAspect: 0
   m_FillCenter: 1
@@ -1362,6 +1362,10 @@ PrefabInstance:
       value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 366966239778687466, guid: 259e89a355dffaf40bb4ea496f996592, type: 3}
+      propertyPath: <Config>k__BackingField
+      value: 
+      objectReference: {fileID: 11400000, guid: ad833b77a554b7449b7aca7451b94ea1, type: 2}
+    - target: {fileID: 366966239778687466, guid: 259e89a355dffaf40bb4ea496f996592, type: 3}
       propertyPath: <Prefab>k__BackingField
       value: 
       objectReference: {fileID: 4610221735476587297, guid: 38d8f8588170e344f8dd26420c53c93c, type: 3}
@@ -1456,7 +1460,11 @@ PrefabInstance:
     - target: {fileID: 4528694053332221250, guid: 259e89a355dffaf40bb4ea496f996592, type: 3}
       propertyPath: m_Sprite
       value: 
-      objectReference: {fileID: 21300000, guid: 58fdb375c60edad4c81d3c6fc9d70c8c, type: 3}
+      objectReference: {fileID: 21300000, guid: 47f78b8ca493c6e4fb3c670dc4cb7002, type: 3}
+    - target: {fileID: 8998453320103850115, guid: 259e89a355dffaf40bb4ea496f996592, type: 3}
+      propertyPath: m_text
+      value: 100
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 259e89a355dffaf40bb4ea496f996592, type: 3}
 --- !u!224 &9131540656382817717 stripped

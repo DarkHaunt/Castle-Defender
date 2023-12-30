@@ -188,7 +188,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _enemiesDetector: {fileID: 2652502682383663191}
-  _damage: 100
+  _damage: 4
   _attackRadius: 5
   _reloadTime: 2
   _projectilePrefab: {fileID: 912527122196569464, guid: 12bbc22b72807b9438fc039e3262b24e, type: 3}

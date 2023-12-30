@@ -2,6 +2,7 @@
 using Project.Scripts.Level.StateMachine.States.StartLevel;
 using Project.Scripts.Level.StateMachine.States.InitLevel;
 using Project.Scripts.Level.StateMachine.States.EndLevel;
+using Project.Scripts.Level.Common.Crystals;
 using Project.Scripts.Level.Common.Physics;
 using Project.Scripts.Common.StateMachine;
 using Project.Scripts.Level.Common.Prefab;
@@ -30,6 +31,7 @@ namespace Project.Scripts.Level.Boot.Installers
 
         public void Install(IContainerBuilder builder)
         {
+            RegisterCrystalHandleService(builder);
             RegisterStateMachine(builder);
             
             RegisterInitializeService(builder);
@@ -40,6 +42,11 @@ namespace Project.Scripts.Level.Boot.Installers
             RegisterStates(builder);
 
             RegisterLevelCollisionService(builder);
+        }
+
+        private void RegisterCrystalHandleService(IContainerBuilder builder)
+        {
+            builder.Register<CrystalHandleService>(Lifetime.Scoped);
         }
 
         private void RegisterStateMachine(IContainerBuilder builder)

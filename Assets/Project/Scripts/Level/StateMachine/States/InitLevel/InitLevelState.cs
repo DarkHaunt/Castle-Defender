@@ -1,6 +1,7 @@
 ﻿using Project.Scripts.Level.StateMachine.States.StartLevel;
 using Project.Scripts.Level.Enemies.Creation;
 using Project.Scripts.Level.Enemies.Handling;
+using Project.Scripts.Level.Common.Crystals;
 using Project.Scripts.Common.StateMachine;
 using Project.Scripts.Level.Castles;
 using Project.Scripts.Level.Init;
@@ -13,6 +14,7 @@ namespace Project.Scripts.Level.StateMachine.States.InitLevel
     public class InitLevelState : IState
     {
         private readonly IStateSwitcher _stateSwitcher;
+        private readonly CrystalHandleService _crystalHandleService;
         private readonly CoinsHandleService _coinsHandleService;
         private readonly EnemyHandleService _enemyHandleService;
         private readonly EnemySpawnService _enemySpawnService;
@@ -20,10 +22,11 @@ namespace Project.Scripts.Level.StateMachine.States.InitLevel
         private readonly CastleModel _castleModel;
 
 
-        public InitLevelState(IStateSwitcher stateSwitcher, CoinsHandleService coinsHandleService, InitializeService initializeService, 
-            CastleModel castleModel, EnemySpawnService enemySpawnService, EnemyHandleService enemyHandleService)
+        public InitLevelState(IStateSwitcher stateSwitcher, CoinsHandleService coinsHandleService, CrystalHandleService crystalHandleService, 
+            InitializeService initializeService, CastleModel castleModel, EnemySpawnService enemySpawnService, EnemyHandleService enemyHandleService)
         {
             _stateSwitcher = stateSwitcher;
+            _crystalHandleService = crystalHandleService;
             _coinsHandleService = coinsHandleService;
             _enemyHandleService = enemyHandleService;
             _initializeService = initializeService;
@@ -42,6 +45,7 @@ namespace Project.Scripts.Level.StateMachine.States.InitLevel
             var castle = level.Castle;
             
             _enemyHandleService.Init(levelInitData.Enemies, levelInitData.CountEnemiesToKill);
+            _crystalHandleService.Init(levelInitData.StartCountOfCrystals);
             _castleModel.Init(castle, levelInitData.CastleHealth);
             _enemySpawnService.Init(levelInitData, level);
             _coinsHandleService.Init();

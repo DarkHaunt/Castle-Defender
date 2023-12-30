@@ -8,11 +8,13 @@ namespace Project.Scripts.Configs.Level
     {
         public string SerializedLevelPrefabPath;
         public int SerializedCountToKillEnemies;
+        public int SerializedStartCountOfCrystals;
         public float SerializedEnemiesSpawnWaveTime;
         public string[] SerializedEnemiesPrefabsPatches;
 
         public string LevelPrefabPath => SerializedLevelPrefabPath;
         public int CountToKillEnemies => SerializedCountToKillEnemies;
+        public int StartCountOfCrystals => SerializedStartCountOfCrystals;
         public float EnemiesSpawnWaveTime => SerializedEnemiesSpawnWaveTime;
         public string[] EnemiesPrefabsPatches => SerializedEnemiesPrefabsPatches;
 
@@ -22,6 +24,7 @@ namespace Project.Scripts.Configs.Level
             SerializedLevelPrefabPath = levelConfig.LevelPrefabPath;
             SerializedCountToKillEnemies = levelConfig.CountToKillEnemies;
             SerializedEnemiesSpawnWaveTime = levelConfig.EnemiesSpawnWaveTime;
+            SerializedStartCountOfCrystals = levelConfig.StartCountOfCrystals;
             SerializedEnemiesPrefabsPatches = levelConfig.EnemiesPrefabsPatches;
         }
     }
