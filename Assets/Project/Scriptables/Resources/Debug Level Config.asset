@@ -16,6 +16,6 @@ MonoBehaviour:
   <LevelPrefabPath>k__BackingField: Levels/Level 1
   <EnemiesPrefabsPatches>k__BackingField:
   - Enemies/Goblin
-  <CountToKillEnemies>k__BackingField: 10
-  <StartCountOfCrystals>k__BackingField: 50
-  <EnemiesSpawnWaveTime>k__BackingField: 10
+  <CountToKillEnemies>k__BackingField: 25
+  <StartCountOfCrystals>k__BackingField: 30
+  <EnemiesSpawnWaveTime>k__BackingField: 4

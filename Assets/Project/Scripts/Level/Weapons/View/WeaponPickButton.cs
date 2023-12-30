@@ -9,7 +9,7 @@ namespace Project.Scripts.Level.Weapons.View
 {
     public class WeaponPickButton : MonoBehaviour
     {
-        public event Action<Weapon> OnChosenPrefab;
+        public event Action<WeaponCreateConfig> OnChosenPrefab;
 
         
         [field: Header("--- Base ---")]
@@ -22,8 +22,6 @@ namespace Project.Scripts.Level.Weapons.View
         [Header("--- Lock ---")]
         [SerializeField] private GameObject _lockView;
         
-        private CrystalHandleService _crystalHandleService;
-        
         private bool _isLocked = true;
         private Button _button;
 
@@ -34,8 +32,6 @@ namespace Project.Scripts.Level.Weapons.View
         private void Awake()
         {
             _button = GetComponent<Button>();
-            _lockView.SetActive(true);
-            _priceView.Hide();
 
             SetConfigData();
         }
@@ -45,9 +41,6 @@ namespace Project.Scripts.Level.Weapons.View
 
         private void OnDisable()
             => _button.onClick.RemoveListener(TryToPick);
-        
-        public void Construct(CrystalHandleService crystalHandleService)
-            => _crystalHandleService = crystalHandleService;
         
         private void SetConfigData()
         {
@@ -65,18 +58,15 @@ namespace Project.Scripts.Level.Weapons.View
         {
             if(_isLocked)
                 return;
-            
-            _crystalHandleService.TryToConsume(Config.Price, onSuccess: NotifySuccessPrefabChose);
-        }
 
-        private void NotifySuccessPrefabChose()
-            => OnChosenPrefab?.Invoke(Config.Prefab);
+            OnChosenPrefab?.Invoke(Config);
+        }
 
         public void Unlock()
         {
             _lockView.SetActive(false);
             _priceView.Show();
-            
+
             _isLocked = false; 
         }
     }

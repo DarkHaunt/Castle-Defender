@@ -1,5 +1,6 @@
 ﻿using Project.Scripts.Level.Weapons.Handling.WeaponPoints.MVP;
 using Project.Scripts.Level.Weapons.Handling.WeaponPoints;
+using Project.Scripts.Level.Common.Crystals;
 
 
 namespace Project.Scripts.Level.Weapons.Handling.Create
@@ -7,14 +8,16 @@ namespace Project.Scripts.Level.Weapons.Handling.Create
     public class WeaponCreateService
     {
         private readonly WeaponPointsContainer _weaponPointsContainer;
+        private readonly CrystalHandleService _crystalHandleService;
         private readonly WeaponChoseService _weaponChoseService;
         private readonly WeaponFactory _weaponFactory;
 
 
         public WeaponCreateService(WeaponFactory weaponFactory, WeaponPointsContainer weaponPointsContainer,
-            WeaponChoseService weaponChoseService)
+            WeaponChoseService weaponChoseService, CrystalHandleService crystalHandleService)
         {
             _weaponPointsContainer = weaponPointsContainer;
+            _crystalHandleService = crystalHandleService;
             _weaponChoseService = weaponChoseService;
             _weaponFactory = weaponFactory;
         }
@@ -50,12 +53,17 @@ namespace Project.Scripts.Level.Weapons.Handling.Create
 
         private void CreateWeapon(WeaponPointModel weaponHandlePoint)
         {
-            var newWeapon = _weaponFactory.CreateWeapon(_weaponChoseService.ChosenWeapon, weaponHandlePoint.Position);
-
-            _weaponPointsContainer.RegisterPointAsOccupied(weaponHandlePoint);
-            weaponHandlePoint.RegisterWeapon(newWeapon);
+            var weaponCreateConfig = _weaponChoseService.ChosenWeapon;
             
-            DisableCreationFor(weaponHandlePoint);
+            _crystalHandleService.TryToConsume(weaponCreateConfig.Price, onSuccess: () =>
+            {
+                var newWeapon = _weaponFactory.CreateWeapon(weaponCreateConfig.Prefab, weaponHandlePoint.Position);
+
+                _weaponPointsContainer.RegisterPointAsOccupied(weaponHandlePoint);
+                weaponHandlePoint.RegisterWeapon(newWeapon);
+
+                DisableCreationFor(weaponHandlePoint);
+            });
         }
     }
 }

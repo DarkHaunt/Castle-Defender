@@ -1,4 +1,5 @@
 ﻿using Project.Scripts.Level.Common.Crystals;
+using Project.Scripts.Configs.Game.Weapons;
 using Project.Scripts.Level.Weapons.View;
 using System.Collections.Generic;
 using Project.Scripts.Global;
@@ -9,10 +10,10 @@ namespace Project.Scripts.Level.Weapons.Handling.Create
 {
     public class WeaponChoseService
     {
-        private readonly List<WeaponPickButton> _weaponPickButtons;
         private readonly CrystalHandleService _crystalHandleService;
+        private readonly List<WeaponPickButton> _weaponPickButtons;
 
-        public Weapon ChosenWeapon { get; private set; }
+        public WeaponCreateConfig ChosenWeapon { get; private set; }
 
 
         public WeaponChoseService(List<WeaponPickButton> weaponPickButtons, CrystalHandleService crystalHandleService)
@@ -26,12 +27,9 @@ namespace Project.Scripts.Level.Weapons.Handling.Create
             var unlockedButtons = _weaponPickButtons.Where(button => availableWeapons.Contains(button.Config.WeaponType));
 
             foreach (var weaponPickButton in unlockedButtons)
-            {
-                weaponPickButton.Construct(_crystalHandleService);
                 weaponPickButton.Unlock();
-            }
 
-            ChosenWeapon = unlockedButtons.FirstOrDefault().Config.Prefab;
+            ChosenWeapon = unlockedButtons.FirstOrDefault().Config;
         }
 
         public void Enable()
@@ -46,7 +44,7 @@ namespace Project.Scripts.Level.Weapons.Handling.Create
                 weaponPickButton.OnChosenPrefab -= ChoseWeaponPrefab;
         }
 
-        private void ChoseWeaponPrefab(Weapon newChosenWeapon)
+        private void ChoseWeaponPrefab(WeaponCreateConfig newChosenWeapon)
             => ChosenWeapon = newChosenWeapon;
     }
 }
