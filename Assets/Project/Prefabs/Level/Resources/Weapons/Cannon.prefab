@@ -135,7 +135,7 @@ GameObject:
   - component: {fileID: 4610221735476587297}
   - component: {fileID: 2652502682383663191}
   m_Layer: 3
-  m_Name: Catapult
+  m_Name: Cannon
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0

@@ -10,7 +10,7 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 3dfd7000db674180945fd49ee21a959c, type: 3}
-  m_Name: Player Config
+  m_Name: Debug Player Config
   m_EditorClassIdentifier: 
   <CastleHealth>k__BackingField: 100000
   <AvailableWeapons>k__BackingField: 00000000

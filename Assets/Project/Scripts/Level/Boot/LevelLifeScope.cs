@@ -2,7 +2,6 @@
 using Project.Scripts.Level.Weapons.View;
 using Project.Scripts.Level.Debugging;
 using Project.Scripts.Level.Castles;
-using Project.Scripts.Level.Weapons;
 using Project.Scripts.Consume;
 using Project.Scripts.UI;
 using VContainer.Unity;
@@ -28,13 +27,10 @@ namespace Project.Scripts.Level.Boot
         [SerializeField] private CoinsHandleView _coinsHandleView;
         [SerializeField] private CastleView _castleView;
 
-        [Header("--- TEMP ---")]
-        [SerializeField] private Weapon _creationPrefab;
-
-
+       
         protected override void Configure(IContainerBuilder builder)
         {
-            new WeaponSystemInstaller(_creationPrefab, _weaponParent, _weaponSystemView)
+            new WeaponSystemInstaller(_weaponSystemView, _weaponParent)
                 .Install(builder);
 
             new CastleSystemInstaller(_castleView)

@@ -1,8 +1,8 @@
-﻿using Project.Scripts.Common.StateMachine;
+﻿using Project.Scripts.Level.Weapons.StateMachine.States;
 using Project.Scripts.Level.Weapons.EnemiesDetection;
-using Project.Scripts.Level.Weapons.StateMachine.States;
-using System;
+using Project.Scripts.Common.StateMachine;
 using System.Collections.Generic;
+using System;
 
 
 namespace Project.Scripts.Level.Weapons.StateMachine

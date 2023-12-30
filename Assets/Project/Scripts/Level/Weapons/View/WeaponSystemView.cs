@@ -1,4 +1,5 @@
 ﻿using Project.Scripts.Level.Weapons.Handling;
+using System.Collections.Generic;
 using UnityEngine;
 using VContainer;
 
@@ -7,8 +8,10 @@ namespace Project.Scripts.Level.Weapons.View
 {
     public abstract class WeaponSystemView : MonoBehaviour
     {
+        [field: SerializeField] public List<WeaponPickButton> PickButtons { get; private set; }
+        
         protected WeaponSystemBinder _weaponSystemBinder;
-
+        
 
         [Inject]
         private void Construct(WeaponSystemBinder weaponSystemBinder)

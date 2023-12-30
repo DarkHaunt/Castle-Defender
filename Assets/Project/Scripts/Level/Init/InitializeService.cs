@@ -1,10 +1,6 @@
-﻿using Project.Scripts.Level.Common.Prefab;
-using Project.Scripts.Configs.Level;
-using Project.Scripts.Configs.Game;
-using Project.Scripts.Level.Enemies;
-using Project.Scripts.Level.Weapons;
+﻿using Project.Scripts.Level.Weapons.Handling.Create;
+using Project.Scripts.Level.Common.Prefab;
 using Project.Scripts.Configs;
-using UnityEngine;
 using System;
 
 
@@ -14,18 +10,25 @@ namespace Project.Scripts.Level.Init
     {
         public event Action OnInitializeDataReady;
 
+        private readonly WeaponChoseService _weaponChoseService;
+        
         private readonly ConfigsProvider _configsProvider;
         private readonly WeaponProvider _weaponProvider;
-        private readonly LevelFactory _levelFactory;
+        private readonly EnemyProvider _enemyProvider;
+        private readonly LevelProvider _levelProvider;
 
         private LevelInitializeData _levelInitializeData;
 
 
-        public InitializeService(ConfigsProvider configsProvider, LevelFactory levelFactory, WeaponProvider weaponProvider)
+        public InitializeService(WeaponChoseService weaponChoseService, ConfigsProvider configsProvider, 
+            LevelProvider levelProvider, WeaponProvider weaponProvider, EnemyProvider enemyProvider)
         {
+            _weaponChoseService = weaponChoseService;
+            
             _configsProvider = configsProvider;
             _weaponProvider = weaponProvider;
-            _levelFactory = levelFactory;
+            _enemyProvider = enemyProvider;
+            _levelProvider = levelProvider;
         }
 
 
@@ -34,50 +37,23 @@ namespace Project.Scripts.Level.Init
 
         public void LoadInitializeData()
         {
-            var playerProgressData = _configsProvider.PlayerConfig;
+            var playerConfig = _configsProvider.PlayerConfig;
             var levelConfig = _configsProvider.LevelConfig;
             
             _levelInitializeData = new LevelInitializeData
             {
-                Level = LoadLevel(levelConfig),
-                Enemies = LoadEnemies(levelConfig),
-                CountEnemiesToKill = levelConfig.CountToKillEnemies,
-                AvailableWeapons = LoadAvailableWeapons(playerProgressData),
+                Level = _levelProvider.LoadLevel(levelConfig),
+                Enemies = _enemyProvider.LoadEnemies(levelConfig),
+                AvailableWeapons = _weaponProvider.LoadWeapons(playerConfig),
                 
-                CastleHealth = playerProgressData.CastleHealth,
+                CastleHealth = playerConfig.CastleHealth,
+                CountEnemiesToKill = levelConfig.CountToKillEnemies,
                 EnemiesWaveSpawnTime = levelConfig.EnemiesSpawnWaveTime,
             };
             
+            _weaponChoseService.Init(playerConfig.AvailableWeapons);
+            
             OnInitializeDataReady?.Invoke();
         }
-
-        private Weapon[] LoadAvailableWeapons(IPlayerConfig playerConfig)
-        {
-            var weapons = new Weapon[playerConfig.AvailableWeapons.Length];
-
-            for (int i = 0; i < weapons.Length; i++)
-            {
-                var type = playerConfig.AvailableWeapons[i];
-                weapons[i] = _weaponProvider.GetWeaponPrefab(type);
-            }
-
-            return weapons;
-        }
-
-        private Enemy[] LoadEnemies(ILevelConfig levelConfig)
-        {
-            var enemies = new Enemy[levelConfig.EnemiesPrefabsPatches.Length];
-
-            for (int i = 0; i < enemies.Length; i++)
-            {
-                var path = levelConfig.EnemiesPrefabsPatches[i];
-                enemies[i] = Resources.Load<Enemy>(path);
-            }
-
-            return enemies;
-        }
-
-        private LevelComponentsContainer LoadLevel(ILevelConfig levelConfig)
-            => _levelFactory.CreateLevel(levelConfig.LevelPrefabPath);
     }
 }

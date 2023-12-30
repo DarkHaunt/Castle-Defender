@@ -1,6 +1,6 @@
 ﻿using Project.Scripts.Level.Weapons.View;
-using Project.Scripts.Configs.Game;
 using System.Collections.Generic;
+using Project.Scripts.Global;
 using System.Linq;
 
 
@@ -8,34 +8,33 @@ namespace Project.Scripts.Level.Weapons.Handling.Create
 {
     public class WeaponChoseService
     {
-        private readonly IEnumerable<WeaponPickButton> _weaponPickButtons;
+        private readonly List<WeaponPickButton> _weaponPickButtons;
 
         public Weapon ChosenWeapon { get; private set; }
 
 
-        public WeaponChoseService(IEnumerable<WeaponPickButton> weaponPickButtons)
+        public WeaponChoseService(List<WeaponPickButton> weaponPickButtons)
         {
             _weaponPickButtons = weaponPickButtons;
         }
 
-        public void Init(IPlayerConfig playerConfig)
+        public void Init(WeaponType[] availableWeapons)
         {
-            var availableWeapons = playerConfig.AvailableWeapons;
-            var unlockedWeapons = _weaponPickButtons.Where(x => availableWeapons.Contains(x.Type));
+            var unlockedButtons = _weaponPickButtons.Where(button => availableWeapons.Contains(button.Type));
 
-            foreach (var weaponPickButton in unlockedWeapons)
+            foreach (var weaponPickButton in unlockedButtons)
                 weaponPickButton.Unlock();
 
-            ChosenWeapon = unlockedWeapons.FirstOrDefault().Prefab;
+            ChosenWeapon = unlockedButtons.FirstOrDefault().Prefab;
         }
-        
-        public void Enable() 
+
+        public void Enable()
         {
             foreach (var weaponPickButton in _weaponPickButtons)
                 weaponPickButton.OnChosenPrefab += ChoseWeaponPrefab;
         }
-				
-        public void Disable() 
+
+        public void Disable()
         {
             foreach (var weaponPickButton in _weaponPickButtons)
                 weaponPickButton.OnChosenPrefab -= ChoseWeaponPrefab;

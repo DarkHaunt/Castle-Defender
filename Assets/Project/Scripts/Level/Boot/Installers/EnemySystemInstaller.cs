@@ -1,8 +1,9 @@
 ﻿using Project.Scripts.Level.Enemies.Creation;
 using Project.Scripts.Level.Enemies.Handling;
+using Project.Scripts.Level.Init;
+using VContainer.Unity;
 using UnityEngine;
 using VContainer;
-using VContainer.Unity;
 
 
 namespace Project.Scripts.Level.Boot.Installers
@@ -21,9 +22,16 @@ namespace Project.Scripts.Level.Boot.Installers
         public void Install(IContainerBuilder builder)
         {
             RegisterEnemyFactory(builder);
+            RegisterEnemyProvider(builder);
+            
             RegisterEnemyPoolService(builder);
             RegisterEnemySpawnService(builder);
             RegisterEnemyHandleService(builder);
+        }
+
+        private void RegisterEnemyProvider(IContainerBuilder builder)
+        {
+            builder.Register<EnemyProvider>(Lifetime.Scoped);
         }
 
         private void RegisterEnemyPoolService(IContainerBuilder builder)

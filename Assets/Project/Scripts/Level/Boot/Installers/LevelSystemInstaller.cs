@@ -33,7 +33,7 @@ namespace Project.Scripts.Level.Boot.Installers
             RegisterStateMachine(builder);
             
             RegisterInitializeService(builder);
-            RegisterLevelFactory(builder);
+            RegisterLevelProvider(builder);
 
             RegisterLevelBootstrapper(builder);
             RegisterStateFactories(builder);
@@ -64,21 +64,18 @@ namespace Project.Scripts.Level.Boot.Installers
             builder.Register<InitializeService>(Lifetime.Scoped);
         }
 
-        private void RegisterLevelFactory(IContainerBuilder builder)
+        private void RegisterLevelProvider(IContainerBuilder builder)
         {
             builder
-                .Register<LevelFactory>(Lifetime.Scoped)
+                .Register<LevelProvider>(Lifetime.Scoped)
                 .WithParameter(_levelParentObject);
-
-            builder.RegisterFactory<string, LevelComponentsContainer>(container =>
-                container.Resolve<LevelFactory>().CreateLevel, Lifetime.Scoped);
         }
 
         private void RegisterStates(IContainerBuilder builder)
         {
             builder.Register<LoadingLevelDataState>(Lifetime.Scoped);
-            builder.Register<InitLevelState>(Lifetime.Scoped);
             builder.Register<StartLevelState>(Lifetime.Scoped);
+            builder.Register<InitLevelState>(Lifetime.Scoped);
             builder.Register<EndLevelState>(Lifetime.Scoped);
         }
 

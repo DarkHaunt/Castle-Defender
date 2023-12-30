@@ -325,6 +325,17 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f4688fdb7df04437aeb418b961361dc5, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!114 &509912375 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 5005506062821644348, guid: d3ecabfa3a43d134f9895b6263364ca6, type: 3}
+  m_PrefabInstance: {fileID: 3749346259252861855}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 2bf7b55977e6462387904a8805976771, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &562981025
 GameObject:
   m_ObjectHideFlags: 0
@@ -462,6 +473,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 48a1d3e5e39541b9848935a73e9c6936, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  <PickButtons>k__BackingField:
+  - {fileID: 880201628}
+  - {fileID: 509912375}
   _createButton: {fileID: 722120955}
   _deleteButton: {fileID: 1030521752}
   _choseWeaponPanel: {fileID: 1126596830}
@@ -506,7 +520,6 @@ MonoBehaviour:
   _weaponSystemView: {fileID: 813292959}
   _coinsHandleView: {fileID: 1012984802}
   _castleView: {fileID: 592950273}
-  _creationPrefab: {fileID: 4610221735476587297, guid: 38d8f8588170e344f8dd26420c53c93c, type: 3}
 --- !u!4 &878016073
 Transform:
   m_ObjectHideFlags: 0
@@ -522,6 +535,17 @@ Transform:
   m_Father: {fileID: 1976436645}
   m_RootOrder: 1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &880201628 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 156741408004224568, guid: d3ecabfa3a43d134f9895b6263364ca6, type: 3}
+  m_PrefabInstance: {fileID: 3749346259252861855}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 2bf7b55977e6462387904a8805976771, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!224 &899789261 stripped
 RectTransform:
   m_CorrespondingSourceObject: {fileID: 8153642290106871284, guid: 728621f1ee27f9e48844ae63ab740ecf, type: 3}

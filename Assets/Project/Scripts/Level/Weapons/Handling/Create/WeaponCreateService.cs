@@ -22,12 +22,16 @@ namespace Project.Scripts.Level.Weapons.Handling.Create
 
         public void StartHandleCreate()
         {
+            _weaponChoseService.Enable();
+            
             foreach (var weaponPlacePoint in _weaponPointsContainer.EmptyPoints)
                 EnableCreationFor(weaponPlacePoint);
         }
 
         public void EndHandleCreate()
         {
+            _weaponChoseService.Disable();
+            
             foreach (var weaponPlacePoint in _weaponPointsContainer.EmptyPoints)
                 DisableCreationFor(weaponPlacePoint);
         }

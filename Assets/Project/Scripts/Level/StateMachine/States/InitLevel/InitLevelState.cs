@@ -12,22 +12,22 @@ namespace Project.Scripts.Level.StateMachine.States.InitLevel
 {
     public class InitLevelState : IState
     {
+        private readonly IStateSwitcher _stateSwitcher;
         private readonly CoinsHandleService _coinsHandleService;
         private readonly EnemyHandleService _enemyHandleService;
         private readonly EnemySpawnService _enemySpawnService;
         private readonly InitializeService _initializeService;
-        private readonly IStateSwitcher _stateSwitcher;
         private readonly CastleModel _castleModel;
 
 
         public InitLevelState(IStateSwitcher stateSwitcher, CoinsHandleService coinsHandleService, InitializeService initializeService, 
             CastleModel castleModel, EnemySpawnService enemySpawnService, EnemyHandleService enemyHandleService)
         {
+            _stateSwitcher = stateSwitcher;
             _coinsHandleService = coinsHandleService;
             _enemyHandleService = enemyHandleService;
             _initializeService = initializeService;
             _enemySpawnService = enemySpawnService;
-            _stateSwitcher = stateSwitcher;
             _castleModel = castleModel;
         }
 
